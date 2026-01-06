@@ -1,0 +1,121 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Before we send the information" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+  <a href="#" class="govuk-back-link">Back</a>
+  <h1 class="govuk-heading-l">Before we send the information</h1>
+
+  <p class="govuk-body">The organisations, in the list below, are the ones that you have agreed to being told. They will now be able to update their records and amend benefits, credits and services without asking to see the death certificate.</p>
+
+  <p class="govuk-body">All the information you have provided will be protected and shared securely. The organisations will only be given the information that will be used by them and will treat your information securely and confidentially. You can learn more about this by reading the organisation's privacy policies.</p>
+
+  <p class="govuk-body">We will send the information you have provided about yourself, the next of kin or person dealing withthe estarte to the organisations you have chosen to notify. They will contact the appropriate person if they need to.</p>
+
+<!---------List-------->
+
+  <ul class="govuk-list govuk-list--bullet govuk-!-padding-top-3">
+  <li>DWP Bereavement Service Team 5</li>
+  <li>HM Revenue and Customs - Personal Tax</li>
+  <li>HM Revenue and Customs - Benefits and Credits</li>  
+  <li>Hereford Borough Council</li>
+  <li>Ministry of Defence - Veterans UK</li>
+  <li>HM Passport Office</li>
+  <li>Driver and Vehicle Licensing Agency</li>
+  <li>Veterans UK</li>
+  <li>My Civil Service Pension</li>
+</ul>
+
+<!---------Checkbox-------->
+
+<div class="govuk-form-group govuk-!-padding-top-6">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="agree" name="agree" type="checkbox" value="agree" data-aria-controls="agree">
+        <label class="govuk-label govuk-checkboxes__label" for="agree">
+          I agree that the information I have provided may be shared with the government and council organisations listed above. 
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Further requirements
+      </h1>
+    </legend>
+    
+<!---------Wales-------->
+
+    <div id="changedName-hint" class="govuk-body">
+      If you are resident in Wales you have the option to have your letter in Welsh.
+    </div>
+    <p class="govuk-body">Do you live in Wales?</p>
+    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="wales" name="wales" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="wales">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="wales-2" name="wales" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="wales-2">
+          No
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<!---------Large print-------->
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+    <p class="govuk-body">Do you require large print?</p>
+    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="changedName" name="changedName" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="changedName">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="changedName-2" name="changedName" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="changedName-2">
+          No
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<!---------Button-------->
+
+<a href="confirmation" role="button" draggable="false" class="govuk-button govuk-button" data-module="govuk-button">
+  Send
+</a>
+<details class="govuk-details govuk-!-padding-top-6">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Contact us for help
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    <h3 class="govuk-heading-s">Telephone</h3>
+<p class="govuk-body">0800 085 7308</p>
+<p class="govuk-body">Relay UK: 18001 0800 085 7308<br><a href="#">Video Relay Service for British Sign Language (BSL) (opens in new tab)</a></p>
+<p class="govuk-body">Monday to Friday 8:00am to 6:00pm.</p>
+<h3 class="govuk-heading-s">Email</h3>
+<p class="govuk-body"> Email us at <a href="#">tellusonce.communications@dwp.gov.uk</a></p>
+  </div>
+</details>
+  </div>
+</div>
+{% endblock %}
