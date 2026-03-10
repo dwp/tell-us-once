@@ -1,0 +1,73 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Tell us once letter" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <h1 class="govuk-heading-xl hide-for-print">Registrar handout</h1>
+        <div class="links-flex-row govuk-!-margin-bottom-3 hide-for-print">
+            <div class="print-this" hidden="">
+                <img class="print-icon"
+                    src="/save-your-national-insurance-number/assets/images/fe17da3bfd5acd45060aefcc9801539a-icon-print.svg"
+                    alt="" aria-hidden="true">
+                <a id="print-link" class="print-link govuk-link govuk-link--no-visited-state" href="#"
+                    data-journey-click="print - click:Your National Insurance letter:Print this letter">
+                    Print this handout
+                </a>
+            </div>
+            <div class="save-this">
+                <a class="govuk-link govuk-link--no-visited-state"
+                    href="/save-your-national-insurance-number/print-letter/save-letter-as-pdf"
+                    data-journey-click="save - click:Your National Insurance letter:Save as a PDF">Save as a PDF</a>
+            </div>
+        </div>
+        <section aria-label="Tell Us Once registrar handout preview" class="govuk-body print-document">
+
+            <div class="letter" role="region" aria-label="Letter">
+                <div class="letter__inner">
+
+                    <div class="letter__header">
+                        <p class="govuk-heading-m">Tell Us Once</p>
+                    </div>
+
+                    <h3 class="govuk-heading-l">You can use Tell Us Once</h3>
+                    <div class="govuk-!-margin-bottom-7">
+                        <p>You can use this service to tell government organisations and departments about the
+                            death.</p>
+                    </div>
+                    <div class="letter__ref govuk-body govuk-!-text-align-centre">
+                        <p>Your Tell Us Once reference number is <span class="letter__refNo">C6F5 EB 2325 D4</span>
+                        </p>
+                    </div>
+                    <div class="govuk-!-margin-top-7">
+                        <p>You must use this reference number to complete Tell Us Once before <strong>16 May
+                                2026</strong>.</p>
+                        <p>After this date and you may not be able to get a new reference number. To check, contact
+                            your
+                            register office.</p>
+                    </div>
+                    <h3 class="govuk-heading-m">How to use Tell Us Once </h3>
+                    <h4 class="govuk-heading-s">Online</h4>
+                    <p class="govuk-body">Go to the Tell Us Once website at <strong>www.gov.uk/tell-us-once</strong>
+                    </p>
+                    <h4 class="govuk-heading-s">Offline</h4>
+                    <p>Telephone: 0800 085 7308 </p>
+                    <p>Relay UK (if you cannot hear or speak on the phone): 18001 0800 085 7308  </p>
+
+                    <!-- <p><a href="https://connect.interpreterslive.co.uk/vrs?ilc=DWP">British Sign Language (BSL) video relay service</a>. If you’re on a computer - <a href="https://www.youtube.com/watch?v=oELNMfAvDxw">find out how to use the service on mobile or tablet</a>. </p>
+        <p>Monday to Friday, 8am to 6pm. Calls are free. </p> -->
+                </div>
+        </section>
+        <p class="govuk-body govuk-!-margin-top-7 hide-for-print"><a href="before-you-start-handout">Before you start information</a></p>
+        <script nonce="">
+            document.getElementById("print-link").addEventListener("click", function () {
+                event.preventDefault();
+                window.print();
+            })
+        </script>
+    </div>
+</div>
+
+{% endblock %}

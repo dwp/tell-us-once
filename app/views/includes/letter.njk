@@ -1,0 +1,178 @@
+<style>
+  .letter {
+    border: 1px solid black;
+    box-shadow: 7px 8px 0px rgba(0, 0, 0, 0.15);
+    padding: 2em 4em;  
+    width: fit-content;  
+  }
+  .letter__inner {
+    max-width: 44em;
+    margin: 0 auto;
+  }
+  .letter__header {
+    border-bottom: 5px solid black;
+    margin-bottom: 2em;
+  }
+  .letter__header h2 {
+    margin-bottom: 0.25em;
+  }
+
+
+  .letter a[href^="/"]::after, 
+  .letter [href^="/"].govuk-link::after, 
+  .letter a[href^="http://"]::after, 
+  .letter [href^="http://"].govuk-link::after, 
+  .letter a[href^="https://"]::after, 
+  .letter [href^="https://"].govuk-link::after {
+      content: " (" attr(href) ")";
+      font-size: 100%;
+      word-wrap: break-word;
+      font-weight: 700;
+  }
+
+  
+
+  .letter__ref {
+    border: 4px solid black;
+    padding: 1em 1em 0 1em;
+    margin: 1em 0 1em 0;
+  }
+  .letter__refNo {
+    font-size: 1.2em;
+    font-weight: 700;
+  }
+
+  /* Print sizing */
+  .govuk-heading-l {
+    font-family: sans-serif;
+    font-size: 24pt;
+    line-height: 1.05;
+  }
+  .govuk-heading-m {
+    font-family: sans-serif;
+    font-size: 18pt;
+    line-height: 1.15;
+  }
+  .govuk-heading-s {
+    font-family: sans-serif;
+    font-size: 14pt;
+    line-height: 1.15;
+  }
+  p, 
+  .govuk-body, 
+  .govuk-body-m,
+  .govuk-list {
+    font-size: 14pt;
+    line-height: 1.15;
+    font-family: sans-serif;
+}
+
+  /* end */
+
+  @media print {
+    .govuk-header,
+    .govuk-template__footer,
+    .govuk-back-link,
+    .govuk-main-wrapper> :not(.letter) {
+      display: none;
+    }
+    .letter {
+      border: none;
+      box-shadow: none;
+      padding: 0;
+    }
+    .letter a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .letter__inner > :last-child {
+      margin-bottom: 0;
+    }
+    
+  }
+
+
+
+</style>
+
+
+
+      <h1 class="govuk-heading-l">
+        Registrar letter
+      </h1>
+
+      <p>
+        Print out the letter below.
+      </p>
+
+      <div class="letter" role="region" aria-label="Letter">
+        <div class="letter__inner">
+        <div class="letter__header">
+          <h2 class="govuk-heading-l">Tell Us Once</h2>
+        </div>
+
+        <h3 class="govuk-heading-m">You can now use Tell Us Once</h3>
+
+        <p>Your Tell Us Once reference has been created. You can use this to tell government organisations and departments about the death.</p>
+ 
+        <div class="letter__ref govuk-body">
+          <p>Your Tell Us Once reference number is <span class="letter__refNo">C6F5 EB 2325 D4</span></p>
+          <p>Use this reference number to complete Tell Us Once before 16 May 2026</p>
+        </div>
+ 
+        <p>Your reference number will not work after this date and you may not be able to get a new reference number. To check, <a href="https://www.gov.uk/register-offices">contact your register office</a>.</p>
+ 
+        <h3 class="govuk-heading-m">How to use Tell Us Once </h3>
+
+        <p>Use Tell Us Once online at <a href="https://www.gov.uk/tell-us-once"></a>www.gov.uk/tell-us-once</a></p>
+        <p>Telephone: 0800 085 7308 </p>
+        <p>Relay UK (if you cannot hear or speak on the phone): 18001 0800 085 7308  </p>
+
+        <p><a href="https://connect.interpreterslive.co.uk/vrs?ilc=DWP">British Sign Language (BSL) video relay service</a>. If you’re on a computer - <a href="https://www.youtube.com/watch?v=oELNMfAvDxw">find out how to use the service on mobile or tablet</a>. </p>
+        <p>Monday to Friday, 8am to 6pm. Calls are free. </p>
+ 
+        <h3 class="govuk-heading-m">Before you start</h3>
+        <p>You’ll need the Tell Us Once reference number: [number] </p>
+ 
+        <p>You’ll also need the following details about the person who died: </p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>surname and date of death</li>
+          <li>name, address and contact details of the person or company dealing with their estate (property, belongings and money), known as their ‘executor’ or ‘administrator’ </li>
+          <li>if there’s a surviving spouse or civil partner, the name, address, telephone number and the National Insurance number or date of birth of the spouse or civil partner </li>
+          <li>if there’s no surviving spouse or civil partner or their spouse or civil partner is not able to deal with their affairs, the name and address of their next of kin </li>
+          <li>if they died in a hospital, nursing home, care home or hospice, the name and address of that institution </li>
+        </ul>
+
+        <p>Before giving details of the next of kin, or person or company dealing with the estate, you'll need their permission. </p>
+ 
+        <h3 class="govuk-heading-m">Information you may need</h3>
+        <p>Depending on who you want to notify, you may also need: </p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>if they had a valid UK passport, their passport number and place of birth </li>
+          <li>if they had a driving licence, their driving licence number </li>
+          <li>if they owned any vehicles, the vehicle registration numbers </li>
+          <li>if they were paying Council Tax or getting services from their local council, such as Housing Benefit payments, which services they were getting </li>
+          <li>if they had a Blue Badge, their Blue Badge number if you know it </li>
+          <li>to know if they were getting any benefits, tax credits or State Pension </li>
+          <li>to know if they were getting money from an Armed Forces Pension or Compensation Scheme </li>
+        </ul>
+
+        <p>You’ll also need their National Insurance number if they were getting money from, or paying into, any of the following pension schemes: </p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>NHS Pensions for NHS staff in England and Wales </li>
+          <li>Scottish Public Pension Agency schemes for NHS staff, teachers, police and firefighters in Scotland </li>
+          <li>Pension Protection Fund and Financial Assistance Scheme </li>
+          <li>Local Government Pension Schemes (LGPS) </li>
+        </ul>
+
+        <p>Otherwise, you do not need their National Insurance number. If you can still provide it though, it will help some organisations match their records faster. </p>
+ 
+        <h3 class="govuk-heading-m">Bereavement benefits and support  </h3>
+        <p>Go to what to do when someone dies: step by step (https://www.gov.uk/when-someone-dies) to: </p>
+        <ul class="govuk-list govuk-list--bullet">
+            <li>check if you can bereavement benefits </li>
+            <li>find bereavement support and services </li>
+          </ul>
+      </div>
+    </div>

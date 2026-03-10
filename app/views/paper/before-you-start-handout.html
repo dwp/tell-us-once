@@ -1,0 +1,98 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Tell us once letter" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <h1 class="govuk-heading-xl hide-for-print">Registrar handout</h1>
+        <div class="links-flex-row govuk-!-margin-bottom-3 hide-for-print">
+            <div class="print-this" hidden="">
+                <img class="print-icon"
+                    src="/save-your-national-insurance-number/assets/images/fe17da3bfd5acd45060aefcc9801539a-icon-print.svg"
+                    alt="" aria-hidden="true">
+                <a id="print-link" class="print-link govuk-link govuk-link--no-visited-state" href="#"
+                    data-journey-click="print - click:Your National Insurance letter:Print this letter">
+                    Print this letter
+                </a>
+            </div>
+            <div class="save-this">
+                <a class="govuk-link govuk-link--no-visited-state"
+                    href="/save-your-national-insurance-number/print-letter/save-letter-as-pdf"
+                    data-journey-click="save - click:Your National Insurance letter:Save as a PDF">Save as a PDF</a>
+            </div>
+        </div>
+        <section aria-label="Tell Us Once registrar handout preview" class="govuk-body print-document">
+
+            <div class="letter" role="region" aria-label="Letter">
+                <div class="letter__inner">
+                   
+                        <div class="letter__header">
+                            <p class="govuk-heading-m">Tell Us Once</p>
+                        </div>
+                        <h3 class="govuk-heading-m">Before you use Tell Us Once</h3>
+                        <p>You’ll need the Tell Us Once reference number.</p>
+
+                        <p>You’ll also need the following details about the person who died: </p>
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>surname and date of death</li>
+                            <li>name, address and contact details of the person or company dealing with their estate
+                                (property, belongings and money), known as their ‘executor’ or ‘administrator’ </li>
+                            <li>if there’s a surviving spouse or civil partner, the name, address, telephone number and
+                                the National Insurance number or date of birth of the spouse or civil partner </li>
+                            <li>if there’s no surviving spouse or civil partner or their spouse or civil partner is not
+                                able to deal with their affairs, the name and address of their next of kin </li>
+                            <li>if they died in a hospital, nursing home, care home or hospice, the name and address of
+                                that institution </li>
+                        </ul>
+
+                        <p>Before giving details of the next of kin, or person or company dealing with the estate,
+                            you'll need their permission. </p>
+
+                        <h3 class="govuk-heading-m">Information you may need</h3>
+                        <p>Depending on who you want to notify, you may also need: </p>
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>if they had a valid UK passport, their passport number and place of birth </li>
+                            <li>if they had a driving licence, their driving licence number </li>
+                            <li>if they owned any vehicles, the vehicle registration numbers </li>
+                            <li>if they were paying Council Tax or getting services from their local council, such as
+                                Housing Benefit payments, which services they were getting </li>
+                            <li>if they had a Blue Badge, their Blue Badge number if you know it </li>
+                            <li>to know if they were getting any benefits, tax credits or State Pension </li>
+                            <li>to know if they were getting money from an Armed Forces Pension or Compensation Scheme
+                            </li>
+                        </ul>
+
+                        <p>You’ll also need their National Insurance number if they were getting money from, or paying
+                            into, any of the following pension schemes: </p>
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>NHS Pensions for NHS staff in England and Wales </li>
+                            <li>Scottish Public Pension Agency schemes for NHS staff, teachers, police and firefighters
+                                in Scotland </li>
+                            <li>Pension Protection Fund and Financial Assistance Scheme </li>
+                            <li>Local Government Pension Schemes (LGPS) </li>
+                        </ul>
+
+                        <p>Otherwise, you do not need their National Insurance number. If you can still provide it
+                            though, it will help some organisations match their records faster. </p>
+
+                        <h3 class="govuk-heading-m">Bereavement benefits and support </h3>
+                        <p>Go to what to do when someone dies: step by step (https://www.gov.uk/when-someone-dies) to:
+                        </p>
+                        <ul class="govuk-list govuk-list--bullet">
+                            <li>check if you can bereavement benefits </li>
+                            <li>find bereavement support and services </li>
+                        </ul>
+                </div>
+        </section>
+        <script nonce="">
+            document.getElementById("print-link").addEventListener("click", function () {
+                event.preventDefault();
+                window.print();
+            })
+        </script>
+    </div>
+</div>
+
+{% endblock %}
