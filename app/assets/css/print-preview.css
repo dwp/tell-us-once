@@ -1,0 +1,133 @@
+.links-flex-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.print-icon {
+    vertical-align: text-bottom;
+  }
+
+.js-enabled .print-this,
+.save-this {
+  display: block;
+  height: 1.3em;
+}
+
+.print-document {
+  border: 1px solid #6f777b;
+  box-shadow: 6px 6px 0 0 #dee0e2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 35px;
+  padding: 4% 6%;
+}
+
+@media (min-width: 640px) {
+  .print-document {
+    grid-template-columns: 1fr max-content;
+    max-width: 720px;
+  }
+}
+
+.print-body {
+  grid-column: 1 / -1;
+}
+  .letter__inner {
+    max-width: 44em;
+    margin: 0 auto;
+  }
+
+  .letter__header {
+    border-bottom: 5px solid black;
+    margin-bottom: 2em;
+  }
+
+  .letter__header h2 {
+    margin-bottom: 0.25em;
+  }
+
+  .letter a[href^="/"]::after, 
+  .letter [href^="/"].govuk-link::after, 
+  .letter a[href^="http://"]::after, 
+  .letter [href^="http://"].govuk-link::after, 
+  .letter a[href^="https://"]::after, 
+  .letter [href^="https://"].govuk-link::after {
+      content: " (" attr(href) ")";
+      font-size: 100%;
+      word-wrap: break-word;
+      font-weight: 700;
+  }
+
+  .letter__ref {
+    border: 4px solid black;
+    padding: 1em 1em 0 1em;
+    margin: 1em 0 1em 0;
+  }
+  .letter__refNo {
+    font-size: 1.2em;
+    font-weight: 700;
+  }
+
+  /* Print sizing */
+  .govuk-heading-l {
+    font-size: 24pt;
+    line-height: 1.05;
+  }
+  .govuk-heading-m {
+    font-size: 18pt;
+    line-height: 1.15;
+  }
+  .govuk-heading-s {
+    font-size: 13pt;
+    line-height: 1.15;
+  }
+  p, 
+  .govuk-body, 
+  .govuk-body-m,
+  .govuk-list {
+    font-size: 13pt;
+}
+
+@media print {
+
+    @page {
+      size: auto;
+      margin: 1cm 0;
+    }
+
+    .govuk-width-container {
+        max-width: 90%;
+    }
+
+  header,
+  footer,
+  .govuk-service-navigation,
+  .hide-for-print {
+    display: none !important;
+  }
+
+  .hide-for-print[href]:after {
+    display: none;
+  }
+
+  .print-document {
+    border: none;
+    box-shadow: none;
+    width: auto;
+    padding: 0;
+  }
+
+  .print-document h3:nth-of-type(2) {
+    break-before: page;
+  }
+
+  .govuk-link {
+    text-decoration-thickness: auto;
+  }
+
+  .page-break { 
+    clear: both;
+    page-break-after: always;
+  }
+}

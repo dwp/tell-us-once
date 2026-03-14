@@ -1,0 +1,144 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Task list template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">{{ serviceName }}</h1>
+
+      <h2 class="govuk-heading-m">About you</h2>
+
+      {% set completedStatus = {
+        text: "Completed"
+      } %}
+
+      {% set incompleteStatus = {
+        tag: {
+          text: "Incomplete",
+          classes: "govuk-tag--blue"
+        }
+      } %}
+
+      {# To switch between the completed and incomplete statues, use some inline logic within the component below, like this: "status: (completedStatus if ... else incompleteStatus)" #}
+
+      {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "Personal details"
+            },
+            href: ("informer-details/informer-details-check-answers" if data['informer-details-status'] == "completed" else "informer-details/name"),
+            status: (completedStatus if data['informer-details-status'] == "completed" else incompleteStatus)
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-5">About Joe Bloggs</h2>
+
+      {{ govukTaskList({
+        idPrefix: "second-section",
+        items: [
+          {
+            title: {
+              text: "Next of kin"
+            },
+            href: ("deceased-details/next-of-kin/next-of-kin-check-answers" if data['next-of-kin-status'] == "completed" else "deceased-details/next-of-kin/are-you-the-next-of-kin"),
+            status: (completedStatus if data['next-of-kin-status'] == "completed" else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Spouse or partner"
+            },
+            href: "/v1/deceased-details/spouse-or-partner/confirm-spouse",
+            status: incompleteStatus
+          },
+          {
+            title: {
+              text: "National Insurance details"
+            },
+            href: "#",
+            status: incompleteStatus
+          },
+          {
+            title: {
+              text: "Addresses"
+            },
+            href: "#",
+            status: incompleteStatus
+          },
+          {
+            title: {
+              text: "Local council"
+            },
+            href: "#",
+            status: incompleteStatus
+          }
+        ]
+      }) }}
+
+       <h2 class="govuk-heading-m govuk-!-margin-top-5">Notifications</h2>
+
+      {{ govukTaskList({
+        idPrefix: "third-section",
+        items: [
+          {
+            title: {
+              text: "Who to notify"
+            },
+            href: "#",
+            status: incompleteStatus
+          },
+          {
+            title: {
+              text: "Executor or executors"
+            },
+            href: "#",
+            status: incompleteStatus
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-5">Before we send the information</h2>
+
+      {{ govukTaskList({
+        idPrefix: "third-section",
+        items: [
+          {
+            title: {
+              text: "Permission to share information"
+            },
+            href: "#",
+            status: incompleteStatus
+          },
+          {
+            title: {
+              text: "Further requirements"
+            },
+            href: "#",
+            status: incompleteStatus
+          },
+          {
+            title: {
+              text: "Check information before we send"
+            },
+            href: "#",
+            status: incompleteStatus
+          }
+        ]
+      }) }}
+
+      <div class="govuk-!-margin-top-5">
+        {{ govukButton({ text: "Apply", href: "#" }) }}
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

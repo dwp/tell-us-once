@@ -1,0 +1,103 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    <span class="govuk-caption-xl">Your details</span>
+    <h1 class="govuk-heading-xl">Check your answers</h1>
+
+    {% set rows = [] %}
+
+    {% set _ = rows.push({
+      key: { text: "What is your name?" },
+      value: { text: data['informer-name'] | titlecase },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "your name"
+          }
+        ]
+      }
+    }) %}
+
+    {% set _ = rows.push({
+      key: { text: "What is your relationship to Joe Bloggs?" },
+      value: { text: data['informer-relationship'] | capitalize },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "your relationship"
+          }
+        ]
+      }
+    }) %}
+
+    {% set _ = rows.push({
+      key: { text: "Do you live at the same address as Joe Bloggs?" },
+      value: { text: data['informer-same-address'] | capitalize },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "same address question"
+          }
+        ]
+      }
+    }) %}
+
+    {# -------------------------------------------- #}
+    {#   Only build & add address row if user said NO #}
+    {# -------------------------------------------- #}
+
+    {% if data['informer-same-address'] | lower != "yes" %}
+
+      {% set informerAddress %}
+        {{ data['informer-address-line-1'] }}
+        {% if data['informer-address-line-2'] %}<br>{{ data['informer-address-line-2'] }}{% endif %}
+        {% if data['informer-address-town'] %}<br>{{ data['informer-address-town'] }}{% endif %}
+        {% if data['informer-address-county'] %}<br>{{ data['informer-address-county'] }}{% endif %}
+        {% if data['informer-address-postcode'] %}<br>{{ data['informer-address-postcode'] }}{% endif %}
+      {% endset %}
+
+      {% set _ = rows.push({
+        key: { text: "What is your address?" },
+        value: { html: informerAddress },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "your address"
+            }
+          ]
+        }
+      }) %}
+
+    {% endif %}
+
+    {{ govukSummaryList({ rows: rows }) }}
+
+    <form action="/v1/informer-details/check-answers" method="post" novalidate>
+      {{ govukButton({ text: "Accept and continue" }) }}
+    </form>
+
+  </div>
+</div>
+{% endblock %}

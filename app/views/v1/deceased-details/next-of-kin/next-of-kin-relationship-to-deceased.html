@@ -1,0 +1,85 @@
+{% extends "layouts/main.html" %} {% block pageTitle %} Question page template – {{ serviceName }} – GOV.UK Prototype Kit {% endblock %} {% block beforeContent %} {{ govukBackLink({ text: "Back", href: "javascript:window.history.back()" }) }} {% endblock
+%} {% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-l">Next of kin</span>
+
+        <form class="form" action="next-of-kin-contact-preference" method="post">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+              What is {{data['next-of-kin-name']}}'s relationship to Joe Bloggs?
+            </h1>
+                    </legend>
+                    <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="next-of-kin-relationship-husband" name="next-of-kin-relationship" type="radio" value="Husband">
+                            <label class="govuk-label govuk-radios__label" for="next-of-kin-relationship-husband">Husband</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="next-of-kin-relationship-wife" name="next-of-kin-relationship" type="radio" value="Wife">
+                            <label class="govuk-label govuk-radios__label" for="next-of-kin-relationship-wife">Wife</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="next-of-kin-relationship-spouse" name="next-of-kin-relationship" type="radio" value="Spouse">
+                            <label class="govuk-label govuk-radios__label" for="next-of-kin-relationship-spouse">Spouse</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="next-of-kin-relationship-civilpartner" name="next-of-kin-relationship" type="radio" value="Civil partner">
+                            <label class="govuk-label govuk-radios__label" for="next-of-kin-relationship-civilpartner">Civil Partner</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="next-of-kin-relationship-partner" name="next-of-kin-relationship" type="radio" value="Partner">
+                            <label class="govuk-label govuk-radios__label" for="next-of-kin-relationship-partner">Partner</label>
+                        </div>
+                        <!-- Continue pattern -->
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="next-of-kin-relationship-father" name="next-of-kin-relationship" type="radio" value="Father">
+                            <label class="govuk-label govuk-radios__label" for="next-of-kin-relationship-father">Father</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="next-of-kin-relationship-mother" name="next-of-kin-relationship" type="radio" value="Mother">
+                            <label class="govuk-label govuk-radios__label" for="next-of-kin-relationship-mother">Mother</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="next-of-kin-relationship-son" name="next-of-kin-relationship" type="radio" value="Son">
+                            <label class="govuk-label govuk-radios__label" for="next-of-kin-relationship-son">Son</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="next-of-kin-relationship-daughter" name="next-of-kin-relationship" type="radio" value="Daughter">
+                            <label class="govuk-label govuk-radios__label" for="next-of-kin-relationship-daughter">Daughter</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="next-of-kin-relationship-brother" name="next-of-kin-relationship" type="radio" value="Brother">
+                            <label class="govuk-label govuk-radios__label" for="next-of-kin-relationship-brother">Brother</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="next-of-kin-relationship-sister" name="next-of-kin-relationship" type="radio" value="Sister">
+                            <label class="govuk-label govuk-radios__label" for="next-of-kin-relationship-sister">Sister</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="next-of-kin-relationship-other" name="next-of-kin-relationship" type="radio" value="other" data-aria-controls="conditional-next-of-kin-relationship-other">
+                            <label class="govuk-label govuk-radios__label" for="next-of-kin-relationship-other"> Other </label>
+                        </div>
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-next-of-kin-relationship-other">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label" for="next-of-kin-relationship-other-text">
+                                    Describe the relationship </label>
+                                <input class="govuk-input" id="next-of-kin-relationship-other-text" name="next-of-kin-relationship-other-text" type="text" autocomplete="off"> </div>
+                        </div>
+                    </div>
+            </div>
+            </fieldset>
+    </div>
+</div>
+
+{{ govukButton({ text: "Continue" }) }}
+
+</form>
+
+</div>
+</div>
+
+{% endblock %}

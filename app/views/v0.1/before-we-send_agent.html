@@ -1,6 +1,5 @@
-{% extends "layouts/main.html" %} 
-{% set pageName="Before we send the information" %} 
-{% block content %}
+{% extends "layouts/main.html" %} {% set pageName="Before we send the
+information" %} {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <a href="#" class="govuk-back-link">Back</a>
@@ -63,7 +62,7 @@
             />
             <label class="govuk-label govuk-checkboxes__label" for="agree">
               I agree that the information I have provided may be shared with
-              the government and council organisations listed above.
+              the government and council organisations listed above
             </label>
           </div>
         </div>
@@ -71,22 +70,29 @@
     </div>
       
     <h2 class="govuk-heading-l">Communication preferences</h2>
+    <h3 class="govuk-heading-m">If you live in Wales</h3>
+      <p class="govuk-body">When you finish Tell Us Once, we'll send you a confirmation letter. You can choose to have your Tell Us Once confirmation letter in Welsh.</p>
         <p class="govuk-body">
-          If any of the organisations and departments you've chosen to notify need to contact you, and you live in Wales, you can request that they contact you in either English or Welsh.
-        </p>
-        <p class="govuk-body">
-         We will pass on this preference to these organisations and departments. If they can provide communication in Welsh language, they will.
+          If any of the organisations or departments you've chosen to notify need to contact you, you can ask them to contact you in Welsh. If they're able to, they will.
         </p>
     <div class="govuk-checkboxes" data-module="govuk-checkboxes">
       <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
         <label class="govuk-label govuk-checkboxes__label" for="waste">
-          I live in Wales, and want to request further communication in Welsh
+          I live in Wales, and want further communication in Welsh
+          <!-- <div class="govuk-hint">This will include your Tell Us Once confirmation letter</div> -->
         </label>
       </div>
     </div>
-
-    
+    <h3 class="govuk-heading-m govuk-!-margin-top-6">Large print</h3>
+        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+        <label class="govuk-label govuk-checkboxes__label" for="waste">
+          I want my Tell Us Once confirmation letter in large print
+        </label>
+      </div>
+    </div>
 
     <!-- <label class="govuk-label">Do you live in Wales?</label>  
     <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
@@ -186,7 +192,15 @@
 
     <!---------Button-------->
 <div class="govuk-button-group govuk-!-margin-top-6">
-    <a href="confirmation" role="button" draggable="false" class="govuk-button govuk-button" data-module="govuk-button">Confirm and send</a>
+    <a
+      href="confirmation"
+      role="button"
+      draggable="false"
+      class="govuk-button govuk-button"
+      data-module="govuk-button"
+    >
+      Confirm and send
+    </a>
     </div>
     <details class="govuk-details govuk-!-margin-top-6">
       <summary class="govuk-details__summary">
@@ -195,10 +209,17 @@
       <div class="govuk-details__text">
         <h3 class="govuk-heading-s">Telephone</h3>
         <p class="govuk-body">0800 085 7308</p>
-        <p class="govuk-body">Relay UK: 18001 0800 085 7308<br /><a href="#">Video Relay Service for British Sign Language (BSL) (opens in new tab)</a></p>
+        <p class="govuk-body">
+          Relay UK: 18001 0800 085 7308<br /><a href="#"
+            >Video Relay Service for British Sign Language (BSL) (opens in new
+            tab)</a
+          >
+        </p>
         <p class="govuk-body">Monday to Friday 8:00am to 6:00pm.</p>
         <h3 class="govuk-heading-s">Email</h3>
-        <p class="govuk-body">Email us at <a href="#">tellusonce.communications@dwp.gov.uk</a></p>
+        <p class="govuk-body">
+          Email us at <a href="#">tellusonce.communications@dwp.gov.uk</a>
+        </p>
       </div>
     </details>
   </div>

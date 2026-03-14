@@ -1,0 +1,61 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">Your details</span>
+
+    <form class="form" action="informer-address" method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Do you live at the same address as Joe Bloggs?
+            </h1>
+          </legend>
+          <p class="govuk-body govuk-!-margin-top-2 govuk-!-margin-bottom-5">
+            24 Holly Road<br>
+            Harrogate<br>
+            North Yorkshire<br>
+            HA4 2HH<br>
+            United Kingdom
+          </p>
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="informer-same-address" name="informer-same-address" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="informer-same-address">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="informer-same-address-2" name="informer-same-address" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="informer-same-address-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+  {{ govukButton({
+  text: "Continue"
+  }) }}
+
+  </form>
+
+</div>
+</div>
+
+{% endblock %}

@@ -1,10 +1,14 @@
-//
-// For guidance on how to create filters see:
-// https://prototype-kit.service.gov.uk/docs/filters
-//
-
+// app/filters.js
 const govukPrototypeKit = require('govuk-prototype-kit')
 const addFilter = govukPrototypeKit.views.addFilter
 
-// Add your filters here
+// Titlecase: first letter of each word
+addFilter('titlecase', function (str) {
+  if (typeof str !== 'string') {
+    return ''
+  }
 
+  return str.replace(/\w\S*/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+  })
+});

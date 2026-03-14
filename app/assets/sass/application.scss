@@ -5,9 +5,6 @@
 
 // Add extra styles here
 
-@import "print-preview";
-@import "prototype-home";
-
 .govuk-table__nh_header, .govuk-table__nh_cell {
     padding: 10px 20px 10px 0;
     text-align: left;
@@ -128,3 +125,5 @@
     box-shadow: 0 0 0 4px #ffdd00;
   }
 }
+
+.govuk-summary-list__row.no-bottom-border {  border-bottom: 0 !important;}

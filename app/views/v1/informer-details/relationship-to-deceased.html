@@ -1,0 +1,85 @@
+{% extends "layouts/main.html" %} {% block pageTitle %} Question page template – {{ serviceName }} – GOV.UK Prototype Kit {% endblock %} {% block beforeContent %} {{ govukBackLink({ text: "Back", href: "javascript:window.history.back()" }) }} {% endblock
+%} {% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-l">Your details</span>
+
+        <form class="form" action="same-address-as-deceased" method="post">
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+              What is your relationship to Joe Bloggs?
+            </h1>
+                    </legend>
+                    <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="informer-relationship-husband" name="informer-relationship" type="radio" value="Husband">
+                            <label class="govuk-label govuk-radios__label" for="informer-relationship-husband">Husband</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="informer-relationship-wife" name="informer-relationship" type="radio" value="Wife">
+                            <label class="govuk-label govuk-radios__label" for="informer-relationship-wife">Wife</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="informer-relationship-spouse" name="informer-relationship" type="radio" value="Spouse">
+                            <label class="govuk-label govuk-radios__label" for="informer-relationship-spouse">Spouse</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="informer-relationship-civilpartner" name="informer-relationship" type="radio" value="Civil partner">
+                            <label class="govuk-label govuk-radios__label" for="informer-relationship-civilpartner">Civil Partner</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="informer-relationship-partner" name="informer-relationship" type="radio" value="Partner">
+                            <label class="govuk-label govuk-radios__label" for="informer-relationship-partner">Partner</label>
+                        </div>
+                        <!-- Continue pattern -->
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="informer-relationship-father" name="informer-relationship" type="radio" value="Father">
+                            <label class="govuk-label govuk-radios__label" for="informer-relationship-father">Father</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="informer-relationship-mother" name="informer-relationship" type="radio" value="Mother">
+                            <label class="govuk-label govuk-radios__label" for="informer-relationship-mother">Mother</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="informer-relationship-son" name="informer-relationship" type="radio" value="Son">
+                            <label class="govuk-label govuk-radios__label" for="informer-relationship-son">Son</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="informer-relationship-daughter" name="informer-relationship" type="radio" value="Daughter">
+                            <label class="govuk-label govuk-radios__label" for="informer-relationship-daughter">Daughter</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="informer-relationship-brother" name="informer-relationship" type="radio" value="Brother">
+                            <label class="govuk-label govuk-radios__label" for="informer-relationship-brother">Brother</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="informer-relationship-sister" name="informer-relationship" type="radio" value="Sister">
+                            <label class="govuk-label govuk-radios__label" for="informer-relationship-sister">Sister</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="informer-relationship-other" name="informer-relationship" type="radio" value="other" data-aria-controls="conditional-informer-relationship-other">
+                            <label class="govuk-label govuk-radios__label" for="informer-relationship-other"> Other </label>
+                        </div>
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-informer-relationship-other">
+                            <div class="govuk-form-group">
+                                <label class="govuk-label" for="informer-relationship-other-text">
+                                    Describe the relationship </label>
+                                <input class="govuk-input" id="informer-relationship-other-text" name="informer-relationship-other-text" type="text" autocomplete="off"> </div>
+                        </div>
+                    </div>
+            </div>
+            </fieldset>
+    </div>
+</div>
+
+{{ govukButton({ text: "Continue" }) }}
+
+</form>
+
+</div>
+</div>
+
+{% endblock %}
