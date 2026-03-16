@@ -15,6 +15,39 @@ router.use(radioButtonRedirect)
 
 // ---------- V1 prototype ---------- 
 
+router.post('/v1/informer-details/name', function (req, res) {
+  const name = req.session.data['informer-name']
+
+  if (!name || name.trim() === "") {
+    return res.render('v1/informer-details/name', {
+      error: "Enter your name"
+    })
+  }
+  res.redirect('/v1/informer-details/relationship-to-deceased')
+})
+
+router.post('/v1/informer-details/same-address-as-deceased', function (req, res) {
+  const relationship = req.session.data['informer-relationship']
+
+  if (!relationship || relationship.trim() === '') {
+    return res.render('v1/informer-details/relationship-to-deceased', {
+      error: "Select your relationship to Joe Bloggs"
+    })
+  }
+
+  res.redirect('/v1/informer-details/same-address-as-deceased')
+})
+
+router.post('/v1/informer-details/informer-address', function (req, res) {
+  const informerSameAddress = req.session.data['informer-same-address']
+
+  if (informerSameAddress == "yes"){
+    res.redirect('/v1/informer-details/informer-details-check-answers')
+    } else {
+        res.redirect('/v1/informer-details/informer-address')
+    }
+})
+
 router.post('/v1/informer-details/check-answers', function (req, res) {
   req.session.data['informer-details-status'] = 'completed'
   res.redirect('/v1/task-list')

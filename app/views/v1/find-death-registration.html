@@ -1,0 +1,96 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">  
+      Find registration details
+    </h1>
+
+    <p class="govuk-body">The registrar will have given you a death certificate and a Tell Us Once registration number
+      when the death was registered.</p>
+    <p class="govuk-body">Enter details from those documents to find the registration details needed to use this
+      service. The details you enter must match the documents provided by the registrar.</p>
+    <form class="form" action="registration-lookup-result" method="post">
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-label--m" for="registration-number">
+          Tell Us Once registration number
+        </label>
+        <div id="registration-number-hint" class="govuk-hint">
+          For example, <span class="tuo-extra-letter-spacing">AB123C456DE7</span>
+        </div>
+        <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing" id="registration-number"
+          name="registration-number" type="text" spellcheck="false" value=""
+          aria-describedby="registration-number-hint">
+      </div>
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-label--m" for="deceased-surname">
+          Last name of the person who's died
+        </label>
+        <input class="govuk-input" id="deceased-surname" name="deceased-surname" type="text" spellcheck="false"
+          autocomplete="none">
+      </div>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-death-hint">
+          <label for="" class="govuk-label govuk-label--m">Date of death</label>
+          <div id="date-of-death-hint" class="govuk-hint">
+            For example, 27 3 2007
+          </div>
+          <div class="govuk-date-input" id="date-of-death">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="date-of-death">
+                  Day
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-death-day"
+                  name="date-of-death-day" type="text" inputmode="numeric">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="date-of-death-month">
+                  Month
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-death-month"
+                  name="date-of-death-month" type="text" inputmode="numeric">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="date-of-death-year">
+                  Year
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="date-of-death-year"
+                  name="date-of-death-year" type="text" inputmode="numeric">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+
+
+
+      {{ govukButton({
+      text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

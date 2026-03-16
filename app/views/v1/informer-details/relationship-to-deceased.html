@@ -1,85 +1,211 @@
-{% extends "layouts/main.html" %} {% block pageTitle %} Question page template – {{ serviceName }} – GOV.UK Prototype Kit {% endblock %} {% block beforeContent %} {{ govukBackLink({ text: "Back", href: "javascript:window.history.back()" }) }} {% endblock
-%} {% block content %}
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What is your relationship to Joe Bloggs? – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
 
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-        <span class="govuk-caption-l">Your details</span>
+  <div class="govuk-grid-column-two-thirds">
 
-        <form class="form" action="same-address-as-deceased" method="post">
-            <div class="govuk-form-group">
-                <fieldset class="govuk-fieldset">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                        <h1 class="govuk-fieldset__heading">
+        {% if error %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: [
+          {
+            text: error,
+            href: "#informer-relationship"
+          }
+        ]
+      }) }}
+    {% endif %}
+
+    <form class="form" action="/v1/informer-details/same-address-as-deceased" method="post">
+
+      <div class="govuk-form-group{% if error %} govuk-form-group--error{% endif %}">
+        <fieldset class="govuk-fieldset" aria-describedby="informer-relationship-error">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">Your details</span>
+            <h1 class="govuk-fieldset__heading">
               What is your relationship to Joe Bloggs?
             </h1>
-                    </legend>
-                    <div class="govuk-radios" data-module="govuk-radios">
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="informer-relationship-husband" name="informer-relationship" type="radio" value="Husband">
-                            <label class="govuk-label govuk-radios__label" for="informer-relationship-husband">Husband</label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="informer-relationship-wife" name="informer-relationship" type="radio" value="Wife">
-                            <label class="govuk-label govuk-radios__label" for="informer-relationship-wife">Wife</label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="informer-relationship-spouse" name="informer-relationship" type="radio" value="Spouse">
-                            <label class="govuk-label govuk-radios__label" for="informer-relationship-spouse">Spouse</label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="informer-relationship-civilpartner" name="informer-relationship" type="radio" value="Civil partner">
-                            <label class="govuk-label govuk-radios__label" for="informer-relationship-civilpartner">Civil Partner</label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="informer-relationship-partner" name="informer-relationship" type="radio" value="Partner">
-                            <label class="govuk-label govuk-radios__label" for="informer-relationship-partner">Partner</label>
-                        </div>
-                        <!-- Continue pattern -->
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="informer-relationship-father" name="informer-relationship" type="radio" value="Father">
-                            <label class="govuk-label govuk-radios__label" for="informer-relationship-father">Father</label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="informer-relationship-mother" name="informer-relationship" type="radio" value="Mother">
-                            <label class="govuk-label govuk-radios__label" for="informer-relationship-mother">Mother</label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="informer-relationship-son" name="informer-relationship" type="radio" value="Son">
-                            <label class="govuk-label govuk-radios__label" for="informer-relationship-son">Son</label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="informer-relationship-daughter" name="informer-relationship" type="radio" value="Daughter">
-                            <label class="govuk-label govuk-radios__label" for="informer-relationship-daughter">Daughter</label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="informer-relationship-brother" name="informer-relationship" type="radio" value="Brother">
-                            <label class="govuk-label govuk-radios__label" for="informer-relationship-brother">Brother</label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="informer-relationship-sister" name="informer-relationship" type="radio" value="Sister">
-                            <label class="govuk-label govuk-radios__label" for="informer-relationship-sister">Sister</label>
-                        </div>
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="informer-relationship-other" name="informer-relationship" type="radio" value="other" data-aria-controls="conditional-informer-relationship-other">
-                            <label class="govuk-label govuk-radios__label" for="informer-relationship-other"> Other </label>
-                        </div>
-                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-informer-relationship-other">
-                            <div class="govuk-form-group">
-                                <label class="govuk-label" for="informer-relationship-other-text">
-                                    Describe the relationship </label>
-                                <input class="govuk-input" id="informer-relationship-other-text" name="informer-relationship-other-text" type="text" autocomplete="off"> </div>
-                        </div>
-                    </div>
+          </legend>
+
+          {% if error %}
+            <p id="informer-relationship-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ error }}
+            </p>
+          {% endif %}
+
+          <div class="govuk-radios" data-module="govuk-radios">
+
+            <!-- Husband -->
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input"
+                id="rel-husband"
+                name="informer-relationship"
+                type="radio"
+                value="Husband"
+                {% if data['informer-relationship']=="Husband" %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="rel-husband">Husband</label>
             </div>
-            </fieldset>
-    </div>
-</div>
 
-{{ govukButton({ text: "Continue" }) }}
+            <!-- Wife -->
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input"
+                id="rel-wife"
+                name="informer-relationship"
+                type="radio"
+                value="Wife"
+                {% if data['informer-relationship']=="Wife" %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="rel-wife">Wife</label>
+            </div>
 
-</form>
+            <!-- Spouse -->
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input"
+                id="rel-spouse"
+                name="informer-relationship"
+                type="radio"
+                value="Spouse"
+                {% if data['informer-relationship']=="Spouse" %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="rel-spouse">Spouse</label>
+            </div>
 
-</div>
+            <!-- Civil partner -->
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input"
+                id="rel-civil"
+                name="informer-relationship"
+                type="radio"
+                value="Civil partner"
+                {% if data['informer-relationship']=="Civil partner" %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="rel-civil">Civil partner</label>
+            </div>
+
+            <!-- Partner -->
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input"
+                id="rel-partner"
+                name="informer-relationship"
+                type="radio"
+                value="Partner"
+                {% if data['informer-relationship']=="Partner" %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="rel-partner">Partner</label>
+            </div>
+
+            <!-- Father -->
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input"
+                id="rel-father"
+                name="informer-relationship"
+                type="radio"
+                value="Father"
+                {% if data['informer-relationship']=="Father" %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="rel-father">Father</label>
+            </div>
+
+            <!-- Mother -->
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input"
+                id="rel-mother"
+                name="informer-relationship"
+                type="radio"
+                value="Mother"
+                {% if data['informer-relationship']=="Mother" %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="rel-mother">Mother</label>
+            </div>
+
+            <!-- Son -->
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input"
+                id="rel-son"
+                name="informer-relationship"
+                type="radio"
+                value="Son"
+                {% if data['informer-relationship']=="Son" %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="rel-son">Son</label>
+            </div>
+
+            <!-- Daughter -->
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input"
+                id="rel-daughter"
+                name="informer-relationship"
+                type="radio"
+                value="Daughter"
+                {% if data['informer-relationship']=="Daughter" %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="rel-daughter">Daughter</label>
+            </div>
+
+            <!-- Brother -->
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input"
+                id="rel-brother"
+                name="informer-relationship"
+                type="radio"
+                value="Brother"
+                {% if data['informer-relationship']=="Brother" %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="rel-brother">Brother</label>
+            </div>
+
+            <!-- Sister -->
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input"
+                id="rel-sister"
+                name="informer-relationship"
+                type="radio"
+                value="Sister"
+                {% if data['informer-relationship']=="Sister" %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="rel-sister">Sister</label>
+            </div>
+
+            <!-- OTHER + CONDITIONAL INPUT -->
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input"
+                id="rel-other"
+                name="informer-relationship"
+                type="radio"
+                value="other"
+                data-aria-controls="conditional-other"
+                {% if data['informer-relationship']=="other" %}checked{% endif %}>
+              <label class="govuk-label govuk-radios__label" for="rel-other">Other</label>
+            </div>
+
+            <div
+              class="govuk-radios__conditional {% if data['informer-relationship'] != 'other' %}govuk-radios__conditional--hidden{% endif %}"
+              id="conditional-other">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="informer-relationship-other-text">
+                  Describe the relationship
+                </label>
+                <input
+                  class="govuk-input"
+                  id="informer-relationship-other-text"
+                  name="informer-relationship-other-text"
+                  type="text"
+                  value="{{ data['informer-relationship-other-text'] }}">
+              </div>
+            </div>
+
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({ text: "Continue" }) }}
+
+    </form>
+
+  </div>
 </div>
 
 {% endblock %}
