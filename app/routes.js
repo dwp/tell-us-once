@@ -15,6 +15,19 @@ router.use(radioButtonRedirect)
 
 // ---------- V1 prototype ---------- 
 
+router.post('/v1/registration-lookup-result', function (req, res) {
+  const dod = normaliseDate(req.session.data['date-of-death-day'],  req.session.data['date-of-death-month'],  req.session.data['date-of-death-year']);
+  console.log(dod);
+  if (dod) {  
+    const dateString = `${dod.day} ${dod.month} ${dod.year}`;  
+    req.session.data['date-of-death'] = dateString;
+    console.log("Date of death: " + req.session.data['date-of-death'])
+  }
+  res.redirect('/v1/confirm-registration-details')
+})
+
+
+
 router.post('/v1/informer-details/name', function (req, res) {
   const name = req.session.data['informer-name']
 
@@ -90,3 +103,45 @@ router.get('/v1/deceased-details/spouse-or-partner/confirm-spouse', function (re
     res.redirect('/v1/deceased-details/spouse-or-partner/who-is-spouse')
   }
 })
+
+
+// ---------- Utilities ---------- 
+
+function normaliseDate(day, month, year) {
+
+  if (!day || !month || !year) {
+    console.error("Missing date field(s)");
+    return null;
+  }
+
+  day = String(day).trim();
+  month = String(month).trim().toLowerCase();
+  year = String(year).trim();
+
+  if (/^\d+$/.test(day)) day = String(parseInt(day, 10));
+  if (/^\d+$/.test(month)) month = String(parseInt(month, 10));
+
+  const monthMap = {
+    "jan": "january", "january": "january", "1": "january",
+    "feb": "february", "february": "february", "2": "february",
+    "mar": "march", "march": "march", "3": "march",
+    "apr": "april", "april": "april", "4": "april",
+    "may": "may", "5": "may",
+    "jun": "june", "june": "june", "6": "june",
+    "jul": "july", "july": "july", "7": "july",
+    "aug": "august", "august": "august", "8": "august",
+    "sep": "september", "sept": "september", "september": "september", "9": "september",
+    "oct": "october", "october": "october", "10": "october",
+    "nov": "november", "november": "november", "11": "november",
+    "dec": "december", "december": "december", "12": "december"
+  };
+
+  if (monthMap[month]) {
+    month = monthMap[month];
+  } else {
+    console.error("Invalid month input");
+    return null;
+  }
+
+  return { day, month, year };
+}

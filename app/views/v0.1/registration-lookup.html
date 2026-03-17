@@ -17,20 +17,22 @@ href: "javascript:window.history.back()"
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l">  
-      Find registration details
+      Enter registration details
     </h1>
 
-    <p class="govuk-body">The registrar will have given you a death certificate and a Tell Us Once registration number
-      when the death was registered.</p>
-    <p class="govuk-body">Enter details from those documents to find the registration details needed to use this
-      service. The details you enter must match the documents provided by the registrar.</p>
-    <form class="form" action="registration-lookup-result" method="post">
+    <p class="govuk-body">When the death was registered, the registrar provided a:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Tell Us Once reference number</li>
+      <li>death certificate</li>
+    </ul>
+    <p class="govuk-body">Enter the registration details from these documents so we can find the details of the person who's died.</p>
+    <form class="form" action="/v1/registration-lookup-result" method="post">
       <div class="govuk-form-group">
         <label class="govuk-label govuk-label--m" for="registration-number">
           Tell Us Once registration number
         </label>
         <div id="registration-number-hint" class="govuk-hint">
-          For example, <span class="tuo-extra-letter-spacing">AB123C456DE7</span>
+          For example, <span class="tuo-extra-letter-spacing">AB123C456DE7</span>.
         </div>
         <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing" id="registration-number"
           name="registration-number" type="text" spellcheck="false" value=""
@@ -38,16 +40,16 @@ href: "javascript:window.history.back()"
       </div>
       <div class="govuk-form-group">
         <label class="govuk-label govuk-label--m" for="deceased-surname">
-          Last name of the person who's died
+          Surname of the person who's died
         </label>
         <input class="govuk-input" id="deceased-surname" name="deceased-surname" type="text" spellcheck="false"
           autocomplete="none">
       </div>
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-death-hint">
-          <label for="" class="govuk-label govuk-label--m">Date of death</label>
+          <label for="" class="govuk-label govuk-label--m">What date did they die?</label>
           <div id="date-of-death-hint" class="govuk-hint">
-            For example, 27 3 2007
+            For example, 16 3 2026.
           </div>
           <div class="govuk-date-input" id="date-of-death">
             <div class="govuk-date-input__item">

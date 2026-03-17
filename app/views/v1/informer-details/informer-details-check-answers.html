@@ -62,10 +62,6 @@
       }
     }) %}
 
-    {# -------------------------------------------- #}
-    {#   Only build & add address row if user said NO #}
-    {# -------------------------------------------- #}
-
     {% if data['informer-same-address'] | lower != "yes" %}
 
       {% set informerAddress %}

@@ -64,9 +64,16 @@
     padding: 1em 1em 0 1em;
     margin: 1em 0 1em 0;
   }
+
+.letter__ref p {
+  margin-bottom: .5em;
+}
+
   .letter__refNo {
     font-size: 1.2em;
     font-weight: 700;
+    letter-spacing: 1pt;
+    padding-bottom: .2em;
   }
 
   /* Print sizing */
@@ -116,6 +123,11 @@
     box-shadow: none;
     width: auto;
     padding: 0;
+  }
+
+  .print-document a {
+    text-decoration: none;
+    color: #0b0c0c;
   }
 
   .print-document h3:nth-of-type(2) {
