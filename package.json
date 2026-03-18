@@ -12,7 +12,6 @@
 
   },
   "dependencies": {
-    "22": "^0.0.0",
     "@dwp/dwp-frontend": "3.4.0",
     "@govuk-prototype-kit/common-templates": "2.0.1",
     "@govuk-prototype-kit/step-by-step": "2.2.3",
