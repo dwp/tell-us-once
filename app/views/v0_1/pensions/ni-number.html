@@ -1,0 +1,79 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Their National Insurance number
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">  
+      Their National Insurance number
+    </h1>
+
+    <p class="govuk-body">If you know the National Insurance number of the person who died:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>it can help the organisations and departments you notify,  such as DWP and HMRC, to find their records quicker</li>
+      <li>we can check if they had any public sector pensions (for example, if they had a pension with the NHS or civil service)</li>
+    </ul>
+    <p class="govuk-body">The National Insurance number is on their National Insurance card, payslip or P60. If they got state pension or benefits, it may be on a benefit letter or bank statement.</p>
+    <form class="form" action="/v0_1/pensions/ni-number" method="post">
+      <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="has-ni-number-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+        Do you know the National Insurance number of the person who's died?
+      </h1>
+    </legend>
+    <div id="has-ni-number-hint" class="govuk-hint">
+      Select one option
+    </div>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="has-ni-number" name="has-ni-number" type="radio" value="yes" data-aria-controls="conditional-ni-number">
+        <label class="govuk-label govuk-radios__label" for="has-ni-number">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-ni-number">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="ni-number">
+            Their National Insurance number
+          </label>
+          <div class="govuk-hint">For example, 'QQ 12 34 56 C'.</div>
+          <input class="govuk-input govuk-!-width-one-third" id="ni-number" name="ni-number" type="text" spellcheck="false" autocomplete="off" {% if data['has-ni-number'] == 'yes' %}checked{% endif %}>
+        </div>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="has-ni-number-2" name="has-ni-number" type="radio" value="no" {% if data['has-ni-number'] == 'no' %}checked{% endif %}>
+        <label class="govuk-label govuk-radios__label" for="has-ni-number-2">
+          No
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+      
+
+
+
+
+      {{ govukButton({
+      text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

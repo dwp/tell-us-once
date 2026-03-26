@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  What is your relationship to Joe Bloggs? – {{ serviceName }}
+  What is your relationship to {{ data['deceased-forename']}} {{ data['deceased-surname']}}? – {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -28,15 +28,15 @@
       }) }}
     {% endif %}
 
-    <form class="form" action="/v1/informer-details/same-address-as-deceased" method="post">
+    <form class="form" action="/v1/informer-details/informer-relationship" method="post">
 
       <div class="govuk-form-group{% if error %} govuk-form-group--error{% endif %}">
         <fieldset class="govuk-fieldset" aria-describedby="informer-relationship-error">
 
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <span class="govuk-caption-l">Your details</span>
+            <span class="govuk-caption-l">Personal details</span>
             <h1 class="govuk-fieldset__heading">
-              What is your relationship to Joe Bloggs?
+              What is your relationship to {{ data['deceased-forename']}} {{ data['deceased-surname']}}?
             </h1>
           </legend>
 

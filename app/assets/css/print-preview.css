@@ -53,7 +53,7 @@
   .letter [href^="http://"].govuk-link::after, 
   .letter a[href^="https://"]::after, 
   .letter [href^="https://"].govuk-link::after {
-      content: " (" attr(href) ")";
+      content: "";
       font-size: 100%;
       word-wrap: break-word;
       font-weight: 700;

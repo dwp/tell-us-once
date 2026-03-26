@@ -21,6 +21,7 @@ href: "javascript:window.history.back()"
     </h1>
 
     <p class="govuk-body">{{ data['date-of-death'] | titlecase }}</p>
+    <p class="govuk-body">{{data['deceased-forename']}} {{data['deceased-surname']}}</p>
   
       {{ govukButton({
       text: "Continue",

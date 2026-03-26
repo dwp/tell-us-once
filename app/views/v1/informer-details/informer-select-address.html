@@ -1,0 +1,84 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <span class="govuk-caption-l">Personal details</span>
+<form class="form" action="confirm-informer-address" method="post">
+<div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          Select an address
+        </h1>
+      </legend>
+      <div class="govuk-radios govuk-radios" data-module="govuk-radios">
+        <p class='govuk-body'>6 addresses found for <b>{{data['informer-postcode']}}</b>. <a href='informer-address' class='govuk-link'>Search again</a></p>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-an-address" name="informer-address" type="radio" value="251 Elgin Ave, Maida Vale, London, W9 1NJ"
+            data-ga-question="Select an address" data-ga-answer="Answer 1">
+          <label class="govuk-label govuk-radios__label" for="select-an-address">
+            251 Elgin Ave, Maida Vale, London, W9 1NJ
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-an-address-2" name="informer-address" type="radio" value="253 Elgin Ave, Maida Vale, London, W9 1NJ"
+            data-ga-question="Select an address" data-ga-answer="Answer 2">
+          <label class="govuk-label govuk-radios__label" for="select-an-address-2">
+            253 Elgin Ave, Maida Vale, London, W9 1NJ
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-an-address-3" name="informer-address" type="radio" value="255 Elgin Ave, Maida Vale, London, W9 1NJ"
+            data-ga-question="Select an address" data-ga-answer="Answer 2">
+          <label class="govuk-label govuk-radios__label" for="select-an-address-3">
+            255 Elgin Ave, Maida Vale, London, W9 1NJ
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-an-address-4" name="informer-address" type="radio" value="257 Elgin Ave, Maida Vale, London, W9 1NJ"
+            data-ga-question="Select an address" data-ga-answer="Answer 3">
+          <label class="govuk-label govuk-radios__label" for="select-an-address-4">
+            257 Elgin Ave, Maida Vale, London, W9 1NJ
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-an-address-5" name="informer-address" type="radio" value="259 Elgin Ave, Maida Vale, London, W9 1NJ"
+            data-ga-question="Select an address" data-ga-answer="Answer 4">
+          <label class="govuk-label govuk-radios__label" for="select-an-address-5">
+            259 Elgin Ave, Maida Vale, London, W9 1NJ
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="select-an-address-6" name="informer-address" type="radio" value="261 Elgin Ave, Maida Vale, London, W9 1NJ"
+            data-ga-question="Select an address" data-ga-answer="Answer 5">
+          <label class="govuk-label govuk-radios__label" for="select-an-address-6">
+            261 Elgin Ave, Maida Vale, London, W9 1NJ
+          </label>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <button type="submit" class="govuk-button" data-module="govuk-button">
+    Use this address
+  </button>
+  <p class="govuk-body govuk-!-margin-bottom-0"><a href="#" class="govuk-link">Enter address manually</a></p>
+
+      </fieldset>
+    </form>
+
+  </div>
+</div>
+{% endblock %}

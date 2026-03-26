@@ -24,7 +24,7 @@
     {% set borderClass = "no-bottom-border" if data['deceased-next-of-kin-informer'] | lower == "yes" else "" %}
 
     {% set _ = rows.push({
-      key: { text: "Are you Joe Bloggs' next of kin?" },
+      key: { text: "Are you {{ data['deceased-forename']}} {{ data['deceased-surname']}}' next of kin?" },
       value: { text: data['deceased-next-of-kin-informer'] | capitalize },
       classes: borderClass,
       actions: {
@@ -51,7 +51,7 @@
       }) %}
 
       {% set _ = rows.push({
-        key: { html: "What is " + (data['next-of-kin-name'] | titlecase) + "’s relationship to Joe Bloggs?" },
+        key: { html: "What is " + (data['next-of-kin-name'] | titlecase) + "’s relationship to {{ data['deceased-forename']}} {{ data['deceased-surname']}}?" },
         value: { text: data['next-of-kin-relationship'] | capitalize },
         actions: {
           items: [

@@ -1,0 +1,91 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+No public sector pensions found
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">  
+      Notify a public sector pension 
+    </h1>
+
+    <p class="govuk-body">We've found 5 public sector pensions that match the National Insurance number: {{data['ni-number']}}.</p>
+  
+    <form class="form" action="/v0_1/pensions/notify-a-public-sector-pension" method="post">
+
+      <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="pensions-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+        Which public sector pensions do you want to notify about the death? 
+      </h1>
+    </legend>
+    <div id="pensions-hint" class="govuk-hint">
+      Select all that apply
+    </div>
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="pensions" name="pensions" type="checkbox" value="Civil Service Pension" {% if "Civil Service Pension" in data['pensions'] %}checked{% endif %}>
+        <label class="govuk-label govuk-checkboxes__label" for="pensions">
+          Civil Service Pension
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="pensions-1" name="pensions" type="checkbox" value="NHS Pension for NHS staff in England and Wales" {% if "NHS Pension for NHS staff in England and Wales" in data['pensions'] %}checked{% endif %}>
+        <label class="govuk-label govuk-checkboxes__label" for="pensions-1">
+          NHS Pension for NHS staff in England and Wales
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="pensions-3" name="pensions" type="checkbox" value="Pension Protection Fund or Financial Assistance Scheme" {% if "Pension Protection Fund or Financial Assistance Scheme" in data['pensions'] %}checked{% endif %}>
+        <label class="govuk-label govuk-checkboxes__label" for="pensions-3">
+          Pension Protection Fund or Financial Assistance Scheme
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="pensions-4" name="pensions" type="checkbox" value="Scottish Public Pensions Agency (SPPA) for teachers or NHS workers" {% if "Scottish Public Pensions Agency (SPPA) for teachers or NHS workers" in data['pensions'] %}checked{% endif %}>
+        <label class="govuk-label govuk-checkboxes__label" for="pensions-4">
+          Scottish Public Pensions Agency (SPPA) for teachers or NHS workers
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="pensions-5" name="pensions" type="checkbox" value="South Yorkshire Pension Fund" {% if "South Yorkshire Pension Fund" in data['pensions'] %}checked{% endif %}>
+        <label class="govuk-label govuk-checkboxes__label" for="pensions-5">
+          South Yorkshire Pension Fund
+        </label>
+      </div>
+      <div class="govuk-checkboxes__divider">or</div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="pensions-6" name="pensions" type="checkbox" value="I do not want to notify any of their public sector pensions" data-behaviour="exclusive" {% if "I do not want to notify any of their public sector pensions" in data['pensions'] %}checked{% endif %}>
+        <label class="govuk-label govuk-checkboxes__label" for="pensions-6">
+          I do not want to notify any of their public sector pensions
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+      
+      {{ govukButton({
+      text: "Continue"
+      }) }}
+
+    </form>
+
+    <p class="govuk-body"><a href="ni-number" class="govuk-link">Enter a different National Insurance number</a></p>
+
+  </div>
+</div>
+
+{% endblock %}

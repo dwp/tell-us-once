@@ -6,67 +6,63 @@ Question page template – {{ serviceName }} – GOV.UK Prototype Kit
 
 {% block beforeContent %}
 {{ govukBackLink({
-text: "Back",
-href: "javascript:window.history.back()"
+  text: "Back",
+  href: "javascript:window.history.back()"
 }) }}
 {% endblock %}
 
 {% block content %}
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <span class="govuk-caption-l">Your details</span>
 
-    <form class="form" action="informer-details-check-answers" method="post">
-      <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <h1 class="govuk-fieldset__heading">
-              What is your address?
-            </h1>
-          </legend>
-          <div class="govuk-form-group">
-            <label class="govuk-label" for="informer-address-line-1">
-              Address line 1
-            </label>
-            <input class="govuk-input" id="informer-address-line-1" name="informer-address-line-1" type="text" autocomplete="address-line1">
-          </div>
-          <div class="govuk-form-group">
-            <label class="govuk-label" for="informer-address-line-2">
-              Address line 2 (optional)
-            </label>
-            <input class="govuk-input" id="informer-address-line-2" name="informer-address-line-2" type="text" autocomplete="address-line2">
-          </div>
-          <div class="govuk-form-group">
-            <label class="govuk-label" for="informer-address-town">
-              Town or city
-            </label>
-            <input class="govuk-input govuk-!-width-two-thirds" id="informer-address-town" name="informer-address-town" type="text"
-              autocomplete="address-level2">
-          </div>
-          <div class="govuk-form-group">
-            <label class="govuk-label" for="informer-address-county">
-              County (optional)
-            </label>
-            <input class="govuk-input govuk-!-width-two-thirds" id="informer-address-county" name="informer-address-county" type="text">
-          </div>
-          <div class="govuk-form-group">
-            <label class="govuk-label" for="informer-address-postcode">
-              Postcode
-            </label>
-            <input class="govuk-input govuk-input--width-10" id="informer-address-postcode" name="informer-address-postcode" type="text"
-              autocomplete="postal-code">
-          </div>
-        </fieldset>
-      </div>
+    <span class="govuk-caption-l">Personal details</span>
 
-      {{ govukButton({
-      text: "Continue"
-      }) }}
+    <form class="form" action="select-informer-address" method="post">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            What is your address?
+          </h1>
+        </legend>
 
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="informer-postcode">
+            Postcode
+          </label>
+          <div id="informer-postcode-hint" class="govuk-hint">
+            For example, AA3 1AB.
+          </div>
+          <input class="govuk-input govuk-!-width-two-thirds"
+                 id="informer-postcode"
+                 name="informer-postcode"
+                 type="text"
+                 aria-describedby="informer-postcode-hint">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="informer-address-house-number">
+            Building number or name
+          </label>
+          <div id="informer-address-house-number-hint" class="govuk-hint">
+            For example, 15 or Prospect Cottage.
+          </div>
+          <input class="govuk-input govuk-!-width-two-thirds"
+                 id="sinformer-address-house-number"
+                 name="informer-address-house-number"
+                 type="text"
+                 aria-describedby="informer-address-house-number-hint">
+        </div>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Find address
+        </button>
+
+        <p class="govuk-body govuk-!-margin-bottom-0">
+          <a href="informer-address-manually-enter" class="govuk-link">Enter address manually</a>
+        </p>
+      </fieldset>
     </form>
 
   </div>
 </div>
-
 {% endblock %}

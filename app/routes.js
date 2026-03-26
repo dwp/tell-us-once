@@ -13,6 +13,39 @@ const router = govukPrototypeKit.requests.setupRouter()
 const radioButtonRedirect = require('radio-button-redirect')
 router.use(radioButtonRedirect)
 
+// ---------- V0_1 prototype ---------- 
+
+router.get('/v0_1/pensions/ni-number', function(req, res) {
+  req.session.data['pensions'] = [];
+  req.session.data.returnTo = req.query.returnTo;
+  res.render('/v0_1/pensions/ni-number');
+})
+
+router.post('/v0_1/pensions/ni-number', function (req, res) {
+  if (req.session.data['has-ni-number'] == "yes"){
+    const niNum = req.session.data['ni-number'].replace(/\s/g, '');
+if (niNum == "QQ123456C"){
+    res.redirect('/v0_1/pensions/no-public-sector-pensions-found')
+} else {
+  res.redirect('/v0_1/pensions/notify-a-public-sector-pension')
+}
+    } else {
+        res.redirect('/v0_1/pensions/check-answers')
+    }
+})
+
+router.get('/v0_1/pensions/notify-a-public-sector-pension', function(req, res) {
+  req.session.data.returnTo = req.query.returnTo;
+  res.render('/v0_1/pensions/notify-a-public-sector-pension');
+})
+
+router.post('/v0_1/pensions/notify-a-public-sector-pension', function (req, res) {
+  const pensions = req.session.data['pensions']
+  console.log(pensions)
+
+  res.redirect('/v0_1/pensions/check-answers')
+})
+
 // ---------- V1 prototype ---------- 
 
 router.post('/v1/registration-lookup-result', function (req, res) {
@@ -23,35 +56,63 @@ router.post('/v1/registration-lookup-result', function (req, res) {
     req.session.data['date-of-death'] = dateString;
     console.log("Date of death: " + req.session.data['date-of-death'])
   }
+  if (req.session.data['deceased-surname'] == "Trout") {
+    req.session.data['deceased-forename'] = "Kilgore"
+    console.log("Forename: " == req.session.data['deceased-forename'])
+  } else {
+    req.session.data['deceased-forename'] = "Jane"
+  }
   res.redirect('/v1/confirm-registration-details')
 })
 
+router.get('/v1/informer-details/informer-name', function(req, res) {  
+  req.session.data.returnTo = req.query.returnTo;
+  res.render('/v1/informer-details/informer-name');
+})
 
-
-router.post('/v1/informer-details/name', function (req, res) {
-  const name = req.session.data['informer-name']
+router.post('/v1/informer-details/informer-name', function (req, res) {
+  const name = req.session.data['informer-name'];
 
   if (!name || name.trim() === "") {
-    return res.render('v1/informer-details/name', {
+    return res.render('v1/informer-details/informer-name', {
       error: "Enter your name"
     })
   }
-  res.redirect('/v1/informer-details/relationship-to-deceased')
+  if (req.session.data.returnTo) {    
+    const next = req.session.data.returnTo;    
+    req.session.data.returnTo = null;
+    return res.redirect(next);
+  }
+  res.redirect('/v1/informer-details/informer-relationship')
 })
 
-router.post('/v1/informer-details/same-address-as-deceased', function (req, res) {
+router.get('/v1/informer-details/informer-name', function(req, res) {  
+  req.session.data.returnTo = req.query.returnTo;
+  res.render('/v1/informer-details/informer-relationship');
+})
+
+router.post('/v1/informer-details/informer-relationship', function (req, res) {
   const relationship = req.session.data['informer-relationship']
 
   if (!relationship || relationship.trim() === '') {
-    return res.render('v1/informer-details/relationship-to-deceased', {
-      error: "Select your relationship to Joe Bloggs"
+    return res.render('v1/informer-details/informer-relationship', {
+      error: "Select your relationship to {{ data['deceased-forename']}} {{ data['deceased-surname']}}"
     })
   }
-
+  if (req.session.data.returnTo) {    
+    const next = req.session.data.returnTo;    
+    req.session.data.returnTo = null;
+    return res.redirect(next);
+  }
   res.redirect('/v1/informer-details/same-address-as-deceased')
 })
 
-router.post('/v1/informer-details/informer-address', function (req, res) {
+router.get('/v1/informer-details/informer-same-address-as-deceased', function(req, res) {  
+  req.session.data.returnTo = req.query.returnTo;
+  res.render('/v1/informer-details/informer-same-address-as-deceased');
+})
+
+router.post('/v1/informer-details/informer-same-address-as-deceased', function (req, res) {
   const informerSameAddress = req.session.data['informer-same-address']
 
   if (informerSameAddress == "yes"){
@@ -59,6 +120,34 @@ router.post('/v1/informer-details/informer-address', function (req, res) {
     } else {
         res.redirect('/v1/informer-details/informer-address')
     }
+})
+
+router.post('/v1/informer-details/select-informer-address', function (req, res) {
+  const postcode = req.session.data['informer-postcode']
+
+  if (postcode == "W9 1NJ"){
+    res.redirect('/v1/informer-details/informer-select-address')
+    } else {
+        res.redirect('/v1/informer-details/informer-no-address-found')
+    }
+})
+
+router.post('/v1/informer-details/confirm-informer-address', function (req, res) {
+  const address = req.session.data['informer-address']
+
+  const parts = address.split(",").map(s => s.trim());
+  const addressLine1 = parts[0];
+  const addressLine2 = parts[1] || "";
+  const town = parts[2] || "";
+  const postcode = parts[3] || "";
+
+  req.session.data['informer-address-line-1'] = addressLine1;
+  req.session.data['informer-address-line-2'] = addressLine2;
+  req.session.data['informer-address-town'] = town;
+  req.session.data['informer-postcode'] = postcode;
+
+  res.redirect('/v1/informer-details/informer-confirm-address')
+  
 })
 
 router.post('/v1/informer-details/check-answers', function (req, res) {

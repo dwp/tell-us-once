@@ -35,13 +35,13 @@
             title: {
               text: "Personal details"
             },
-            href: ("informer-details/informer-details-check-answers" if data['informer-details-status'] == "completed" else "informer-details/name"),
+            href: ("informer-details/informer-details-check-answers" if data['informer-details-status'] == "completed" else "informer-details/informer-name"),
             status: (completedStatus if data['informer-details-status'] == "completed" else incompleteStatus)
           }
         ]
       }) }}
 
-      <h2 class="govuk-heading-m govuk-!-margin-top-5">About Joe Bloggs</h2>
+      <h2 class="govuk-heading-m govuk-!-margin-top-5">About {{ data['deceased-forename']}} {{ data['deceased-surname']}}</h2>
 
       {{ govukTaskList({
         idPrefix: "second-section",
