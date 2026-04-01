@@ -12,7 +12,7 @@
       <div class="govuk-grid-column-full">
   <h1 class="govuk-heading-l">Details of the person who's died</h1>
     <p class="govuk-body">Please check that the information on this page is correct. It will be used to inform relevant councils, government departments and organisations.</p>
-        <h2 class="govuk-heading-m">About you</h2>
+        <!-- <h2 class="govuk-heading-m">About you</h2> -->
 
 <!---------Personal details-------->
 
@@ -51,7 +51,18 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              national Insurance number
+              Do you know the National Insurance number of the person who's died?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> date of birth</span></a>
+            </dd>
+          </div>
+          <!-- <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Their National Insurance number
             </dt>
             <dd class="govuk-summary-list__value">
               JL123456A
@@ -59,7 +70,7 @@
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> date of birth</span></a>
             </dd>
-          </div>                    
+          </div>                     -->
         </dl>
 
 <!---------Previous address-------->
@@ -443,31 +454,32 @@
 
 <!---------Public Sector Pensions-------->
 
+
+        <!-- <h2 class="govuk-heading-m">Notify a public sector pension</h2>
+
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Public Sector Pensions
+              What public sector pensions do you want to notify?
             </dt>
             <dd class="govuk-summary-list__value">
+              <ul class="govuk-list">
+                <li class="govuk-!-margin-bottom-2">Civil Service Pension</li>
+                <li class="govuk-!-margin-bottom-2">NHS Pension for NHS Staff in England and Wales</li>
+                <li class="govuk-!-margin-bottom-2">Pension Protection Fund or Financial Assistance Scheme</li>
+                <li class="govuk-!-margin-bottom-2">Scottish Public Pensions Agency (SPPA) for teachers or NHS workers</li>
+                <li>South Yorkshire Pension Fund</li>
+                <li>I do not want to notify any public sector pensions</li>
+              </ul>
+
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> Change what public sector pensions do you want to notify?</span></a>
             </dd>
-          </div>          
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-               Civil Service Pension Scheme
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Yes
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> previous application number</span></a>
-            </dd>
-          </div>                                                  
+          </div>                                                      
         </dl>                                
         <form action="/form-handler" method="post" novalidate>
-          <input type="hidden" name="answers-checked" value="true">
+          <input type="hidden" name="answers-checked" value="true"> -->
 
 
 <!---------Hospitalisation or Care-------->

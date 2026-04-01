@@ -20,7 +20,7 @@ href: "javascript:window.history.back()"
       Notify a public sector pension 
     </h1>
 
-    <p class="govuk-body">We've found 5 public sector pensions that match the National Insurance number: {{data['ni-number']}}.</p>
+    <p class="govuk-body">There are 5 public sector pensions that match the National Insurance number {{data['ni-number']}}.</p>
   
     <form class="form" action="/v0_1/pensions/notify-a-public-sector-pension" method="post">
 
@@ -32,7 +32,7 @@ href: "javascript:window.history.back()"
       </h1>
     </legend>
     <div id="pensions-hint" class="govuk-hint">
-      Select all that apply
+      Select all that apply.
     </div>
     <div class="govuk-checkboxes" data-module="govuk-checkboxes">
       <div class="govuk-checkboxes__item">
@@ -69,7 +69,7 @@ href: "javascript:window.history.back()"
       <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="pensions-6" name="pensions" type="checkbox" value="I do not want to notify any of their public sector pensions" data-behaviour="exclusive" {% if "I do not want to notify any of their public sector pensions" in data['pensions'] %}checked{% endif %}>
         <label class="govuk-label govuk-checkboxes__label" for="pensions-6">
-          I do not want to notify any of their public sector pensions
+          I do not want to notify any public sector pensions
         </label>
       </div>
     </div>

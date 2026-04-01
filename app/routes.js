@@ -16,7 +16,7 @@ router.use(radioButtonRedirect)
 // ---------- V0_1 prototype ---------- 
 
 router.get('/v0_1/pensions/ni-number', function(req, res) {
-  req.session.data['pensions'] = [];
+  req.session.data['pensions'] = []; 
   req.session.data.returnTo = req.query.returnTo;
   res.render('/v0_1/pensions/ni-number');
 })
@@ -88,7 +88,7 @@ router.post('/v1/informer-details/informer-name', function (req, res) {
 
 router.get('/v1/informer-details/informer-name', function(req, res) {  
   req.session.data.returnTo = req.query.returnTo;
-  res.render('/v1/informer-details/informer-relationship');
+  res.render('/v1/informer-details/informer-name');
 })
 
 router.post('/v1/informer-details/informer-relationship', function (req, res) {
@@ -104,7 +104,7 @@ router.post('/v1/informer-details/informer-relationship', function (req, res) {
     req.session.data.returnTo = null;
     return res.redirect(next);
   }
-  res.redirect('/v1/informer-details/same-address-as-deceased')
+  res.redirect('/v1/informer-details/informer-same-address-as-deceased')
 })
 
 router.get('/v1/informer-details/informer-same-address-as-deceased', function(req, res) {  

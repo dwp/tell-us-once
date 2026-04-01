@@ -1,14 +1,14 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:window.history.back()"
-  }) }}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
 {% endblock %}
 
 {% block content %}
@@ -18,64 +18,81 @@
     <span class="govuk-caption-xl">Your details</span>
     <h1 class="govuk-heading-xl">Check your answers</h1>
 
-    {% set rows = [] %}
+    <dl class="govuk-summary-list">
 
-    {# WORKING CONDITIONAL ROW CLASS #}
-    {% set borderClass = "no-bottom-border" if data['deceased-next-of-kin-informer'] | lower == "yes" else "" %}
+      <!-- ROW 1 -->
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Are you {{ data['deceased-forename'] }} {{ data['deceased-surname'] }}’s next of kin?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['deceased-next-of-kin-informer'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> are you the next of kin</span>
+          </a>
+        </dd>
+      </div>
 
-    {% set _ = rows.push({
-      key: { text: "Are you {{ data['deceased-forename']}} {{ data['deceased-surname']}}' next of kin?" },
-      value: { text: data['deceased-next-of-kin-informer'] | capitalize },
-      classes: borderClass,
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "your relationship"
-          }
-        ]
-      }
-    }) %}
 
-    {% if data['deceased-next-of-kin-informer'] | lower != "yes" %}
+      <!-- CONDITIONAL CONTENT IF NOT NEXT OF KIN -->
+      <!-- Remove this section entirely if they said “Yes” -->
 
-      {% set _ = rows.push({
-        key: { text: "What is the next of kin's name?" },
-        value: { text: data['next-of-kin-name'] | titlecase },
-        actions: {
-          items: [
-            { href: "#", text: "Change", visuallyHiddenText: "next of kin name" }
-          ]
-        }
-      }) %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          What is the next of kin’s name?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['next-of-kin-name'] }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> next of kin name</span>
+          </a>
+        </dd>
+      </div>
 
-      {% set _ = rows.push({
-        key: { html: "What is " + (data['next-of-kin-name'] | titlecase) + "’s relationship to {{ data['deceased-forename']}} {{ data['deceased-surname']}}?" },
-        value: { text: data['next-of-kin-relationship'] | capitalize },
-        actions: {
-          items: [
-            { href: "#", text: "Change", visuallyHiddenText: "next of kin relationship" }
-          ]
-        }
-      }) %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          What is {{ data['next-of-kin-name'] }}’s relationship to {{ data['deceased-forename'] }} {{
+          data['deceased-surname'] }}?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['next-of-kin-relationship'] == 'other' %}
+          Other – {{ data['next-of-kin-relationship-other-text'] }}
+          {% else %}
+          {{ data['next-of-kin-relationship'] }}
+          {% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> next of kin relationship</span>
+          </a>
+        </dd>
+      </div>
 
-      {% set _ = rows.push({
-        key: { html: "Can " + (data['next-of-kin-name'] | titlecase) + " be contacted?" },
-        value: { text: data['next-of-kin-contact-preference'] | capitalize },
-        actions: {
-          items: [
-            { href: "#", text: "Change", visuallyHiddenText: "next of kin contact preference" }
-          ]
-        }
-      }) %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Can {{ data['next-of-kin-name'] }} be contacted?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['next-of-kin-contact-preference'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">
+            Change<span class="govuk-visually-hidden"> contact preference</span>
+          </a>
+        </dd>
+      </div>
 
-    {% endif %}
+    </dl>
 
-    {{ govukSummaryList({ rows: rows }) }}
 
-    <form action="/next-of-kin-complete" method="post" novalidate>
-      {{ govukButton({ text: "Accept and continue" }) }}
+    <form action="/next-of-kin-complete" method="post">
+      <button class="govuk-button" data-module="govuk-button">
+        Accept and continue
+      </button>
     </form>
 
   </div>
