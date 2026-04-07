@@ -1,0 +1,86 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+No public sector pensions found
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Notify a public sector pension provider
+    </h1>
+
+
+    <p class="govuk-body">There's 1 public sector pension that matches the National Insurance number of the person who's
+      died: {{ data['ni-number'] }}. </p>
+    <p class="govuk-body">That pension is: Civil Service Pension.</p>
+    <p class="govuk-body govuk-!-margin-bottom-2">If you notify the pension provider about the death they
+      will:</p>
+    <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+      <li>close the account</li>
+      <li>stop any regular payments</li>
+      <li>be in touch with any beneficiaries (people or organisations who were named to get the pension after the death)
+      </li>
+    </ul>
+
+    <details class="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          What a public sector pension is
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        A public sector pension is a workplace pension for public sector employees. For example, NHS and local
+        government workers, teachers and civil servants.
+      </div>
+    </details>
+
+    <form class="form" action="/v0_1/pensions/check-answers" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="pensions-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              Do you want to notify Civil Service Pension about the death?
+            </h1>
+          </legend>
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="notify-pension" name="notify-pension" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="notify-pension">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="notify-pension-2" name="notify-pension" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="notify-pension-2">
+                No
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+      text: "Continue"
+      }) }}
+
+    </form>
+
+    <p class="govuk-body"><a href="ni-number" class="govuk-link">Enter a different National Insurance number</a></p>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -19,32 +19,54 @@ router.get('/v0_1/pensions/ni-number', function(req, res) {
   req.session.data['pensions'] = []; 
   req.session.data.returnTo = req.query.returnTo;
   res.render('/v0_1/pensions/ni-number');
-})
+});
 
 router.post('/v0_1/pensions/ni-number', function (req, res) {
   if (req.session.data['has-ni-number'] == "yes"){
     const niNum = req.session.data['ni-number'].replace(/\s/g, '');
 if (niNum == "QQ123456C"){
     res.redirect('/v0_1/pensions/no-public-sector-pensions-found')
-} else {
+} else if (niNum == "QQ112233C"){
+    res.redirect('/v0_1/pensions/notify-a-public-sector-pension-provider')
+} else
+  {
   res.redirect('/v0_1/pensions/notify-a-public-sector-pension')
 }
     } else {
         res.redirect('/v0_1/pensions/check-answers')
     }
-})
+});
 
 router.get('/v0_1/pensions/notify-a-public-sector-pension', function(req, res) {
   req.session.data.returnTo = req.query.returnTo;
   res.render('/v0_1/pensions/notify-a-public-sector-pension');
-})
+});
 
 router.post('/v0_1/pensions/notify-a-public-sector-pension', function (req, res) {
   const pensions = req.session.data['pensions']
   console.log(pensions)
 
   res.redirect('/v0_1/pensions/check-answers')
-})
+});
+
+router.post('/v0_1/pensions/check-answers', function (req, res) {
+  const notifyPension = req.session.data['notify-pension'];
+
+  if (notifyPension === 'yes') {
+    let pensions = req.session.data['pensions'];
+    if (!Array.isArray(pensions)) {
+      pensions = pensions ? [pensions] : [];
+    }
+    if (!pensions.includes('Civil Service Pension')) {
+      pensions.push('Civil Service Pension');
+    }
+    req.session.data['pensions'] = pensions;
+  } else {
+    delete req.session.data['pensions'];
+  }
+
+  res.redirect('/v0_1/pensions/check-answers');
+});
 
 // ---------- V1 prototype ---------- 
 

@@ -16,67 +16,101 @@ href: "javascript:window.history.back()"
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">  
-      Notify a public sector pension 
+    <h1 class="govuk-heading-l">
+      Notify public sector pension providers
     </h1>
 
-    <p class="govuk-body">There are 5 public sector pensions that match the National Insurance number {{data['ni-number']}}.</p>
-  
+    <p class="govuk-body">There are 5 public sector pensions that match the National Insurance number of the person
+      who's died: {{data['ni-number']}}.</p>
+
+    <p class="govuk-body govuk-!-margin-bottom-2">If you notify a public sector pension provider about the death they
+      will:</p>
+    <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
+      <li>close the account</li>
+      <li>stop any regular payments</li>
+      <li>be in touch with any beneficiaries (people or organisations who were named to get the pension after the death)
+      </li>
+    </ul>
+
+    <details class="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          What a public sector pension is
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        A public sector pension is a workplace pension for public sector employees. For example, NHS and local government workers, teachers and civil servants.
+      </div>
+    </details>
+
     <form class="form" action="/v0_1/pensions/notify-a-public-sector-pension" method="post">
 
       <div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="pensions-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-      <h1 class="govuk-fieldset__heading">
-        Which public sector pensions do you want to notify about the death? 
-      </h1>
-    </legend>
-    <div id="pensions-hint" class="govuk-hint">
-      Select all that apply.
-    </div>
-    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="pensions" name="pensions" type="checkbox" value="Civil Service Pension" {% if "Civil Service Pension" in data['pensions'] %}checked{% endif %}>
-        <label class="govuk-label govuk-checkboxes__label" for="pensions">
-          Civil Service Pension
-        </label>
+        <fieldset class="govuk-fieldset" aria-describedby="pensions-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              Which public sector pension providers do you want to notify about the death?
+            </h1>
+          </legend>
+          <div id="pensions-hint" class="govuk-hint">
+            Select all that apply.
+          </div>
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="pensions" name="pensions" type="checkbox"
+                value="Civil Service Pension" {% if "Civil Service Pension" in data['pensions'] %}checked{% endif %}>
+              <label class="govuk-label govuk-checkboxes__label" for="pensions">
+                Civil Service Pension
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="pensions-1" name="pensions" type="checkbox"
+                value="NHS Pension for NHS staff in England and Wales" {%
+                if "NHS Pension for NHS staff in England and Wales" in data['pensions'] %}checked{% endif %}>
+              <label class="govuk-label govuk-checkboxes__label" for="pensions-1">
+                NHS Pension for NHS staff in England and Wales
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="pensions-3" name="pensions" type="checkbox"
+                value="Pension Protection Fund or Financial Assistance Scheme" {%
+                if "Pension Protection Fund or Financial Assistance Scheme" in data['pensions'] %}checked{% endif %}>
+              <label class="govuk-label govuk-checkboxes__label" for="pensions-3">
+                Pension Protection Fund or Financial Assistance Scheme
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="pensions-4" name="pensions" type="checkbox"
+                value="Scottish Public Pensions Agency (SPPA) for teachers or NHS workers" {%
+                if "Scottish Public Pensions Agency (SPPA) for teachers or NHS workers" in data['pensions'] %}checked{%
+                endif %}>
+              <label class="govuk-label govuk-checkboxes__label" for="pensions-4">
+                Scottish Public Pensions Agency (SPPA) for teachers or NHS workers
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="pensions-5" name="pensions" type="checkbox"
+                value="South Yorkshire Pension Fund" {% if "South Yorkshire Pension Fund" in data['pensions']
+                %}checked{% endif %}>
+              <label class="govuk-label govuk-checkboxes__label" for="pensions-5">
+                South Yorkshire Pension Fund
+              </label>
+            </div>
+            <div class="govuk-checkboxes__divider">or</div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="pensions-6" name="pensions" type="checkbox"
+                value="I do not want to notify any of their public sector pensions" data-behaviour="exclusive" {%
+                if "I do not want to notify any of their public sector pensions" in data['pensions'] %}checked{% endif
+                %}>
+              <label class="govuk-label govuk-checkboxes__label" for="pensions-6">
+                I do not want to notify any public sector pension providers
+              </label>
+            </div>
+          </div>
+        </fieldset>
       </div>
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="pensions-1" name="pensions" type="checkbox" value="NHS Pension for NHS staff in England and Wales" {% if "NHS Pension for NHS staff in England and Wales" in data['pensions'] %}checked{% endif %}>
-        <label class="govuk-label govuk-checkboxes__label" for="pensions-1">
-          NHS Pension for NHS staff in England and Wales
-        </label>
-      </div>
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="pensions-3" name="pensions" type="checkbox" value="Pension Protection Fund or Financial Assistance Scheme" {% if "Pension Protection Fund or Financial Assistance Scheme" in data['pensions'] %}checked{% endif %}>
-        <label class="govuk-label govuk-checkboxes__label" for="pensions-3">
-          Pension Protection Fund or Financial Assistance Scheme
-        </label>
-      </div>
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="pensions-4" name="pensions" type="checkbox" value="Scottish Public Pensions Agency (SPPA) for teachers or NHS workers" {% if "Scottish Public Pensions Agency (SPPA) for teachers or NHS workers" in data['pensions'] %}checked{% endif %}>
-        <label class="govuk-label govuk-checkboxes__label" for="pensions-4">
-          Scottish Public Pensions Agency (SPPA) for teachers or NHS workers
-        </label>
-      </div>
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="pensions-5" name="pensions" type="checkbox" value="South Yorkshire Pension Fund" {% if "South Yorkshire Pension Fund" in data['pensions'] %}checked{% endif %}>
-        <label class="govuk-label govuk-checkboxes__label" for="pensions-5">
-          South Yorkshire Pension Fund
-        </label>
-      </div>
-      <div class="govuk-checkboxes__divider">or</div>
-      <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="pensions-6" name="pensions" type="checkbox" value="I do not want to notify any of their public sector pensions" data-behaviour="exclusive" {% if "I do not want to notify any of their public sector pensions" in data['pensions'] %}checked{% endif %}>
-        <label class="govuk-label govuk-checkboxes__label" for="pensions-6">
-          I do not want to notify any public sector pensions
-        </label>
-      </div>
-    </div>
-  </fieldset>
-</div>
 
-      
+
       {{ govukButton({
       text: "Continue"
       }) }}

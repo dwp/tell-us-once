@@ -14,11 +14,11 @@ href: "javascript:window.history.back()"
 {% block content %}
 
 {% set pensionsList %}
-  <ul class="govuk-list">
+<ul class="govuk-list">
   {% for item in data['pensions'] %}
     <li class="govuk-!-padding-bottom-1">{{ item }}</li>
   {% endfor %}
-  </ul>
+</ul>
 {% endset %}
 
 <div class="govuk-grid-row">
