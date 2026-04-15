@@ -5,6 +5,9 @@
 
 // Add extra styles here
 
+@import "../../../node_modules/accessible-autocomplete/dist/accessible-autocomplete.min";
+
+
 .govuk-table__nh_header, .govuk-table__nh_cell {
     padding: 10px 20px 10px 0;
     text-align: left;
@@ -132,4 +135,8 @@
 
 .tuo-extra-letter-spacing {
   letter-spacing: .5px;
+}
+
+.autocomplete__option {
+  font-family: $govuk-font-family;
 }

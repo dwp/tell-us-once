@@ -4,14 +4,9 @@
   Start page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
-{% block header %}
-  <!-- Blank header with no service name for the start page -->
-  {{ govukHeader() }}
-{% endblock %}
-
 {% block beforeContent %}
 
-  {{ govukBreadcrumbs({
+  <!-- {{ govukBreadcrumbs({
     items: [
       {
         text: "Home",
@@ -25,7 +20,7 @@
         text: "Subsection"
       }
     ]
-  }) }}
+  }) }} -->
 
 {% endblock %}
 
@@ -74,7 +69,7 @@
 
     <div class="govuk-grid-column-one-third">
 
-      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+      <!-- <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
         <h2 class="govuk-heading-m" id="subsection-title">
           Subsection
         </h2>
@@ -97,7 +92,7 @@
             </li>
           </ul>
         </nav>
-      </aside>
+      </aside> -->
 
     </div>
   </div>

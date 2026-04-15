@@ -26,10 +26,9 @@ href: "javascript:window.history.back()"
     <p class="govuk-body govuk-!-margin-bottom-2">If you notify a public sector pension provider about the death they
       will:</p>
     <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
-      <li>close the account</li>
       <li>stop any regular payments</li>
-      <li>be in touch with any beneficiaries (people or organisations who were named to get the pension after the death)
-      </li>
+      <li>be in touch with the next of kin or any beneficiaries (people or organisations who were named to get the pension after the death)</li>
+      <li>close the account</li>
     </ul>
 
     <details class="govuk-details">
@@ -99,8 +98,8 @@ href: "javascript:window.history.back()"
             <div class="govuk-checkboxes__divider">or</div>
             <div class="govuk-checkboxes__item">
               <input class="govuk-checkboxes__input" id="pensions-6" name="pensions" type="checkbox"
-                value="I do not want to notify any of their public sector pensions" data-behaviour="exclusive" {%
-                if "I do not want to notify any of their public sector pensions" in data['pensions'] %}checked{% endif
+                value="I do not want to notify any public sector pension providers" data-behaviour="exclusive" {%
+                if "I do not want to notify any public sector pension providers" in data['pensions'] %}checked{% endif
                 %}>
               <label class="govuk-label govuk-checkboxes__label" for="pensions-6">
                 I do not want to notify any public sector pension providers

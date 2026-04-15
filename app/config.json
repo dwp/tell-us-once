@@ -2,7 +2,7 @@
   "serviceName": "Tell Us Once",
   "plugins": {
     "govuk-frontend": {
-      "rebrand": true
+      "rebrand": false
     }
   }
 }

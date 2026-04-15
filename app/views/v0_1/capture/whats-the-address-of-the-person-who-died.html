@@ -1,0 +1,68 @@
+{% extends "layouts/main.html" %}
+
+
+{% block pageTitle %}
+What's the address of the person who's died?
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            What's the address of the person who's died?
+          </h1>
+        </legend>
+<form class="form" action="select-an-address" method="post">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="deceased-postcode">
+            Postcode
+          </label>
+          <div id="deceased-postcode-hint" class="govuk-hint">
+            For example, AA3 1AB.
+          </div>
+          <input class="govuk-input govuk-!-width-two-thirds"
+                 id="deceased-postcode"
+                 name="deceased-postcode"
+                 type="text"
+                 aria-describedby="deceased-postcode-hint">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="deceased-address-house-number">
+            Building number or name
+          </label>
+          <div id="deceased-address-house-number-hint" class="govuk-hint">
+            For example, 15 or Prospect Cottage.
+          </div>
+          <input class="govuk-input govuk-!-width-two-thirds"
+                 id="deceased-address-house-number"
+                 name="deceased-address-house-number"
+                 type="text"
+                 aria-describedby="deceased-address-house-number-hint">
+        </div>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+          Find address
+        </button>
+</form>
+        <p class="govuk-body govuk-!-margin-bottom-0">
+          <ul class="govuk-list">
+            <li class="govuk-!-margin-top-2"><a href="deceased-address-manually-enter" class="govuk-link">Enter address manually</a></li>
+          </ul>
+          
+        </p>
+      </fieldset>
+    </div>
+</div>
+
+{% endblock %}

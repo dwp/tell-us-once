@@ -15,6 +15,8 @@ router.use(radioButtonRedirect)
 
 // ---------- V0_1 prototype ---------- 
 
+// Pensions journey
+
 router.get('/v0_1/pensions/ni-number', function(req, res) {
   req.session.data['pensions'] = []; 
   req.session.data.returnTo = req.query.returnTo;
@@ -67,6 +69,49 @@ router.post('/v0_1/pensions/check-answers', function (req, res) {
 
   res.redirect('/v0_1/pensions/check-answers');
 });
+
+// Capture journey
+router.post('/v0_1/capture/confirm-address', function (req, res) {
+  const address = req.session.data['deceased-address']
+
+  const parts = address.split(",").map(s => s.trim());
+  const addressLine1 = parts[0];
+  const addressLine2 = parts[1] || "";
+  const town = parts[2] || "";
+  const postcode = parts[3] || "";
+
+  req.session.data['deceased-address-line-1'] = addressLine1;
+  req.session.data['deceased-address-line-2'] = addressLine2;
+  req.session.data['deceased-address-town'] = town;
+  req.session.data['deceased-postcode'] = postcode;
+
+  res.redirect('/v0_1/capture/confirm-address')
+  
+})
+
+router.post('/v0_1/capture/check-your-answers', function (req, res) {
+  const dateOfBirth = normaliseDate(req.session.data['deceased-date-of-birth-day'],  req.session.data['deceased-date-of-birth-month'],  req.session.data['deceased-date-of-birth-year']);
+  const dateOfDeath = normaliseDate(req.session.data['date-of-death-day'],  req.session.data['date-of-death-month'],  req.session.data['date-of-death-year']);
+  const registrationDate = normaliseDate(req.session.data['registration-date-day'],  req.session.data['registration-date-month'],  req.session.data['registration-date-year']);
+  
+  if (dateOfBirth) {  
+    const dateString = `${dateOfBirth.day} ${dateOfBirth.month} ${dateOfBirth.year}`;  
+    req.session.data['date-of-birth'] = dateString;
+    console.log("Date of birth: " + req.session.data['date-of-birth'])
+  }
+  if (dateOfDeath) {  
+    const dateString = `${dateOfDeath.day} ${dateOfDeath.month} ${dateOfDeath.year}`;  
+    req.session.data['date-of-death'] = dateString;
+    console.log("Date of death: " + req.session.data['date-of-death'])
+  }
+  if (registrationDate) {  
+    const dateString = `${registrationDate.day} ${registrationDate.month} ${registrationDate.year}`;  
+    req.session.data['registration-date'] = dateString;
+    console.log("Registration date: " + req.session.data['registration-date'])
+  }
+  res.redirect('/v0_1/capture/check-your-answers')
+  
+})
 
 // ---------- V1 prototype ---------- 
 

@@ -1,0 +1,191 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Confirm address
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="does-the-person-reporting-the-death-want-an-email-confirming-their-tell-us-once-reference-number" method="post" novalidate>
+      <h1 class="govuk-heading-l">Enter death registration details</h1>
+
+<!-- Reference source -->
+
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-label--m" for="reference-source">
+          Where are you getting this information from?
+        </label>
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reference-source" name="reference-source" type="radio"
+              value="RON (registration online)">
+            <label class="govuk-label govuk-radios__label" for="reference-source">
+              RON (registration online)
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reference-source-2" name="reference-source" type="radio"
+              value="FER (Forward Electronic Registration) manual">
+            <label class="govuk-label govuk-radios__label" for="reference-source-2">
+              FER (Forward Electronic Registration) manual
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reference-source-3" name="reference-source" type="radio"
+              value="RON (registration by attestation and declaration)">
+            <label class="govuk-label govuk-radios__label" for="reference-source-3">
+              RON (registration by attestation and declaration)
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reference-source-4" name="reference-source" type="radio"
+              value="Fact of death or interim death certificate">
+            <label class="govuk-label govuk-radios__label" for="reference-source-4">
+              Fact of death or interim death certificate
+            </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reference-source-4" name="reference-source" type="radio"
+              value="Other">
+            <label class="govuk-label govuk-radios__label" for="reference-source-4">
+              Other
+            </label>
+          </div>
+        </div>
+      </div>
+
+<!-- Registration number -->
+
+      <div class="govuk-form-group govuk-!-margin-top-2">
+        <h2 class="govuk-heading-m">Registration number</h2>
+        <div id="registration-number-hint" class="govuk-hint">
+          For example, '512345678' in England and Wales or '2026 765 955' in Scotland.
+        </div>
+        <input class="govuk-input govuk-input--width-10" id="registration-number" name="registration-number"
+          type="text">
+      </div>
+
+<!-- Date of death -->
+
+      <div class="govuk-form-group govuk-!-margin-top-2">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-death-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            Date of death
+          </legend>
+          <div id="date-of-death-hint" class="govuk-hint">
+            For example, 14 4 2026
+          </div>
+          <div class="govuk-date-input" id="date-of-death">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="date-of-death-day">
+                  Day
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-death-day"
+                  name="date-of-death-day" type="text" inputmode="numeric">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="date-of-death-month">
+                  Month
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="expiry-month"
+                  name="date-of-death-month" type="text" inputmode="numeric">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="date-of-death-year">
+                  Year
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="date-of-death-year"
+                  name="date-of-death-year" type="text" inputmode="numeric">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+<!-- Registration district -->
+
+      <div class="govuk-form-group govuk-!-margin-top-2">
+  <label class="govuk-label govuk-label--m" for="autocomplete">
+    Registration district
+  </label>
+
+  <div id="registration-district-hint" class="govuk-hint">
+    Start typing the name of the registration district.
+  </div>
+
+  <div id="autocomplete-container"></div>
+
+  <select
+    class="govuk-select govuk-visually-hidden"
+    id="autocomplete"
+    name="registration-district"
+    aria-describedby="registration-district-hint">
+    {% include "includes/registration-authorities.html" %}
+  </select>
+</div>
+
+<!-- Registration date -->
+
+      <div class="govuk-form-group govuk-!-margin-top-2">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="registration-date-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            Registration date
+          </legend>
+          <div id="registration-date-hint" class="govuk-hint">
+            For example, 14 4 2026
+          </div>
+          <div class="govuk-date-input" id="registration-date">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="registration-date-day">
+                  Day
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="registration-date-day"
+                  name="registration-date-day" type="text" inputmode="numeric">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="registration-date-month">
+                  Month
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="expiry-month"
+                  name="registration-date-month" type="text" inputmode="numeric">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="registration-date-year">
+                  Year
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="registration-date-year"
+                  name="registration-date-year" type="text" inputmode="numeric">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+<!-- CTA -->
+
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "layouts/main.html" %}
+
+
+{% block pageTitle %}
+Enter death registration details
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Enter death registration details</h1>
+         <form class="form" action="/v0_1/capture/whats-the-address-of-the-person-who-died" method="post">
+        <div class="govuk-form-group govuk-!-margin-top-6">
+        <label class="govuk-label" for="deceased-firstname">
+          First name
+        </label>
+        <input class="govuk-input govuk-input--width-20" id="deceased-firstname"
+          name="deceased-firstname" type="text" spellcheck="false" value=""
+          aria-describedby="deceased-firstname-hint">
+      </div>
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="deceased-surname">
+          Surname
+        </label>
+        <input class="govuk-input govuk-input--width-20" id="deceased-surname" name="deceased-surname" type="text" spellcheck="false"
+          autocomplete="none">
+      </div>
+      <fieldset class="govuk-fieldset" role="group" aria-describedby="deceased-date-of-birth-hint">
+          <label for="" class="govuk-label">Date of birth</label>
+          <div id="deceased-date-of-birth-hint" class="govuk-hint">
+            For example, 16 3 2026.
+          </div>
+          <div class="govuk-date-input" id="deceased-date-of-birth">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="deceased-date-of-birth">
+                  Day
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="deceased-date-of-birth-day"
+                  name="deceased-date-of-birth-day" type="text" inputmode="numeric">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="deceased-date-of-birth-month">
+                  Month
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="deceased-date-of-birth-month"
+                  name="deceased-date-of-birth-month" type="text" inputmode="numeric">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="deceased-date-of-birth-year">
+                  Year
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="deceased-date-of-birth-year"
+                  name="deceased-date-of-birth-year" type="text" inputmode="numeric">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <button class="govuk-button">Continue</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="check-your-answers" method="post" novalidate>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="email-address-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Does the person reporting the death want an email confirming their Tell Us Once reference number?
+            </h1>
+            <div class="govuk-inset-text">The email also includes information about how to use Tell Us Once.</div>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="contact-by-email" name="contact-by-email" type="radio" value="yes"
+                data-aria-controls="conditional-email-address">
+              <label class="govuk-label govuk-radios__label" for="contact-by-email">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-email-address">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="email-address">
+                  What is their email address?
+                </label>
+                <input class="govuk-input govuk-!-width-one-third" id="email-address" name="email-address" type="email"
+                  spellcheck="false" autocomplete="email">
+              </div>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="contact-by-email-2" name="contact-by-email" type="radio"
+                value="no">
+              <label class="govuk-label govuk-radios__label" for="contact-by-email-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+
+  </div>
+</div>
+{% endblock %}

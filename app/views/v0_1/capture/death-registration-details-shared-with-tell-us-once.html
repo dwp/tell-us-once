@@ -1,0 +1,48 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Confirm address
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">
+        Death registration details shared with Tell Us Once
+      </h1>
+      <div class="govuk-panel__body">
+        Registration number<br><strong>1234 5678 9101</strong>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-l govuk-!-margin-top-4">Next steps</h2>
+    <p class="govuk-body">The person registering the death (or someone with their permission) can complete Tell Us Once
+      online or by phone.</p>
+    <p class="govuk-body">Or, you can complete Tell Us Once with them.</p>
+    <h3 class="govuk-heading-m">If they're completing Tell Us Once themselves</h3>
+    {% if data['contact-by-email'] == 'yes' %}
+    <p class="govuk-body">We’ve sent them an email about how to use Tell Us Once. This includes their Tell Us Once
+      reference number.</p>
+    {% else %}
+    <p class="govuk-body">Print '<a href="">How to use Tell Us Once</a>'' and give it to them.</p>
+    {% endif %}
+    <h4 class="govuk-heading-s">When the appointment is finished</h4>
+    <p class="govuk-body">You you can return to the <a href="">Employee Authentication Service (EAS) homepage</a>.</p>
+    <h3 class="govuk-heading-m">Complete Tell Us Once with them</h3>
+    <p class="govuk-body">To complete Tell Us Once with them, <a href="">continue to Tell Us Once</a>.</p>
+    <p class="govuk-body"><a href="">Check which information they need to use Tell Us Once</a></p>
+  </div>
+</div>
+{% endblock %}

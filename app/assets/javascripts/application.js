@@ -1,8 +1,14 @@
-//
-// For guidance on how to add JavaScript see:
-// https://prototype-kit.service.gov.uk/docs/adding-css-javascript-and-images
-//
-
 window.GOVUKPrototypeKit.documentReady(() => {
-  // Add JavaScript here
+  const selectEl = document.querySelector('#autocomplete')
+  const container = document.querySelector('#autocomplete-container')
+
+  if (selectEl && container && window.accessibleAutocomplete) {
+    window.accessibleAutocomplete.enhanceSelectElement({
+      selectElement: selectEl,
+      element: container,
+      minLength: 2,
+      showAllValues: false,
+      defaultValue: ''
+    })
+  }
 })
