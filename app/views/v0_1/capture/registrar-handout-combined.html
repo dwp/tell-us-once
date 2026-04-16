@@ -1,6 +1,29 @@
 {% extends "layouts/print.html" %}
 
-{% set pageName="Tell us once letter" %}
+{% block pageTitle %}
+Registrar handout
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+
+
+{% from "language-toggle/macro.njk" import dwpLanguageToggle %}
+ 
+{{
+        dwpLanguageToggle({
+            selectedLang: "en",
+            href: {
+                en: "#",
+                cy: "#"
+            }
+        })
+}}
+
+{% endblock %}
 
 {% block content %}
 
@@ -32,7 +55,7 @@
                             <p class="govuk-heading-m">Tell Us Once</p>
                         </div>
 
-                        <h3 class="govuk-heading-l">Report a death to government organisations</h3>
+                        <h3 class="govuk-heading-l">How to use Tell Us Once</h3>
                         <div class="govuk-!-margin-bottom-7">
                             <p>Tell Us Once is a service that lets you report a death to  government organisations in one go.</p>
                         </div>
@@ -103,6 +126,7 @@
                 window.print();
             })
         </script>
+        <p class="govuk-body govuk-!-margin-top-7">If you're finished, <a href="">return to the Employee Authentication Service (EAS) homepage</a>.</p>
     </div>
 </div>
 
