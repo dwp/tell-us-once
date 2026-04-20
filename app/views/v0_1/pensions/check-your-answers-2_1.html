@@ -223,12 +223,10 @@
                     Do you know the National Insurance number of the person who's died?
                   </dt>
                   <dd class="govuk-summary-list__value">
-                    Yes
-                  </dd>
-                  <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> date of birth</span></a>
+                    {{data['has-ni-number'] | capitalize}}
                   </dd>
                 </div>
+                {% if data['has-ni-number'] == "yes" %}
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
                     Their National Insurance number
@@ -236,10 +234,8 @@
                   <dd class="govuk-summary-list__value">
                     JL123456A
                   </dd>
-                  <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> date of birth</span></a>
-                  </dd>
                 </div>
+                {% endif %}
               </dl>
             </div>
           </div>
@@ -341,22 +337,41 @@
                     </ul>
                   </dd>
                 </div>
+              </dl>
+            </div>
+          </div>
+
+<!---------Public sector pension providers-------->
+          {% if data['has-ni-number'] == "yes" %}
+          <div class="govuk-summary-card">
+            <div class="govuk-summary-card__title-wrapper">
+              <h2 class="govuk-summary-card__title">
+                Public sector pension providers
+              </h2>
+              <ul class="govuk-summary-card__actions">
+                <li class="govuk-summary-card__action">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> public sector pension providers</span></a>
+                </li>
+              </ul>
+            </div>
+            <div class="govuk-summary-card__content">
+              <dl class="govuk-summary-list">
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key govuk-!-width-one-half">
                     Public Sector Pension providers
                   </dt>
                   <dd class="govuk-summary-list__value">
                     <ul class="govuk-list">
-                      <li>Civil Service Pension</li>
-                      <li>NHS Pension for NHS staff in England and Wales</li>
-                      <li>Pension Protection Fund or Financial Assistance Scheme</li>
+                      {% for pension in data['pensions'] %}
+                      <li>{{pension}}</li>
+                      {% endfor %}
                     </ul>
                   </dd>
                 </div>
               </dl>
             </div>
           </div>
-
+          {% endif %}
           <!---------Registration details-------->
 
           <!-- <h2 class="govuk-heading-m">Registration of death details - This is the information printed on the death certificate.</h2>

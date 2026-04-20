@@ -28,22 +28,23 @@ router.get('/v0_1/pensions/ni-number', function (req, res) {
 router.post('/v0_1/pensions/ni-number', function (req, res) {
   if (req.session.data['has-ni-number'] == "yes") {
     const niNum = req.session.data['ni-number'].replace(/\s/g, '');
-    console.log("NI number: " + niNum)
+    req.session.data['ni-number'] = niNum;
+    console.log("NI number: " + req.session.data['ni-number'])
     if (req.session.data.path == 'ur') {
       return res.redirect('/v0_1/pensions-usability-testing/local-council-services')
     }
     if (niNum == "QQ123456C") {
       res.redirect('/v0_1/pensions/no-public-sector-pensions-found')
     } else if (niNum == "QQ112233C") {
-      res.redirect('/v0_1/pensions/notify-a-public-sector-pension-provider')
+      return res.redirect('/v0_1/pensions/notify-a-public-sector-pension-provider')
     } else {
-      res.redirect('/v0_1/pensions/notify-a-public-sector-pension')
+      return res.redirect('/v0_1/pensions/notify-a-public-sector-pension')
     }
   } else {
     if (req.session.data.path == 'ur') {
-      res.redirect('/v0_1/pensions-usability-testing/local-council-services')
+      return res.redirect('/v0_1/pensions-usability-testing/local-council-services')
     }
-    res.redirect('/v0_1/pensions/check-answers')
+    return res.redirect('/v0_1/pensions/check-answers')
   }
 });
 
@@ -88,12 +89,14 @@ router.post('/v0_1/pensions-usability-testing/notify-public-pension-providers', 
   console.log("NI number: " + niNum)
   if (req.session.data['has-ni-number'] == "yes") {
     if (niNum == "QQ123456C") {
-      res.redirect('../pensions/no-public-sector-pensions-found')
+      return res.redirect('../pensions/no-public-sector-pensions-found')
     } else if (niNum == "QQ112233C") {
-      res.redirect('../pensions/notify-a-public-sector-pension-provider')
+      return res.redirect('../pensions/notify-a-public-sector-pension-provider')
     } else {
-      res.redirect('../pensions/notify-a-public-sector-pension')
-    }
+      return res.redirect('../pensions/notify-a-public-sector-pension')
+    } 
+  } else {
+      return res.redirect('../pensions-usability-testing/email-confirmation')
   }
 });
 
