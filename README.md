@@ -1,33 +1,24 @@
+# Tell Us Once (prototype)
 
-Use this template to create new prototypes in DWP. This template is updated with every major version release of the GOVUK prototype kit. 
+A prototype for the Tell Us Once service, built using the [GOV.UK Protoype Kit](https://prototype-kit.service.gov.uk/docs/) and [DWP Design System](https://design-system.dwp.gov.uk)
 
-Best practice:<br>
-<br>
-Before making any changes to your code, open your prototype folder in terminal and Run: <br>npm audit <br>
-Use ther information provided in terminal to fix any vulnerabilities before pushing your changes<br>
-Keep package-lock.json under version control<br>
-Do not blindly update packages without review<br>
-Never connect to internal APIs or production systems<br>
-Never store or process real user data<br>
-Remove old or unused prototypes promptly<br>
-Document the purpose and owner of each prototype clearly<br>
-Avoid turning prototypes into live services<br>
-Do not allow open write access to external collaborators<br>
-<br>
-Support
 
-If you've got a question, idea or suggestion about the GOVUK protoype kit, get in touch with the GOV.UK Prototype team.
+## About this prototype
 
-The GOV.UK Prototype team provides support to people who use the Prototype Kit and work in government.
+This prototype contains designs for teh Tell Us Once service. Designs include:
 
-We cannot give general advice to the public. We do not have access to information about you held by government departments.
+1. iterations to the live service to make small improvements
+2. designs for a future version of the service with more significant design changes
 
-For other enquiries, use the contact form on GOV.UK.
 
-Slack
+## Installation
 
-Use the #govuk-prototype-kit channel on cross-government Slack.
+1. Follow the [ guide for running the GOV.UK prototype kit](https://prototype-kit.service.gov.uk/docs/install/how-to-run-the-kit)
+2. Clone this repository
+3. Run `npm install`
+4. Run `npm run dev`
 
-Email
 
-Email the GOV.UK Prototype team at govuk-prototype-kit-support@digital.cabinet-office.gov.uk.
+## Security
+
+This prototype is for research and testing only. Do not use with real participant data.
