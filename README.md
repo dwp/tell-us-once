@@ -1,6 +1,6 @@
 # Tell Us Once (prototype)
 
-A prototype for the Tell Us Once service, built using the [GOV.UK Protoype Kit](https://prototype-kit.service.gov.uk/docs/) and [DWP Design System](https://design-system.dwp.gov.uk)
+A prototype for the Tell Us Once service, built using the [GOV.UK Protoype Kit](https://prototype-kit.service.gov.uk/docs/) and [DWP Design System](https://design-system.dwp.gov.uk).
 
 
 ## About this prototype
@@ -25,4 +25,4 @@ This prototype is for research and testing only. Do not use with real participan
 
 ## Contact
 
-For help with the prototype, contact Ashley Wheat [ashley.wheat@engineering.digital.dwp.gov.uk](mailto:ashley.wheat@engineering.digital.dwp.gov.uk)
+For help with the prototype, contact Ashley Wheat: [ashley.wheat@engineering.digital.dwp.gov.uk](mailto:ashley.wheat@engineering.digital.dwp.gov.uk).
