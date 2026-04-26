@@ -21,12 +21,11 @@ href: "javascript:window.history.back()"
       <div class="govuk-summary-card">
         <div class="govuk-summary-card__title-wrapper">
           <h2 class="govuk-summary-card__title">
-            About the person who's died
+            Details about the person who's died
           </h2>
           <ul class="govuk-summary-card__actions">
             <li class="govuk-summary-card__action">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> death registration
-                  details</span></a>
+              <a class="govuk-link" href="details-about-the-person-whos-died">Change<span class="govuk-visually-hidden"> details of the person who's died</span></a>
             </li>
           </ul>
         </div>
@@ -62,11 +61,11 @@ href: "javascript:window.history.back()"
       <div class="govuk-summary-card">
         <div class="govuk-summary-card__title-wrapper">
           <h2 class="govuk-summary-card__title">
-            What's the address of the person who's died
+            Address of the person who's died
           </h2>
           <ul class="govuk-summary-card__actions">
             <li class="govuk-summary-card__action">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> address of the person who's
+              <a class="govuk-link" href="enter-the-address-of-the-person-whos-died">Change<span class="govuk-visually-hidden"> the address of the person who's
                   died</span></a>
             </li>
           </ul>
@@ -95,7 +94,7 @@ href: "javascript:window.history.back()"
           </h2>
           <ul class="govuk-summary-card__actions">
             <li class="govuk-summary-card__action">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> death registration
+              <a class="govuk-link" href="death-registration-details">Change<span class="govuk-visually-hidden"> death registration
                   details</span></a>
             </li>
           </ul>
@@ -103,8 +102,8 @@ href: "javascript:window.history.back()"
         <div class="govuk-summary-card__content">
           <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Where are you getting this information from?
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                Select which system or document was used to record the details of the death
               </dt>
               <dd class="govuk-summary-list__value">
                 {{data['reference-source']}}
@@ -112,7 +111,7 @@ href: "javascript:window.history.back()"
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Registration number
+                Enter registration number
               </dt>
               <dd class="govuk-summary-list__value">
                 {{data['registration-number']}}
@@ -120,7 +119,7 @@ href: "javascript:window.history.back()"
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Date of death
+                Enter date of death
               </dt>
               <dd class="govuk-summary-list__value">
                 {{data['date-of-death'] | titlecase}}
@@ -128,10 +127,18 @@ href: "javascript:window.history.back()"
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Registration district
+                Search for the district the death was registered in
               </dt>
               <dd class="govuk-summary-list__value">
                 {{data['registration-district']}}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Was the death registered today, {{ today | date }}?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['death-registered-today'] | titlecase}}
               </dd>
             </div>
             <div class="govuk-summary-list__row">
@@ -146,6 +153,31 @@ href: "javascript:window.history.back()"
         </div>
       </div>
 
+<div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Who will complete Tell Us Once
+          </h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="select-who-will-complete-tell-us-once">Change<span class="govuk-visually-hidden"> who will complete Tell Us Once</span></a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                Select who will complete Tell Us Once
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{data['who-will-complete-tuo'] | capitalize}}
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
       <div class="govuk-summary-card">
         <div class="govuk-summary-card__title-wrapper">
           <h2 class="govuk-summary-card__title">
@@ -153,14 +185,14 @@ href: "javascript:window.history.back()"
           </h2>
           <ul class="govuk-summary-card__actions">
             <li class="govuk-summary-card__action">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> email confirmation</span></a>
+              <a class="govuk-link" href="does-the-person-reporting-the-death-want-an-email-confirming-their-tell-us-once-reference-number">Change<span class="govuk-visually-hidden"> email confirmation</span></a>
             </li>
           </ul>
         </div>
         <div class="govuk-summary-card__content">
           <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
                 Does the person reporting the death want an email confirming their Tell Us Once reference number?
               </dt>
               <dd class="govuk-summary-list__value">
@@ -170,7 +202,7 @@ href: "javascript:window.history.back()"
             {% if data['contact-by-email'] == 'yes' %}
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                What is their email address?
+                Enter the email address they want the email confirmation to go to
               </dt>
               <dd class="govuk-summary-list__value">
                 {{data['email-address']}}

@@ -111,6 +111,14 @@ router.post('/v0_1/pensions/check-your-answers-3', function (req, res) {
 
 // Capture journey
 router.post('/v0_1/capture/confirm-address', function (req, res) {
+
+  const referrer = req.get('Referrer')
+  console.log(referrer);
+
+  if(referrer.includes("v0_1/capture/enter-an-address")){
+    return res.redirect('/v0_1/capture/confirm-address')
+  }
+
   const address = req.session.data['deceased-address']
 
   const parts = address.split(",").map(s => s.trim());
@@ -151,6 +159,28 @@ router.post('/v0_1/capture/check-your-answers', function (req, res) {
   res.redirect('/v0_1/capture/check-your-answers')
 
 })
+
+router.post('/v0_1/capture/select-who-will-complete-tell-us-once', function (req, res) {
+  const drt = req.session.data['death-registered-today'];
+
+  if(drt == 'yes'){
+
+  const date = new Date();
+
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+
+  const regDate = normaliseDate(day, month, year);
+
+  req.session.data['registration-date'] = regDate;
+  }
+
+  res.redirect('/v0_1/capture/select-who-will-complete-tell-us-once')
+
+})
+
+
 
 // ---------- V1 prototype ---------- 
 

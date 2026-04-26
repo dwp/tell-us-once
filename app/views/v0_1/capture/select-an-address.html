@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+Select an address
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,42 +26,42 @@ Question page template – {{ serviceName }} – GOV.UK Prototype Kit
         <p class='govuk-body'>6 addresses found for <b>{{data['deceased-postcode']}}</b> and <b>{{data['deceased-address-house-number']}}</b>. <a href='select-an-address' class='govuk-link'>Search again</a></p>
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="select-an-address" name="deceased-address" type="radio" value="251 Elgin Ave, Maida Vale, London, W9 1NJ"
-            data-ga-question="Select an address" data-ga-answer="Answer 1">
+            data-ga-question="Select an address" data-ga-answer="Answer 1" {% if data['deceased-address'] == '251 Elgin Ave, Maida Vale, London, W9 1NJ' %}checked{%endif%}>
           <label class="govuk-label govuk-radios__label" for="select-an-address">
             251 Elgin Ave, Maida Vale, London, W9 1NJ
           </label>
         </div>
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="select-an-address-2" name="deceased-address" type="radio" value="253 Elgin Ave, Maida Vale, London, W9 1NJ"
-            data-ga-question="Select an address" data-ga-answer="Answer 2">
+            data-ga-question="Select an address" data-ga-answer="Answer 2" {% if data['deceased-address'] == '253 Elgin Ave, Maida Vale, London, W9 1NJ' %}checked{%endif%}>
           <label class="govuk-label govuk-radios__label" for="select-an-address-2">
             253 Elgin Ave, Maida Vale, London, W9 1NJ
           </label>
         </div>
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="select-an-address-3" name="deceased-address" type="radio" value="255 Elgin Ave, Maida Vale, London, W9 1NJ"
-            data-ga-question="Select an address" data-ga-answer="Answer 2">
+            data-ga-question="Select an address" data-ga-answer="Answer 2" {% if data['deceased-address'] == '255 Elgin Ave, Maida Vale, London, W9 1NJ' %}checked{%endif%}>
           <label class="govuk-label govuk-radios__label" for="select-an-address-3">
             255 Elgin Ave, Maida Vale, London, W9 1NJ
           </label>
         </div>
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="select-an-address-4" name="deceased-address" type="radio" value="257 Elgin Ave, Maida Vale, London, W9 1NJ"
-            data-ga-question="Select an address" data-ga-answer="Answer 3">
+            data-ga-question="Select an address" data-ga-answer="Answer 3" {% if data['deceased-address'] == '257 Elgin Ave, Maida Vale, London, W9 1NJ' %}checked{%endif%}>
           <label class="govuk-label govuk-radios__label" for="select-an-address-4">
             257 Elgin Ave, Maida Vale, London, W9 1NJ
           </label>
         </div>
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="select-an-address-5" name="deceased-address" type="radio" value="259 Elgin Ave, Maida Vale, London, W9 1NJ"
-            data-ga-question="Select an address" data-ga-answer="Answer 4">
+            data-ga-question="Select an address" data-ga-answer="Answer 4" {% if data['deceased-address'] == '259 Elgin Ave, Maida Vale, London, W9 1NJ' %}checked{%endif%}>
           <label class="govuk-label govuk-radios__label" for="select-an-address-5">
             259 Elgin Ave, Maida Vale, London, W9 1NJ
           </label>
         </div>
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="select-an-address-6" name="deceased-address" type="radio" value="261 Elgin Ave, Maida Vale, London, W9 1NJ"
-            data-ga-question="Select an address" data-ga-answer="Answer 5">
+            data-ga-question="Select an address" data-ga-answer="Answer 5" {% if data['deceased-address'] == '261 Elgin Ave, Maida Vale, London, W9 1NJ' %}checked{%endif%}>
           <label class="govuk-label govuk-radios__label" for="select-an-address-6">
             261 Elgin Ave, Maida Vale, London, W9 1NJ
           </label>
@@ -72,7 +72,7 @@ Question page template – {{ serviceName }} – GOV.UK Prototype Kit
   <button type="submit" class="govuk-button" data-module="govuk-button">
     Use this address
   </button>
-  <p class="govuk-body govuk-!-margin-bottom-0"><a href="#" class="govuk-link">Enter address manually</a></p>
+  <p class="govuk-body govuk-!-margin-bottom-0"><a href="enter-an-address" class="govuk-link">Enter address manually</a></p>
 
       </fieldset>
     </form>

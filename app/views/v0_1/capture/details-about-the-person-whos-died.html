@@ -16,14 +16,14 @@ href: "javascript:window.history.back()"
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-l">Enter death registration details</h1>
-         <form class="form" action="/v0_1/capture/whats-the-address-of-the-person-who-died" method="post">
+        <h1 class="govuk-heading-l">Details about the person who's died</h1>
+         <form class="form" action="/v0_1/capture/enter-the-address-of-the-person-whos-died" method="post">
         <div class="govuk-form-group govuk-!-margin-top-6">
         <label class="govuk-label" for="deceased-firstname">
           First name
         </label>
         <input class="govuk-input govuk-input--width-20" id="deceased-firstname"
-          name="deceased-firstname" type="text" spellcheck="false" value=""
+          name="deceased-firstname" type="text" spellcheck="false" value="{{data['deceased-firstname']}}"
           aria-describedby="deceased-firstname-hint">
       </div>
       <div class="govuk-form-group">
@@ -31,7 +31,7 @@ href: "javascript:window.history.back()"
           Surname
         </label>
         <input class="govuk-input govuk-input--width-20" id="deceased-surname" name="deceased-surname" type="text" spellcheck="false"
-          autocomplete="none">
+          autocomplete="none" value="{{data['deceased-surname']}}">
       </div>
       <fieldset class="govuk-fieldset" role="group" aria-describedby="deceased-date-of-birth-hint">
           <label for="" class="govuk-label">Date of birth</label>
@@ -45,7 +45,7 @@ href: "javascript:window.history.back()"
                   Day
                 </label>
                 <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="deceased-date-of-birth-day"
-                  name="deceased-date-of-birth-day" type="text" inputmode="numeric">
+                  name="deceased-date-of-birth-day" type="text" inputmode="numeric" value="{{data['deceased-date-of-birth-day']}}">
               </div>
             </div>
             <div class="govuk-date-input__item">
@@ -54,7 +54,7 @@ href: "javascript:window.history.back()"
                   Month
                 </label>
                 <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="deceased-date-of-birth-month"
-                  name="deceased-date-of-birth-month" type="text" inputmode="numeric">
+                  name="deceased-date-of-birth-month" type="text" inputmode="numeric" value="{{data['deceased-date-of-birth-month']}}">
               </div>
             </div>
             <div class="govuk-date-input__item">
@@ -63,7 +63,7 @@ href: "javascript:window.history.back()"
                   Year
                 </label>
                 <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="deceased-date-of-birth-year"
-                  name="deceased-date-of-birth-year" type="text" inputmode="numeric">
+                  name="deceased-date-of-birth-year" type="text" inputmode="numeric" value="{{data['deceased-date-of-birth-year']}}">
               </div>
             </div>
           </div>

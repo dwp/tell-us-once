@@ -13,3 +13,12 @@ addFilter('titlecase', function (str) {
   })
 });
 
+addFilter("date", (date) => { 
+  const value = date ?? new Date(); 
+  
+  return new Date(value).toLocaleDateString("en-GB", { 
+    day: "numeric", 
+    month: "long", 
+    year: "numeric", 
+  }); 
+});

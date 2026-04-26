@@ -19,9 +19,12 @@ href: "javascript:window.history.back()"
         <fieldset class="govuk-fieldset">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <h1 class="govuk-fieldset__heading">
-            What's the address of the person who's died?
+            Enter the address of the person who's died
           </h1>
         </legend>
+        <div class="govuk-inset-text">
+          If they died in temporary accommodation, or died abroad, enter the UK address where they usually lived.
+        </div>
 <form class="form" action="select-an-address" method="post">
         <div class="govuk-form-group">
           <label class="govuk-label" for="deceased-postcode">
@@ -34,7 +37,8 @@ href: "javascript:window.history.back()"
                  id="deceased-postcode"
                  name="deceased-postcode"
                  type="text"
-                 aria-describedby="deceased-postcode-hint">
+                 aria-describedby="deceased-postcode-hint"
+                 value="{{data['deceased-postcode']}}">
         </div>
 
         <div class="govuk-form-group">
@@ -48,7 +52,8 @@ href: "javascript:window.history.back()"
                  id="deceased-address-house-number"
                  name="deceased-address-house-number"
                  type="text"
-                 aria-describedby="deceased-address-house-number-hint">
+                 aria-describedby="deceased-address-house-number-hint"
+                 value="{{data['deceased-address-house-number']}}">
         </div>
 
         <button type="submit" class="govuk-button" data-module="govuk-button">
@@ -57,7 +62,7 @@ href: "javascript:window.history.back()"
 </form>
         <p class="govuk-body govuk-!-margin-bottom-0">
           <ul class="govuk-list">
-            <li class="govuk-!-margin-top-2"><a href="deceased-address-manually-enter" class="govuk-link">Enter address manually</a></li>
+            <li class="govuk-!-margin-top-2"><a href="enter-an-address" class="govuk-link">Enter address manually</a></li>
           </ul>
           
         </p>

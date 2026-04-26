@@ -1,0 +1,52 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Select who will complete Tell Us Once
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="does-the-person-reporting-the-death-want-an-email-confirming-their-tell-us-once-reference-number" method="post" novalidate>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="email-address-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Select who will complete Tell Us Once
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="who-will-complete-tuo" name="who-will-complete-tuo" type="radio" value="The person reporting the death (or someone with their permission)">
+              <label class="govuk-label govuk-radios__label" for="who-will-complete-tuo">
+                The person reporting the death (or someone with their permission)
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="who-will-complete-tuo-2" name="who-will-complete-tuo" type="radio"
+                value="no">
+              <label class="govuk-label govuk-radios__label" for="who-will-complete-tuo-2">
+                You
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+
+  </div>
+</div>
+{% endblock %}
