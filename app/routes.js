@@ -180,6 +180,19 @@ router.post('/v0_1/capture/select-who-will-complete-tell-us-once', function (req
 
 })
 
+router.post('/v0_1/capture/does-the-person-reporting-the-death-want-an-email-confirming-their-tell-us-once-reference-number', function (req, res) {
+  
+  const informer = req.session.data['who-will-complete-tuo']
+
+  console.log('Who will complete TUO?: ' + informer)
+
+  if(informer == 'You, the registrar'){
+    return res.redirect('/v0_1/capture/check-your-answers')
+  } else {
+    return res.redirect('/v0_1/capture/does-the-person-reporting-the-death-want-an-email-confirming-their-tell-us-once-reference-number')
+  }
+})
+
 
 
 // ---------- V1 prototype ---------- 
