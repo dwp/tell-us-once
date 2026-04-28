@@ -14,16 +14,14 @@ href: "javascript:window.history.back()"
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">
-      Tell Us Once reference number
-    </h1>
-    <p class="govuk-body govuk-!-margin-top-4">This is the reference number they need to notify organisations using Tell
-      Us Once. They will receive an email with this reference number and information about how to use Tell Us Once.</p>
     <form class="form" action="check-your-answers" method="post" novalidate>
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset" aria-describedby="email-address-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <h2 class="govuk-fieldset__legend--m">Do they email confirming their Tell Us Once reference number?</h2>
+            <h1 class="govuk-fieldset__heading">
+Do they want an email confirming the reference number they need to use Tell Us Once?
+            </h1>
+            <div class="govuk-inset-text">The email includes the reference number and information needed to use Tell Us Once.</div>
           </legend>
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
@@ -36,9 +34,9 @@ href: "javascript:window.history.back()"
             <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-email-address">
               <div class="govuk-form-group">
                 <label class="govuk-label" for="email-address">
-                  Enter the email address they want the email confirmation to go to
+                  What is their email address?
                 </label>
-                <input class="govuk-input govuk-!-width-two-thirds" id="email-address" name="email-address" type="email"
+                <input class="govuk-input govuk-!-width-three-quarters" id="email-address" name="email-address" type="email"
                   spellcheck="false" autocomplete="email">
               </div>
             </div>
