@@ -14,9 +14,20 @@ href: "javascript:window.history.back()"
 {% block content %}
 
 <div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <div role="region" class="moj-alert moj-alert--error moj-alert--with-heading" aria-label="error: The death registration details do not match" data-module="moj-alert">
+      <div>
+      </div>
+      <div class="moj-alert__content govuk-!-padding-top-1 govuk-!-padding-bottom-1">
+        <h2 class="moj-alert__heading govuk-!-margin-bottom-2">The death registration details do not match</h2>
+          <p class="tuo-alert-content">We cannot match the reference number, surname and date of death you entered.<br>
+          Check you've entered them correctly and try again.<br>
+          You will be locked out for 20 minutes if we cannot match the details 5 times.</p>
+      </div>
+    </div>
+  </div>
   <div class="govuk-grid-column-two-thirds">
-
-    <h1 class="govuk-heading-l">  
+    <h1 class="govuk-heading-xl">  
       Enter death registration details
     </h1>
 

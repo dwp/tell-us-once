@@ -21,14 +21,14 @@ href: "javascript:window.history.back()"
     </h1>
 
 
-    <p class="govuk-body">There's 1 public sector pension that matches the National Insurance number of the person who's
-      died: {{ data['ni-number'] }}. </p>
+    <p class="govuk-body">We've found 1 public sector pension that matches the National Insurance number of the person who's
+      died: {{ data['ni-number'] | formatNiNumber }}. </p>
     <p class="govuk-body">That pension is provided by: Civil Service Pension.</p>
-    <p class="govuk-body govuk-!-margin-bottom-2">If you notify the pension provider about the death they
+    <p class="govuk-body govuk-!-margin-bottom-2">When you notify the pension provider about the death they
       will:</p>
     <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-6">
       <li>stop any regular payments</li>
-      <li>be in touch with the next of kin or any beneficiaries (people or organisations who were named to get the pension after the death)</li>
+      <li>be in touch with any people or organisations who were named to get the pension after the death</li>
       <li>close the account</li>
     </ul>
 
@@ -39,8 +39,8 @@ href: "javascript:window.history.back()"
         </span>
       </summary>
       <div class="govuk-details__text">
-        A public sector pension is a workplace pension for public sector employees. For example, NHS and local
-        government workers, teachers and civil servants.
+        <p class="govuk-body">A public sector pension is a workplace pension for public sector employees. For example, teachers, civil servants, NHS and local government workers.</p>
+        <p class="govuk-body">It's different to the State Pension, which is a regular payment from the government based on someone's National Insurance record. </p>
       </div>
     </details>
 
