@@ -4,27 +4,29 @@
 Their National Insurance number
 {% endblock %}
 
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-{{ govukBackLink({
-text: "Back",
-href: "javascript:window.history.back()"
-}) }}
-
-    <h1 class="govuk-heading-l">
+    <h1 class="govuk-heading-xl">
       Their National Insurance number
     </h1>
 
     <p class="govuk-body">If you know the National Insurance number of the person who died:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>some of the organisations and departments that you choose to notify, such as DWP and HMRC, will use it to find their records quicker</li>
-      <li>we will use it to find any public sector pensions they had</li>
+      <li>we will use it to find public sector pensions they had</li>
     </ul>
     <p class="govuk-body">The National Insurance number is on their National Insurance card, payslip or P60. If they got
-      state pension or benefits, it may be on a benefit letter or in the transaction description on a bank statement.</p>
+      state pension or benefits, it may be on a benefit statement or bank statement.</p>
      <details class="govuk-details">
       <summary class="govuk-details__summary">
         <span class="govuk-details__summary-text">
@@ -34,7 +36,7 @@ href: "javascript:window.history.back()"
       <div class="govuk-details__text">
         <p class="govuk-body">A public sector pension is a workplace pension for public sector employees. For example, civil servants, NHS and local government workers.</p>
         <p class="govuk-body">It's different to the State Pension, which is a regular payment from the government based on someone's National Insurance record.</p>
-        <p class="govuk-body">We will check for pensions that were provided by:</p>
+        <h2 class="govuk-heading-s">Public sector pensions we check</h2>
         <ul class="govuk-list govuk-list--bullet">
           <li>Civil Service Pension Scheme</li>
           <li>NHS Pensions for NHS staff in England and Wales</li>
@@ -56,7 +58,8 @@ href: "javascript:window.history.back()"
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="has-ni-number" name="has-ni-number" type="radio" value="yes"
-                data-aria-controls="conditional-ni-number">
+                data-aria-controls="conditional-ni-number" {% if
+                data['has-ni-number']=='yes' %}checked{% endif %}>
               <label class="govuk-label govuk-radios__label" for="has-ni-number">
                 Yes
               </label>
@@ -68,7 +71,7 @@ href: "javascript:window.history.back()"
                 </label>
                 <div class="govuk-hint" id="ni-number-hint">For example, 'QQ 12 34 56 C'.</div>
                 <input class="govuk-input govuk-!-width-one-third" id="ni-number" name="ni-number" type="text"
-                  spellcheck="false" autocomplete="off" value="{{ data['ni-number'] }}" aria-describedby="ni-number-hint">
+                  spellcheck="false" autocomplete="off" value="{{ data['ni-number'] }}" aria-describedby="ni-number-hint" inputmode="text">
               </div>
             </div>
             <div class="govuk-radios__item">
