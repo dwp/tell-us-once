@@ -193,6 +193,39 @@ router.post('/v0_1/capture/does-the-person-reporting-the-death-want-an-email-con
   }
 })
 
+// Enter death registrations details page - security lock out
+
+router.get('/v0_1/registration-lookup', function (req, res) {
+  if(req.session.data['registration-lookup-attempts'] == null){
+  req.session.data['registration-lookup-attempts'] = 0
+  } 
+
+  return res.render('/v0_1/registration-lookup')
+
+});
+
+router.post('/v0_1/lookup-death-registration', function (req, res) {
+  
+  const regNum = req.session.data['registration-number']
+  console.log("Registration number: " + regNum)
+  var attempts = req.session.data['registration-lookup-attempts']
+  attempts++
+  req.session.data['registration-lookup-attempts'] = attempts
+  console.log("Attempts: " + req.session.data['registration-lookup-attempts'])
+
+  if(attempts < 3 && regNum == "AB123C456DE7"){
+    return res.redirect('/v0_1/registration-lookup')
+  } 
+  
+  if (attempts == 3 && regNum == "AB123C456DE7"){
+    console.log("Locked out")
+    return res.redirect('/v0_1/locked-out')
+  }
+
+    return res.redirect('/v0_1/registration-details-found')
+
+})
+
 
 
 // ---------- V1 prototype ---------- 

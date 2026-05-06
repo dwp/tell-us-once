@@ -14,18 +14,19 @@ href: "javascript:window.history.back()"
 {% block content %}
 
 <div class="govuk-grid-row">
+  {% if data['registration-lookup-attempts'] > 0 %}
   <div class="govuk-grid-column-full">
     <div role="region" class="moj-alert moj-alert--error moj-alert--with-heading" aria-label="error: The death registration details do not match" data-module="moj-alert">
       <div>
       </div>
       <div class="moj-alert__content govuk-!-padding-top-1 govuk-!-padding-bottom-1">
         <h2 class="moj-alert__heading govuk-!-margin-bottom-2">The death registration details do not match</h2>
-          <p class="tuo-alert-content">We cannot match the reference number, surname and date of death you entered.<br>
-          Check you've entered them correctly and try again.<br>
-          You will be locked out for 20 minutes if we cannot match the details 5 times.</p>
+          <p class="tuo-alert-content">We cannot match the reference number, surname and date of death you entered. Check you've entered them correctly and try again.<br>
+You will be locked out for 20 minutes if you enter the incorrect details 3 times.</p>
       </div>
     </div>
   </div>
+  {% endif %}
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">  
       Enter death registration details
@@ -37,7 +38,8 @@ href: "javascript:window.history.back()"
       <li>death certificate</li>
     </ul>
     <p class="govuk-body">Enter the registration details from these documents so we can find the details of the person who's died.</p>
-    <form class="form" action="/v1/registration-lookup-result" method="post">
+    <div class="govuk-inset-text">The date of death you enter must match the date of death on the death certificate.</div>
+    <form class="form" action="/v0_1/lookup-death-registration" method="post">
       <div class="govuk-form-group">
         <label class="govuk-label govuk-label--m" for="registration-number">
           Tell Us Once registration number
