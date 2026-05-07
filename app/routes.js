@@ -224,7 +224,7 @@ router.post('/v0_1/lookup-death-registration', function (req, res) {
 
     return res.redirect('/v0_1/registration-details-found')
 
-})
+});
 
 
 

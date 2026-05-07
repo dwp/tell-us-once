@@ -16,19 +16,20 @@ href: "javascript:window.history.back()"
 <div class="govuk-grid-row">
   {% if data['registration-lookup-attempts'] > 0 %}
   <div class="govuk-grid-column-full">
-    <div role="region" class="moj-alert moj-alert--error moj-alert--with-heading" aria-label="error: The death registration details do not match" data-module="moj-alert">
+    <div role="region" class="moj-alert moj-alert--error moj-alert--with-heading" data-module="moj-alert" role="alert">
       <div>
       </div>
       <div class="moj-alert__content govuk-!-padding-top-1 govuk-!-padding-bottom-1">
         <h2 class="moj-alert__heading govuk-!-margin-bottom-2">The death registration details do not match</h2>
-          <p class="tuo-alert-content">We cannot match the reference number, surname and date of death you entered. Check you've entered them correctly and try again.<br>
-You will be locked out for 20 minutes if you enter the incorrect details 3 times.</p>
+        <p class="tuo-alert-content">We cannot match the reference number, surname and date of death you entered. Check
+          you've entered them correctly and try again.<br>
+          You will be locked out for 20 minutes if you enter the incorrect details 3 times.</p>
       </div>
     </div>
   </div>
   {% endif %}
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">  
+    <h1 class="govuk-heading-xl">
       Enter death registration details
     </h1>
 
@@ -37,12 +38,14 @@ You will be locked out for 20 minutes if you enter the incorrect details 3 times
       <li>Tell Us Once reference number</li>
       <li>death certificate</li>
     </ul>
-    <p class="govuk-body">Enter the registration details from these documents so we can find the details of the person who's died.</p>
-    <div class="govuk-inset-text">The date of death you enter must match the date of death on the death certificate.</div>
+    <p class="govuk-body">Enter the registration details from these documents so we can find the details of the person
+      who's died.</p>
+    <div class="govuk-inset-text">The date of death you enter must match the date of death on the death certificate.
+    </div>
     <form class="form" action="/v0_1/lookup-death-registration" method="post">
       <div class="govuk-form-group">
         <label class="govuk-label govuk-label--m" for="registration-number">
-          Tell Us Once registration number
+          Tell Us Once reference number
         </label>
         <div id="registration-number-hint" class="govuk-hint">
           For example, <span class="tuo-extra-letter-spacing">AB123C456DE7</span>.
@@ -59,15 +62,17 @@ You will be locked out for 20 minutes if you enter the incorrect details 3 times
           autocomplete="none">
       </div>
       <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-death-hint">
-          <label for="" class="govuk-label govuk-label--m">What date did they die?</label>
+        <fieldset class="govuk-fieldset" aria-describedby="date-of-death-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            What date did they die?
+          </legend>
           <div id="date-of-death-hint" class="govuk-hint">
             For example, 16 3 2026.
           </div>
           <div class="govuk-date-input" id="date-of-death">
             <div class="govuk-date-input__item">
               <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label" for="date-of-death">
+                <label class="govuk-label govuk-date-input__label" for="date-of-death-day">
                   Day
                 </label>
                 <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-death-day"
