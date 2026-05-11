@@ -15,21 +15,28 @@ href: "javascript:window.history.back()"
 
 <div class="govuk-grid-row">
   {% if data['registration-lookup-attempts'] > 0 %}
-  <div class="govuk-grid-column-full">
-    <div role="region" class="moj-alert moj-alert--error moj-alert--with-heading" data-module="moj-alert" role="alert">
-      <div>
-      </div>
-      <div class="moj-alert__content govuk-!-padding-top-1 govuk-!-padding-bottom-1">
-        <h2 class="moj-alert__heading govuk-!-margin-bottom-2">The death registration details do not match</h2>
-        <p class="tuo-alert-content">We cannot match the reference number, surname and date of death you entered. Check
-          you've entered them correctly and try again.<br>
-          You will be locked out for 20 minutes if you enter the incorrect details 3 times.</p>
-      </div>
-    </div>
+  <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-notification-banner-error" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner" data-govuk-notification-banner-init="">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Error
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+            <p class="govuk-notification-banner__heading">
+              The death registration details do not match
+             </p>
+             <p class="govuk-body">We cannot match the reference number, surname and date of death you entered. Check
+          you've entered them correctly and try again.</p>
+
+             <p class="govuk-body">You will be locked out for 20 minutes if you enter the incorrect details 3 times.</p>
+            
+          </div>
+        </div>
   </div>
   {% endif %}
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">
+    <h1 class="govuk-heading-l">
       Enter death registration details
     </h1>
 
