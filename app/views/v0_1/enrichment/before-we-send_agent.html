@@ -1,8 +1,19 @@
-{% extends "layouts/main.html" %} {% set pageName="Before we send the
-information" %} {% block content %}
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Before we send the information
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    <a href="#" class="govuk-back-link">Back</a>
+  <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">Before we send the information</h1>
 
     <p class="govuk-body">
@@ -48,7 +59,7 @@ information" %} {% block content %}
 
     <!---------Checkbox-------->
 
-    <div class="govuk-form-group govuk-!-padding-top-6">
+    <div class="govuk-form-group govuk-!-padding-top-2">
       <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
         <div class="govuk-checkboxes" data-module="govuk-checkboxes">
           <div class="govuk-checkboxes__item">
@@ -62,28 +73,39 @@ information" %} {% block content %}
             />
             <label class="govuk-label govuk-checkboxes__label" for="agree">
               I agree that the information I have provided may be shared with
-              the government and council organisations listed above.
+              the government and council organisations listed above
             </label>
           </div>
         </div>
       </fieldset>
     </div>
+      
+    <h2 class="govuk-heading-l">Communication preferences</h2>
+    <h3 class="govuk-heading-m">If you live in Wales</h3>
+      <p class="govuk-body">When you finish Tell Us Once, we'll send you a confirmation letter. You can choose to have your Tell Us Once confirmation letter in Welsh.</p>
+        <p class="govuk-body">
+          If any of the organisations or departments you've chosen to notify need to contact you, you can ask them to contact you in Welsh. If they're able to, they will.
+        </p>
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+        <label class="govuk-label govuk-checkboxes__label" for="waste">
+          I live in Wales, and want further communication in Welsh
+          <!-- <div class="govuk-hint">This will include your Tell Us Once confirmation letter</div> -->
+        </label>
+      </div>
+    </div>
+    <h3 class="govuk-heading-m govuk-!-margin-top-6">Large print</h3>
+        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+        <label class="govuk-label govuk-checkboxes__label" for="waste">
+          I want my Tell Us Once confirmation letter in large print
+        </label>
+      </div>
+    </div>
 
-    <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <h1 class="govuk-fieldset__heading">Further requirements</h1>
-        </legend>
-
-        <!---------Wales-------->
-
-        <div id="changedName-hint" class="govuk-body">
-          If you are resident in Wales you have the option to have your letter
-          in Welsh.
-        </div>
-<div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
-    <label class="govuk-label">Do you live in Wales?</label>  
+    <!-- <label class="govuk-label">Do you live in Wales?</label>  
     <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" data-aria-controls="conditional-contact">
@@ -137,13 +159,13 @@ information" %} {% block content %}
         </div>
       </fieldset>
     </div>
-      </div>    
+      </div>     -->
   </fieldset>
 </div>
 
     <!---------Large print-------->
 
-    <div class="govuk-form-group">
+    <!-- <div class="govuk-form-group">
       <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
         <p class="govuk-body">Do you require large print?</p>
         <div
@@ -176,11 +198,11 @@ information" %} {% block content %}
           </div>
         </div>
       </fieldset>
-    </div>
+    </div> -->
     </div>
 
     <!---------Button-------->
-
+<div class="govuk-button-group govuk-!-margin-top-6">
     <a
       href="confirmation"
       role="button"
@@ -188,9 +210,10 @@ information" %} {% block content %}
       class="govuk-button govuk-button"
       data-module="govuk-button"
     >
-      Send
+      Confirm and send
     </a>
-    <details class="govuk-details govuk-!-padding-top-6">
+    </div>
+    <details class="govuk-details govuk-!-margin-top-6">
       <summary class="govuk-details__summary">
         <span class="govuk-details__summary-text"> Contact us for help </span>
       </summary>

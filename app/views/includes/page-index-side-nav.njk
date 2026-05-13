@@ -1,0 +1,70 @@
+<ul class="dwp-side-navigation__list">
+
+  {# Section: Enrichment #}
+  <li class="dwp-side-navigation__section">
+    Enrichment
+  </li>
+
+  <li class="dwp-side-navigation__item {{ 'dwp-side-navigation__item--selected' if active == 'before-we-send' }}">
+    <a href="/page-index/before-we-send-the-information"
+       class="dwp-side-navigation__link {{ 'dwp-side-navigation__link--selected' if active == 'before-we-send' }}"
+       {% if active == 'before-we-send' %}aria-current="true"{% endif %}>
+      Before we send the information
+    </a>
+  </li>
+
+  <li class="dwp-side-navigation__item {{ 'dwp-side-navigation__item--selected' if active == 'check-your-answers' }}">
+    <a href="/page-index/check-your-answers"
+       class="dwp-side-navigation__link {{ 'dwp-side-navigation__link--selected' if active == 'check-your-answers' }}"
+       {% if active == 'check-your-answers' %}aria-current="true"{% endif %}>
+      Check your answers
+    </a>
+  </li>
+
+  <li class="dwp-side-navigation__item {{ 'dwp-side-navigation__item--selected' if active == 'enter-death-registration-details' }}">
+    <a href="/page-index/enter-death-registration-details"
+       class="dwp-side-navigation__link {{ 'dwp-side-navigation__link--selected' if active == 'enter-death-registration-details' }}"
+       {% if active == 'enter-death-registration-details' %}aria-current="true"{% endif %}>
+      Enter death registration details
+    </a>
+  </li>
+
+   <li class="dwp-side-navigation__item {{ 'dwp-side-navigation__item--selected' if active == 'find-address' }}">
+    <a href="/page-index/find-an-address"
+       class="dwp-side-navigation__link {{ 'dwp-side-navigation__link--selected' if active == 'find-address' }}"
+       {% if active == 'find-address' %}aria-current="true"{% endif %}>
+      Find an address
+    </a>
+  </li>
+
+  <li class="dwp-side-navigation__item {{ 'dwp-side-navigation__item--selected' if active == 'pensions' }}">
+    <a href="/page-index/notify-a-public-sector-pension-provider"
+       class="dwp-side-navigation__link {{ 'dwp-side-navigation__link--selected' if active == 'pensions' }}"
+       {% if active == 'pensions' %}aria-current="true"{% endif %}>
+      Notify a public sector pension provider
+    </a>
+  </li>
+
+    <li class="dwp-side-navigation__item {{ 'dwp-side-navigation__item--selected' if active == 'ni-number' }}">
+    <a href="/page-index/their-national-insurance-number"
+       class="dwp-side-navigation__link {{ 'dwp-side-navigation__link--selected' if active == 'ni-number' }}"
+       {% if active == 'ni-number' %}aria-current="true"{% endif %}>
+      Their National Insurance number
+    </a>
+  </li>
+
+<!---
+  {# Section: Capture #}
+  <li class="dwp-side-navigation__section">
+    Capture
+  </li>
+
+  <li class="dwp-side-navigation__item {{ 'dwp-side-navigation__item--selected' if active == 'item3' }}">
+    <a href="/item-3"
+       class="dwp-side-navigation__link {{ 'dwp-side-navigation__link--selected' if active == 'item3' }}"
+       {% if active == 'item3' %}aria-current="true"{% endif %}>
+      Item 3
+    </a>
+  </li>
+--->
+</ul>

@@ -1,0 +1,47 @@
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+
+{% from "internal-service-header/macro.njk" import dwpHeader %}
+{% from "internal-service-footer/macro.njk" import dwpFooter %}
+
+
+{% set containerClasses = "tuo-width-container" %}
+
+{% block header %}
+  {{
+    dwpHeader({
+      serviceName: serviceName + " prototype",
+      serviceHref: "/",
+      container: true,
+      containerClasses: "tuo-width-container"
+    })
+  }}
+{% endblock %}
+
+{% block footer %}
+  {{
+    dwpFooter({
+      meta: {
+        visuallyHiddenTitle: "About this website",
+        items: [
+          {
+            href: "",
+            text: "Accessibility statement"
+          },
+          {
+            href: "",
+            text: "Privacy"
+          },
+          {
+            href: "/manage-prototype/clear-data",
+            text: "Clear data"
+          }
+        ]
+      }
+    })
+  }}
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script src="/public/javascripts/accessible-autocomplete.min.js"></script>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends "layouts/prototype.html" %}
+{% set headerContainerClasses = "tuo-width-container" %}
+
+{% set active = "find-address" %}
+
+{% block pageTitle %}
+Page index - Find an address
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-quarter">
+    {% include "includes/page-index-side-nav.njk" %}
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="../index.html">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="index.html">Page index</a>
+        </li>
+      </ol>
+    </nav>
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Enrichment</span>
+      Find an address
+    </h1>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-s"><a href="/v0_1/enrichment/address-lookup/what-is-your-address">What is their
+            address?</a></h3>
+        <div class="govuk-iframe--container">
+          <iframe class="govuk-iframe" src="../v0_1/enrichment/address-lookup/what-is-your-address" aria-hidden="true"
+            tabindex="-1"></iframe>
+        </div>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-s"><a href="/v0_1/enrichment/address-lookup/select-address">Select an address</a></h3>
+        <div class="govuk-iframe--container">
+          <iframe class="govuk-iframe" src="../v0_1/enrichment/address-lookup/select-address" aria-hidden="true"
+            tabindex="-1"></iframe>
+        </div>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-s"><a href="/v0_1/enrichment/address-lookup/confirm-address">Confirm address</a></h3>
+        <div class="govuk-iframe--container">
+          <iframe class="govuk-iframe" src="../v0_1/enrichment/address-lookup/confirm-address" aria-hidden="true"
+            tabindex="-1"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="govuk-grid-row govuk-!-margin-top-4">
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-s"><a href="/v0_1/enrichment/address-lookup/manually-enter-address">Manually enter
+            address</a></h3>
+        <div class="govuk-iframe--container">
+          <iframe class="govuk-iframe" src="../v0_1/enrichment/address-lookup/manually-enter-address" aria-hidden="true"
+            tabindex="-1"></iframe>
+        </div>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-s"><a href="/v0_1/enrichment/address-lookup/no-address-found">No address found</a></h3>
+        <div class="govuk-iframe--container">
+          <iframe class="govuk-iframe" src="../v0_1/enrichment/address-lookup/no-address-found" aria-hidden="true"
+            tabindex="-1"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

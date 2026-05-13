@@ -1,8 +1,21 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/prototype.html" %}
 
 {% block pageTitle %}
-  {{ serviceName }} prototypes
+  {{ serviceName }} prototype
 {% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-phase-banner govuk-width-container">
+  <p class="govuk-phase-banner__content">
+    <span class="govuk-phase-banner__text">
+      Last updated on <strong>12 May 2026</strong>.
+
+    </span>
+  </p>
+</div>
+{% endblock %}
+
+
 
 {% block content %}
 
@@ -10,30 +23,45 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">
-        {{ serviceName }} prototypes
+        {{ serviceName }} prototype
       </h1>
 
     
 
-      <p class="govuk-body-l">Prototypes, designs and design ideas for the Tell Us Once service.</p>
+      <p class="govuk-body-l">Designs and design ideas for the Tell Us Once service.</p>
 
 </div>
 </div>
 <div class="govuk-grid-row govuk-!-margin-top-6">
  <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">What's included</h2>
+      <p class="govuk-body">You can use this prototype to explore designs for:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>the public facing Tell Us Once journey (enrichment)</li>
+        <li>the service used by registrar to enter death registration details (capture)</li>
+      </ul>
+      <p class="govuk">The prototype includes full journeys with branching on some questions to show different scenarios. You can also see standalone pages without follwing an entire journey.</p>
 
-      <h2 class="govuk-heading-l">Enrichment</h2>
-
-      <h3 class="govuk-heading-m">Redesign of the service</h3>
+      <h2 class="govuk-heading-l">How to use the prototype</h2>
+      <p class="govuk-body">Interact with the prototype in the same way users do. Most pages don't require you to enter any information to continue to the next page. However, by answering questions you will get a more realistic reflection of how users will see it.</p>
+      <p class="govuk-body">No information you enter when using the prototype will be saved. We recommend using made up information, especially if you are taking and sharing screenshots or sharing your sceen on a call.</p>
+      <h2 class="govuk-heading-l">End to end journeys</h2>
+      <div class="govuk-inset-text">We regularly update the prototype to reflect the live service, but it is not an exact copy and does not use production code.</div>
+      <h3 class="govuk-heading-m">Enrichment</h3>
+      <p class="govuk-body">The public facing Tell Us Once service.</p>
+      <a href=""><button class="govuk-button" disabled aria-disabled="true">Start enrichment end to end journey</button></a>
+      <h3 class="govuk-heading-m">Capture</h3>
+      <p class="govuk-body">The registrar facing service to enter registration details.</p>
+      <a href="v0_1/capture/details-about-the-person-whos-died"><button class="govuk-button">Start capture end to end journey</button></a>
+      <!-- <h3 class="govuk-heading-m">Redesign of the service</h3>
 
       <p class="govuk-body">Prototypes for testing new designs for the service.</p>
-      <a href="v1/start"><button class="govuk-button">Start enrichmnent prototype v1</button></a>
-
-      <h3 class="govuk-heading-m">As-is live service</h3>
-      <p class="govuk-body">A prototype version of the current live service for use in usability testing.</p>
-      <a href="v0/before-you-start"><button class="govuk-button">Start enrichment as-is prototype</button></a>
-
-      <h3 class="govuk-heading-m">Iterations to the live service</h3>
+      <a href="v1/start"><button class="govuk-button">Start enrichmnent prototype v1</button></a> -->
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <h2 class="govuk-heading-l">Page index</h2>
+      <p class="govuk-body">Jump to specific pages in Tell Us Once.</p>
+      <p class="govuk-body"><a href="page-index">Go to page index</a></p>
+      <!-- <h3 class="govuk-heading-m">End-to-end journeys</h3>
       <p class="govuk-body">Designs for iterations and design changes on the live service.</p>
       <ul class="govuk-list">
         <li><a href="v0_1/before-we-send_agent">Before we send page - agent view</a></li>
@@ -41,15 +69,15 @@
         <li><a href="v0_1/registration-lookup">Enter registration details</a></li>
         <li><a href="v0_1/pensions/ni-number">Notify pensions</a></li>
         <li><a href="/v0_1/check-your-answers-2_1">Redesigned Check your answers page (About the person who's died)</a></li>
-      </ul>
+      </ul> -->
 
 
-      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <!-- <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
       <h2 class="govuk-heading-l">Capture</h2>
       <h3 class="govuk-heading-s">Redesign of the capture journey</h3>
       <p class="govuk-body">A prototype showing new designs for the capture journey of the service.</p>
-      <a href="v0_1/capture/details-about-the-person-whos-died"><button class="govuk-button">Start capture prototype v1</button></a>
+      <a href="v0_1/capture/details-about-the-person-whos-died"><button class="govuk-button">Start capture prototype v1</button></a> -->
     </div>
 
     <div class="govuk-grid-column-one-third">

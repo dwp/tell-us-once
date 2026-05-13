@@ -1,0 +1,62 @@
+{% extends "layouts/prototype.html" %}
+{% set active = "pensions" %}
+
+{% block pageTitle %}
+{{ serviceName }} prototype
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-quarter">
+    {% include "includes/page-index-side-nav.njk" %}
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="../index.html">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="index.html">Page index</a>
+        </li>
+      </ol>
+    </nav>
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Enrichment</span>
+      Notify a public sector pension provider
+    </h1>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-s"><a
+            href="/v0_1/enrichment/notify-public-sector-pension-providers/notify-a-public-sector-pension-provider">Notify a public sector pension provider</a></h3>
+        <div class="govuk-iframe--container">
+          <iframe class="govuk-iframe"
+            src="../v0_1/enrichment/notify-public-sector-pension-providers/notify-a-public-sector-pension-provider"
+            aria-hidden="true" tabindex="-1"></iframe>
+        </div>
+        <p class="govuk-body">If the person who's died has less than one public sector pension.</p>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-s"><a
+            href="/v0_1/enrichment/notify-public-sector-pension-providers/notify-a-public-sector-pension">Notify public sector pension providers</a></h3>
+        <div class="govuk-iframe--container">
+          <iframe class="govuk-iframe"
+            src="../v0_1/enrichment/notify-public-sector-pension-providers/notify-a-public-sector-pension"
+            aria-hidden="true" tabindex="-1"></iframe>
+        </div>
+        <p class="govuk-body">If the person who's died has more than one public sector pension.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

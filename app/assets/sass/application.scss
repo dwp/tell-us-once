@@ -160,3 +160,96 @@
   border: 5px solid #d4351c;
   background-color: #d4351c;
 }
+
+.tuo-width-container {
+  max-width: 1240px;
+}
+
+.tuo-header__content {
+  max-width: 1240px;
+}
+
+.dwp-side-navigation__section {
+  margin: 15px 0 5px;
+  font-weight: bold;
+}
+
+/* Index page */
+.govuk-iframe--container {
+  box-sizing: border-box;
+  max-width: 100%;
+  border: 2px solid #b1b4b6;
+  margin-bottom: 20px;
+  margin-top: 12px;
+  height: 260px;
+  width: 400px;
+  position: relative;
+  overflow: visible;
+  /* Transparent overlay to block clicks but allow scrolling */
+}
+.govuk-iframe--container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.govuk-desktop-iframe--container {
+  box-sizing: border-box;
+  max-width: 100%;
+  border: 2px solid #b1b4b6;
+  margin-bottom: 20px;
+  margin-top: 12px;
+  height: 260px;
+  width: 400px;
+  position: relative;
+  overflow: hidden;
+  /* Transparent overlay to block clicks but allow scrolling */
+}
+.govuk-desktop-iframe--container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.govuk-mobile-iframe--container {
+  box-sizing: border-box;
+  max-width: 100%;
+  border: 2px solid #b1b4b6;
+  margin-bottom: 20px;
+  margin-top: 12px;
+  height: 260px;
+  width: 180px;
+  position: relative;
+  overflow: hidden;
+  /* Transparent overlay to block clicks but allow scrolling */
+}
+.govuk-mobile-iframe--container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.govuk-iframe {
+  box-sizing: border-box;
+  border: none;
+  width: 250%; /* Adjust the width to fill the container while maintaining the scale */
+  height: 250%; /* Adjust the height to fill the container while maintaining the scale */
+  top: 0;
+  left: 0;
+  transform: scale(0.4);
+  transform-origin: top left;
+}
+
+

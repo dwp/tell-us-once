@@ -1,0 +1,57 @@
+{% extends "layouts/prototype.html" %}
+{% set active = "before-we-send" %}
+
+{% block pageTitle %}
+Page index - Before we send the information
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-quarter">
+    {% include "includes/page-index-side-nav.njk" %}
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="../index.html">Home</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="index.html">Page index</a>
+        </li>
+      </ol>
+    </nav>
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">Enrichment</span>
+      Before we send the information
+    </h1>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-s"><a href="/v0_1/enrichment/before-we-send_citizen">Before we send the
+            information (public facing)</a></h3>
+        <div class="govuk-iframe--container">
+          <iframe class="govuk-iframe" src="../v0_1/enrichment/before-we-send_citizen" aria-hidden="true"
+            tabindex="-1"></iframe>
+        </div>
+      </div>
+      <div class="govuk-grid-column-one-third">
+        <h3 class="govuk-heading-s"><a href="/v0_1/enrichment/before-we-send_agent">Before we send the
+            information (agent facing)</a></h3>
+        <div class="govuk-iframe--container">
+          <iframe class="govuk-iframe" src="../v0_1/enrichment/before-we-send_agent" aria-hidden="true"
+            tabindex="-1"></iframe>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

@@ -17,54 +17,44 @@ router.use(radioButtonRedirect)
 
 // Pensions journey
 
-router.get('/v0_1/pensions/ni-number', function (req, res) {
+router.get('/v0_1/ni-number', function (req, res) {
   req.session.data['pensions'] = [];
   req.session.data.returnTo = req.query.returnTo;
   req.session.data.path = req.query.path;
   console.log("Path: " + req.session.data.path)
-  res.render('/v0_1/pensions/ni-number');
+  res.render('/v0_1/ni-number');
 });
 
-router.post('/v0_1/pensions/ni-number', function (req, res) {
+router.post('/v0_1/ni-number', function (req, res) {
   if (req.session.data['has-ni-number'] == "yes") {
     const niNum = req.session.data['ni-number'].replace(/\s/g, '');
     req.session.data['ni-number'] = niNum;
     console.log("NI number: " + req.session.data['ni-number'])
-    if (req.session.data.path == 'ur') {
-      return res.redirect('/v0_1/pensions-usability-testing/local-council-services')
-    }
     if (niNum == "QQ123456C") {
-      res.redirect('/v0_1/pensions/no-public-sector-pensions-found')
+      res.redirect('/v0_1/enrichment/notify-public-sector-pension-providers/no-public-sector-pensions-found')
     } else if (niNum == "QQ112233C") {
-      return res.redirect('/v0_1/pensions/notify-a-public-sector-pension-provider')
+      return res.redirect('/v0_1/enrichment/notify-public-sector-pension-providers/notify-a-public-sector-pension-provider')
     } else {
-      return res.redirect('/v0_1/pensions/notify-a-public-sector-pension')
+      return res.redirect('/v0_1/enrichment/notify-public-sector-pension-providers/notify-a-public-sector-pension')
     }
   } else {
-    if (req.session.data.path == 'ur') {
-      return res.redirect('/v0_1/pensions-usability-testing/local-council-services')
-    }
-    return res.redirect('/v0_1/pensions/check-answers')
+    return res.redirect('/v0_1/enrichment/check-answers')
   }
 });
 
-router.get('/v0_1/pensions/notify-a-public-sector-pension', function (req, res) {
+router.get('/v0_1/enrichment/notify-public-sector-pension-providers/notify-a-public-sector-pension', function (req, res) {
   req.session.data.returnTo = req.query.returnTo;
-  res.render('/v0_1/pensions/notify-a-public-sector-pension');
+  res.render('/v0_1/enrichment/notify-public-sector-pension-providers/notify-a-public-sector-pension');
 });
 
-router.post('/v0_1/pensions/notify-a-public-sector-pension', function (req, res) {
+router.post('/v0_1/enrichment/notify-public-sector-pension-providers/notify-a-public-sector-pension', function (req, res) {
   const pensions = req.session.data['pensions']
   console.log(pensions)
 
-  if(req.session.data['path'] == 'ur'){
-    return res.redirect('../pensions-usability-testing/email-confirmation')
-  }
-
-  res.redirect('/v0_1/pensions/check-answers')
+  res.redirect('/v0_1/enrichment/check-answers')
 });
 
-router.post('/v0_1/pensions/check-answers', function (req, res) {
+router.post('/v0_1/enrichment/check-answers', function (req, res) {
   const notifyPension = req.session.data['notify-pension'];
 
   if (notifyPension === 'yes') {
@@ -80,33 +70,7 @@ router.post('/v0_1/pensions/check-answers', function (req, res) {
     delete req.session.data['pensions'];
   }
 
-  res.redirect('/v0_1/pensions/check-answers');
-});
-
-// Pensions UR flow
-router.post('/v0_1/pensions-usability-testing/notify-public-pension-providers', function (req, res) {
-  const niNum = req.session.data['ni-number']
-  console.log("NI number: " + niNum)
-  if (req.session.data['has-ni-number'] == "yes") {
-    if (niNum == "QQ123456C") {
-      return res.redirect('../pensions/no-public-sector-pensions-found')
-    } else if (niNum == "QQ112233C") {
-      return res.redirect('../pensions/notify-a-public-sector-pension-provider')
-    } else {
-      return res.redirect('../pensions/notify-a-public-sector-pension')
-    } 
-  } else {
-      return res.redirect('../pensions-usability-testing/email-confirmation')
-  }
-});
-
-router.post('/v0_1/pensions/check-your-answers-3', function (req, res) {
-  
-      if(req.session.data['path'] == 'ur'){
-        return res.redirect('../pensions-usability-testing/check-your-answers-3')
-      } else {
-        res.redirect('#')
-      }
+  res.redirect('/v0_1/enrichment/check-answers');
 });
 
 // Capture journey
@@ -214,12 +178,12 @@ router.post('/v0_1/lookup-death-registration', function (req, res) {
   console.log("Attempts: " + req.session.data['registration-lookup-attempts'])
 
   if(attempts < 3 && regNum == "AB123C456DE7"){
-    return res.redirect('/v0_1/registration-lookup')
+    return res.redirect('/v0_1/enrichment/enter-death-registration-details/enter-death-registration-details')
   } 
   
   if (attempts == 3 && regNum == "AB123C456DE7"){
     console.log("Locked out")
-    return res.redirect('/v0_1/locked-out')
+    return res.redirect('/v0_1/enrichment/enter-death-registration-details/we-could-not-match-the-death-registration-details')
   }
 
     return res.redirect('/v0_1/registration-details-found')
