@@ -15,9 +15,6 @@ router.get('*', (req, res, next) => {
     month: 'short',
     year: 'numeric'
   })
-
-  console.log("Prototype last updated: ", res.locals.lastUpdated)
-
   next()
 })
 
