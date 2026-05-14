@@ -19,6 +19,7 @@
     "dayjs": "^1.11.20",
     "govuk-frontend": "^6.1.0",
     "govuk-prototype-kit": "13.19.1",
+    "hmrc-frontend": "7.14.0",
     "radio-button-redirect": "^1.2.0"
   },
   "overrides": {

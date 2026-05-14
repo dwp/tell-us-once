@@ -7,8 +7,6 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 router.get('*', (req, res, next) => {
 
-  console.log("👉 route hit")
-
   const rawDate =
     process.env.CI_COMMIT_TIMESTAMP || new Date().toISOString()
 
@@ -18,7 +16,7 @@ router.get('*', (req, res, next) => {
     year: 'numeric'
   })
 
-  console.log("👉 formatted:", res.locals.lastUpdated)
+  console.log("Prototype last updated: ", res.locals.lastUpdated)
 
   next()
 })

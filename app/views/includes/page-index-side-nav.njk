@@ -67,4 +67,17 @@
     </a>
   </li>
 --->
+
+  {# Section: Global #}
+  <li class="dwp-side-navigation__section">
+    Global
+  </li>
+
+  <li class="dwp-side-navigation__item {{ 'dwp-side-navigation__item--selected' if active == 'service-timeout' }}">
+    <a href="/page-index/service-timeout"
+       class="dwp-side-navigation__link {{ 'dwp-side-navigation__link--selected' if active == 'service-timeout' }}"
+       {% if active == 'service-timeout' %}aria-current="true"{% endif %}>
+      Service timeout
+    </a>
+  </li>
 </ul>
