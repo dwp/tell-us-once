@@ -12,3 +12,10 @@ window.GOVUKPrototypeKit.documentReady(() => {
     })
   }
 })
+
+fetch("https://api.github.com/repos/YOUR_USERNAME/YOUR_REPO/commits/main")
+  .then(res => res.json())
+  .then(data => {
+    const lastCommit = data.commit.committer.date;
+    console.log(lastCommit);
+  });

@@ -380,3 +380,35 @@ function normaliseDate(day, month, year) {
 
   return { day, month, year };
 }
+
+// --------- Prototype last updated ----------
+const { execSync } = require('child_process')
+
+module.exports = function (router) {
+
+  router.use((req, res, next) => {
+    let rawDate = process.env.CI_COMMIT_TIMESTAMP
+
+    // Fallback for local development
+    if (!rawDate) {
+      try {
+        rawDate = execSync('git log -1 --format=%cI')
+          .toString()
+          .trim()
+      } catch (e) {
+        rawDate = null
+      }
+    }
+
+    if (rawDate) {
+      res.locals.lastUpdated = new Date(rawDate).toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      })
+    }
+
+    next()
+  })
+
+}
