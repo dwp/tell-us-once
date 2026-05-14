@@ -2,9 +2,26 @@
 // For guidance on how to create routes see:
 // https://prototype-kit.service.gov.uk/docs/create-routes
 //
-
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
+
+router.get('*', (req, res, next) => {
+
+  console.log("👉 route hit")
+
+  const rawDate =
+    process.env.CI_COMMIT_TIMESTAMP || new Date().toISOString()
+
+  res.locals.lastUpdated = new Date(rawDate).toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric'
+  })
+
+  console.log("👉 formatted:", res.locals.lastUpdated)
+
+  next()
+})
 
 // Add your routes here
 
@@ -381,34 +398,4 @@ function normaliseDate(day, month, year) {
   return { day, month, year };
 }
 
-// --------- Prototype last updated ----------
-const { execSync } = require('child_process')
 
-module.exports = function (router) {
-
-  router.use((req, res, next) => {
-    let rawDate = process.env.CI_COMMIT_TIMESTAMP
-
-    // Fallback for local development
-    if (!rawDate) {
-      try {
-        rawDate = execSync('git log -1 --format=%cI')
-          .toString()
-          .trim()
-      } catch (e) {
-        rawDate = null
-      }
-    }
-
-    if (rawDate) {
-      res.locals.lastUpdated = new Date(rawDate).toLocaleDateString('en-GB', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-      })
-    }
-
-    next()
-  })
-
-}
