@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
           and <b>${searchString || "your search"}</b>.
         </p>
 
-        <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+        <div class="govuk-radios" data-module="govuk-radios">
     `;
 
     mockedResults.forEach((address, index) => {
