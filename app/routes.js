@@ -43,6 +43,7 @@ router.post('/v0_1/ni-number', function (req, res) {
     req.session.data['ni-number'] = niNum;
     console.log("NI number: " + req.session.data['ni-number'])
     if (niNum == "QQ123456C") {
+      req.session.data['public-sector-pensions-found'] = "no"
       res.redirect('/v0_1/enrichment/notify-public-sector-pension-providers/no-public-sector-pensions-found')
     } else if (niNum == "QQ112233C") {
       return res.redirect('/v0_1/enrichment/notify-public-sector-pension-providers/notify-a-public-sector-pension-provider')

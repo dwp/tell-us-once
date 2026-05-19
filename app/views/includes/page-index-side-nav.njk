@@ -53,6 +53,20 @@
     </a>
   </li>
 
+  {# Section: Enrichment (agent) #}
+  <li class="dwp-side-navigation__section">
+    Enrichment (agent facing)
+  </li>
+
+    <li class="dwp-side-navigation__item {{ 'dwp-side-navigation__item--selected' if active == 'updade-banner' }}">
+    <a href="/page-index/updade-banner"
+       class="dwp-side-navigation__link {{ 'dwp-side-navigation__link--selected' if active == 'updade-banner' }}"
+       {% if active == 'updade-banner' %}aria-current="true"{% endif %}>
+      Service update banner
+    </a>
+  </li>
+
+
 <!---
   {# Section: Capture #}
   <li class="dwp-side-navigation__section">
