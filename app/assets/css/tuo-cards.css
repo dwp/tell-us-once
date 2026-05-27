@@ -1,0 +1,58 @@
+.tuo-card-group {
+  display: grid;
+  gap: 20px;
+  padding-bottom: 20px;
+  grid-template-columns: repeat(1, 1fr);
+  margin-bottom: 40px;
+}
+
+@media (min-width: 40rem) {
+  .tuo-card-group {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64rem) {
+  .tuo-card-group {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.tuo-card {
+  display: block;
+  padding: 20px 20px 0 20px;
+  border: 1px solid #cecece;
+  border-bottom: 4px solid #cecece;
+  background: #fff;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+.tuo-card:hover {
+  border-color: #858686;
+}
+
+.tuo-card:focus {
+  outline: 3px solid 	#ffdd00;
+  outline-offset: 0;
+}
+
+.tuo-card h2 {
+  margin-top: 0;
+  color: #1a65a6;
+  text-decoration: underline;
+}
+
+.tuo-card:hover h2,
+.tuo-card:focus h2,
+.tuo-card:focus-visible h2 {
+  color: #0f385c;
+  text-decoration: none;
+}
+
+.tuo-card > .govuk-body {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+

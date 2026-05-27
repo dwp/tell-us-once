@@ -3,8 +3,13 @@
 {% from "internal-service-header/macro.njk" import dwpHeader %}
 {% from "internal-service-footer/macro.njk" import dwpFooter %}
 
-{% block beforeHeader %}
-{% if showCookieBanner %}
+{% block stylesheets %}
+  {{ super() }}
+  <link href="/public/css/tuo-cards.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block bodyStart %}
+{% if showCookieBanner == true %}
   <div class="govuk-cookie-banner" data-module="govuk-cookie-banner" data-nosnippet role="region" aria-label="Cookies on Tell Us Once">
     <div class="govuk-cookie-banner__message govuk-width-container">
       <div class="govuk-grid-row">
@@ -26,9 +31,10 @@
     </div>
   </div>
   {% endif %}
-{% endblock %}
+  {% endblock %}
 
 {% block header %}
+
   {{
     dwpHeader({
       serviceName: serviceName,

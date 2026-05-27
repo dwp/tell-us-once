@@ -94,4 +94,12 @@
       Service timeout
     </a>
   </li>
+
+  <li class="dwp-side-navigation__item {{ 'dwp-side-navigation__item--selected' if active == 'cookie-banner' }}">
+    <a href="/page-index/cookie-banner"
+       class="dwp-side-navigation__link {{ 'dwp-side-navigation__link--selected' if active == 'cookie-banner' }}"
+       {% if active == 'cookie-banner' %}aria-current="true"{% endif %}>
+      Cookie banner
+    </a>
+  </li>
 </ul>

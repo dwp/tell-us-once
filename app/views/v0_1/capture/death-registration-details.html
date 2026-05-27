@@ -88,63 +88,6 @@ Death registration details
           aria-describedby="registration-number-hint">
       </div>
 
-      <!-- Date of death -->
-
-      <div class="govuk-form-group govuk-!-margin-top-4">
-        <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-death-hint">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-            Enter date of death
-          </legend>
-
-          <div id="date-of-death-hint" class="govuk-hint">
-            For example, 14 4 2026.
-          </div>
-
-          <div class="govuk-date-input" id="date-of-death">
-
-            <div class="govuk-date-input__item">
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label" for="date-of-death-day">
-                  Day
-                </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2"
-                  id="date-of-death-day"
-                  name="date-of-death-day"
-                  type="text"
-                  inputmode="numeric">
-              </div>
-            </div>
-
-            <div class="govuk-date-input__item">
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label" for="date-of-death-month">
-                  Month
-                </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2"
-                  id="date-of-death-month"
-                  name="date-of-death-month"
-                  type="text"
-                  inputmode="numeric">
-              </div>
-            </div>
-
-            <div class="govuk-date-input__item">
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label" for="date-of-death-year">
-                  Year
-                </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-4"
-                  id="date-of-death-year"
-                  name="date-of-death-year"
-                  type="text"
-                  inputmode="numeric">
-              </div>
-            </div>
-
-          </div>
-        </fieldset>
-      </div>
-
       <!-- Registration district -->
 
       <div class="govuk-form-group govuk-!-margin-top-4">
@@ -255,6 +198,18 @@ Death registration details
                 </div>
               </fieldset>
 
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input"
+                id="no-registration-date"
+                name="death-registered-today"
+                type="radio"
+                value="There is no death registration date"
+                data-aria-controls="no-registration-date">
+              <label class="govuk-label govuk-radios__label" for="no-registration-date">
+                There is no death registration date
+              </label>
             </div>
 
           </div>
