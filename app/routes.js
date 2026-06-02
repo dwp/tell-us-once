@@ -18,8 +18,6 @@ router.get('*', (req, res, next) => {
   next()
 })
 
-// Add your routes here
-
 // ---------- V0 prototype ---------- 
 
 const radioButtonRedirect = require('radio-button-redirect')
@@ -27,8 +25,40 @@ router.use(radioButtonRedirect)
 
 // ---------- V0_1 prototype ---------- 
 
-// Pensions journey
 
+// Address lookup
+router.get('/v0_1/enrichment/address-lookup/address-enhancement', function (req, res) {
+  req.session.data['state'] = "lookup";  
+  res.render('/v0_1/enrichment/address-lookup/address-enhancement');
+});
+
+
+router.get('/v0_1/enrichment/address-lookup/address-enhancement-lookup', function (req, res) {
+  req.session.data['resultType'] = null;
+  req.session.data['state'] = "lookup";
+  req.session.data['addr'] = "yes";
+  res.redirect('/v0_1/enrichment/address-lookup/address-enhancement#lookup');
+});
+
+router.get('/v0_1/enrichment/address-lookup/address-enhancement-manual', function (req, res) {
+  req.session.data['resultType'] = null;
+  req.session.data['state'] = "manual";
+  req.session.data['addr'] = "yes";
+  res.redirect('/v0_1/enrichment/address-lookup/address-enhancement#manual');
+});
+
+router.post('/v0_1/enrichment/address-lookup/address-enhancement-results', function (req, res) {
+  const addressLookupState = req.session.data['resultType'];
+   
+  if(addressLookupState){
+    res.redirect(`/v0_1/enrichment/address-lookup/address-enhancement#resultlist-${addressLookupState}`)
+  } else {
+    res.redirect('/v0_1/enrichment/address-lookup/address-enhancement')
+  }
+});
+// End Address lookup
+
+// Pensions journey
 router.get('/v0_1/ni-number', function (req, res) {
   req.session.data['pensions'] = [];
   req.session.data.returnTo = req.query.returnTo;
@@ -85,6 +115,7 @@ router.post('/v0_1/enrichment/check-answers', function (req, res) {
 
   res.redirect('/v0_1/enrichment/check-answers');
 });
+// End Pensions journey
 
 // Capture journey
 router.post('/v0_1/capture/confirm-address', function (req, res) {
@@ -169,9 +200,9 @@ router.post('/v0_1/capture/does-the-person-reporting-the-death-want-an-email-con
     return res.redirect('/v0_1/capture/does-the-person-reporting-the-death-want-an-email-confirming-their-tell-us-once-reference-number')
   }
 })
+// End Capture journey
 
 // Enter death registrations details page - security lock out
-
 router.get('/v0_1/registration-lookup', function (req, res) {
   if(req.session.data['registration-lookup-attempts'] == null){
   req.session.data['registration-lookup-attempts'] = 0
@@ -202,7 +233,7 @@ router.post('/v0_1/lookup-death-registration', function (req, res) {
     return res.redirect('/v0_1/registration-details-found')
 
 });
-
+// End Enter death registrations details page - security lock out
 
 
 // ---------- V1 prototype ---------- 

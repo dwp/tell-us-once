@@ -1,0 +1,329 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Look up their address
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+      text: "Back",
+      href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/v0_1/enrichment/address-lookup/address-enhancement" method="post">
+        
+<!-- Radio reveal -->
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">      
+        Enter address?
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+        <div class="govuk-radios__item">
+            <input {% if (data['addr']=="yes") %}checked {% endif %} class="govuk-radios__input" id="addr-y" name="addr" type="radio" value="yes" data-aria-controls="conditional-addr">
+            <label class="govuk-label govuk-radios__label" for="addr-y">
+                Yes
+            </label>
+        </div>
+        <!-- REVEALED CONTENT -->
+<!-- START OF ADDRESS SECTION -->
+<div class="govuk-radios__conditional {% if (data['addr'] != "yes") %}govuk-radios__conditional--hidden{% endif %}" id="conditional-addr">
+    <div class="govuk-form-group">
+<!-- Lookup -->
+{% if (data['state'] != "manual") %}
+<div class="govuk-form-group">
+    <fieldset class="govuk-fieldset" id="lookup" index="tab-1">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Look up address</legend> 
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="postcode">
+                Postcode
+            </label>
+            <div id="postcode-hint" class="govuk-hint">
+                For example, AA3 1AB.
+            </div>
+            <input class="govuk-input govuk-!-width-two-thirds" id="postcode" name="postcode" type="text" aria-describedby="postcode-hint">
+        </div>
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="searchString">
+            Building number or name
+            </label>
+            <div id="searchString-hint" class="govuk-hint">
+            For example, 15 or Prospect Cottage.
+            </div>
+            <input class="govuk-input govuk-!-width-two-thirds" id="searchString" name="searchString" type="text" aria-describedby="searchString-hint">
+        </div>
+
+        <div class="govuk-form-group">
+            <button class="govuk-button" id="findaddressbutton" formaction="/v0_1/enrichment/address-lookup/address-enhancement-results">
+            Find address
+            </button>
+        </div>
+
+        <!-- Results None -->
+        {% if (data['resultType'] == "none")%}
+        <div class="govuk-form-group" id="resultlist-none">  
+          <div class="govuk-inset-text">
+              No address found for SW12 0BL, check the postcode, or <a class="govuk-link" href="/v0_1/enrichment/address-lookup/address-enhancement-manual">enter the address manually</a>.
+          </div>
+        </div>
+        {% else %}
+            <p><a class="govuk-link" href="/v0_1/enrichment/address-lookup/address-enhancement-manual?addr=yes">Manually enter address</a></p>
+        {% endif %}
+        <!-- End results None -->  
+        
+    </fieldset>
+</div>
+{% endif %}
+<!-- End lookup -->
+
+
+<!-- Results Radio -->
+ {% if (data['resultType'] == "radio")%}
+ <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="results--radio-hint" id="resultlist-radio">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        Select the address
+    </legend>
+    <div id="results--radio-hint" class="govuk-hint">
+      30 addresses found for SW12 0BL
+    </div>
+    <div class="govuk-radios" data-module="govuk-radios">
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress1" name="yourFullAddress" type="radio" value="49A|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457488|"><label class="govuk-label govuk-radios__label" for="yourFullAddress1">49A CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress2" name="yourFullAddress" type="radio" value="49B|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457489|"><label class="govuk-label govuk-radios__label" for="yourFullAddress2">49B CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress3" name="yourFullAddress" type="radio" value="49C|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457490|"><label class="govuk-label govuk-radios__label" for="yourFullAddress3">49C CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress4" name="yourFullAddress" type="radio" value="49D|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457491|"><label class="govuk-label govuk-radios__label" for="yourFullAddress4">49D CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress5" name="yourFullAddress" type="radio" value="51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100023674148|"><label class="govuk-label govuk-radios__label" for="yourFullAddress5">51 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress6" name="yourFullAddress" type="radio" value="53|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100023674149|"><label class="govuk-label govuk-radios__label" for="yourFullAddress6">53 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress7" name="yourFullAddress" type="radio" value="55B|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457498|"><label class="govuk-label govuk-radios__label" for="yourFullAddress7">55B CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress8" name="yourFullAddress" type="radio" value="55C|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457499|"><label class="govuk-label govuk-radios__label" for="yourFullAddress8">55C CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress9" name="yourFullAddress" type="radio" value="55D|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457500|"><label class="govuk-label govuk-radios__label" for="yourFullAddress9">55D CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress10" name="yourFullAddress" type="radio" value="1B, FLAT 1|KLEA AVENUE|LONDON||United Kingdom|SW12 0BL|10095612111|"><label class="govuk-label govuk-radios__label" for="yourFullAddress10">FLAT 1, 1B KLEA AVENUE, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress11" name="yourFullAddress" type="radio" value="FLAT 1, 51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820783|"><label class="govuk-label govuk-radios__label" for="yourFullAddress11">FLAT 1, 51 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress12" name="yourFullAddress" type="radio" value="FLAT 1, 53|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820791|"><label class="govuk-label govuk-radios__label" for="yourFullAddress12">FLAT 1, 53 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress13" name="yourFullAddress" type="radio" value="1B, FLAT 2|KLEA AVENUE|LONDON||United Kingdom|SW12 0BL|10095612112|"><label class="govuk-label govuk-radios__label" for="yourFullAddress13">FLAT 2, 1B KLEA AVENUE, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress14" name="yourFullAddress" type="radio" value="FLAT 2, 51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820784|"><label class="govuk-label govuk-radios__label" for="yourFullAddress14">FLAT 2, 51 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress15" name="yourFullAddress" type="radio" value="FLAT 2, 53|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000521544|"><label class="govuk-label govuk-radios__label" for="yourFullAddress15">FLAT 2, 53 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress16" name="yourFullAddress" type="radio" value="1B, FLAT 3|KLEA AVENUE|LONDON||United Kingdom|SW12 0BL|10095612113|"><label class="govuk-label govuk-radios__label" for="yourFullAddress16">FLAT 3, 1B KLEA AVENUE, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress17" name="yourFullAddress" type="radio" value="FLAT 3, 51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820785|"><label class="govuk-label govuk-radios__label" for="yourFullAddress17">FLAT 3, 51 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress18" name="yourFullAddress" type="radio" value="FLAT 3, 53|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000521543|"><label class="govuk-label govuk-radios__label" for="yourFullAddress18">FLAT 3, 53 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress19" name="yourFullAddress" type="radio" value="1B, FLAT 4|KLEA AVENUE|LONDON||United Kingdom|SW12 0BL|10095612114|"><label class="govuk-label govuk-radios__label" for="yourFullAddress19">FLAT 4, 1B KLEA AVENUE, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress20" name="yourFullAddress" type="radio" value="FLAT 4, 51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820786|"><label class="govuk-label govuk-radios__label" for="yourFullAddress20">FLAT 4, 51 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress21" name="yourFullAddress" type="radio" value="FLAT 4, 53|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000521545|"><label class="govuk-label govuk-radios__label" for="yourFullAddress21">FLAT 4, 53 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress22" name="yourFullAddress" type="radio" value="1B, FLAT 5|KLEA AVENUE|LONDON||United Kingdom|SW12 0BL|10095612115|"><label class="govuk-label govuk-radios__label" for="yourFullAddress22">FLAT 5, 1B KLEA AVENUE, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress23" name="yourFullAddress" type="radio" value="FLAT 5, 51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820787|"><label class="govuk-label govuk-radios__label" for="yourFullAddress23">FLAT 5, 51 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress24" name="yourFullAddress" type="radio" value="1B, FLAT 6|KLEA AVENUE|LONDON||United Kingdom|SW12 0BL|10095612116|"><label class="govuk-label govuk-radios__label" for="yourFullAddress24">FLAT 6, 1B KLEA AVENUE, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress25" name="yourFullAddress" type="radio" value="FLAT 6, 51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820788|"><label class="govuk-label govuk-radios__label" for="yourFullAddress25">FLAT 6, 51 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress26" name="yourFullAddress" type="radio" value="1B, FLAT 7|KLEA AVENUE|LONDON||United Kingdom|SW12 0BL|10095612117|"><label class="govuk-label govuk-radios__label" for="yourFullAddress26">FLAT 7, 1B KLEA AVENUE, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress27" name="yourFullAddress" type="radio" value="FLAT 7, 51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820789|"><label class="govuk-label govuk-radios__label" for="yourFullAddress27">FLAT 7, 51 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress28" name="yourFullAddress" type="radio" value="FLAT A, 55|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457497|"><label class="govuk-label govuk-radios__label" for="yourFullAddress28">FLAT A, 55 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress29" name="yourFullAddress" type="radio" value="FLAT B-D, 55|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100023674151|"><label class="govuk-label govuk-radios__label" for="yourFullAddress29">FLAT B-D, 55 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+        <div class="govuk-radios__item"><input class="govuk-radios__input" id="yourFullAddress30" name="yourFullAddress" type="radio" value="47, POLICE STATION|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457486|"><label class="govuk-label govuk-radios__label" for="yourFullAddress30">POLICE STATION, 47 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
+    </div>
+    </fieldset>
+</div>
+{% endif %}
+<!-- End results radio -->
+
+<!-- Manual Entry -->
+{% if (data['state'] == "manual") %}
+<div class="govuk-form-group">
+    <fieldset class="govuk-fieldset" id="manual">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">    
+            Enter your address manually    
+        </legend>
+        <p><a class="govuk-link" href="/v0_1/enrichment/address-lookup/address-enhancement-lookup?addr=yes">Use postcode lookup</a></p>
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="address-line-1">
+            Address line 1
+            </label>
+            <input class="govuk-input" id="address-line-1" name="addressLine1" type="text" autocomplete="address-line1">
+        </div>
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="address-line-2">
+            Address line 2 (optional)
+            </label>
+            <input class="govuk-input" id="address-line-2" name="addressLine2" type="text" autocomplete="address-line2">
+        </div>
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="address-town">
+            Town or city
+            </label>
+            <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="addressTown" type="text" autocomplete="address-level2">
+        </div>
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="address-county">
+            County (optional)
+            </label>
+            <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="addressCounty" type="text">
+        </div>
+        <div class="govuk-form-group">
+            <label class="govuk-label" for="address-postcode">
+            Postcode
+            </label>
+            <input class="govuk-input govuk-input--width-10" id="address-postcode" name="addressPostcode" type="text" autocomplete="postal-code">
+        </div>        
+    </fieldset>
+</div>
+{% endif %}
+<!-- End manual entry -->
+<!-- END OF ADDRESS SECTION -->
+
+
+<!-- END REVEALED CONTENT -->
+ </div>
+ </div>
+        <div class="govuk-radios__item">
+            <input {% if (data['addr']=="no") %}checked {% endif %}class="govuk-radios__input" id="addr-n" name="addr" type="radio" value="no">
+            <label class="govuk-label govuk-radios__label" for="addr-n">
+                No
+            </label>
+        </div>
+      </div>
+  </fieldset>
+</div>
+<!-- End radio reveal -->    
+
+<div class="govuk-form-group">
+    <button type="submit" class="govuk-button" data-module="govuk-button">
+    Continue
+    </button>
+</div>
+
+
+
+<!-- THIS SECTION IS FOR SHOWING THE STATES ONLY - NOT FOR PROD -->
+<style>
+    aside {
+        position: fixed;
+        top: 1em;
+        right: 0.25em;
+        padding: 1em 2em;
+        z-index: 100;
+        background-color: white;
+        border: 2px solid black;
+        box-shadow: 6px 6px 0 0 rgba(0, 0, 0, 0.2);
+    }   
+</style>
+<aside>
+    <details class="govuk-details" open>
+        <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+                Toggle options
+            </span>
+        </summary>
+        <div class="govuk-details__text">
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend">Results:</legend>
+                <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                    <input{% if (data["resultType"] == null or data["resultType"] == "radio") %} checked{% endif %} class="govuk-radios__input" id="resultTypeRadio" name="resultType" type="radio" value="radio">
+                    <label class="govuk-label govuk-radios__label" for="resultTypeRadio">
+                    Radios
+                    </label>
+                </div>
+                <div class="govuk-radios__item">
+                    <input{% if (data["resultType"] == "none") %} checked{% endif %} class="govuk-radios__input" id="resultTypeNone" name="resultType" type="radio" value="none">
+                    <label class="govuk-label govuk-radios__label" for="resultTypeNone">
+                    None
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+    </details>
+</aside>
+<!-- END - THIS SECTION IS FOR SHOWING THE STATES ONLY - NOT FOR PROD -->
+
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<script>             
+    // this checks for the scoped hash as an id within the address and ensures the label is visible when scrolled
+    var hashParam = location.hash;
+    var validHash = document.querySelector("#conditional-addr " + hashParam);
+    if(validHash){
+        hashParam = hashParam.slice(1);
+        setTimeout(function(){
+            focusTarget(hashParam);
+        }, 50);
+    }
+    // below functions are part of govuk
+    function focusTarget(inputId){
+        const $input = document.getElementById(inputId)
+        if (!$input) {
+            return false
+        }
+        
+        const $legendOrLabel = this.getAssociatedLegendOrLabel($input)
+        if (!$legendOrLabel) {
+            return false
+        }
+        // Scroll the legend or label into view *before* calling focus on the input
+        // to avoid extra scrolling in browsers that don't support `preventScroll`
+        // (which at time of writing is most of them...)
+        $legendOrLabel.scrollIntoView()
+        $input.focus({ preventScroll: true })
+
+        return true
+    }
+
+    function getAssociatedLegendOrLabel($input) {
+            const $fieldset = $input.closest('fieldset')
+
+            if ($fieldset) {
+              const $legends = $fieldset.getElementsByTagName('legend')
+
+              if ($legends.length) {
+                const $candidateLegend = $legends[0]
+
+                // If the input type is radio or checkbox, always use the legend if
+                // there is one.
+                if (
+                  $input instanceof HTMLInputElement &&
+                  ($input.type === 'checkbox' || $input.type === 'radio')
+                ) {
+                  return $candidateLegend
+                }
+
+                // For other input types, only scroll to the fieldset’s legend (instead
+                // of the label associated with the input) if the input would end up in
+                // the top half of the screen.
+                //
+                // This should avoid situations where the input either ends up off the
+                // screen, or obscured by a software keyboard.
+                const legendTop = $candidateLegend.getBoundingClientRect().top
+                const inputRect = $input.getBoundingClientRect()
+
+                // If the browser doesn't support Element.getBoundingClientRect().height
+                // or window.innerHeight (like IE8), bail and just link to the label.
+                if (inputRect.height && window.innerHeight) {
+                  const inputBottom = inputRect.top + inputRect.height
+
+                  if (inputBottom - legendTop < window.innerHeight / 2) {
+                    return $candidateLegend
+                  }
+                }
+              }
+            }
+
+            return (
+              document.querySelector(`label[for='${$input.getAttribute('id')}']`) ??
+              $input.closest('label')
+            )
+          }
+    
+</script>
+
+{% endblock %}

@@ -19,68 +19,7 @@ href: "javascript:window.history.back()"
         <div class="govuk-grid-column-full">
           <h1 class="govuk-heading-l">Check your answers (2 of 3)</h1>
 
-          <!---------Next of kin-------->
-
-          <div class="govuk-summary-card">
-            <div class="govuk-summary-card__title-wrapper">
-              <h2 class="govuk-summary-card__title">
-                About the next of kin
-              </h2>
-              <ul class="govuk-summary-card__actions">
-                <li class="govuk-summary-card__action">
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> about the next of
-                      kin</span></a>
-                </li>
-              </ul>
-            </div>
-            <div class="govuk-summary-card__content">
-              <dl class="govuk-summary-list">
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key govuk-!-width-one-half">
-                    Is there a next of kin?
-                  </dt>
-                  <dd class="govuk-summary-list__value">
-                    Yes
-                  </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
-                    First name
-                  </dt>
-                  <dd class="govuk-summary-list__value">
-                    Patsy
-                  </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
-                    Surname
-                  </dt>
-                  <dd class="govuk-summary-list__value">
-                    Salmon
-                  </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
-                    What is their relationship to the person who's died?
-                  </dt>
-                  <dd class="govuk-summary-list__value">
-                    Wife
-                  </dd>
-                </div>
-                <div class="govuk-summary-list__row">
-                  <dt class="govuk-summary-list__key">
-                    Can the next of kin be contacted?
-                  </dt>
-                  <dd class="govuk-summary-list__value">
-                    Yes
-                  </dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-
           <!---------About the person who's died-------->
-
           <div class="govuk-summary-card">
             <div class="govuk-summary-card__title-wrapper">
               <h2 class="govuk-summary-card__title">
@@ -406,13 +345,21 @@ href: "javascript:window.history.back()"
               </section>
             </div>
           </div>
-
+          
 <!---------Public sector pension providers-------->
           {% if data['has-ni-number'] == "yes" %}
           <div class="govuk-summary-card">
             <div class="govuk-summary-card__title-wrapper">
               <h2 class="govuk-summary-card__title">
-                Public sector pensions
+                {% if data['pensions'] %}
+                  {% if (data['pensions'].length) >= 2 or (data['pensions'].includes('I do not want to notify any public sector pension providers')) %}
+                     Notify public sector pension providers
+                  {% elif (data['pensions'].length) < 2 %}
+                      Notify a public sector pension provider
+                {% endif %}
+                {% else %}
+                    Public sector pensions
+                    {% endif %}
               </h2>
               {% if data['public-sector-pensions-found'] != 'no' %}
               <ul class="govuk-summary-card__actions">
@@ -431,21 +378,32 @@ href: "javascript:window.history.back()"
               <dl class="govuk-summary-list">
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key govuk-!-width-one-half">
-                    Public Sector Pension providers
+                    {% if data['pensions'].includes('I do not want to notify any public sector pension providers') %}
+                    Public sector pension providers you want to notify about the death
+                    {% elif data['pensions'].length < 2 %}
+                      Do you want to notify Civil Service Pension about the death?
+                    {% else %}
+                      Public sector pension providers you want to notify about the death
+                    {% endif %}
                   </dt>
                   <dd class="govuk-summary-list__value">
+                    {% if data['pensions'].includes('I do not want to notify any public sector pension providers') %}
+                      I do not want to notify any public sector pension providers
+                    {% elif data['pensions'].length < 2 %}
+                      Yes
+                    {% else %}
                     <ul class="govuk-list">
                       {% for pension in data['pensions'] %}
                       <li>{{pension}}</li>
                       {% endfor %}
                     </ul>
+                    {% endif %}
                   </dd>
                 </div>
               </dl>
             </div>
             {% endif %}
           </div>
-
           {% endif %}
           
           <form class="form" action="./notify-public-sector-pension-providers/confirmation" method="post" novalidate>
