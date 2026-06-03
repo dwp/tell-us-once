@@ -20,7 +20,7 @@
     "govuk-frontend": "^6.1.0",
     "hmrc-frontend": "7.14.0",
     "radio-button-redirect": "^1.2.0",
-    "@dwp-govuk/govuk-prototype-kit": "latest"
+    "govuk-prototype-kit": "^13.19.1"
   },
   "overrides": {
     "govuk-frontend": "^6.1.0",
