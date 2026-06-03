@@ -27,33 +27,33 @@ router.use(radioButtonRedirect)
 
 
 // Address lookup
-router.get('/v0_1/enrichment/address-lookup/address-enhancement', function (req, res) {
+router.get('/v0_1/enrichment/address-lookup/find-address-single-page', function (req, res) {
   req.session.data['state'] = "lookup";  
-  res.render('/v0_1/enrichment/address-lookup/address-enhancement');
+  res.render('/v0_1/enrichment/address-lookup/find-address-single-page');
 });
 
 
-router.get('/v0_1/enrichment/address-lookup/address-enhancement-lookup', function (req, res) {
+router.get('/v0_1/enrichment/address-lookup/find-address-single-page-lookup', function (req, res) {
   req.session.data['resultType'] = null;
   req.session.data['state'] = "lookup";
   req.session.data['addr'] = "yes";
-  res.redirect('/v0_1/enrichment/address-lookup/address-enhancement#lookup');
+  res.redirect('/v0_1/enrichment/address-lookup/find-address-single-page#lookup');
 });
 
-router.get('/v0_1/enrichment/address-lookup/address-enhancement-manual', function (req, res) {
+router.get('/v0_1/enrichment/address-lookup/find-address-single-page-manual', function (req, res) {
   req.session.data['resultType'] = null;
   req.session.data['state'] = "manual";
   req.session.data['addr'] = "yes";
-  res.redirect('/v0_1/enrichment/address-lookup/address-enhancement#manual');
+  res.redirect('/v0_1/enrichment/address-lookup/find-address-single-page#manual');
 });
 
-router.post('/v0_1/enrichment/address-lookup/address-enhancement-results', function (req, res) {
+router.post('/v0_1/enrichment/address-lookup/find-address-single-page-results', function (req, res) {
   const addressLookupState = req.session.data['resultType'];
    
   if(addressLookupState){
-    res.redirect(`/v0_1/enrichment/address-lookup/address-enhancement#resultlist-${addressLookupState}`)
+    res.redirect(`/v0_1/enrichment/address-lookup/find-address-single-page#resultlist-${addressLookupState}`)
   } else {
-    res.redirect('/v0_1/enrichment/address-lookup/address-enhancement')
+    res.redirect('/v0_1/enrichment/address-lookup/find-address-single-page')
   }
 });
 // End Address lookup

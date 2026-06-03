@@ -1,0 +1,18 @@
+.prototype-options {
+  position: relative;
+  border: 5px solid #158187;
+}
+
+.prototype-options-header-container {
+  position: relative;
+  background-color: #158187;
+}
+
+.prototype-options-header {
+  color: #fff;
+  padding: 2px 20px 5px;
+}
+
+.prototype-options-content {
+  padding: 0 20px 20px;
+}
