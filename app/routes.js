@@ -5,28 +5,122 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
-router.get('*', (req, res, next) => {
-
-  const rawDate =
-    process.env.CI_COMMIT_TIMESTAMP || new Date().toISOString()
-
-  res.locals.lastUpdated = new Date(rawDate).toLocaleDateString('en-GB', {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric'
-  })
-  next()
+// ---------- Start prototype ----------
+router.get('/start', function (req, res) {
+  req.session.data.version = req.query.version
+  res.redirect(`/${req.session.data.version}/before-you-start`)
 })
 
-// ---------- V0 prototype ---------- 
+// ---------- CURRENT ----------
+// ---------- Before you start - authority question ----------
+ 
+router.post('/:version/before-you-start', function (req, res) {
 
-const radioButtonRedirect = require('radio-button-redirect')
-router.use(radioButtonRedirect)
+  const version = req.params.version;
 
-// ---------- V0_1 prototype ---------- 
+  if (req.session.data['authority-consent'] === 'yes') {
+    req.session.data.showAuthorityError = false;
+    return res.redirect(`/${version}/enter-death-registration-details`);
+  }
 
+  if (req.session.data['authority-consent'] === 'no') {
+    req.session.data.showAuthorityError = true;
+    return res.render(`/${version}/before-you-start`);
+  }
+});
 
-// Address lookup
+// ---------- About the person who's died ---------- 
+router.get('/current/deceased-address', function (req, res) {
+
+  req.session.data['deceased-address-state'] = "lookup";
+  req.session.data['deceased-has-other-address'] = "yes";
+
+  res.redirect('/current/about-the-person-whos-died#deceased-lookup');
+});
+
+router.post('/current/deceased-address-results', function (req, res) {
+
+  const postcode = req.session.data['deceased-address-postcode'];
+
+  if (postcode === "ZZ1 1ZZ") {
+    req.session.data['deceased-address-result-type'] = "none";
+  } else {
+    req.session.data['deceased-address-result-type'] = "radio";
+  }
+
+  req.session.data['deceased-address-state'] = "lookup";
+  req.session.data['deceased-has-other-address'] = "yes";
+
+  res.redirect('/current/about-the-person-whos-died#deceased-resultlist-radio');
+});
+
+router.get('/current/deceased-address-manual', function (req, res) {
+
+  req.session.data['deceased-address-state'] = "manual";
+  req.session.data['deceased-has-other-address'] = "yes";
+
+  res.redirect('/current/about-the-person-whos-died#deceased-manual');
+});
+
+router.get('/current/place-of-death-address', function (req, res) {
+
+  req.session.data['place-of-death-address-state'] = "lookup";
+  req.session.data['place-of-death-address'] = "yes";
+
+  res.redirect('/current/about-the-person-whos-died#place-lookup');
+});
+
+router.post('/current/place-of-death-address-results', function (req, res) {
+
+  const postcode = req.session.data['place-of-death-address-postcode'];
+
+  if (postcode === "ZZ1 1ZZ") {
+    req.session.data['place-of-death-address-result-type'] = "none";
+  } else {
+    req.session.data['place-of-death-address-result-type'] = "radio";
+  }
+
+  req.session.data['place-of-death-address-state'] = "lookup";
+  req.session.data['place-of-death-address'] = "yes";
+
+  res.redirect('/current/about-the-person-whos-died#place-resultlist-radio');
+});
+
+router.get('/current/place-of-death-address-manual', function (req, res) {
+
+  req.session.data['place-of-death-address-state'] = "manual";
+  req.session.data['place-of-death-address'] = "yes";
+
+  res.redirect('/current/about-the-person-whos-died#place-manual');
+});
+
+router.post('/current/their-national-insurance-number', function (req, res) {
+
+  const selectedAddress = req.session.data['deceased-address'];
+
+  if (selectedAddress) {
+
+    const parts = selectedAddress.split('|');
+
+    const formatted = [
+      parts[0],   // building
+      parts[1],   // street
+      parts[2],   // town
+      parts[4],   // country (optional)
+      parts[5]    // postcode
+    ].filter(Boolean).join('\n');
+
+    req.session.data['formatted-address'] = formatted;
+  }
+
+  res.redirect('/current/check-answers'); // or wherever
+});
+
+// ---------- END CURRENT ---------- 
+
+// ---------- V0.1 STANDALONE DESIGNS ---------- 
+
+// ---------- Address lookup ---------- 
 router.get('/v0_1/enrichment/address-lookup/find-address-single-page', function (req, res) {
   req.session.data['state'] = "lookup";  
   res.render('/v0_1/enrichment/address-lookup/find-address-single-page');
@@ -56,9 +150,8 @@ router.post('/v0_1/enrichment/address-lookup/find-address-single-page-results', 
     res.redirect('/v0_1/enrichment/address-lookup/find-address-single-page')
   }
 });
-// End Address lookup
 
-// Pensions journey
+// ---------- Pensions journey ---------- 
 router.get('/v0_1/ni-number', function (req, res) {
   req.session.data['pensions'] = [];
   req.session.data.returnTo = req.query.returnTo;
@@ -203,35 +296,44 @@ router.post('/v0_1/capture/does-the-person-reporting-the-death-want-an-email-con
 // End Capture journey
 
 // Enter death registrations details page - security lock out
-router.get('/v0_1/registration-lookup', function (req, res) {
+router.get('/:version/registration-lookup', function (req, res) {
   if(req.session.data['registration-lookup-attempts'] == null){
-  req.session.data['registration-lookup-attempts'] = 0
+    req.session.data['registration-lookup-attempts'] = 0
   } 
 
-  return res.render('/v0_1/registration-lookup')
+  const version = req.params.version;
 
+  return res.render(`/${version}/registration-lookup`)
 });
 
-router.post('/v0_1/lookup-death-registration', function (req, res) {
+
+router.post('/:version/lookup-death-registration', function (req, res) {
   
+  const version = req.params.version;
+
   const regNum = req.session.data['registration-number']
   console.log("Registration number: " + regNum)
+
   var attempts = req.session.data['registration-lookup-attempts']
   attempts++
   req.session.data['registration-lookup-attempts'] = attempts
+
   console.log("Attempts: " + req.session.data['registration-lookup-attempts'])
 
+  const enrichmentPath = version === 'current'
+    ? ''
+    : '/enrichment'
+
   if(attempts < 3 && regNum == "AB123C456DE7"){
-    return res.redirect('/v0_1/enrichment/enter-death-registration-details/enter-death-registration-details')
+    return res.redirect(`/${version}${enrichmentPath}/enter-death-registration-details`)
   } 
   
   if (attempts == 3 && regNum == "AB123C456DE7"){
     console.log("Locked out")
-    return res.redirect('/v0_1/enrichment/enter-death-registration-details/we-could-not-match-the-death-registration-details')
+    return res.redirect(`/${version}${enrichmentPath}/we-could-not-match-the-death-registration-details`)
   }
 
-    return res.redirect('/v0_1/registration-details-found')
-
+  return res.redirect(`/${version}/registration-details-found`)
 });
 // End Enter death registrations details page - security lock out
 
@@ -425,4 +527,11 @@ function normaliseDate(day, month, year) {
   return { day, month, year };
 }
 
+router.get('/prototype-admin/clear-data', function (req, res) {
+  req.session.data = {};
+
+  const returnUrl = req.query.returnUrl || req.get('Referrer') || '/';
+
+  res.redirect(returnUrl);
+});
 

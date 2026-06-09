@@ -251,3 +251,12 @@
   transform: scale(0.4);
   transform-origin: top left;
 }
+
+.autocomplete__wrapper:has(#autocomplete-relationship) {
+  width: 50% !important;
+}
+
+.govuk-input.disabled {
+  border: 2px solid #0b0c0c !important;
+  background: #f3f2f1 !important;
+}
