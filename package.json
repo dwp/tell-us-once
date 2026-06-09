@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "govuk-prototype-kit dev",
     "serve": "govuk-prototype-kit serve",
-    "start": "govuk-prototype-kit start"
+    "start": "govuk-prototype-kit start",
+    "heroku-prebuild": "npm config set @dwp-govuk:registry https://gitlab.com/api/v4/projects/82735932/packages/npm/ --location=project && npm config set //gitlab.com/api/v4/projects/82735932/packages/npm/:_authToken $NPM_TOKEN --location=project"
   },
   "dependencies": {
     "@dwp/dwp-frontend": "^4.0.3",
@@ -20,11 +21,12 @@
     "govuk-frontend": "^6.1.0",
     "hmrc-frontend": "7.14.0",
     "radio-button-redirect": "^1.2.0",
-    "govuk-prototype-kit": "^13.19.1"
+    "govuk-prototype-kit": "npm:@dwp-govuk/govuk-prototype-kit@13.20.2"
   },
   "overrides": {
     "govuk-frontend": "^6.1.0",
     "qs": "6.14.1",
     "lodash": "^4.17.23"
-  }
+  },
+  "name": "tell-us-once"
 }
