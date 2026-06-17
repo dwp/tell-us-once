@@ -1,34 +1,155 @@
-addressCountry
+=== about-the-next-of-kin.html ===
+contact
+sort
+addressTown
 addressCounty
+changedName
+
+=== about-the-person-dealing-with-the-estate.html ===
+contact
+bluebadge
+sort
+addressTown
+addressCounty
+changedName
+contactNumber
+contactEmail
+width20
+width10
 addressLine1
 addressLine2
-addressTown
-agree
-answers-checked
-authority-consent
-bluebadge
-changedName
+addressCountry
+
+=== about-the-person-whos-died.html ===
+deceased-has-other-address
+deceased-address-state
+deceased-address-result-type
+place-of-death-address
+place-of-death-address-state
+place-of-death-address-result-type
+sort
+deceased-address-postcode
+deceased-address-search-string
+deceased-address
+deceased-address-line-1
+deceased-address-line-2
+deceased-address-town
+deceased-address-county
+place-of-death-name
+place-of-death-address-postcode
+place-of-death-address-search-string
+place-of-death-address-selection
+place-of-death-address-line-1
+place-of-death-address-line-2
+place-of-death-address-town
+place-of-death-address-county
+
+=== about-the-spouse-not-spouse.html ===
 contact
-contactByEmail
-contactEmail
-contactNumber
-countries
+sort
+addressTown
+addressCounty
 date-of-death
-date-of-death-day
-date-of-death-month
-date-of-death-year
-deceased-surname
-drivinglicence
-dvla
-eventName
-passport
 passport-issued-month
 passport-issued-year
 reference
+changedName
+contactEmail
+
+=== about-the-spouse.html ===
+date-of-death
+passport-issued-month
+passport-issued-year
+reference
+
+=== about-you.html ===
+informer-title
+informer-first-name
+informer-last-name
+informer-relationship
+informer-same-address
+informer-address-house-number
+informer-address-postcode
+manual-address
+informer-address-road
+informer-address-county
+informer-address-country
+informer-contact-number
+informer-contact-email
+informer-next-of-kin
+informer-deal-estate
+
+=== before-we-send.html ===
+agree
+contact
+changedName
+
+=== before-you-start.html ===
+showAuthorityError
+version
+authority-consent
+
+=== check-your-answers-1.html ===
+answers-checked
+
+=== check-your-answers-2.html ===
+answers-checked
+
+=== email-confirmation.html ===
+contact
+contactByEmail
+
+=== enter-death-registration-details.html ===
 registration-lookup-attempts
 registration-number
-showAuthorityError
-sort
-townOfBirth
-width10
-width20
+deceased-surname
+date-of-death-day
+date-of-death-month
+date-of-death-year
+version
+
+=== local-council-services.html ===
+local-council
+
+=== public-sector-pensions-you-want-to-notify-alt.html ===
+changedName
+countries
+
+=== public-sector-pensions-you-want-to-notify.html ===
+changedName
+countries
+
+=== their-national-insurance-number.html ===
+has-ni-number
+ni-number
+
+=== who-do-you-want-to-notify.html ===
+dwp-benefits
+hmrc-personal-tax
+hmrc-benefits-and-credits
+council-tax
+council-tax-18
+housing-benefit
+library-services
+electoral-services
+adult-social-services
+sundry-debts
+blue-badge
+blue-badge-reference
+concessionary-travel
+assisted-waste
+passport
+passport-place-of-birth
+passport-number
+passport-number-2
+driving-licence
+driving-licence-number
+registered-keeper
+vehicle-registration-number-1
+vehicle-registration-number-2
+vehicle-registration-number-3
+vehicle-registration-number-4
+vehicle-registration-number-5
+armed-forces-pension-scheme
+war-pensions-scheme
+armed-forces-compensation-scheme

@@ -29,6 +29,16 @@ router.post('/:version/before-you-start', function (req, res) {
   }
 });
 
+// ---------- Next of kin ---------- 
+router.post('/current/about-the-next-of-kin', function (req, res) {
+  if(req.session.data['informer-next-of-kin'] == "yes"){
+    return res.redirect('about-the-person-whos-died');
+  } else {
+    return res.redirect('about-the-next-of-kin');
+  }
+  
+});
+
 // ---------- About the person who's died ---------- 
 router.get('/current/deceased-address', function (req, res) {
 
@@ -113,8 +123,10 @@ router.post('/current/their-national-insurance-number', function (req, res) {
     req.session.data['formatted-address'] = formatted;
   }
 
-  res.redirect('/current/check-answers'); // or wherever
+  res.redirect('/current/their-national-insurance-number'); 
 });
+
+
 
 // ---------- END CURRENT ---------- 
 
@@ -161,6 +173,10 @@ router.get('/v0_1/ni-number', function (req, res) {
 });
 
 router.post('/v0_1/ni-number', function (req, res) {
+
+  const version = req.session.data.version;
+  console.log("Version: " + version)
+
   if (req.session.data['has-ni-number'] == "yes") {
     const niNum = req.session.data['ni-number'].replace(/\s/g, '');
     req.session.data['ni-number'] = niNum;
@@ -183,11 +199,19 @@ router.get('/v0_1/enrichment/notify-public-sector-pension-providers/notify-a-pub
   res.render('/v0_1/enrichment/notify-public-sector-pension-providers/notify-a-public-sector-pension');
 });
 
-router.post('/v0_1/enrichment/notify-public-sector-pension-providers/notify-a-public-sector-pension', function (req, res) {
+router.post('/v0_1/enrichment/notify-public-sector-pension-providers/check-answers', function (req, res) {
   const pensions = req.session.data['pensions']
   console.log(pensions)
-
-  res.redirect('/v0_1/enrichment/check-answers')
+  console.log(req.session.data)
+  if(req.session.data['version'] === 'current'){
+    console.log("Informer dealing with estate: " + req.session.data['next-of-kin-deal-estate'] + "\n" + "Next of kind dealing with estate: " + req.session.data['informer-deal-estate'])
+    if(req.session.data['next-of-kin-deal-estate'] == 'no' || req.session.data['informer-deal-estate'] == 'no') {
+      return res.redirect('/current/about-the-person-dealing-with-the-estate')
+    }
+    return res.redirect('/current/check-your-answers-1')
+  } else {
+  return res.redirect('/v0_1/enrichment/check-answers')
+  }
 });
 
 router.post('/v0_1/enrichment/check-answers', function (req, res) {
@@ -324,7 +348,7 @@ router.post('/:version/lookup-death-registration', function (req, res) {
     ? ''
     : '/enrichment'
 
-  if(attempts < 3 && regNum == "AB123C456DE7"){
+  if(attempts < 2 && regNum == "AB123C456DE7"){
     return res.redirect(`/${version}${enrichmentPath}/enter-death-registration-details`)
   } 
   
@@ -333,7 +357,11 @@ router.post('/:version/lookup-death-registration', function (req, res) {
     return res.redirect(`/${version}${enrichmentPath}/we-could-not-match-the-death-registration-details`)
   }
 
-  return res.redirect(`/${version}/registration-details-found`)
+  if (regNum != "AB123C456DE7"){
+    return res.redirect(`/${version}/registration-details-found`)
+  } else {
+    return res.redirect(`/${version}${enrichmentPath}/enter-death-registration-details`)
+  }
 });
 // End Enter death registrations details page - security lock out
 

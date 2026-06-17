@@ -258,5 +258,25 @@
 
 .govuk-input.disabled {
   border: 2px solid #0b0c0c !important;
-  background: #f3f2f1 !important;
+  background: lightgray !important;
+}
+
+.postcode-inline {
+  display: inline-flex;      /* <- critical */
+  align-items: center;       /* vertical alignment */
+  gap: 24px;                 /* space between button + checkbox */
+  margin-top: 8px;
+}
+
+/* stops GOV.UK checkbox block behaviour */
+.postcode-inline .govuk-checkboxes__item {
+  display: flex;
+  align-items: center;
+}
+
+.govuk-radios__conditional.reveal--no-border {
+margin-bottom: 0;
+margin-left: 0; 
+padding-left: 0;
+border-left: none;
 }

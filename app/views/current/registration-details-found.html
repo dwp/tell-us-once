@@ -2,11 +2,18 @@
 
 {% set pageName="Registration details found" %}
 
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <h1 class="govuk-heading-l">Registration details found</h1>
+    <h1 class="govuk-heading-l">{{pageName}}</h1>
 
 <!---------Table 1-------->
 
@@ -20,7 +27,7 @@
   <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__nh_header">Name</th>
-      <td class="govuk-table__nh_cell">John Smith</td>
+      <td class="govuk-table__nh_cell">Terry {{data['deceased-surname']}}</td>
     </tr>
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__nh_header">Date of birth</th>
@@ -28,15 +35,15 @@
     </tr>
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__nh_header">Registration district</th>
-      <td class="govuk-table__nh_cell">Lewisham</td>
+      <td class="govuk-table__nh_cell">Herefordshire</td>
     </tr>
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__nh_header">Date of death</th>
-      <td class="govuk-table__nh_cell">10/12/2025</td>
+      <td class="govuk-table__nh_cell">{{data['date-of-death-day']}}/{{data['date-of-death-month']}}/{{data['date-of-death-year']}}</td>
     </tr>
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__nh_header">Date of registration</th>
-      <td class="govuk-table__nh_cell">13/12/2025</td>
+      <td class="govuk-table__nh_cell">04/06/2026</td>
     </tr>        
   </tbody>
 </table> 
@@ -47,20 +54,20 @@
   <caption class="govuk-table__caption govuk-table__caption--m">Address</caption>
   <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__nh_header">House number or name</th>
+      <th scope="row" class="govuk-table__nh_header">House or Flat Number</th>
       <td class="govuk-table__nh_cell">13</td>
     </tr>    
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__nh_header">Road</th>
-      <td class="govuk-table__nh_cell">Holly Road</td>
+      <td class="govuk-table__nh_cell">HOLLY ROAD</td>
     </tr>
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__nh_header">Town/City</th>
-      <td class="govuk-table__cnh_ell">Hereford</td>
+      <td class="govuk-table__cnh_ell">HEREFORD</td>
     </tr>
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__nh_header">County</th>
-      <td class="govuk-table__nh_cell">Herefordshire</td>
+      <td class="govuk-table__nh_cell">HEREFORDSHIRE</td>
     </tr>
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__nh_header">Postcode</th>
@@ -68,7 +75,7 @@
     </tr>
     <tr class="govuk-table__row">
       <th scope="row" class="govuk-table__nh_header">Country</th>
-      <td class="govuk-table__nh_cell">England</td>
+      <td class="govuk-table__nh_cell">United Kingdom</td>
     </tr>        
   </tbody>
 </table> 

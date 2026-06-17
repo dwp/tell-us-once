@@ -12,7 +12,7 @@ href: "javascript:window.history.back()"
 {% block content %}
 
 <div class="govuk-grid-row">
-  {% if data['registration-lookup-attempts'] > 0 %}
+  {% if data['registration-lookup-attempts'] > -1 %}
   <div class="govuk-grid-column-two-thirds">
       <div class="govuk-notification-banner-error" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner" data-govuk-notification-banner-init="">
           <div class="govuk-notification-banner__header">
