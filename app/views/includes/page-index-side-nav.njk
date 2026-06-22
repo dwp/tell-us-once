@@ -13,6 +13,14 @@
     </a>
   </li>
 
+  <li class="dwp-side-navigation__item {{ 'dwp-side-navigation__item--selected' if active == 'bbefore-you-start' }}">
+    <a href="/page-index/before-you-start"
+       class="dwp-side-navigation__link {{ 'dwp-side-navigation__link--selected' if active == 'before-you-start' }}"
+       {% if active == 'before-you-start' %}aria-current="true"{% endif %}>
+      Before you start
+    </a>
+  </li>
+
   <li class="dwp-side-navigation__item {{ 'dwp-side-navigation__item--selected' if active == 'check-your-answers' }}">
     <a href="/page-index/check-your-answers"
        class="dwp-side-navigation__link {{ 'dwp-side-navigation__link--selected' if active == 'check-your-answers' }}"
