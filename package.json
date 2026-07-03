@@ -25,7 +25,6 @@
     "govuk-prototype-kit": "^13.19.1"
   },
   "overrides": {
-    "govuk-frontend": "^6.1.0",
     "qs": "6.14.1",
     "lodash": "^4.17.23"
   }

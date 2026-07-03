@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-Death registration details
+About the death registration
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,66 +19,73 @@ Death registration details
     <form action="select-who-will-complete-tell-us-once" method="post" novalidate>
 
       <h1 class="govuk-heading-l">
-        Death registration details
+        About the death registration
       </h1>
 
-      <!-- Reference source -->
+      <!-- Date of death -->
 
-      <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset">
+      <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-death-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-            Select which system or document was used to record the details of the death
+            Date of death
           </legend>
 
-          <div class="govuk-radios" data-module="govuk-radios">
+          <div id="date-of-death-hint" class="govuk-hint">
+            This is the date that's on the death certificate. For example, 14 4 2026.
+          </div>
 
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="reference-source-1" name="reference-source" type="radio" value="RON">
-              <label class="govuk-label govuk-radios__label" for="reference-source-1">
-                RON (registration online)
-              </label>
+          <div class="govuk-date-input" id="date-of-death">
+
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="date-of-death-day">
+                  Day
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                  id="date-of-death-day"
+                  name="date-of-death-day"
+                  type="text"
+                  inputmode="numeric">
+              </div>
             </div>
 
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="reference-source-2" name="reference-source" type="radio" value="FER">
-              <label class="govuk-label govuk-radios__label" for="reference-source-2">
-                FER (Forward Electronic Registration) manual
-              </label>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="date-of-death-month">
+                  Month
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2"
+                  id="date-of-death-month"
+                  name="date-of-death-month"
+                  type="text"
+                  inputmode="numeric">
+              </div>
             </div>
 
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="reference-source-3" name="reference-source" type="radio" value="Attestation">
-              <label class="govuk-label govuk-radios__label" for="reference-source-3">
-                RON (registration by attestation and declaration)
-              </label>
-            </div>
-
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="reference-source-4" name="reference-source" type="radio" value="Fact-of-death">
-              <label class="govuk-label govuk-radios__label" for="reference-source-4">
-                Fact of death or interim death certificate
-              </label>
-            </div>
-
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="reference-source-5" name="reference-source" type="radio" value="Other">
-              <label class="govuk-label govuk-radios__label" for="reference-source-5">
-                Other
-              </label>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="date-of-death-year">
+                  Year
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4"
+                  id="date-of-death-year"
+                  name="date-of-death-year"
+                  type="text"
+                  inputmode="numeric">
+              </div>
             </div>
 
           </div>
         </fieldset>
-      </div>
 
       <!-- Registration number -->
 
       <div class="govuk-form-group govuk-!-margin-top-4">
         <label class="govuk-label govuk-label--m" for="registration-number">
-          Enter registration number
+          Death registration number {% if (data['reference-source'] != 'RON (registration online)') and (data['reference-source'] != 'FER (Forward Electronic Registration) manual') %}, if there is one (optional){% endif %}
         </label>
         <div id="registration-number-hint" class="govuk-hint">
-          For example, '512345678' in England and Wales or '2026 765 955' Scotland.
+          {% if data['reference-source'] == 'RON (registration online)' %}For example, '512345678'.{% endif %} 
+          {% if data['reference-source'] == 'FER (Forward Electronic Registration) manual' %}For example, '2026 765 955'.{% endif %}
         </div>
         <input
           class="govuk-input govuk-input--width-10"
@@ -92,7 +99,7 @@ Death registration details
 
       <div class="govuk-form-group govuk-!-margin-top-4">
         <label class="govuk-label govuk-label--m" for="autocomplete">
-          Search for the district the death was registered in
+          The district the death was registered in 
         </label>
         <div id="registration-district-hint" class="govuk-hint">
           Start typing the name of the registration district.
@@ -114,7 +121,7 @@ Death registration details
       <div class="govuk-form-group govuk-!-margin-top-4">
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-            Was the death registered today, {{ today | date }}?
+            Date the death was registered
           </legend>
 
           <div class="govuk-radios" data-module="govuk-radios">
@@ -126,7 +133,7 @@ Death registration details
                 type="radio"
                 value="yes">
               <label class="govuk-label govuk-radios__label" for="death-registered-today-yes">
-                Yes
+                Today, {{ today | date }}
               </label>
             </div>
 
@@ -138,7 +145,7 @@ Death registration details
                 value="no"
                 data-aria-controls="conditional-registration-date">
               <label class="govuk-label govuk-radios__label" for="death-registered-today-no">
-                No
+                A date in the past
               </label>
             </div>
 

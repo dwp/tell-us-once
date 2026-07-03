@@ -19,45 +19,45 @@ Enter an address
     <fieldset class="govuk-fieldset">
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
     <h1 class="govuk-fieldset__heading">
-    Enter the address of the person who's died
+    {% if data['edit-address'] == 'true' %}Edit or e{% else  %}E{% endif %}nter the address of the person who died
     </h1>
   </legend>
   <div class="govuk-form-group">
-    <label class="govuk-label" for="address-line-1">
+    <label class="govuk-label" for="deceased-address-line-1">
       Address line 1
     </label>
-    <input class="govuk-input" id="address-line-2" name="deceased-address-line-1" type="text" autocomplete="address-line1">
+    <input class="govuk-input" id="deceased-address-line-2" name="deceased-address-line-2" type="text" autocomplete="address-line1" value="{{data['deceased-address-line-1']}}">
   </div>
   <div class="govuk-form-group">
-    <label class="govuk-label" for="address-line-2">
+    <label class="govuk-label" for="deceased-address-line-2">
       Address line 2 (optional)
     </label>
-    <input class="govuk-input" id="address-line-2" name="deceased-address-line-2" type="text" autocomplete="address-line2">
+    <input class="govuk-input" id="deceased-address-line-2" name="deceased-address-line-2" type="text" autocomplete="address-line2" value="{{data['deceased-address-line-2']}}">
   </div>
   <div class="govuk-form-group">
-    <label class="govuk-label" for="address-town">
+    <label class="govuk-label" for="deceased-address-town">
       Town or city
     </label>
-    <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="deceased-address-town" type="text" autocomplete="address-level2">
+    <input class="govuk-input govuk-!-width-two-thirds" id="deceased-address-town" name="deceased-address-town" type="text" autocomplete="address-level2" value="{{data['deceased-address-town']}}">
   </div>
   <div class="govuk-form-group">
-    <label class="govuk-label" for="address-county">
+    <label class="govuk-label" for="deceased-address-county">
       County (optional)
     </label>
-    <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="deceased-address-county" type="text">
+    <input class="govuk-input govuk-!-width-two-thirds" id="deceased-address-county" name="deceased-address-county" type="text" value="{{data['deceased-address-county']}}">
   </div>
   <div class="govuk-form-group">
-    <label class="govuk-label" for="address-postcode">
+    <label class="govuk-label" for="deceased-postcode">
       Postcode
     </label>
-    <input class="govuk-input govuk-input--width-10" id="address-postcode" name="deceased-postcode" type="text" autocomplete="postal-code">
+    <input class="govuk-input govuk-input--width-10" id="deceased-postcode" name="deceased-postcode" type="text" autocomplete="postal-code" value="{{data['deceased-postcode']}}">
   </div>
 </fieldset>
   </div>
   <button type="submit" class="govuk-button" data-module="govuk-button">
     Use this address
   </button>
-  <p class="govuk-body govuk-!-margin-bottom-0"><a href="enter-the-address-of-the-person-whos-died" class="govuk-link">Lookup address by postcode</a></p>
+  <p class="govuk-body govuk-!-margin-bottom-0"><a href="enter-the-address-of-the-person-whos-died" class="govuk-link">Search for address by postcode</a></p>
 
       </fieldset>
     </form>

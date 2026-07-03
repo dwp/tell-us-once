@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+Email confirmation
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,13 +15,17 @@ href: "javascript:window.history.back()"
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <form class="form" action="check-your-answers" method="post" novalidate>
+      <h1 class="govuk-heading-l">Email confirmation</h1>
+      <p class="govuk-body">We can send the person reporting a death an email that tells them:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>how to access Tell Us Once</li>
+            <li>the reference number they need</li>
+            <li>the details they’ll need before they start</li>
+          </ul>
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset" aria-describedby="email-address-hint">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <h1 class="govuk-fieldset__heading">
-Do they want an email confirming the reference number they need to use Tell Us Once?
-            </h1>
-            <div class="govuk-inset-text">The email includes the reference number and information needed to use Tell Us Once.</div>
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            Do they want an email confirmation?
           </legend>
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">

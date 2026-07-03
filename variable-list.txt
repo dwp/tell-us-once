@@ -31,18 +31,19 @@ width10
 width20
 
 === about-the-person-whos-died.html ===
-deceased-address
-deceased-address-county
-deceased-address-line-1
-deceased-address-line-2
-deceased-address-postcode
 deceased-address-result-type
-deceased-address-search-string
 deceased-address-state
-deceased-address-town
 deceased-has-other-address
 deceased-marital-status
+deceased-other-address
+deceased-other-address-county
+deceased-other-address-line-1
+deceased-other-address-line-2
+deceased-other-address-postcode
+deceased-other-address-search-string
+deceased-other-address-town
 deceased-title
+in-hospital-prior-to-death
 place-of-death-address
 place-of-death-address-county
 place-of-death-address-line-1
@@ -135,7 +136,20 @@ next-of-kin-relationship
 next-of-kin-title
 
 === check-your-answers-2.html ===
-answers-checked
+deceased-has-other-address
+deceased-marital-status
+deceased-other-address
+deceased-surname
+deceased-title
+has-ni-number
+in-hospital-prior-to-death
+local-council
+ni-number
+pensions
+place-of-death-address
+place-of-death-address-selection
+place-of-death-name
+public-sector-pensions-found
 
 === email-confirmation.html ===
 contact

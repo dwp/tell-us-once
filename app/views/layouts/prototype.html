@@ -6,14 +6,15 @@
 {% set containerClasses = "tuo-width-container" %}
 
 {% block header %}
-  {{
-    dwpHeader({
-      serviceName: serviceName + " prototype",
-      serviceHref: "/",
-      container: true,
-      containerClasses: "tuo-width-container"
-    })
-  }}
+<div class="govuk-generic-header">
+  <div class="govuk-generic-header__container govuk-width-container tuo-width-container">
+    <div class="govuk-generic-header__logo">
+      <a href="/" class="govuk-generic-header__homepage-link">
+       {{serviceName}} prototype
+      </a>
+    </div>
+  </div>
+</div>
 {% endblock %}
 
 {% block footer %}

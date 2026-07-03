@@ -17,11 +17,11 @@ href: "javascript:window.history.back()"
 
     <form action="death-registration-details-shared-with-tell-us-once" method="post" novalidate>
       <h1 class="govuk-heading-xl">Check your answers</h1>
-
+      <div class="govuk-inset-text govuk-!-margin-bottom-6">Check with the person who’s reporting the death that the answers relating to the person who died are accurate.</div>
       <div class="govuk-summary-card">
         <div class="govuk-summary-card__title-wrapper">
           <h2 class="govuk-summary-card__title">
-            Details about the person who's died
+            Personal details of the person who's died
           </h2>
           <ul class="govuk-summary-card__actions">
             <li class="govuk-summary-card__action">
@@ -90,12 +90,11 @@ href: "javascript:window.history.back()"
       <div class="govuk-summary-card">
         <div class="govuk-summary-card__title-wrapper">
           <h2 class="govuk-summary-card__title">
-            Death registration details
+            System or document was used to record the details of the death
           </h2>
           <ul class="govuk-summary-card__actions">
             <li class="govuk-summary-card__action">
-              <a class="govuk-link" href="death-registration-details">Change<span class="govuk-visually-hidden"> death registration
-                  details</span></a>
+              <a class="govuk-link" href="registration-source">Change<span class="govuk-visually-hidden"> system or document was used to record the details of the death </span></a>
             </li>
           </ul>
         </div>
@@ -109,20 +108,38 @@ href: "javascript:window.history.back()"
                 {{data['reference-source']}}
               </dd>
             </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Enter registration number
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{data['registration-number']}}
-              </dd>
-            </div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Death registration details
+          </h2>
+          <ul class="govuk-summary-card__actions">
+            <li class="govuk-summary-card__action">
+              <a class="govuk-link" href="death-registration-details">Change<span class="govuk-visually-hidden"> death registration
+                  details</span></a>
+            </li>
+          </ul>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
                 Enter date of death
               </dt>
               <dd class="govuk-summary-list__value">
                 {{data['date-of-death'] | titlecase}}
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                RON registration number
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{data['registration-number']}}
               </dd>
             </div>
             <div class="govuk-summary-list__row">
@@ -135,15 +152,7 @@ href: "javascript:window.history.back()"
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Was the death registered today, {{ today | date }}?
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {{ data['death-registered-today'] | titlecase}}
-              </dd>
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                Registration date
+                Death registration date
               </dt>
               <dd class="govuk-summary-list__value">
                 {{ data['registration-date'] | titlecase}}

@@ -15,134 +15,86 @@ href: "javascript:window.history.back()"
 {% block content %}
 
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-l">Details about the person who's died</h1>
-        <div class="govuk-inset-text govuk-!-margin-top-2 govuk-!-margin-bottom-7"><p class="govuk-body">If the informer is going to complete Tell Us Once themselves, they must enter the full name and date of death exactly as you enter them here.</p>
-        <p class="govuk-body">Check with the informer that they're entered correctly.</p>
-      </div>
-         <form class="form" action="/v0_1/capture/enter-the-address-of-the-person-whos-died" method="post">
-        <div class="govuk-form-group govuk-!-margin-top-6">
-        <label class="govuk-heading-m" for="deceased-firstname">
-          Full name
+  <div class="govuk-grid-column-two-thirds">
+    <!-- <span class="govuk-caption-l">Capture details about a death</span> -->
+    <h1 class="govuk-heading-l">Personal details about the person who’s died</h1>
+    <form class="form" action="/v0_1/capture/enter-the-address-of-the-person-whos-died" method="post">
+      <div class="govuk-form-group govuk-!-margin-top-6">
+        <label class="govuk-label govuk-label--m" for="deceased-firstname">
+          First name
         </label>
-        <input class="govuk-input" id="deceased-firstname"
-          name="deceased-firstname" type="text" spellcheck="false" value="{{data['deceased-firstname']}}"
-          aria-describedby="deceased-firstname-hint">
+        <input class="govuk-input govuk-input--width-20" id="deceased-firstname" name="deceased-firstname" type="text" spellcheck="false" value="{{data['deceased-firstname']}}" aria-describedby="deceased-firstname-hint">
       </div>
-      <!-- <div class="govuk-form-group">
-        <label class="govuk-label" for="deceased-surname">
-          Surname
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-label--m" for="deceased-surname">
+          Last name
         </label>
-        <input class="govuk-input govuk-input--width-20" id="deceased-surname" name="deceased-surname" type="text" spellcheck="false"
-          autocomplete="none" value="{{data['deceased-surname']}}">
-      </div> -->
-      <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-death-hint">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-            Date of death
-          </legend>
-
-          <div id="date-of-death-hint" class="govuk-hint">
-            This is the date that's on the death certificate. For example, 14 4 2026.
-          </div>
-
-          <div class="govuk-date-input" id="date-of-death">
-
-            <div class="govuk-date-input__item">
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label" for="date-of-death-day">
-                  Day
-                </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2"
-                  id="date-of-death-day"
-                  name="date-of-death-day"
-                  type="text"
-                  inputmode="numeric">
-              </div>
-            </div>
-
-            <div class="govuk-date-input__item">
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label" for="date-of-death-month">
-                  Month
-                </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2"
-                  id="date-of-death-month"
-                  name="date-of-death-month"
-                  type="text"
-                  inputmode="numeric">
-              </div>
-            </div>
-
-            <div class="govuk-date-input__item">
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label" for="date-of-death-year">
-                  Year
-                </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-4"
-                  id="date-of-death-year"
-                  name="date-of-death-year"
-                  type="text"
-                  inputmode="numeric">
-              </div>
-            </div>
-
-          </div>
-        </fieldset>
+        <input class="govuk-input govuk-input--width-20" id="deceased-surname" name="deceased-surname" type="text" spellcheck="false" autocomplete="none" value="{{data['deceased-surname']}}">
+      </div>
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Help with name
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          If they were known by a different name, enter the name that’s on official documents, for example, the name that's on their passport or driving licence.
+        </div>
+      </details>
       <fieldset class="govuk-fieldset" role="group" aria-describedby="date-of-birth-hint">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-            Date of birth
-          </legend>
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          Date of birth
+        </legend>
 
-          <div id="date-of-birth-hint" class="govuk-hint">
-            For example, 20 6 1950.
+        <div id="date-of-birth-hint" class="govuk-hint">
+          For example, 20 6 1950.
+        </div>
+
+        <div class="govuk-date-input" id="date-of-birth">
+
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="date-of-birth-day">
+                Day
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth-day" name="date-of-birth-day" type="text" inputmode="numeric">
+            </div>
           </div>
 
-          <div class="govuk-date-input" id="date-of-birth">
-
-            <div class="govuk-date-input__item">
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label" for="date-of-birth-day">
-                  Day
-                </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2"
-                  id="date-of-birth-day"
-                  name="date-of-birth-day"
-                  type="text"
-                  inputmode="numeric">
-              </div>
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="date-of-birth-month">
+                Month
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth-month" name="date-of-birth-month" type="text" inputmode="numeric">
             </div>
-
-            <div class="govuk-date-input__item">
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label" for="date-of-birth-month">
-                  Month
-                </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2"
-                  id="date-of-birth-month"
-                  name="date-of-birth-month"
-                  type="text"
-                  inputmode="numeric">
-              </div>
-            </div>
-
-            <div class="govuk-date-input__item">
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label" for="date-of-birth-year">
-                  Year
-                </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-4"
-                  id="date-of-birth-year"
-                  name="date-of-birth-year"
-                  type="text"
-                  inputmode="numeric">
-              </div>
-            </div>
-
           </div>
-        </fieldset>
-        <button class="govuk-button">Continue</button>
-        </form>
-    </div>
+
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="date-of-birth-year">
+                Year
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="date-of-birth-year" name="date-of-birth-year" type="text" inputmode="numeric">
+            </div>
+          </div>
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Help with date of birth
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              If you do not know their exact date of birth, enter the date they used on official documents, for example on their passport or driving licence.
+            </div>
+          </details>
+        </div>
+      </fieldset>
+
+      <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
 </div>
 
 {% endblock %}

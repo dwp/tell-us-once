@@ -45,15 +45,15 @@ href: "javascript:window.history.back()"
             Marital status
           </label>
           <select class="govuk-select" id="deceased-marital-status" name="deceased-marital-status">
-            <option value="published" selected>Please select</option>
-            <option value="updated">Single</option>
-            <option value="views">Married</option>
-            <option value="comments">Civil Partnership</option>
-            <option value="comments">Civil Partnership Dissolved</option>
-            <option value="views">Divorced</option>
-            <option value="views">Separated</option>
-            <option value="views">Widowed</option>
-            <option value="views">Surviving Civil Partner</option>
+            <option value="" selected>Please select</option>
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+            <option value="Civil Partnership">Civil Partnership</option>
+            <option value="Civil Partnership Dissolved">Civil Partnership Dissolved</option>
+            <option value="Divorced">Divorced</option>
+            <option value="Seperated">Separated</option>
+            <option value="Widowed">Widowed</option>
+            <option value="Surviving Civil Partner">Surviving Civil Partner</option>
 
           </select>
         </div>
@@ -76,26 +76,21 @@ href: "javascript:window.history.back()"
           </div>
           <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input {% if (data['deceased-has-other-address']=="yes" ) %}checked{% endif %} class="govuk-radios__input"
-                id="deceased-has-other-address" name="deceased-has-other-address" type="radio" value="yes"
-                data-aria-controls="conditional-deceased-has-other-address">
+              <input {% if (data['deceased-has-other-address']=="yes" ) %}checked{% endif %} class="govuk-radios__input" id="deceased-has-other-address" name="deceased-has-other-address" type="radio" value="yes" data-aria-controls="conditional-deceased-has-other-address">
               <label class="govuk-label govuk-radios__label" for="deceased-has-other-address">
                 Yes
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="deceased-has-other-address-2" name="deceased-has-other-address"
-                type="radio" value="no" data-aria-controls="conditional-deceased-has-other-address-2">
+              <input class="govuk-radios__input" id="deceased-has-other-address-2" name="deceased-has-other-address" type="radio" value="no" data-aria-controls="conditional-deceased-has-other-address-2">
               <label class="govuk-label govuk-radios__label" for="deceased-has-other-address-2">
                 No
               </label>
             </div>
-            <div class="govuk-radios__conditional govuk-radios__conditional--hidden"
-              id="conditional-deceased-has-other-address-2">
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-deceased-has-other-address-2">
             </div>
           </div>
-          <div class="govuk-radios__conditional {% if (data['deceased-has-other-address'] != 'yes') %}govuk-radios__conditional--hidden{% endif %}"
-     id="conditional-deceased-has-other-address">
+          <div class="govuk-radios__conditional {% if (data['deceased-has-other-address'] != 'yes') %}govuk-radios__conditional--hidden{% endif %}" id="conditional-deceased-has-other-address">
 
             <!---------Have another address – Yes routing-------->
 
@@ -110,31 +105,27 @@ href: "javascript:window.history.back()"
                   <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Their other address
                   </legend>
                   <div class="govuk-form-group">
-                    <label class="govuk-label" for="deceased-address-postcode">
+                    <label class="govuk-label" for="deceased-other-address-postcode">
                       Postcode
                     </label>
-                    <div id="deceased-address-postcode-hint" class="govuk-hint">
+                    <div id="deceased-other-address-postcode-hint" class="govuk-hint">
                       For example, AA3 1AB.
                     </div>
-                    <input class="govuk-input govuk-!-width-two-thirds" id="deceased-address-postcode"
-                      name="deceased-address-postcode" type="text" aria-describedby="deceased-address-postcode-hint">
+                    <input class="govuk-input govuk-!-width-two-thirds" id="deceased-other-address-postcode" name="deceased-other-address-postcode" type="text" aria-describedby="deceased-other-address-postcode-hint">
                   </div>
                   <div class="govuk-form-group">
-                    <label class="govuk-label" for="deceased-address-search-string">
+                    <label class="govuk-label" for="deceased-other-address-search-string">
                       Building number or name
                     </label>
-                    <div id="deceased-address-search-string-hint" class="govuk-hint">
+                    <div id="deceased-other-address-search-string-hint" class="govuk-hint">
                       For example, 15 or Prospect Cottage.
                     </div>
-                    <input class="govuk-input govuk-!-width-two-thirds" id="deceased-address-search-string"
-                      name="deceased-address-search-string" type="text"
-                      aria-describedby="deceased-address-search-string-hint">
+                    <input class="govuk-input govuk-!-width-two-thirds" id="deceased-other-address-search-string" name="deceased-other-address-search-string" type="text" aria-describedby="deceased-other-address-search-string-hint">
                   </div>
 
 
                   <div class="govuk-form-group">
-                    <button class="govuk-button" id="deceased-findaddressbutton"
-                      formaction="/current/deceased-address-results">
+                    <button class="govuk-button" id="deceased-findaddressbutton" formaction="/current/deceased-address-results">
                       Find address
                     </button>
                   </div>
@@ -143,8 +134,7 @@ href: "javascript:window.history.back()"
                   {% if (data['deceased-address-result-type'] == "none")%}
                   <div class="govuk-form-group" id="resultlist-none">
                     <div class="govuk-inset-text">
-                      No address found for SW12 0BL, check the postcode, or <a class="govuk-link"
-                        href="/current/deceased-address-manual">enter
+                      No address found for SW12 0BL, check the postcode, or <a class="govuk-link" href="/current/deceased-address-manual">enter
                         the address manually</a>.
                     </div>
                   </div>
@@ -156,7 +146,7 @@ href: "javascript:window.history.back()"
 
                 </fieldset>
               </div>
-              
+
               <!-- End lookup -->
 
               {% endif %}
@@ -165,8 +155,7 @@ href: "javascript:window.history.back()"
                 <!-- Results Radio -->
                 {% if (data['deceased-address-result-type'] == "radio" and data['deceased-address-state'] != "manual") %}
                 <div class="govuk-form-group">
-                  <fieldset class="govuk-fieldset" aria-describedby="results--radio-hint"
-                    id="deceased-resultlist-radio">
+                  <fieldset class="govuk-fieldset" aria-describedby="results--radio-hint" id="deceased-resultlist-radio">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                       Select the address
                     </legend>
@@ -174,155 +163,65 @@ href: "javascript:window.history.back()"
                       30 addresses found for SW12 0BL
                     </div>
                     <div class="govuk-radios" data-module="govuk-radios">
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-1"
-                          name="deceased-address" type="radio"
-                          value="49A|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457488|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-1">49A
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-1" name="deceased-other-address" type="radio" value="49A|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457488|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-1">49A
                           CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-2"
-                          name="deceased-address" type="radio"
-                          value="49B|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457489|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-2">49B
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-2" name="deceased-other-address" type="radio" value="49B|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457489|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-2">49B
                           CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-3"
-                          name="deceased-address" type="radio"
-                          value="49C|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457490|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-3">49C
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-3" name="deceased-other-address" type="radio" value="49C|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457490|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-3">49C
                           CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-4"
-                          name="deceased-address" type="radio"
-                          value="49D|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457491|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-4">49D
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-4" name="deceased-other-address" type="radio" value="49D|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457491|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-4">49D
                           CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-5"
-                          name="deceased-address" type="radio"
-                          value="51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100023674148|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-5">51
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-5" name="deceased-other-address" type="radio" value="51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100023674148|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-5">51
                           CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-6"
-                          name="deceased-address" type="radio"
-                          value="53|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100023674149|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-6">53
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-6" name="deceased-other-address" type="radio" value="53|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100023674149|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-6">53
                           CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-7"
-                          name="deceased-address" type="radio"
-                          value="55B|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457498|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-7">55B
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-7" name="deceased-other-address" type="radio" value="55B|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457498|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-7">55B
                           CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-8"
-                          name="deceased-address" type="radio"
-                          value="55C|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457499|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-8">55C
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-8" name="deceased-other-address" type="radio" value="55C|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457499|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-8">55C
                           CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-9"
-                          name="deceased-address" type="radio"
-                          value="55D|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457500|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-9">55D
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-9" name="deceased-other-address" type="radio" value="55D|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457500|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-9">55D
                           CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-10"
-                          name="deceased-address" type="radio"
-                          value="1B, FLAT 1|KLEA AVENUE|LONDON||United Kingdom|SW12 0BL|10095612111|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-10">FLAT
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-10" name="deceased-other-address" type="radio" value="1B, FLAT 1|KLEA AVENUE|LONDON||United Kingdom|SW12 0BL|10095612111|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-10">FLAT
                           1, 1B KLEA AVENUE, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-11"
-                          name="deceased-address" type="radio"
-                          value="FLAT 1, 51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820783|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-11">FLAT
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-11" name="deceased-other-address" type="radio" value="FLAT 1, 51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820783|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-11">FLAT
                           1, 51 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-12"
-                          name="deceased-address" type="radio"
-                          value="FLAT 1, 53|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820791|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-12">FLAT
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-12" name="deceased-other-address" type="radio" value="FLAT 1, 53|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820791|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-12">FLAT
                           1, 53 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-13"
-                          name="deceased-address" type="radio"
-                          value="1B, FLAT 2|KLEA AVENUE|LONDON||United Kingdom|SW12 0BL|10095612112|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-13">FLAT
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-13" name="deceased-other-address" type="radio" value="1B, FLAT 2|KLEA AVENUE|LONDON||United Kingdom|SW12 0BL|10095612112|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-13">FLAT
                           2, 1B KLEA AVENUE, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-14"
-                          name="deceased-address" type="radio"
-                          value="FLAT 2, 51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820784|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-14">FLAT
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-14" name="deceased-other-address" type="radio" value="FLAT 2, 51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820784|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-14">FLAT
                           2, 51 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-15"
-                          name="deceased-address" type="radio"
-                          value="FLAT 2, 53|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000521544|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-15">FLAT
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-15" name="deceased-other-address" type="radio" value="FLAT 2, 53|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000521544|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-15">FLAT
                           2, 53 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-16"
-                          name="deceased-address" type="radio"
-                          value="1B, FLAT 3|KLEA AVENUE|LONDON||United Kingdom|SW12 0BL|10095612113|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-16">FLAT
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-16" name="deceased-other-address" type="radio" value="1B, FLAT 3|KLEA AVENUE|LONDON||United Kingdom|SW12 0BL|10095612113|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-16">FLAT
                           3, 1B KLEA AVENUE, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-17"
-                          name="deceased-address" type="radio"
-                          value="FLAT 3, 51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820785|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-17">FLAT
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-17" name="deceased-other-address" type="radio" value="FLAT 3, 51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820785|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-17">FLAT
                           3, 51 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-18"
-                          name="deceased-address" type="radio"
-                          value="FLAT 3, 53|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000521543|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-18">FLAT
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-18" name="deceased-other-address" type="radio" value="FLAT 3, 53|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000521543|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-18">FLAT
                           3, 53 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-19"
-                          name="deceased-address" type="radio"
-                          value="1B, FLAT 4|KLEA AVENUE|LONDON||United Kingdom|SW12 0BL|10095612114|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-19">FLAT
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-19" name="deceased-other-address" type="radio" value="1B, FLAT 4|KLEA AVENUE|LONDON||United Kingdom|SW12 0BL|10095612114|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-19">FLAT
                           4, 1B KLEA AVENUE, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-20"
-                          name="deceased-address" type="radio"
-                          value="FLAT 4, 51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820786|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-20">FLAT
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-20" name="deceased-other-address" type="radio" value="FLAT 4, 51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820786|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-20">FLAT
                           4, 51 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-21"
-                          name="deceased-address" type="radio"
-                          value="FLAT 4, 53|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000521545|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-21">FLAT
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-21" name="deceased-other-address" type="radio" value="FLAT 4, 53|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000521545|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-21">FLAT
                           4, 53 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-22"
-                          name="deceased-address" type="radio"
-                          value="1B, FLAT 5|KLEA AVENUE|LONDON||United Kingdom|SW12 0BL|10095612115|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-22">FLAT
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-22" name="deceased-other-address" type="radio" value="1B, FLAT 5|KLEA AVENUE|LONDON||United Kingdom|SW12 0BL|10095612115|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-22">FLAT
                           5, 1B KLEA AVENUE, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-23"
-                          name="deceased-address" type="radio"
-                          value="FLAT 5, 51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820787|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-23">FLAT
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-23" name="deceased-other-address" type="radio" value="FLAT 5, 51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820787|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-23">FLAT
                           5, 51 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-24"
-                          name="deceased-address" type="radio"
-                          value="1B, FLAT 6|KLEA AVENUE|LONDON||United Kingdom|SW12 0BL|10095612116|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-24">FLAT
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-24" name="deceased-other-address" type="radio" value="1B, FLAT 6|KLEA AVENUE|LONDON||United Kingdom|SW12 0BL|10095612116|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-24">FLAT
                           6, 1B KLEA AVENUE, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-25"
-                          name="deceased-address" type="radio"
-                          value="FLAT 6, 51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820788|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-25">FLAT
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-25" name="deceased-other-address" type="radio" value="FLAT 6, 51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820788|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-25">FLAT
                           6, 51 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-26"
-                          name="deceased-address" type="radio"
-                          value="1B, FLAT 7|KLEA AVENUE|LONDON||United Kingdom|SW12 0BL|10095612117|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-26">FLAT
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-26" name="deceased-other-address" type="radio" value="1B, FLAT 7|KLEA AVENUE|LONDON||United Kingdom|SW12 0BL|10095612117|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-26">FLAT
                           7, 1B KLEA AVENUE, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-27"
-                          name="deceased-address" type="radio"
-                          value="FLAT 7, 51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820789|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-27">FLAT
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-27" name="deceased-other-address" type="radio" value="FLAT 7, 51|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100021820789|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-27">FLAT
                           7, 51 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-28"
-                          name="deceased-address" type="radio"
-                          value="FLAT A, 55|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457497|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-28">FLAT
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-28" name="deceased-other-address" type="radio" value="FLAT A, 55|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457497|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-28">FLAT
                           A, 55 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-29"
-                          name="deceased-address" type="radio"
-                          value="FLAT B-D, 55|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100023674151|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-29">FLAT
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-29" name="deceased-other-address" type="radio" value="FLAT B-D, 55|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|100023674151|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-29">FLAT
                           B-D, 55 CAVENDISH ROAD, LONDON, SW12 0BL</label></div>
-                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-address-30"
-                          name="deceased-address" type="radio"
-                          value="47, POLICE STATION|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457486|"><label
-                          class="govuk-label govuk-radios__label" for="deceased-address-30">POLICE STATION, 47 CAVENDISH
+                      <div class="govuk-radios__item"><input class="govuk-radios__input" id="deceased-other-address-30" name="deceased-other-address" type="radio" value="47, POLICE STATION|CAVENDISH ROAD|LONDON||United Kingdom|SW12 0BL|200000457486|"><label class="govuk-label govuk-radios__label" for="deceased-other-address-30">POLICE STATION, 47 CAVENDISH
                           ROAD, LONDON,
                           SW12 0BL</label></div>
                     </div>
@@ -341,39 +240,34 @@ href: "javascript:window.history.back()"
                     <p><a class="govuk-link" href="/current/deceased-address">Use
                         postcode lookup</a></p>
                     <div class="govuk-form-group">
-                      <label class="govuk-label" for="deceased-address-line-1">
+                      <label class="govuk-label" for="deceased-other-address-line-1">
                         Address line 1
                       </label>
-                      <input class="govuk-input" id="deceased-address-line-1" name="deceased-address-line-1" type="text"
-                        autocomplete="address-line1">
+                      <input class="govuk-input" id="deceased-other-address-line-1" name="deceased-other-address-line-1" type="text" autocomplete="address-line1">
                     </div>
                     <div class="govuk-form-group">
-                      <label class="govuk-label" for="deceased-address-line-2">
+                      <label class="govuk-label" for="deceased-other-address-line-2">
                         Address line 2 (optional)
                       </label>
-                      <input class="govuk-input" id="deceased-address-line-2" name="deceased-address-line-2" type="text"
-                        autocomplete="address-line2">
+                      <input class="govuk-input" id="deceased-other-address-line-2" name="deceased-other-address-line-2" type="text" autocomplete="address-line2">
                     </div>
                     <div class="govuk-form-group">
-                      <label class="govuk-label" for="deceased-address-town">
+                      <label class="govuk-label" for="deceased-other-address-town">
                         Town or city
                       </label>
-                      <input class="govuk-input govuk-!-width-two-thirds" id="deceased-address-town"
-                        name="deceased-address-town" type="text" autocomplete="address-level2">
+                      <input class="govuk-input govuk-!-width-two-thirds" id="deceased-other-address-town" name="deceased-other-address-town" type="text" autocomplete="address-level2">
                     </div>
                     <div class="govuk-form-group">
-                      <label class="govuk-label" for="deceased-address-county">
+                      <label class="govuk-label" for="deceased-other-address-county">
                         County (optional)
                       </label>
-                      <input class="govuk-input govuk-!-width-two-thirds" id="deceased-address-county"
-                        name="deceased-address-county" type="text">
+                      <input class="govuk-input govuk-!-width-two-thirds" id="deceased-other-address-county" name="deceased-other-address-county" type="text">
                     </div>
                     <div class="govuk-form-group">
-                      <label class="govuk-label" for="deceased-address-postcode">
+                      <label class="govuk-label" for="deceased-other-address-postcode">
                         Postcode
                       </label>
-                      <input class="govuk-input govuk-input--width-10" id="deceased-address-postcode"
-                        name="deceased-address-postcode" type="text" autocomplete="postal-code">
+                      <input class="govuk-input govuk-input--width-10" id="deceased-other-address-postcode" name="deceased-other-address-postcode" type="text" autocomplete="postal-code">
                     </div>
                   </fieldset>
                 </div>
@@ -389,7 +283,7 @@ href: "javascript:window.history.back()"
       <!---------Radios Q2-------->
 
       <div class="govuk-form-group govuk-!-padding-top-3">
-        <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+        <fieldset class="govuk-fieldset">
           <label class="govuk-body">
 
             Did they die in a hospital, hospice, nursing home or care home?
@@ -400,26 +294,21 @@ href: "javascript:window.history.back()"
 
           <div class="govuk-radios govuk-radios--inline govuk-!-margin-top-2" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input {% if (data['place-of-death-address']=="yes" ) %}checked{% endif %} class="govuk-radios__input"
-                id="place-of-death-address" name="place-of-death-address" type="radio" value="yes"
-                data-aria-controls="conditional-place-of-death-address">
+              <input {% if (data['place-of-death-address']=="yes" ) %}checked{% endif %} class="govuk-radios__input" id="place-of-death-address" name="place-of-death-address" type="radio" value="yes" data-aria-controls="conditional-place-of-death-address">
               <label class="govuk-label govuk-radios__label" for="place-of-death-address">
                 Yes
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="place-of-death-address-2" name="place-of-death-address"
-                type="radio" value="no" data-aria-controls="conditional-place-of-death-address-2">
+              <input class="govuk-radios__input" id="place-of-death-address-2" name="place-of-death-address" type="radio" value="no" data-aria-controls="conditional-place-of-death-address-2">
               <label class="govuk-label govuk-radios__label" for="place-of-death-address-2">
                 No
               </label>
             </div>
-            <div class="govuk-radios__conditional govuk-radios__conditional--hidden"
-              id="conditional-place-of-death-address-2">
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-place-of-death-address-2">
             </div>
           </div>
-          <div class="govuk-radios__conditional {% if (data['place-of-death-address'] != 'yes') %}govuk-radios__conditional--hidden{% endif %}"
-     id="conditional-place-of-death-address">
+          <div class="govuk-radios__conditional {% if (data['place-of-death-address'] != 'yes') %}govuk-radios__conditional--hidden{% endif %}" id="conditional-place-of-death-address">
 
             <!---------Have another address – Yes routing-------->
 
@@ -447,9 +336,7 @@ href: "javascript:window.history.back()"
                     <div id="place-of-death-address-postcode-hint" class="govuk-hint">
                       For example, AA3 1AB.
                     </div>
-                    <input class="govuk-input govuk-!-width-two-thirds" id="place-of-death-address-postcode"
-                      name="place-of-death-address-postcode" type="text"
-                      aria-describedby="place-of-death-address-postcode-hint">
+                    <input class="govuk-input govuk-!-width-two-thirds" id="place-of-death-address-postcode" name="place-of-death-address-postcode" type="text" aria-describedby="place-of-death-address-postcode-hint">
                   </div>
                   <div class="govuk-form-group">
                     <label class="govuk-label" for="place-of-death-address-search-string">
@@ -458,15 +345,12 @@ href: "javascript:window.history.back()"
                     <div id="search-string-hint" class="govuk-hint">
                       For example, 15 or Prospect Cottage.
                     </div>
-                    <input class="govuk-input govuk-!-width-two-thirds" id="place-of-death-address-search-string"
-                      name="place-of-death-address-search-string" type="text"
-                      aria-describedby="place-of-death-address-search-string-hint">
+                    <input class="govuk-input govuk-!-width-two-thirds" id="place-of-death-address-search-string" name="place-of-death-address-search-string" type="text" aria-describedby="place-of-death-address-search-string-hint">
                   </div>
 
 
                   <div class="govuk-form-group">
-                    <button class="govuk-button" id="place-findaddressbutton"
-                      formaction="/current/place-of-death-address-results">
+                    <button class="govuk-button" id="place-findaddressbutton" formaction="/current/place-of-death-address-results">
                       Find address
                     </button>
                   </div>
@@ -475,8 +359,7 @@ href: "javascript:window.history.back()"
                   {% if (data['place-of-death-address-result-type'] == "none") %}
                   <div class="govuk-form-group" id="resultlist-none">
                     <div class="govuk-inset-text">
-                      No address found for SW12 0BL, check the postcode, or <a class="govuk-link"
-                        href="/current/place-of-death-address-manual">enter
+                      No address found for SW12 0BL, check the postcode, or <a class="govuk-link" href="/current/place-of-death-address-manual">enter
                         the address manually</a>.
                     </div>
                   </div>
@@ -504,85 +387,55 @@ href: "javascript:window.history.back()"
                     </div>
                     <div class="govuk-radios" data-module="govuk-radios">
 
-  <div class="govuk-radios__item">
-    <input class="govuk-radios__input"
-           id="place-address-1"
-           name="place-of-death-address-selection"
-           type="radio"
-           value="Rosewood Care Home|12 Oak Lane|Didsbury|Manchester||M20 3AB">
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="place-address-1" name="place-of-death-address-selection" type="radio" value="Rosewood Care Home|12 Oak Lane|Didsbury|Manchester||M20 3AB">
 
-    <label class="govuk-label govuk-radios__label"
-           for="place-address-1">
-      Rosewood Care Home, 12 Oak Lane, Didsbury, Manchester M20 3AB
-    </label>
-  </div>
+                        <label class="govuk-label govuk-radios__label" for="place-address-1">
+                          Rosewood Care Home, 12 Oak Lane, Didsbury, Manchester M20 3AB
+                        </label>
+                      </div>
 
-  <div class="govuk-radios__item">
-    <input class="govuk-radios__input"
-           id="place-address-2"
-           name="place-of-death-address-selection"
-           type="radio"
-           value="10 Oak Lane|Didsbury|Manchester||M20 3AB">
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="place-address-2" name="place-of-death-address-selection" type="radio" value="10 Oak Lane|Didsbury|Manchester||M20 3AB">
 
-    <label class="govuk-label govuk-radios__label"
-           for="place-address-2">
-      10 Oak Lane, Didsbury, Manchester M20 3AB
-    </label>
-  </div>
+                        <label class="govuk-label govuk-radios__label" for="place-address-2">
+                          10 Oak Lane, Didsbury, Manchester M20 3AB
+                        </label>
+                      </div>
 
-  <div class="govuk-radios__item">
-    <input class="govuk-radios__input"
-           id="place-address-3"
-           name="place-of-death-address-selection"
-           type="radio"
-           value="14 Oak Lane|Didsbury|Manchester||M20 3AB">
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="place-address-3" name="place-of-death-address-selection" type="radio" value="14 Oak Lane|Didsbury|Manchester||M20 3AB">
 
-    <label class="govuk-label govuk-radios__label"
-           for="place-address-3">
-      14 Oak Lane, Didsbury, Manchester M20 3AB
-    </label>
-  </div>
+                        <label class="govuk-label govuk-radios__label" for="place-address-3">
+                          14 Oak Lane, Didsbury, Manchester M20 3AB
+                        </label>
+                      </div>
 
-  <div class="govuk-radios__item">
-    <input class="govuk-radios__input"
-           id="place-address-4"
-           name="place-of-death-address-selection"
-           type="radio"
-           value="16 Oak Lane|Didsbury|Manchester||M20 3AB">
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="place-address-4" name="place-of-death-address-selection" type="radio" value="16 Oak Lane|Didsbury|Manchester||M20 3AB">
 
-    <label class="govuk-label govuk-radios__label"
-           for="place-address-4">
-      16 Oak Lane, Didsbury, Manchester M20 3AB
-    </label>
-  </div>
+                        <label class="govuk-label govuk-radios__label" for="place-address-4">
+                          16 Oak Lane, Didsbury, Manchester M20 3AB
+                        </label>
+                      </div>
 
-  <div class="govuk-radios__item">
-    <input class="govuk-radios__input"
-           id="place-address-5"
-           name="place-of-death-address-selection"
-           type="radio"
-           value="Sunnybank Nursing Home|2 Oak Lane|Didsbury|Manchester||M20 3AB">
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="place-address-5" name="place-of-death-address-selection" type="radio" value="Sunnybank Nursing Home|2 Oak Lane|Didsbury|Manchester||M20 3AB">
 
-    <label class="govuk-label govuk-radios__label"
-           for="place-address-5">
-      Sunnybank Nursing Home, 2 Oak Lane, Didsbury, Manchester M20 3AB
-    </label>
-  </div>
+                        <label class="govuk-label govuk-radios__label" for="place-address-5">
+                          Sunnybank Nursing Home, 2 Oak Lane, Didsbury, Manchester M20 3AB
+                        </label>
+                      </div>
 
-  <div class="govuk-radios__item">
-    <input class="govuk-radios__input"
-           id="place-address-6"
-           name="place-of-death-address-selection"
-           type="radio"
-           value="Meadow View Care Centre|5 Oak Lane|Didsbury|Manchester||M20 3AB">
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="place-address-6" name="place-of-death-address-selection" type="radio" value="Meadow View Care Centre|5 Oak Lane|Didsbury|Manchester||M20 3AB">
 
-    <label class="govuk-label govuk-radios__label"
-           for="place-address-6">
-      Meadow View Care Centre, 5 Oak Lane, Didsbury, Manchester M20 3AB
-    </label>
-  </div>
+                        <label class="govuk-label govuk-radios__label" for="place-address-6">
+                          Meadow View Care Centre, 5 Oak Lane, Didsbury, Manchester M20 3AB
+                        </label>
+                      </div>
 
-</div>
+                    </div>
                   </fieldset>
                 </div>
                 {% endif %}
@@ -601,36 +454,31 @@ href: "javascript:window.history.back()"
                       <label class="govuk-label" for="place-of-death-address-line-1">
                         Address line 1
                       </label>
-                      <input class="govuk-input" id="place-of-death-address-line-1" name="place-of-death-address-line-1"
-                        type="text" autocomplete="place-of-death-address-line-1">
+                      <input class="govuk-input" id="place-of-death-address-line-1" name="place-of-death-address-line-1" type="text" autocomplete="place-of-death-address-line-1">
                     </div>
                     <div class="govuk-form-group">
                       <label class="govuk-label" for="place-of-death-address-line-2">
                         Address line 2 (optional)
                       </label>
-                      <input class="govuk-input" id="place-of-death-address-line-2" name="place-of-death-address-line-2"
-                        type="text" autocomplete="address-line2">
+                      <input class="govuk-input" id="place-of-death-address-line-2" name="place-of-death-address-line-2" type="text" autocomplete="address-line2">
                     </div>
                     <div class="govuk-form-group">
                       <label class="govuk-label" for="place-of-death-address-town">
                         Town or city
                       </label>
-                      <input class="govuk-input govuk-!-width-two-thirds" id="place-of-death-address-town"
-                        name="place-of-death-address-town" type="text" autocomplete="address-level2">
+                      <input class="govuk-input govuk-!-width-two-thirds" id="place-of-death-address-town" name="place-of-death-address-town" type="text" autocomplete="address-level2">
                     </div>
                     <div class="govuk-form-group">
                       <label class="govuk-label" for="place-of-death-address-county">
                         County (optional)
                       </label>
-                      <input class="govuk-input govuk-!-width-two-thirds" id="place-of-death-address-county"
-                        name="place-of-death-address-county" type="text">
+                      <input class="govuk-input govuk-!-width-two-thirds" id="place-of-death-address-county" name="place-of-death-address-county" type="text">
                     </div>
                     <div class="govuk-form-group">
                       <label class="govuk-label" for="place-of-death-address-postcode">
                         Postcode
                       </label>
-                      <input class="govuk-input govuk-input--width-10" id="place-of-death-address-postcode"
-                        name="place-of-death-address-postcode" type="text" autocomplete="postal-code">
+                      <input class="govuk-input govuk-input--width-10" id="place-of-death-address-postcode" name="place-of-death-address-postcode" type="text" autocomplete="postal-code">
                     </div>
                   </fieldset>
                 </div>
@@ -639,6 +487,26 @@ href: "javascript:window.history.back()"
 
                 <!-- END OF ADDRESS SECTION -->
 
+                <div class="govuk-form-group">
+
+                  <fieldset aria-describedby="in-hospital-prior-to-death-hint" class="govuk-fieldset" role="group">
+                    <legend class="govuk-fieldset__legend--s govuk-fieldset__legend">
+                      <h1 class="govuk-fieldset__heading govuk-heading-l" style="font-weight:lighter">Were they in a hospital, care home, nursing home or hospice for more than 28 days before they died?</h1>
+                    </legend>
+                    <div class="govuk-hint" id="in-hospital-prior-to-death-hint" style="margin:5px">This could be a combination of stays in a hospital, hospice, nursing home or care home. We ask this to make sure they were paid the right amount of any benefits they were receiving.</div>
+                      <div class="govuk-radios govuk-radios--inline">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="in-hospital-prior-to-death-1" name="in-hospital-prior-to-death" type="radio" value="yes">
+                          <label for="in-hospital-prior-to-death--1" class="govuk-label govuk-radios__label">Yes</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="in-hospital-prior-to-death-2" name="in-hospital-prior-to-death" type="radio" value="no">
+                          <label for="in-hospital-prior-to-death-2" class="govuk-label govuk-radios__label">No</label>
+                        </div>
+                      </div>
+                  </fieldset>
+
+                </div>
 
                 <!-- END REVEALED CONTENT -->
               </div>
@@ -655,29 +523,29 @@ href: "javascript:window.history.back()"
         Continue
       </button>
 
-      </form>
+</form>
 
-      <!---------Contact us for help-------->
+<!---------Contact us for help-------->
 
-      <details class="govuk-details govuk-!-padding-top-6">
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-            Contact us for help
-          </span>
-        </summary>
-        <div class="govuk-details__text">
-          <h3 class="govuk-heading-s">Telephone</h3>
-          <p class="govuk-body">0800 085 7308</p>
-          <p class="govuk-body">Relay UK: 18001 0800 085 7308<br><a href="#">Video Relay Service for British Sign
-              Language
-              (BSL) (opens in new tab)</a></p>
-          <p class="govuk-body">Monday to Friday 8:00am to 6:00pm.</p>
-          <h3 class="govuk-heading-s">Email</h3>
-          <p class="govuk-body"> Email us at <a href="#">tellusonce.communications@dwp.gov.uk</a></p>
-        </div>
-      </details>
-    </div>
+<details class="govuk-details govuk-!-padding-top-6">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Contact us for help
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    <h3 class="govuk-heading-s">Telephone</h3>
+    <p class="govuk-body">0800 085 7308</p>
+    <p class="govuk-body">Relay UK: 18001 0800 085 7308<br><a href="#">Video Relay Service for British Sign
+        Language
+        (BSL) (opens in new tab)</a></p>
+    <p class="govuk-body">Monday to Friday 8:00am to 6:00pm.</p>
+    <h3 class="govuk-heading-s">Email</h3>
+    <p class="govuk-body"> Email us at <a href="#">tellusonce.communications@dwp.gov.uk</a></p>
   </div>
+</details>
+</div>
+</div>
 <script>
   // this checks for the scoped hash as an id within the address and ensures the label is visible when scrolled
   var hashParam = location.hash;

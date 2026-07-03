@@ -7,6 +7,7 @@
 {{ super() }}
 <link href="/public/css/tuo-cards.css" rel="stylesheet" type="text/css" />
 <link href="/public/css/prototype-options.css" rel="stylesheet" type="text/css" />
+<link href="/public/css/print-preview.css" rel="stylesheet">
 {% endblock %}
 
 {% block pageTitle %}
@@ -41,14 +42,15 @@
 {% endblock %}
 
 {% block header %}
-
-{{
-dwpHeader({
-serviceName: serviceName,
-serviceHref: "/",
-container: true
-})
-}}
+<div class="govuk-generic-header">
+  <div class="govuk-generic-header__container govuk-width-container">
+    <div class="govuk-generic-header__logo">
+      <a href="/" class="govuk-generic-header__homepage-link">
+       {{serviceName}}
+      </a>
+    </div>
+  </div>
+</div>
 {% endblock %}
 
 {% block footer %}

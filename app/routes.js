@@ -261,6 +261,16 @@ router.post('/v0_1/capture/confirm-address', function (req, res) {
 
 })
 
+router.get('v0_1/capture/confirm-address', (req, res) => {
+    req.session.data['edit-address'] = 'false';
+    return res.render(`v0_1/capture/confirm-address`)
+});
+
+router.get('v0_1/capture/enter-an-address', (req, res) => {
+    req.session.data['edit-address'] = req.query.editAddress;
+    return res.render(`v0_1/capture/enter-an-address`)
+});
+
 router.post('/v0_1/capture/check-your-answers', function (req, res) {
   const dateOfBirth = normaliseDate(req.session.data['deceased-date-of-birth-day'], req.session.data['deceased-date-of-birth-month'], req.session.data['deceased-date-of-birth-year']);
   const dateOfDeath = normaliseDate(req.session.data['date-of-death-day'], req.session.data['date-of-death-month'], req.session.data['date-of-death-year']);

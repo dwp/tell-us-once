@@ -23,7 +23,7 @@ Select an address
         </h1>
       </legend>
       <div class="govuk-radios govuk-radios" data-module="govuk-radios">
-        <p class='govuk-body'>6 addresses found for <b>{{data['deceased-postcode']}}</b> and <b>{{data['deceased-address-house-number']}}</b>. <a href='select-an-address' class='govuk-link'>Search again</a></p>
+        <p class='govuk-body'>5 addresses found for <b>{{data['deceased-postcode']}}</b> and <b>{{data['deceased-address-house-number']}}</b>. <a href='select-an-address' class='govuk-link'>Search again</a></p>
         <div class="govuk-radios__item">
           <input class="govuk-radios__input" id="select-an-address" name="deceased-address" type="radio" value="251 Elgin Ave, Maida Vale, London, W9 1NJ"
             data-ga-question="Select an address" data-ga-answer="Answer 1" {% if data['deceased-address'] == '251 Elgin Ave, Maida Vale, London, W9 1NJ' %}checked{%endif%}>
@@ -59,13 +59,6 @@ Select an address
             259 Elgin Ave, Maida Vale, London, W9 1NJ
           </label>
         </div>
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="select-an-address-6" name="deceased-address" type="radio" value="261 Elgin Ave, Maida Vale, London, W9 1NJ"
-            data-ga-question="Select an address" data-ga-answer="Answer 5" {% if data['deceased-address'] == '261 Elgin Ave, Maida Vale, London, W9 1NJ' %}checked{%endif%}>
-          <label class="govuk-label govuk-radios__label" for="select-an-address-6">
-            261 Elgin Ave, Maida Vale, London, W9 1NJ
-          </label>
-        </div>
       </div>
     </fieldset>
   </div>
@@ -74,7 +67,7 @@ Select an address
   </button>
   <ul class="govuk-list">
             <li class="govuk-!-margin-top-2"><a href="enter-an-address" class="govuk-link">Enter address manually</a></li>
-            <li class="govuk-!-margin-top-2"><a href="enter-an-address" class="govuk-link">Their address is outside of the UK</a></li>
+            <li class="govuk-!-margin-top-2"><a href="enter-an-address" class="govuk-link">Enter an address outside of the UK</a></li>
           </ul>
 
       </fieldset>
