@@ -310,7 +310,7 @@ router.post('/v0_1/capture/select-who-will-complete-tell-us-once', function (req
 
   req.session.data['registration-date'] = regDate;
   }
-
+  
   res.redirect('/v0_1/capture/select-who-will-complete-tell-us-once')
 
 })

@@ -16,7 +16,7 @@ href: "javascript:window.history.back()"
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <!-- <span class="govuk-caption-l">Capture details about a death</span> -->
+    <span class="govuk-caption-l">Capture death registration details</span>
     <h1 class="govuk-heading-l">Personal details about the person who’s died</h1>
     <form class="form" action="/v0_1/capture/enter-the-address-of-the-person-whos-died" method="post">
       <div class="govuk-form-group govuk-!-margin-top-6">
@@ -57,7 +57,7 @@ href: "javascript:window.history.back()"
               <label class="govuk-label govuk-date-input__label" for="date-of-birth-day">
                 Day
               </label>
-              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth-day" name="date-of-birth-day" type="text" inputmode="numeric">
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth-day" name="date-of-birth-day" type="text" inputmode="numeric" value="{{data['date-of-birth-day']}}">
             </div>
           </div>
 
@@ -66,7 +66,7 @@ href: "javascript:window.history.back()"
               <label class="govuk-label govuk-date-input__label" for="date-of-birth-month">
                 Month
               </label>
-              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth-month" name="date-of-birth-month" type="text" inputmode="numeric">
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth-month" name="date-of-birth-month" type="text" inputmode="numeric" value="{{data['date-of-birth-month']}}">
             </div>
           </div>
 
@@ -75,7 +75,7 @@ href: "javascript:window.history.back()"
               <label class="govuk-label govuk-date-input__label" for="date-of-birth-year">
                 Year
               </label>
-              <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="date-of-birth-year" name="date-of-birth-year" type="text" inputmode="numeric">
+              <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="date-of-birth-year" name="date-of-birth-year" type="text" inputmode="numeric" value="{{data['date-of-birth-year']}}">
             </div>
           </div>
           <details class="govuk-details">

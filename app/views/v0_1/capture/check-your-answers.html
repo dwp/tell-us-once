@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-Confirm address
+Check your answers
 {% endblock %}
 
 {% block beforeContent %}
@@ -16,6 +16,7 @@ href: "javascript:window.history.back()"
   <div class="govuk-grid-column-two-thirds">
 
     <form action="death-registration-details-shared-with-tell-us-once" method="post" novalidate>
+          <span class="govuk-caption-l">Capture death registration details</span>
       <h1 class="govuk-heading-xl">Check your answers</h1>
       <div class="govuk-inset-text govuk-!-margin-bottom-6">Check with the person who’s reporting the death that the answers relating to the person who died are accurate.</div>
       <div class="govuk-summary-card">
@@ -52,7 +53,7 @@ href: "javascript:window.history.back()"
                 Date of birth
               </dt>
               <dd class="govuk-summary-list__value">
-                {{data['date-of-birth'] | titlecase}}
+                {{data['date-of-birth-day']}} {{data['date-of-birth-month'] | monthName}} {{data['date-of-birth-year']}}
               </dd>
             </div>
           </dl>
@@ -90,7 +91,7 @@ href: "javascript:window.history.back()"
       <div class="govuk-summary-card">
         <div class="govuk-summary-card__title-wrapper">
           <h2 class="govuk-summary-card__title">
-            System or document was used to record the details of the death
+            System or document used to register the death
           </h2>
           <ul class="govuk-summary-card__actions">
             <li class="govuk-summary-card__action">
@@ -102,7 +103,7 @@ href: "javascript:window.history.back()"
           <dl class="govuk-summary-list">
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key govuk-!-width-one-half">
-                Select which system or document was used to record the details of the death
+                How was the death registered?
               </dt>
               <dd class="govuk-summary-list__value">
                 {{data['reference-source']}}

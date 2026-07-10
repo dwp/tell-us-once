@@ -1,0 +1,54 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Timeout message
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+
+{%- from  "hmrc/components/timeout-dialog/macro.njk" import hmrcTimeoutDialog -%}
+
+{{ 
+  hmrcTimeoutDialog ({
+    timeout: 72,
+    countdown: 68,
+    title: "This page will expire soon",
+    message: "This page will expire if you do not do anything in the next ",
+    messageSuffix: "This is to protect your information. ",
+    keepAliveUrl: "#",
+    signOutUrl: "your-answers-have-been-deleted",
+    language: "en",
+    keepAliveButtonText: "Continue",
+    hideSignOutButton: true
+  }) 
+}}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+     <form class="form" action="informer-details-check-answers" method="post">
+
+    <div class="govuk-form-group">
+
+      <h1 class="govuk-heading-l">Service timeout - no questions answered</h1>
+
+      <p class="govuk-body">
+       This page shows the design for a service timeout. A service timeout message will appear on this page after a few seconds.
+      </p>
+
+      <p class="govuk-body"><a href="../">Go back to home page</a></p>
+
+    </div>
+
+    </form>
+
+  </div>
+</div>
+{% endblock %}

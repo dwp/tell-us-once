@@ -17,7 +17,7 @@ About the death registration
   <div class="govuk-grid-column-two-thirds">
 
     <form action="select-who-will-complete-tell-us-once" method="post" novalidate>
-
+          <span class="govuk-caption-l">Capture death registration details</span>
       <h1 class="govuk-heading-l">
         About the death registration
       </h1>
@@ -44,7 +44,8 @@ About the death registration
                   id="date-of-death-day"
                   name="date-of-death-day"
                   type="text"
-                  inputmode="numeric">
+                  inputmode="numeric"
+                  value="{{data['date-of-death-day']}}">
               </div>
             </div>
 
@@ -57,7 +58,8 @@ About the death registration
                   id="date-of-death-month"
                   name="date-of-death-month"
                   type="text"
-                  inputmode="numeric">
+                  inputmode="numeric"
+                  value="{{data['date-of-death-month']}}">
               </div>
             </div>
 
@@ -70,7 +72,8 @@ About the death registration
                   id="date-of-death-year"
                   name="date-of-death-year"
                   type="text"
-                  inputmode="numeric">
+                  inputmode="numeric"
+                  value="{{data['date-of-death-year']}}">
               </div>
             </div>
 
@@ -92,7 +95,8 @@ About the death registration
           id="registration-number"
           name="registration-number"
           type="text"
-          aria-describedby="registration-number-hint">
+          aria-describedby="registration-number-hint"
+          value="{{data['registration-number']}}">
       </div>
 
       <!-- Registration district -->
@@ -111,7 +115,8 @@ About the death registration
           class="govuk-select govuk-visually-hidden"
           id="autocomplete"
           name="registration-district"
-          aria-describedby="registration-district-hint">
+          aria-describedby="registration-district-hint"
+          value="{{data['registration-district']}}">
           {% include "includes/registration-authorities.html" %}
         </select>
       </div>
@@ -131,7 +136,8 @@ About the death registration
                 id="death-registered-today-yes"
                 name="death-registered-today"
                 type="radio"
-                value="yes">
+                value="yes"
+                {% if data['death-registered-today'] == 'yes' %}checked{% endif %}>
               <label class="govuk-label govuk-radios__label" for="death-registered-today-yes">
                 Today, {{ today | date }}
               </label>
@@ -143,7 +149,8 @@ About the death registration
                 name="death-registered-today"
                 type="radio"
                 value="no"
-                data-aria-controls="conditional-registration-date">
+                data-aria-controls="conditional-registration-date"
+                {% if data['death-registered-today'] == 'no' %}checked{% endif %}>
               <label class="govuk-label govuk-radios__label" for="death-registered-today-no">
                 A date in the past
               </label>
@@ -213,7 +220,8 @@ About the death registration
                 name="death-registered-today"
                 type="radio"
                 value="There is no death registration date"
-                data-aria-controls="no-registration-date">
+                data-aria-controls="no-registration-date"
+                {% if data['death-registered-today'] == 'There is no death registration date' %}checked{% endif %}>
               <label class="govuk-label govuk-radios__label" for="no-registration-date">
                 There is no death registration date
               </label>

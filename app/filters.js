@@ -34,3 +34,14 @@ addFilter('formatNiNumber', function (ni) {
     '$1 $2 $3 $4 $5'
   );
 });
+
+// Long form month names
+const months = [
+  'January', 'February', 'March', 'April',
+  'May', 'June', 'July', 'August',
+  'September', 'October', 'November', 'December'
+];
+
+addFilter('monthName', function(month) {
+  return months[month - 1] || '';
+});

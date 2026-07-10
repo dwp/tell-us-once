@@ -23,6 +23,7 @@ href: "javascript:window.history.back()"
 
         <div class="govuk-form-group">
           <div class="govuk-form-group">
+                <span class="govuk-caption-l">Capture death registration details</span>
             <h1 class="govuk-label-wrapper">
               <label class="govuk-label govuk-label--l" for="postcode">
                 How was the death registered?
@@ -31,56 +32,56 @@ href: "javascript:window.history.back()"
             <div class="govuk-radios" data-module="govuk-radios">
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="reference-source-1" name="reference-source" type="radio" value="RON (registration online)">
+                <input class="govuk-radios__input" id="reference-source-1" name="reference-source" type="radio" value="RON (registration online)" {% if data['reference-source'] == 'RON (registration online)' %}checked{% endif %}>
                 <label class="govuk-label govuk-radios__label" for="reference-source-1">
                   RON (registration online)
                 </label>
               </div>
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="reference-source-2" name="reference-source" type="radio" value="FER (Forward Electronic Registration) manual">
+                <input class="govuk-radios__input" id="reference-source-2" name="reference-source" type="radio" value="FER (Forward Electronic Registration) manual" {% if data['reference-source'] == 'FER (Forward Electronic Registration) manual' %}checked{% endif %}>
                 <label class="govuk-label govuk-radios__label" for="reference-source-2">
                   FER (Forward Electronic Registration) manual
                 </label>
               </div>
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="reference-source-3" name="reference-source" type="radio" value="RON (registration by attestation and declaration)">
+                <input class="govuk-radios__input" id="reference-source-3" name="reference-source" type="radio" value="RON (registration by attestation and declaration)" {% if data['reference-source'] == 'RON (registration by attestation and declaration)' %}checked{% endif %}>
                 <label class="govuk-label govuk-radios__label" for="reference-source-3">
                   RON (registration by attestation and declaration)
                 </label>
               </div>
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="reference-source-4" name="reference-source" type="radio" value="Fact of death or interim death certificate">
+                <input class="govuk-radios__input" id="reference-source-4" name="reference-source" type="radio" value="Fact of death or interim death certificate" {% if data['reference-source'] == 'Fact of death or interim death certificate' %}checked{% endif %}>
                 <label class="govuk-label govuk-radios__label" for="reference-source-4">
                   Fact of death or interim death certificate
                 </label>
               </div>
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="reference-source-5" name="reference-source" type="radio" value="civil-aviation-authority">
+                <input class="govuk-radios__input" id="reference-source-5" name="reference-source" type="radio" value="Civil aviation authority" {% if data['reference-source'] == 'Civil aviation authority' %}checked{% endif %}>
                 <label class="govuk-label govuk-radios__label" for="reference-source-5">
                   Civil aviation authority
                 </label>
               </div>
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="reference-source-6" name="reference-source" type="radio" value="fcdo">
+                <input class="govuk-radios__input" id="reference-source-6" name="reference-source" type="radio" value="Foreign, Commonwealth and Development Office" {% if data['reference-source'] == 'Foreign, Commonwealth and Development Office' %}checked{% endif %}>
                 <label class="govuk-label govuk-radios__label" for="reference-source-6">
                   Foreign, Commonwealth and Development Office
                 </label>
               </div>
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="reference-source-7" name="reference-source" type="radio" value="ministry-of-defence">
+                <input class="govuk-radios__input" id="reference-source-7" name="reference-source" type="radio" value="Ministry of Defence" {% if data['reference-source'] == 'Ministry of Defence' %}checked{% endif %}>
                 <label class="govuk-label govuk-radios__label" for="reference-source-7">
                   Ministry of Defence
                 </label>
               </div>
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="reference-source-8" name="reference-source" type="radio" value="registrar-general-shipping-seamen">
+                <input class="govuk-radios__input" id="reference-source-8" name="reference-source" type="radio" value="Registrar General of Shipping and Seamen" {% if data['reference-source'] == 'Registrar General of Shipping and Seamen' %}checked{% endif %}>
                 <label class="govuk-label govuk-radios__label" for="reference-source-8">
                   Registrar General of Shipping and Seamen
                 </label>
@@ -89,7 +90,7 @@ href: "javascript:window.history.back()"
               <div class="govuk-radios__divider">or</div>
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="reference-source-9" name="reference-source" type="radio" value="death-outside-uk">
+                <input class="govuk-radios__input" id="reference-source-9" name="reference-source" type="radio" value="The death occurred outside England, Scotland and Wales" {% if data['reference-source'] == 'The death occurred outside England, Scotland and Wales' %}checked{% endif %}>
                 <label class="govuk-label govuk-radios__label" for="reference-source-9">
                   The death occurred outside England, Scotland and Wales
                 </label>
