@@ -1,0 +1,166 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Check your answers" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <h1 class="govuk-heading-l">{{pageName}}</h1>
+
+        <!---------About you-------->
+        <h2 class="govuk-heading-m">About the person who died</h2>
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key govuk-!-width-one-half">
+              Title
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['deceased-title'] | capitalize }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="about-the-person-whos-died">Change<span class="govuk-visually-hidden"> title</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Marrital status
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['deceased-marital-status'] | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="about-the-person-whos-died">Change<span class="govuk-visually-hidden"> marital status</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do they have another address?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['deceased-has-other-address'] | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="about-the-person-whos-died">Change<span class="govuk-visually-hidden"> do they have another address</span></a>
+            </dd>
+          </div>
+          {% if data['deceased-has-other-address'] == 'yes' %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Their other address
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['deceased-other-address']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="about-the-person-whos-died">Change<span class="govuk-visually-hidden"> their other address</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Did they die in a hospital, hospice, nursing home or care home?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['place-of-death-address'] | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="about-you">Change<span class="govuk-visually-hidden"> did they die in a hospital, hospice, nursing home or care home</span></a>
+            </dd>
+          </div>
+          {% if data['place-of-death-address'] == 'yes' %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name of the hospital, hospice, nursing home or care home
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['place-of-death-name'] | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="about-the-person-whos-died">Change<span class="govuk-visually-hidden"> their other address</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Address of the hospital, hospice, nursing home or care home
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['place-of-death-address-selection']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="about-the-person-whos-died">Change<span class="govuk-visually-hidden"> address of the hospital, hospice, nursing home or care home</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Were they in a hospital, hospice, nursing home or care home for more than 28 days before they died?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['in-hospital-prior-to-death'] | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="about-the-person-whos-died">Change<span class="govuk-visually-hidden"> were they in a hospital, hospice, nursing home or care home for more than 28 days before they died</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do you know the National Insurance number of the person who died?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['has-ni-number'] | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="their-national-insurance-number">Change<span class="govuk-visually-hidden"> do you know the National Insurance number of the person who died</span></a>
+            </dd>
+          </div>
+          {% if data['has-ni-number'] == 'yes' %}
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Their National Insurance number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['ni-number'] | upper}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="their-national-insurance-number">Change<span class="govuk-visually-hidden"> their National Insurance number</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              The council that was providing most services to the person who died
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['local-council']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="local-council-services">Change<span class="govuk-visually-hidden"> the council that was providing most services to the person who died</span></a>
+            </dd>
+          </div>
+        </dl>
+
+        <p class="govuk-body govuk-!-padding-top-2 govuk-!-padding-bottom-4">You have completed section 2 of 3.</p>
+
+        <form class="form" action="what-well-ask-about-who-you-want-to-notify-about-the-death" method="post" novalidate>
+          <button class="govuk-button">Continue</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact us -->
+{% include "includes/contact.njk" %}
+
+{% endblock %}

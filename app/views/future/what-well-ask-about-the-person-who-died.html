@@ -1,0 +1,39 @@
+{% extends "layouts/main.html" %}
+{% set pageName="What we’ll ask about the person who died" %}
+{% set backLink = true %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{pageName}}</h1>
+
+    <p class="govuk-body">We'll ask:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>for their title and marital status</li>
+      <li>if they had an other address, what that address is</li>
+      <li>if they died in a hospital, care home, nursing home or hospice</li>
+      <li>for the council that provided the most services to them</li>
+    </ul>
+
+    <p class="govuk-body">If they died in a hospital, care home, nursing home or hospice we’ll also ask:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>for the name and address of that institution</li>
+      <li>if they were there for more than 28 days before they died</li>
+    </ul>
+
+    <!---------button-------->
+
+    {{ govukButton({
+    text: "Continue",
+    href: 'about-the-person-whos-died'
+    }) }}
+
+    <!---------If any of these details are wrong-------->
+
+  </div>
+</div>
+
+{% include "includes/contact.njk" %}
+
+{% endblock %}

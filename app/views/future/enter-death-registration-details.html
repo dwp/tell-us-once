@@ -1,20 +1,11 @@
 {% extends "layouts/main.html" %}
-
-{% block pageTitle %}
-Enter death registration details
-{% endblock %}
-
-{% block beforeContent %}
-{{ govukBackLink({
-text: "Back",
-href: "javascript:window.history.back()"
-}) }}
-{% endblock %}
+{% set pageName="Enter death registration details" %}
+{% set backLink = false %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
-  {% if data['registration-lookup-attempts'] > 0 %}
+  {% if data['registration-lookup-attempts'] > -1 %}
   <div class="govuk-grid-column-two-thirds">
       <div class="govuk-notification-banner-error" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner" data-govuk-notification-banner-init="">
           <div class="govuk-notification-banner__header">
@@ -29,7 +20,7 @@ href: "javascript:window.history.back()"
              <p class="govuk-body">We cannot match the reference number, surname and date of death you entered. Check
           you've entered them correctly and try again.</p>
 
-             <p class="govuk-body">You will be locked out for 20 minutes if you enter the incorrect details 4 times.</p>
+             <p class="govuk-body">You will be locked out for 20 minutes if you enter the incorrect details 3 times.</p>
             
           </div>
         </div>
@@ -37,9 +28,9 @@ href: "javascript:window.history.back()"
   {% endif %}
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">
-      Enter death registration details
+      {{pageName}}
     </h1>
-
+    
     <p class="govuk-body">When the death was registered, the registrar provided a:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>Tell Us Once reference number</li>
@@ -47,8 +38,8 @@ href: "javascript:window.history.back()"
     </ul>
     <p class="govuk-body">Enter the registration details from these documents so we can find the details of the person
       who's died.</p>
-    <form class="form" action="/v0_1/lookup-death-registration" method="post">
-      <div class="govuk-form-group">
+    <form class="form" action="/{{ data.version }}/lookup-death-registration" method="post">
+      <div class="govuk-form-group govuk-!-margin-top-6">
         <label class="govuk-label govuk-label--m" for="registration-number">
           Tell Us Once reference number
         </label>
@@ -56,7 +47,7 @@ href: "javascript:window.history.back()"
           For example, <span class="tuo-extra-letter-spacing">AB123C456DE7</span>.
         </div>
         <input class="govuk-input govuk-input--width-10 govuk-input--extra-letter-spacing" id="registration-number"
-          name="registration-number" type="text" spellcheck="false" value=""
+          name="registration-number" type="text" spellcheck="false" value="{{data['registration-number']}}"
           aria-describedby="registration-number-hint">
       </div>
       <div class="govuk-form-group">
@@ -64,7 +55,7 @@ href: "javascript:window.history.back()"
           Surname of the person who's died
         </label>
         <input class="govuk-input" id="deceased-surname" name="deceased-surname" type="text" spellcheck="false"
-          autocomplete="none">
+          autocomplete="none" value="{{data['deceased-surname']}}">
       </div>
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset" aria-describedby="date-of-death-hint">
@@ -72,7 +63,7 @@ href: "javascript:window.history.back()"
             What date did they die?
           </legend>
           <div id="date-of-death-hint" class="govuk-hint">
-            This is the date that’s on the death certificate. For example, 16 3 2026.
+            For example, 16 3 2026.
           </div>
           <div class="govuk-date-input" id="date-of-death">
             <div class="govuk-date-input__item">
@@ -81,7 +72,7 @@ href: "javascript:window.history.back()"
                   Day
                 </label>
                 <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-death-day"
-                  name="date-of-death-day" type="text" inputmode="numeric">
+                  name="date-of-death-day" type="text" inputmode="numeric" value="{{data['date-of-death-day']}}">
               </div>
             </div>
             <div class="govuk-date-input__item">
@@ -90,7 +81,7 @@ href: "javascript:window.history.back()"
                   Month
                 </label>
                 <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-death-month"
-                  name="date-of-death-month" type="text" inputmode="numeric">
+                  name="date-of-death-month" type="text" inputmode="numeric" value="{{data['date-of-death-month']}}">
               </div>
             </div>
             <div class="govuk-date-input__item">
@@ -99,15 +90,12 @@ href: "javascript:window.history.back()"
                   Year
                 </label>
                 <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="date-of-death-year"
-                  name="date-of-death-year" type="text" inputmode="numeric">
+                  name="date-of-death-year" type="text" inputmode="numeric" value="{{data['date-of-death-year']}}">
               </div>
             </div>
           </div>
         </fieldset>
       </div>
-
-
-
 
       {{ govukButton({
       text: "Continue"
@@ -117,5 +105,7 @@ href: "javascript:window.history.back()"
 
   </div>
 </div>
+
+  {% include "includes/contact.njk" %}
 
 {% endblock %}

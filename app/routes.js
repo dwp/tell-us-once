@@ -29,6 +29,15 @@ router.post('/:version/before-you-start', function (req, res) {
   }
 });
 
+// ---------- Relationship to deceased ---------- 
+router.post('/:version/relationship-to-deceased', function (req, res) {
+  const relationship = req.session.data['informer-relationship'];
+  if (["Husband", "Wife", "Spouse", "Civil Partner", "Partner"].includes(relationship)){
+    return res.redirect('about-the-spouse')
+  }
+    return res.redirect('check-your-answers-1');
+});
+
 // ---------- Next of kin ---------- 
 router.post('/current/about-the-next-of-kin', function (req, res) {
   if(req.session.data['informer-next-of-kin'] == "yes"){
@@ -354,9 +363,15 @@ router.post('/:version/lookup-death-registration', function (req, res) {
 
   console.log("Attempts: " + req.session.data['registration-lookup-attempts'])
 
-  const enrichmentPath = version === 'current'
-    ? ''
-    : '/enrichment'
+  let enrichmentPath = '/enrichment'
+
+  req.session.data['journey'] = 'full-journey'
+
+  console.log("Enrichment journey: " + req.session.data['journey'])
+
+if (req.session.data['journey'] === 'full-journey') {
+  enrichmentPath = '/enrichment/full-journey'
+}
 
   if(attempts < 2 && regNum == "AB123C456DE7"){
     return res.redirect(`/${version}${enrichmentPath}/enter-death-registration-details`)

@@ -11,10 +11,18 @@
 {{pageName}} - {{serviceName}}
 {% endblock %}
 
+{% block beforeContent %}
+{% if backLink %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endif %}
+{% endblock %}
+
 {% block bodyStart %}
 {% if showCookieBanner == true %}
-<div class="govuk-cookie-banner" data-module="govuk-cookie-banner" data-nosnippet role="region"
-  aria-label="Cookies on Tell Us Once">
+<div class="govuk-cookie-banner" data-module="govuk-cookie-banner" data-nosnippet role="region" aria-label="Cookies on Tell Us Once">
   <div class="govuk-cookie-banner__message govuk-width-container">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
@@ -43,14 +51,7 @@
   <div class="govuk-header__container govuk-width-container">
     <div class="govuk-header__logo">
       <a href="/" class="govuk-header__homepage-link">
-        <svg
-          focusable="false"
-          role="img"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 324 60"
-          height="30"
-          width="162"
-          fill="currentcolor" class="govuk-header__logotype" aria-label="GOV.UK">
+        <svg focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 324 60" height="30" width="162" fill="currentcolor" class="govuk-header__logotype" aria-label="GOV.UK">
           <title>GOV.UK</title>
           <g>
             <circle cx="20" cy="17.6" r="3.7" />
@@ -70,8 +71,7 @@
     </div>
   </div>
 </div>
-<section aria-label="Service information" class="govuk-service-navigation"
-  data-module="govuk-service-navigation">
+<section aria-label="Service information" class="govuk-service-navigation" data-module="govuk-service-navigation">
   <div class="govuk-width-container">
     <div class="govuk-service-navigation__container">
       <span class="govuk-service-navigation__service-name">
@@ -82,9 +82,41 @@
     </div>
   </div>
 </section>
+<!-- <section id="feedback">
+  <div class="govuk-phase-banner govuk-width-container">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">
+        Feedback
+      </strong>
+      <span class="govuk-phase-banner__text">
+        Help us improve this service. <a class="govuk-link" href="#">Give feedback and volunteer to take part in research (opens in new tab)</a>.
+      </span>
+    </p>
+  </div>
+</section> -->
 {% endblock %}
 
 {% block footer %}
+<!---------Contact us for help-------->
+<!-- <section id="contact">
+  <hr class="govuk-section-break govuk-section-break--visible" aria-hidden="true">
+  <section class="govuk-width-container govuk-!-margin-top-7 govuk-!-margin-bottom-7 ">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-m">Contact us for help</h2>
+        <ul class="govuk-list">
+          <li>Telephone: 0800 085 7308</li>
+          <li class="govuk-!-margin-top-5"><a href="#" class="govuk-link">Relay UK</a> (if you cannot hear or speak on the phone): 18001 then 0800 085 7308</li>
+          <li class="govuk-!-margin-top-5"><a href="#" class="govuk-link">Video relay service</a> for British Sign Language (BSL) users (<a href="#" class="govuk-link">Check you can use the video relay service</a>)</li>
+          <li class="govuk-!-margin-top-5">All services are available Monday to Friday, 9am to 5pm (except public holidays)</li>
+        </ul>
+        <p class="govuk-body">
+          <a class="govuk-link" href="#">Find out about call charges</a>
+        </p>
+      </div>
+    </div>
+  </section> -->
+
 {{
 dwpFooter({
 meta: {
