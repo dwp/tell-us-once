@@ -1,0 +1,414 @@
+{% extends "layouts/main.html" %}
+{% set pageName="Check your answers" %}
+{% set backLink = true %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{pageName}}</h1>
+
+    <!-- About the next of kin -->
+    <h2 class="govuk-heading-m">
+      About the next of kin
+    </h2>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Is there a next of kin?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['is-next-of-kin'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> is there a next of kin?</span></a>
+        </dd>
+      </div>
+      {% if data['is-next-of-kin'] == 'yes' %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Title (optional)
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['next-of-kin-title'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> title (optional)</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          First name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['next-of-kin-first-name'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> first name</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Surname
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['next-of-kin-last-name'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> last name</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Next of kin’s relationship to the person who’s died
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['next-of-kin-relationship'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> next of kin’s relationship to the person who’s died</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Can the next of kin be contacted?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['next-of-kin-contact'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> can the next of kin be contacted?</span></a>
+        </dd>
+      </div>
+      {% if data['next-of-kin-contact'] == 'yes' %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Next of kin address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['next-of-kin-address-house-number'] }} {{data['next-of-kin-address-road'] | titlecase }}<br>
+          {{data['next-of-kin-address-town'] | capitalize }}<br>
+          {{data['next-of-kin-address-county'] | capitalize }}<br>
+          {{data['next-of-kin-address-postcode'] | upper }}<br>
+          {{data['next-of-kin-address-country'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> next of kin address?</span></a>
+        </dd>
+      </div>
+      {% endif %}
+      {% endif %}
+    </dl>
+
+    <!-- About the partner -->
+    {% if (data['informer-relationship'] != 'Husband'
+    and data['informer-relationship'] != 'Wife'
+    and data['informer-relationship'] != 'Spouse'
+    and data['informer-relationship'] != 'Civil Partner'
+    and data['informer-relationship'] != 'Partner'
+    ) %}
+    <h2 class="govuk-heading-m govuk-!-padding-top-2">
+      About the partner of person who died
+    </h2>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Do you have permission to share this person’s details?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['permisson-to-share-spouse-details'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> is there a next of kin?</span></a>
+        </dd>
+      </div>
+      {% if data['permisson-to-share-spouse-details'] == 'yes' %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Title (optional)
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['spouse-title'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> title (optional)</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          First name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['spouse-first-name'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> first name</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Surname
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['spouse-last-name'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> last name</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Their relationship to the person who’s died
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['spouse-relationship'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> their relationship to the person who’s died</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date of birth
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['spouse-dob-day']}} {{data['spouse-dob-month'] | monthName}} {{data['spouse-dob-year']}}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          National Insurance number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['spouse-ni-number'] | formatNiNumber}}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> National Insurance number</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Is their home address the same as the person who’s died?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['spouse-same-address'] | capitalize}}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> is their home address the same as the person who’s died?</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Their home address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['spouse-address-house-number'] }} {{data['spouse-address-road'] | titlecase }}<br>
+          {{data['spouse-address-town'] | capitalize }}<br>
+          {{data['spouse-address-county'] | capitalize }}<br>
+          {{data['spouse-address-postcode'] | upper }}<br>
+          {{data['spouse-address-country'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> is their home address the same as the person who’s died?</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Contact email address (optional)
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['spouse-email'] %}
+          {{data['spouse-email'] | lower}}
+          {% else %}
+          <a href="">Enter contact email address</a>
+          {% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> is their home address the same as the person who’s died?</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Will they be dealing with the estate of the person who died?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['spouse-deal-with-estate'] | capitalize}}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> is their home address the same as the person who’s died?</span></a>
+        </dd>
+      </div>
+      {% endif %}
+    </dl>
+    {% endif %}
+
+    <!-- About the person or company dealing with the estate -->
+   {% if data['informer-deal-estate'] == 'no' and data['spouse-deal-with-estate'] == 'no' %}
+    <h2 class="govuk-heading-m govuk-!-padding-top-2">
+      About the person or company dealing with the estate
+    </h2>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Is there a person or company dealing with the estate?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['is-there-an-executor'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> is there a person or company dealing with the estate?</span></a>
+        </dd>
+      </div>
+      {% if data['is-there-an-executor'] == 'yes' %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Is it a person or company dealing with the estate?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['is-company-dealing-with-estate'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> is it a person or company dealing with the estate?</span></a>
+        </dd>
+      </div>
+      {% if data['is-company-dealing-with-estate'] == 'company' %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Company name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['is-company-dealing-with-estate'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> company name</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Their address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['executor-address-house-number'] }} {{data['executor-address-road'] | titlecase }}<br>
+          {{data['executor-address-town'] | capitalize }}<br>
+          {{data['executor-address-county'] | capitalize }}<br>
+          {{data['executor-address-postcode'] | upper }}<br>
+          {{data['executor-address-country'] | titlecase }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> their address</span></a>
+        </dd>
+      </div>
+      {% endif %}
+      {% if data['is-company-dealing-with-estate'] == 'person' %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Title (optional)
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['person-or-company-dealing-with-estate-title'] %}
+          {{data['person-or-company-dealing-with-estate-title'] | capitalize }}
+          {% else %}
+          <a href="about-the-person-dealing-with-the-estate">Enter title</a>
+          {% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> title (optional)</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          First name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['person-or-company-dealing-with-estate-first-name'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> first name</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Surname
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['person-or-company-dealing-with-estate-last-name'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> surname</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Is the person’s address the same as the person who died?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['person-or-company-dealing-with-estate-same-address'] | capitalize }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> is the person’s address the same as the person who died</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Their address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{data['person-or-company-dealing-with-estate-address-house-number'] }} {{data['person-or-company-dealing-with-estate-address-road'] | titlecase }}<br>
+          {{data['person-or-company-dealing-with-estate-address-town'] | capitalize }}<br>
+          {{data['person-or-company-dealing-with-estate-address-county'] | capitalize }}<br>
+          {{data['person-or-company-dealing-with-estate-address-postcode'] | upper }}<br>
+          {{data['person-or-company-dealing-with-estate-address-country'] | titlecase }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> their address</span></a>
+        </dd>
+      </div>
+      {% endif %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Contact telephone number (optional)
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['person-or-company-dealing-with-estate-contact-number'] %}
+          {{data['person-or-company-dealing-with-estate-contact-number'] | capitalize }}
+          {% else %}
+          <a href="about-the-person-dealing-with-the-estate">Enter contact telephone number</a>
+          {% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> contact telephone number (optional)</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Contact email address (optional)
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['person-or-company-dealing-with-estate-email'] %}
+          {{data['person-or-company-dealing-with-estate-email'] | capitalize }}
+          {% else %}
+          <a href="about-the-person-dealing-with-the-estate">Enter contact email address</a>
+          {% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> cntact email address (optional)</span></a>
+        </dd>
+      </div>
+      {% endif %}
+    </dl>
+    {% endif %}
+
+    <p class="govuk-body govuk-!-padding-top-2 govuk-!-padding-bottom-4">You have completed section 4 of 4.</p>
+
+    <form class="form" action="email-confirmation" method="post" novalidate>
+      <button class="govuk-button">Continue</button>
+    </form>
+  </div>
+</div>
+
+<!-- Contact us -->
+{% include "includes/contact.njk" %}
+
+{% endblock %}

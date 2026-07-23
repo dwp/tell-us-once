@@ -46,15 +46,12 @@ href: "javascript:window.history.back()"
         <ul class="govuk-list govuk-list--bullet">
           <li>Civil Service Pension Scheme</li>
           <li>NHS Pensions for NHS staff in England and Wales</li>
-          <li>Scottish Public Pension Agency schemes for NHS staff, teachers, police and firefighters in Scotland</li>
-          <li>Pension Protection Fund and Financial Assistance Scheme</li>
-          <li>Local Government Pension Schemes (LGPS)</li>
         </ul>
         <p class="govuk-body">If the person who died had a public sector pension from a different provider, contact the pension provider directly to notify them of the death.</p>
       </div>
     </details>
 
-    <form class="form" action="/v0_1/enrichment/notify-public-sector-pension-providers/check-answers" method="post">
+    <form class="form" action="check-your-answers-3" method="post">
 
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset" aria-describedby="pensions-hint">
@@ -81,7 +78,7 @@ href: "javascript:window.history.back()"
                 NHS Pension for NHS staff in England and Wales
               </label>
             </div>
-            <div class="govuk-checkboxes__item">
+            <!-- <div class="govuk-checkboxes__item">
               <input class="govuk-checkboxes__input" id="pensions-3" name="pensions" type="checkbox"
                 value="Pension Protection Fund or Financial Assistance Scheme" {% if data['pensions'] and "Pension Protection Fund or Financial Assistance Scheme" in data['pensions'] %}checked{% endif %}>
               <label class="govuk-label govuk-checkboxes__label" for="pensions-3">
@@ -104,7 +101,7 @@ href: "javascript:window.history.back()"
               <label class="govuk-label govuk-checkboxes__label" for="pensions-5">
                 South Yorkshire Pension Fund
               </label>
-            </div>
+            </div> -->
             <div class="govuk-checkboxes__divider">or</div>
             <div class="govuk-checkboxes__item">
               <input class="govuk-checkboxes__input" id="pensions-6" name="pensions" type="checkbox"
@@ -118,7 +115,6 @@ href: "javascript:window.history.back()"
           </div>
         </fieldset>
       </div>
-
 
       {{ govukButton({
       text: "Continue"

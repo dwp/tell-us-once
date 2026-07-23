@@ -1,13 +1,6 @@
 {% extends "layouts/main.html" %}
-
 {% set pageName="Check your answers" %}
-
-{% block beforeContent %}
-{{ govukBackLink({
-text: "Back",
-href: "javascript:window.history.back()"
-}) }}
-{% endblock %}
+{% set backLink = true %}
 
 {% block content %}
 
@@ -22,7 +15,7 @@ href: "javascript:window.history.back()"
 
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            <dt class="govuk-summary-list__key">
               Title
             </dt>
             <dd class="govuk-summary-list__value">
@@ -34,7 +27,7 @@ href: "javascript:window.history.back()"
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Marrital status
+              Marital status
             </dt>
             <dd class="govuk-summary-list__value">
               {{data['deceased-marital-status'] | capitalize}}
@@ -60,7 +53,12 @@ href: "javascript:window.history.back()"
               Their other address
             </dt>
             <dd class="govuk-summary-list__value">
-              {{data['deceased-other-address']}}
+              {{data['deceased-other-address-house-number']}}
+              {{data['deceased-other-address-road']}}<br>
+              {{data['deceased-other-address-town']}}<br>
+              {{data['deceased-other-address-county']}}<br>
+              {{data['deceased-other-address-postcode']}}<br>
+              {{data['deceased-other-address-country']}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="about-the-person-whos-died">Change<span class="govuk-visually-hidden"> their other address</span></a>
@@ -95,7 +93,11 @@ href: "javascript:window.history.back()"
               Address of the hospital, hospice, nursing home or care home
             </dt>
             <dd class="govuk-summary-list__value">
-              {{data['place-of-death-address-selection']}}
+              {{data['place-of-death-road']}}<br>
+              {{data['place-of-death-town']}}<br>
+              {{data['place-of-death-county']}}<br>
+              {{data['place-of-death-postcode']}}<br>
+              {{data['place-of-death-country']}}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="about-the-person-whos-died">Change<span class="govuk-visually-hidden"> address of the hospital, hospice, nursing home or care home</span></a>
@@ -150,7 +152,20 @@ href: "javascript:window.history.back()"
           </div>
         </dl>
 
-        <p class="govuk-body govuk-!-padding-top-2 govuk-!-padding-bottom-4">You have completed section 2 of 3.</p>
+        <p class="govuk-body govuk-!-padding-top-2 govuk-!-padding-bottom-4">You have completed section 2 of 
+          {% if data['informer-next-of-kin'] == 'no'
+            or data['informer-deal-estate'] == 'no'
+            or (data['informer-relationship'] != 'Husband'
+            and data['informer-relationship'] != 'Wife'
+            and data['informer-relationship'] != 'Spouse'
+            and data['informer-relationship'] != 'Civil Partner'
+            and data['informer-relationship'] != 'Partner'
+            )%}
+            4
+            {% else %}
+            3
+            {% endif %}.
+          </p>
 
         <form class="form" action="what-well-ask-about-who-you-want-to-notify-about-the-death" method="post" novalidate>
           <button class="govuk-button">Continue</button>

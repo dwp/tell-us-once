@@ -1,6 +1,7 @@
-{% extends "layouts/main.html" %} {% set pageName="About the person or company dealing with the estate" %} {% block
-beforeContent %} {{
-govukBackLink({ text: "Back", href: "javascript:window.history.back()" }) }} {% endblock %} {% block content %}
+{% extends "layouts/main.html" %}
+{% set pageName="About the person or company dealing with the estate" %}
+{% set backLink = true %}
+{% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
@@ -9,222 +10,354 @@ govukBackLink({ text: "Back", href: "javascript:window.history.back()" }) }} {% 
       This is the person or company with the legal right to deal with a person's property, money and posssessions (their estate) after they've died (also known as the executor or administrator of the will). If there is more than one executor, provide details of the person or company who would like to be contacted. Organisations you choose to notify will contact the approproate person if they need to.
     </p>
 
+    <form class="form" action="check-your-answers-4" method="post" novalidate>
+    <!-- Is there a person or company dealing with the estate? -->
     <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
-        <label class="govuk-body">Is there a person or company dealing with the estate?</label>
+      <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+        <legend class="govuk-fieldset__legend govuk-body">
+          Is there a person or company dealing with the estate?
+        </legend>
         <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="is-company-dealing-with-estate" name="is-company-dealing-with-estate" type="radio" value="email" data-aria-controls="conditional-is-company-dealing-with-estate-1" />
-            <label class="govuk-label govuk-radios__label" for="is-company-dealing-with-estate">Yes</label>
+            <input class="govuk-radios__input" id="is-there-an-executor" name="is-there-an-executor" type="radio" value="yes" data-aria-controls="conditional-executor">
+            <label class="govuk-label govuk-radios__label" for="is-there-an-executor">
+              Yes
+            </label>
           </div>
+
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="is-company-dealing-with-estate-2" name="is-company-dealing-with-estate" type="radio" value="phone" data-aria-controls="conditional-is-company-dealing-with-estate-2" />
-            <label class="govuk-label govuk-radios__label" for="is-company-dealing-with-estate-2">No</label>
+            <input class="govuk-radios__input" id="is-there-an-executor-2" name="is-there-an-executor" type="radio" value="phone">
+            <label class="govuk-label govuk-radios__label" for="is-there-an-executor-2">
+              No
+            </label>
           </div>
-          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-is-company-dealing-with-estate-2"></div>
         </div>
-        <div class="govuk-radios__conditional govuk-radios__conditional--hidden reveal--no-border govuk-!-margin-top-6" id="conditional-is-company-dealing-with-estate-1">
+
+        <!-- Is there a person or company dealing with the estate? - conditinal reveal - yes -->
+        <div class="govuk-radios__conditional govuk-radios__conditional--hidden reveal--no-border govuk-!-margin-top-4" id="conditional-executor">
           <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
-              <label class="govuk-body">Is it a person or company dealing with the estate?</label>
+            <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+              <legend class="govuk-fieldset__legend govuk-body">
+                Is it a person or company dealing with the estate?
+              </legend>
               <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="person-or-company-dealing-with-estate-1" name="person-or-company-dealing-with-estate" type="radio" value="company" data-aria-controls="conditional-person-or-company-dealing-with-estate-1" />
-                  <label class="govuk-label govuk-radios__label" for="person-or-company-dealing-with-estate">Company</label>
+                  <input class="govuk-radios__input" id="is-company-dealing-with-estate" name="is-company-dealing-with-estate" type="radio" value="company" data-aria-controls="conditional-is-company-dealing-with-estate">
+                  <label class="govuk-label govuk-radios__label" for="is-company-dealing-with-estate">
+                    Company
+                  </label>
                 </div>
+
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="person-or-company-dealing-with-estate-2" name="person-or-company-dealing-with-estate" type="radio" value="person" data-aria-controls="conditional-person-or-company-dealing-with-estate-2" />
-                  <label class="govuk-label govuk-radios__label" for="person-or-company-dealing-with-estate">Person</label>
+                  <input class="govuk-radios__input" id="is-company-dealing-with-estate-2" name="is-company-dealing-with-estate" type="radio" value="person" data-aria-controls="conditional-is-company-dealing-with-estate-2">
+                  <label class="govuk-label govuk-radios__label" for="is-company-dealing-with-estate-2">
+                    Person
+                  </label>
                 </div>
               </div>
-              <div class="govuk-radios__conditional govuk-radios__conditional--hidden reveal--no-border" id="conditional-person-or-company-dealing-with-estate-2">
-                <!---------Person routing-------->
 
+              <!-- Is it a person or company dealing with the estate? - conditinal reveal - company -->
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden reveal--no-border govuk-!-margin-top-4" id="conditional-is-company-dealing-with-estate">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="executor-name">
+                    Company name
+                  </label>
+                  <input class="govuk-input govuk-input--width-20" id="executor-name" name="executor-name" type="text">
+                </div>
+                <!-- Company address -->
+                <h2 class="govuk-heading-m">Their address</h2>
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="executor-address-house-number"> House
+                    number or name </label>
+                  <input class="govuk-input govuk-!-width-one-quarter" id="executor-address-house-number" name="executor-address-house-number" type="text">
+                </div>
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="executor-address-postcode"> Postcode
+                  </label>
+                  <div class="govuk-hint">For example, AA3 1AB</div>
+                  <input class="govuk-input govuk-!-width-one-quarter" id="executor-address-postcode" name="executor-address-postcode" type="text">
+                  <div class="postcode-inline">
+                    <button type="button" id="find-address" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0 govuk-!-margin-left-7">
+                      Find address </button>
+                    <div class="govuk-checkboxes__item govuk-!-margin-bottom-0 govuk-!-margin-left-3">
+                      <input class="govuk-checkboxes__input" id="manual-address" name="manual-address" type="checkbox">
+                      <label class="govuk-label govuk-checkboxes__label" for="manual-address"> Enter address manually </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="executor-address-road"> Road </label>
+                  <input class="govuk-input govuk-input--width-20 disabled" id="executor-address-road" name="executor-address-road" type="text">
+                </div>
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="executor-address-town"> Town/City
+                  </label>
+                  <input class="govuk-input govuk-input--width-20 disabled" id="executor-address-town" name="executor-address-town" type="text">
+                </div>
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="executor-address-county"> Country
+                    (optional) </label>
+                  <input class="govuk-input govuk-input--width-20 disabled" id="executor-address-county" name="executor-address-county" type="text">
+                </div>
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="executor-address-country"> Country
+                  </label>
+                  <input class="govuk-input govuk-input--width-20 disabled" id="executor-address-country" name="executor-address-country" type="text">
+                </div>
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="executor-contact-number">
+                    Contact telephone number (optional)
+                  </label>
+                  <input class="govuk-input govuk-input--width-20" id="executor-contact-number" name="executor-contact-number" type="text">
+                </div>
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="executor-email">
+                    Contact email address (optional)
+                  </label>
+                  <input class="govuk-input govuk-input--width-20" id="executor-email" name="executor-email" type="text">
+                </div>
+              </div>
+              <!-- End conditional reveal -->
 
-                <div class="govuk-form-group govuk-!-padding-top-6">
-                  <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                      <p class="govuk-label">Is the person's address the same as the person who died?</p>
+              <!-- Is it a person or company dealing with the estate? - conditinal reveal - person -->
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden reveal--no-border govuk-!-margin-top-4" id="conditional-is-company-dealing-with-estate-2">
+                <h2 class="govuk-heading-m">Personal details</h2>
+                <p class="govuk-body">Please enter the details of the person dealing with their estate</p>
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="sort">
+                    Title (optional)
+                  </label>
+                  <div class="govuk-hint">Please select an option from the list. If the required option is not available please select 'Other' and enter manually</div>
+                  <select class="govuk-select" id="person-or-company-dealing-with-estate-title" name="person-or-company-dealing-with-estate-title">
+                    <option value="" selected>Please select</option>
+                    <option value="Mr">Mr</option>
+                    <option value="Mrs">Mrs</option>
+                    <option value="Miss">Miss</option>
+                    <option value="Ms">Ms</option>
+                    <option value="Rev">Rev</option>
+                    <option value="Dr">Dr</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="person-or-company-dealing-with-estate-first-name">
+                    First name
+                  </label>
+                  <input class="govuk-input govuk-input--width-20" id="person-or-company-dealing-with-estate-first-name" name="person-or-company-dealing-with-estate-first-name" type="text">
+                </div>
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="person-or-company-dealing-with-estate-last-name">
+                    Surname
+                  </label>
+                  <input class="govuk-input govuk-input--width-20" id="person-or-company-dealing-with-estate-last-name" name="person-or-company-dealing-with-estate-last-name" type="text">
+                </div>
+
+                <div class="govuk-form-group">
+                  <fieldset class="govuk-fieldset" aria-describedby="person-or-company-dealing-with-estate-same-address-hint">
+                    <legend class="govuk-fieldset__legend govuk-body">
+                      <h1 class="govuk-fieldset__heading">Is the person's address the same as the person who died?</h1>
                     </legend>
-
                     <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
-
                       <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="person-dealing-with-estate-same-address-as-person-whos-died" name="person-dealing-with-estate-same-address-as-person-whos-died" type="radio" value="yes" data-aria-controls="conditional-person-dealing-with-estate-same-address-as-person-whos-died-1" />
-
-                        <label class="govuk-label govuk-radios__label" for="person-dealing-with-estate-same-address-as-person-whos-died">
+                        <input class="govuk-radios__input" id="contact" name="person-or-company-dealing-with-estate-same-address" type="radio" value="yes" data-aria-controls="conditional-person-or-company-dealing-with-estate-same-address" checked>
+                        <label class="govuk-label govuk-radios__label" for="person-or-company-dealing-with-estate-same-address">
                           Yes
                         </label>
                       </div>
+                      
 
                       <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="person-dealing-with-estate-same-address-as-person-whos-died-2" name="person-dealing-with-estate-same-address-as-person-whos-died" type="radio" value="no" data-aria-controls="conditional-person-dealing-with-estate-same-address-as-person-whos-died-2" />
-
-                        <label class="govuk-label govuk-radios__label" for="person-dealing-with-estate-same-address-as-person-whos-died-2">
+                        <input class="govuk-radios__input" id="person-or-company-dealing-with-estate-same-address-2" name="person-or-company-dealing-with-estate-same-address" type="radio" value="no" data-aria-controls="conditional-person-or-company-dealing-with-estate-same-address-2">
+                        <label class="govuk-label govuk-radios__label" for="person-or-company-dealing-with-estate-same-address-2">
                           No
                         </label>
                       </div>
 
+                    <!-- Is the person's address the same as the person who's died? - conditinal reveal - yes -->
+                      <div class="govuk-radios__conditional govuk-radios__conditional--hidden reveal--no-border" id="conditional-person-or-company-dealing-with-estate-same-address">
+                        <h2 class="govuk-heading-s">Address of the person who died</h2>
+
+                        <dl class="govuk-summary-list govuk-summary-list--no-border">
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">House or Flat Number</dt>
+                            <dd class="govuk-summary-list__value">13</dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Road</dt>
+                            <dd class="govuk-summary-list__value">HOLLY ROAD</dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Town/City</dt>
+                            <dd class="govuk-summary-list__value">HEREFORD</dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">County</dt>
+                            <dd class="govuk-summary-list__value">HEREFORDSHIRE</dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Postcode</dt>
+                            <dd class="govuk-summary-list__value">HR1 1GL</dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Country</dt>
+                            <dd class="govuk-summary-list__value">United Kingdom</dd>
+                          </div>
+
+                        </dl>
+                      </div>
+                      <!-- End conditional reveal -->
+
+                       <!-- Is the person's address the same as the person who's died? - conditinal reveal - no -->
+                      <div class="govuk-radios__conditional govuk-radios__conditional--hidden reveal--no-border" id="conditional-person-or-company-dealing-with-estate-same-address-2">
+                        <!-- Person detaling with estate address -->
+                        <h2 class="govuk-heading-m">Their contact details</h2>
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="person-or-company-dealing-with-estate-address-house-number"> House
+                            number or name </label>
+                          <input class="govuk-input govuk-!-width-one-quarter" id="person-or-company-dealing-with-estate-address-house-number" name="person-or-company-dealing-with-estate-address-house-number" type="text">
+                        </div>
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="person-or-company-dealing-with-estate-address-postcode"> Postcode
+                          </label>
+                          <div class="govuk-hint">For example, AA3 1AB</div>
+                          <input class="govuk-input govuk-!-width-one-quarter" id="person-or-company-dealing-with-estate-address-postcode" name="person-or-company-dealing-with-estate-address-postcode" type="text">
+                          <div class="postcode-inline">
+                            <button type="button" id="find-address2" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0 govuk-!-margin-left-7">
+                              Find address </button>
+                            <div class="govuk-checkboxes__item govuk-!-margin-bottom-0 govuk-!-margin-left-3">
+                              <input class="govuk-checkboxes__input" id="manual-address2" name="manual-address2" type="checkbox">
+                              <label class="govuk-label govuk-checkboxes__label" for="manual-address2"> Enter address manually </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="person-or-company-dealing-with-estate-address-road"> Road </label>
+                          <input class="govuk-input govuk-input--width-20 disabled" id="person-or-company-dealing-with-estate-address-road" name="person-or-company-dealing-with-estate-address-road" type="text">
+                        </div>
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="person-or-company-dealing-with-estate-address-town"> Town/City
+                          </label>
+                          <input class="govuk-input govuk-input--width-20 disabled" id="person-or-company-dealing-with-estate-address-town" name="person-or-company-dealing-with-estate-address-town" type="text">
+                        </div>
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="person-or-company-dealing-with-estate-address-county"> Country
+                            (optional) </label>
+                          <input class="govuk-input govuk-input--width-20 disabled" id="person-or-company-dealing-with-estate-address-county" name="person-or-company-dealing-with-estate-address-county" type="text">
+                        </div>
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="person-or-company-dealing-with-estate-address-country"> Country
+                          </label>
+                          <input class="govuk-input govuk-input--width-20 disabled" id="person-or-company-dealing-with-estate-address-country" name="executor-address-country" type="text">
+                        </div>
+                      </div>
+                      <!-- End conditional reveal -->
                     </div>
-                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden reveal--no-border" id="conditional-person-dealing-with-estate-same-address-as-person-whos-died-1">
 
-                      <table class="govuk-table govuk-!-width-one-half">
-                        <caption class="govuk-table__caption govuk-table__caption--m govuk-!-padding-bottom-4">
-                          Person who's died address
-                        </caption>
-                        <tbody class="govuk-table__body">
-                          <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__nh_header">House number or name</th>
-                            <td class="govuk-table__nh_cell">13</td>
-                          </tr>
-                          <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__nh_header">Road</th>
-                            <td class="govuk-table__nh_cell">Holly Road</td>
-                          </tr>
-                          <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__nh_header">Town/City</th>
-                            <td class="govuk-table__nh_cell">Hereford</td>
-                          </tr>
-                          <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__nh_header">County</th>
-                            <td class="govuk-table__nh_cell">Herefordshire</td>
-                          </tr>
-                          <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__nh_header">Postcode</th>
-                            <td class="govuk-table__nh_cell">HR1 1GL</td>
-                          </tr>
-                          <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__nh_header">Country</th>
-                            <td class="govuk-table__nh_cell">England</td>
-                          </tr>
-                        </tbody>
-                      </table>
+                    <div class="govuk-form-group govuk-!-margin-top-4">
+                        <label class="govuk-label" for="person-or-company-dealing-with-estate-contact-number">
+                          Contact telephone number (optional)
+                        </label>
+                        <input class="govuk-input govuk-input--width-20" id="person-or-company-dealing-with-estate-contact-number" name="person-or-company-dealing-with-estate-contact-number" type="text">
+                      </div>
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="person-or-company-dealing-with-estate-email">
+                          Contact email address (optional)
+                        </label>
+                        <input class="govuk-input govuk-input--width-20" id="person-or-company-dealing-with-estate-email" name="person-or-company-dealing-with-estate-email" type="text">
+                      </div>
 
-                    </div>
-                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden reveal--no-border" id="conditional-person-dealing-with-estate-same-address-as-person-whos-died-2">
-
-                      NOT SAME ADDRESS
-
-                    </div>
                   </fieldset>
                 </div>
 
-
-                <div class="govuk-form-group govuk-!-padding-top-6">
-                  <label class="govuk-label" for="is-company-dealing-with-estate-number">Contact telephone number (optional)</label>
-                  <input class="govuk-input govuk-input--width-20" id="contact-number" name="contactNumber" type="numeric" />
-                </div>
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="contact-email">Contact email address (optional)</label>
-                  <input class="govuk-input govuk-input--width-20" id="contact-email" name="contactEmail" type="text" />
-                </div>
               </div>
-              <div class="govuk-radios__conditional govuk-radios__conditional--hidden reveal--no-border" id="conditional-person-or-company-dealing-with-estate-1">
-                <!---------Company routing-------->
+              <!-- End conditional reveal -->
 
-                <div class="govuk-form-group govuk-!-padding-bottom-6 govuk-!-margin-top-6">
-                  <label class="govuk-label" for="width-20">Company Name</label>
-                  <input class="govuk-input govuk-input--width-20" id="width-20" name="width20" type="text" />
-                </div>
-
-                <fieldset class="govuk-fieldset">
-                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                    <h1 class="govuk-fieldset__heading">Their contact details</h1>
-                  </legend>
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="width-10">House number or name</label>
-                    <input class="govuk-input govuk-input--width-10" id="width-10" name="width10" type="text" />
-                  </div>
-                  <div class="flex-container">
-                    <div class="box-half">
-                      <div class="govuk-form-group">
-                        <label class="govuk-label" for="width-10">Postcode</label>
-                        <input class="govuk-input govuk-input--width-10" id="width-10" name="width10" type="text" />
-                      </div>
-                      <div class="govuk-form-group">
-                        <label class="govuk-label" for="width-10"></label>
-                        <button type="submit" class="govuk-button govuk-button--secondary govuk-!-margin-left-7 govuk-!-margin-top-5" data-module="govuk-button">
-                          Find address
-                        </button>
-                      </div>
-                      <div class="govuk-form-group govuk-!-margin-left-7 govuk-!-margin-top-5">
-                        <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
-                          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-                            <div class="govuk-checkboxes__item">
-                              <input class="govuk-checkboxes__input" id="contact-3" name="contact" type="checkbox" value="text message" data-aria-controls="conditional-contact-3" />
-                              <label class="govuk-label govuk-checkboxes__label" for="contact-3">Enter address
-                                manually</label>
-                            </div>
-                          </div>
-                        </fieldset>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!---------Address manual and contact details-------->
-
-                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-                    <h3 class="govuk-fieldset__heading">No addresses found!</h3>
-                  </legend>
-
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="address-line-1">Road</label>
-                    <input class="govuk-input govuk-input--width-20" id="ddress-line-1" name="addressLine1" type="text" />
-                  </div>
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="address-line-2">Town/City</label>
-                    <input class="govuk-input govuk-input--width-20" id="address-line-2" name="addressLine2" type="text" autocomplete="address-line2" />
-                  </div>
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="address-county">County (optional)</label>
-                    <input class="govuk-input govuk-input--width-20" id="address-county" name="addressCounty" type="text" autocomplete="address-level2" />
-                  </div>
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="address-country">Country</label>
-                    <input class="govuk-input govuk-input--width-20" id="address-country" name="addressCountry" type="text" />
-                  </div>
-                  <div class="govuk-form-group govuk-!-padding-top-6">
-                    <label class="govuk-label" for="contact-number">Contact telephone number (optional)</label>
-                    <input class="govuk-input govuk-input--width-20" id="contact-number" name="contactNumber" type="numeric" />
-                  </div>
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="contact-email">Contact email address (optional)</label>
-                    <input class="govuk-input govuk-input--width-20" id="contact-email" name="contactEmail" type="text" />
-                  </div>
-                </fieldset>
-              </div>
             </fieldset>
           </div>
         </div>
+        <!-- End conditional reveal -->
       </fieldset>
     </div>
 
+
     <!---------button-------->
 
-    <a href="check-your-answers-1" role="button" draggable="false" class="govuk-button govuk-button" data-module="govuk-button">Continue</a>
+    
+      <button class="govuk-button">Continue</button>
+    </form>
 
-    <!---------Contact us for help-------->
-
-    <details class="govuk-details govuk-!-padding-top-6">
-      <summary class="govuk-details__summary">
-        <span class="govuk-details__summary-text">Contact us for help</span>
-      </summary>
-      <div class="govuk-details__text">
-        <h3 class="govuk-heading-s">Telephone</h3>
-        <p class="govuk-body">0800 085 7308</p>
-        <p class="govuk-body">
-          Relay UK: 18001 0800 085 7308
-          <br />
-          <a href="#">Video Relay Service for British Sign Language (BSL) (opens in new tab)</a>
-        </p>
-        <p class="govuk-body">Monday to Friday 8:00am to 6:00pm.</p>
-        <h3 class="govuk-heading-s">Email</h3>
-        <p class="govuk-body">
-          Email us at
-          <a href="#">tellusonce.communications@dwp.gov.uk</a>
-        </p>
-      </div>
-    </details>
   </div>
 </div>
+
+<!-- Contact us -->
+{% include "includes/contact.njk" %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const checkbox = document.getElementById('manual-address');
+    const addressFields = ['executor-address-road', 'executor-address-town',
+      'executor-address-county', 'executor-address-country'
+    ];
+    checkbox.addEventListener('change', function () {
+      addressFields.forEach(id => {
+        const field = document.getElementById(id);
+        if (checkbox.checked) {
+          field.classList.remove('disabled');
+        } else {
+          field.classList.add('disabled');
+        }
+      });
+    });
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    const findButton = document.getElementById('find-address');
+    findButton.addEventListener('click', function () {
+      document.getElementById('executor-address-road').value =
+        '12 Broad Street';
+      document.getElementById('executor-address-town').value =
+        'Hereford';
+      document.getElementById('executor-address-county').value =
+        'Herefordshire';
+      document.getElementById('executor-address-country').value =
+        'United Kingdom';
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const checkbox = document.getElementById('manual-address2');
+    const addressFields = ['person-or-company-dealing-with-estate-address-road', 'person-or-company-dealing-with-estate-address-town',
+      'person-or-company-dealing-with-estate-address-county', 'person-or-company-dealing-with-estate-address-country'
+    ];
+    checkbox.addEventListener('change', function () {
+      addressFields.forEach(id => {
+        const field = document.getElementById(id);
+        if (checkbox.checked) {
+          field.classList.remove('disabled');
+        } else {
+          field.classList.add('disabled');
+        }
+      });
+    });
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    const findButton = document.getElementById('find-address2');
+    findButton.addEventListener('click', function () {
+      document.getElementById('person-or-company-dealing-with-estate-address-road').value =
+        'Chestnut Drive';
+      document.getElementById('person-or-company-dealing-with-estate-address-town').value =
+        'Leominster';
+      document.getElementById('person-or-company-dealing-with-estate-address-county').value =
+        'Herefordshire';
+      document.getElementById('person-or-company-dealing-with-estate-address-country').value =
+        'United Kingdom';
+    });
+  });
+</script>
+
 {% endblock %}

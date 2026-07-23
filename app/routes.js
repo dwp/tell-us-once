@@ -48,6 +48,21 @@ router.post('/current/about-the-next-of-kin', function (req, res) {
   
 });
 
+// ---------- Next of kin / person dealing with estate ---------- 
+router.post('/:version/what-well-ask-about-the-next-of-kin', function (req, res) {
+
+  const version = req.params.version;
+
+  const relationship = req.session.data['informer-relationship'];
+  const executor = req.session.data['informer-deal-estate'];
+
+  if (["Husband", "Wife", "Spouse", "Civil Partner", "Partner"].includes(relationship) || executor == "no"){
+    return res.redirect('what-well-ask-about-the-next-of-kin')
+  }
+    return res.redirect('before-we-send');
+});
+
+
 // ---------- About the person who's died ---------- 
 router.get('/current/deceased-address', function (req, res) {
 
@@ -132,10 +147,105 @@ router.post('/current/their-national-insurance-number', function (req, res) {
     req.session.data['formatted-address'] = formatted;
   }
 
-  res.redirect('/current/their-national-insurance-number'); 
+  res.redirect('/:version/their-national-insurance-number'); 
 });
 
+// ---------- Is there a next of kin? ---------- 
+router.post('/:version/is-there-a-next-of-kin', function (req, res) {
 
+  const nok = req.session.data['informer-next-of-kin'];
+  const relationship = req.session.data['informer-relationship'];
+  const informerDealEstate = req.session.data['informer-deal-estate'];
+
+  const isSpouse =
+    ["Husband", "Wife", "Spouse", "Civil Partner", "Partner"]
+      .includes(relationship);
+
+  // 4. Informer is not next of kin
+  if (nok === "no") {
+    return res.redirect('about-the-next-of-kin');
+  }
+
+  // 1. Informer is next of kin but not spouse
+  if (!isSpouse) {
+    return res.redirect('about-the-spouse-not-spouse');
+  }
+
+  // 3. Informer is spouse and not dealing with estate
+  if (informerDealEstate === "no") {
+    return res.redirect('about-the-person-dealing-with-the-estate');
+  }
+
+  // 2. Informer is spouse and dealing with estate
+  if (informerDealEstate === "yes") {
+    return res.redirect('email-confirmation');
+  }
+
+});
+
+router.post('/:version/about-the-spouse-not-spouse', function (req, res) {
+
+  const relationship = req.session.data['informer-relationship'];
+  const maritalStatus = req.session.data['deceased-marital-status']
+  const informerDealEstate = req.session.data['informer-deal-estate'];
+
+  const isSpouse =
+    ["Husband", "Wife", "Spouse", "Civil Partner", "Partner"]
+      .includes(relationship);
+
+  const isMarried = 
+    ["Married", "Civil Partnership"]
+    .includes(maritalStatus)
+
+  // Informer is spouse and informer dealing with estate
+  if (isSpouse && informerDealEstate === "yes") {
+    return res.redirect('check-your-answers-4');
+  }
+
+  // Informer is spouse and informer not dealing with estate
+  if (isSpouse && informerDealEstate === "no") {
+    return res.redirect('about-the-person-dealing-with-the-estate');
+  }
+
+  // Informer is not spouse and deceased is single and informer dealing with estate
+  if (!isSpouse && !isMarried && informerDealEstate === "yes") {
+    return res.redirect('check-you-answers-4');
+  }
+
+  // Informer is not spouse and deceased is single and informer is not dealing with estate
+  if (!isSpouse && !isMarried && informerDealEstate === "no") {
+    return res.redirect('about-the-person-dealing-with-the-estate');
+  }
+
+  // Informer is not spouse and deceased is married
+  if (!isSpouse && isMarried) {
+    return res.redirect('about-the-spouse-not-spouse');
+  }
+
+});
+
+router.post('/:version/about-the-person-dealing-with-the-estate', function (req, res) {
+
+  
+  const informerDealEstate = req.session.data['informer-deal-estate'];
+  const spouseDealEstate = req.session.data['spouse-deal-with-estate']
+
+  // Informer is dealing with estate
+  if (informerDealEstate === "yes") {
+    return res.redirect('check-your-answers-4');
+  }
+
+  // Informer not dealing with estate and spouse is not dealing with estate
+  if (spouseDealEstate === "no" && informerDealEstate === "no") {
+    return res.redirect('about-the-person-dealing-with-the-estate');
+  }
+
+ // Informer not dealing with estate and spouse is dealing with estate
+  if (spouseDealEstate === "yes" && informerDealEstate === "no") {
+    return res.redirect('check-your-answers-4');
+  }
+
+});
 
 // ---------- END CURRENT ---------- 
 
@@ -181,26 +291,32 @@ router.get('/v0_1/ni-number', function (req, res) {
   res.render('/v0_1/ni-number');
 });
 
-router.post('/v0_1/ni-number', function (req, res) {
+router.post('/:version/ni-number', function (req, res) {
 
-  const version = req.session.data.version;
-  console.log("Version: " + version)
+  const version = req.params.version;
+  console.log("Version: " + version);
 
-  if (req.session.data['has-ni-number'] == "yes") {
+  if (req.session.data['has-ni-number'] === "yes") {
+
     const niNum = req.session.data['ni-number'].replace(/\s/g, '');
     req.session.data['ni-number'] = niNum;
-    console.log("NI number: " + req.session.data['ni-number'])
-    if (niNum == "QQ123456C") {
-      req.session.data['public-sector-pensions-found'] = "no"
-      res.redirect('/v0_1/enrichment/notify-public-sector-pension-providers/no-public-sector-pensions-found')
-    } else if (niNum == "QQ112233C") {
-      return res.redirect('/v0_1/enrichment/notify-public-sector-pension-providers/notify-a-public-sector-pension-provider')
-    } else {
-      return res.redirect('/v0_1/enrichment/notify-public-sector-pension-providers/notify-a-public-sector-pension')
+
+    console.log("NI number: " + niNum);
+
+    if (niNum === "QQ123456C") {
+      req.session.data['public-sector-pensions-found'] = "no";
+      return res.redirect(`/${version}/no-public-sector-pensions-found`);
     }
-  } else {
-    return res.redirect('/v0_1/enrichment/check-answers')
+
+    if (niNum === "QQ112233C") {
+      return res.redirect(`/${version}//notify-a-public-sector-pension-provider`);
+    }
+
+    return res.redirect(`/${version}/notify-a-public-sector-pension`);
+
   }
+
+  return res.redirect(`/${version}/check-your-answers-3`);
 });
 
 router.get('/v0_1/enrichment/notify-public-sector-pension-providers/notify-a-public-sector-pension', function (req, res) {

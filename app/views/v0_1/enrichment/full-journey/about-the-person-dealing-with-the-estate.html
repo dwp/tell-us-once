@@ -1,9 +1,10 @@
-{% extends "layouts/main.html" %} {% set pageName="About the person or company dealing with the estate" %} {% block
-beforeContent %} {{
-govukBackLink({ text: "Back", href: "javascript:window.history.back()" }) }} {% endblock %} {% block content %}
+{% extends "layouts/main.html" %}
+{% set pageName="About the person or company dealing with the estate" %} 
+{% set backLink = true %}
+{% block content %} 
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
+  <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">{{pageName}}</h1>
     <p class="govuk-body">
       This is the person or company with the legal right to deal with a person's property, money and posssessions (their estate) after they've died (also known as the executor or administrator of the will). If there is more than one executor, provide details of the person or company who would like to be contacted. Organisations you choose to notify will contact the approproate person if they need to.

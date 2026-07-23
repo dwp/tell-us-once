@@ -5,16 +5,16 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
     <form class="form" action="/{{ data.version }}/relationship-to-deceased" method="post">
       <h1 class="govuk-heading-l">
         {{pageName}}
       </h1>
 
       <fieldset class="govuk-fieldset">
-        <!-- <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
           <h2 class="govuk-fieldset__heading">Your details</h2>
-        </legend> -->
+        </legend>
 
         <!-- TITLE -->
         <div class="govuk-form-group">
@@ -110,7 +110,8 @@
           <option value="Uncle">Uncle</option>
         </select>
       </div>
-
+    </div>
+    <div class="govuk-grid-column-full">
       <!-- SAME ADDRESS -->
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset">
@@ -121,7 +122,7 @@
           <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
 
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="same-address-yes" name="informer-same-address" type="radio" value="yes" data-aria-controls="conditional-same-address-yes">
+              <input class="govuk-radios__input" id="same-address-yes" name="informer-same-address" type="radio" value="yes" data-aria-controls="conditional-same-address-yes" checked>
               <label class="govuk-label govuk-radios__label" for="same-address-yes">Yes</label>
             </div>
 
@@ -132,8 +133,8 @@
 
           </div>
 
-          <!-- YES -->
-          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-same-address-yes">
+           <!-- YES -->
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden reveal--no-border govuk-!-margin-top-6" id="conditional-same-address-yes">
             <h2 class="govuk-heading-m">Address of the person who’s died</h2>
             <dl class="govuk-summary-list govuk-summary-list--no-border">
               <div class="govuk-summary-list__row">
@@ -164,9 +165,9 @@
           </div>
 
           <!-- NO -->
-          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-same-address-no">
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden reveal--no-border" id="conditional-same-address-no">
 
-            <h2 class="govuk-heading-m">Your contact details</h2>
+            <h2 class="govuk-heading-m govuk-!-margin-top-6">Your contact details</h2>
 
             <div class="govuk-form-group">
               <label class="govuk-label" for="informer-address-house-number">
@@ -230,7 +231,7 @@
 
         </fieldset>
       </div>
-
+      
       <!-- CONTACT -->
       <div class="govuk-form-group">
         <label class="govuk-label" for="informer-contact-number">Contact telephone number (optional)</label>
@@ -240,29 +241,6 @@
       <div class="govuk-form-group">
         <label class="govuk-label" for="informer-contact-email">Email (optional)</label>
         <input class="govuk-input govuk-input--width-20" id="informer-contact-email" name="informer-contact-email" type="email">
-      </div>
-
-      <!-- NEXT OF KIN -->
-      <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset">
-          <legend class="govuk-fieldset__legend">
-            <h2 class="govuk-fieldset__heading">Are you the next of kin?</h2>
-          </legend>
-
-          <div class="govuk-radios govuk-radios--inline">
-
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="next-of-kin-yes" name="informer-next-of-kin" type="radio" value="yes">
-              <label class="govuk-label govuk-radios__label" for="next-of-kin-yes">Yes</label>
-            </div>
-
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="next-of-kin-no" name="informer-next-of-kin" type="radio" value="no">
-              <label class="govuk-label govuk-radios__label" for="next-of-kin-no">No</label>
-            </div>
-
-          </div>
-        </fieldset>
       </div>
 
       <!-- ESTATE -->
@@ -284,6 +262,29 @@
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="estate-no" name="informer-deal-estate" type="radio" value="no">
               <label class="govuk-label govuk-radios__label" for="estate-no">No</label>
+            </div>
+
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- NEXT OF KIN -->
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend">
+            <h2 class="govuk-fieldset__heading">Are you the next of kin?</h2>
+          </legend>
+
+          <div class="govuk-radios govuk-radios--inline">
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="next-of-kin-yes" name="informer-next-of-kin" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="next-of-kin-yes">Yes</label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="next-of-kin-no" name="informer-next-of-kin" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="next-of-kin-no">No</label>
             </div>
 
           </div>

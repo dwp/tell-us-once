@@ -1,8 +1,25 @@
-{% extends "layouts/main.html" %} {% set pageName="Before we send the
-information" %} {% block content %}
+{% extends "layouts/main.html" %}
+{% set pageName="Before we send the information" %}
+{% set backLink = true %}
+{% block content %}
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
-    <a href="#" class="govuk-back-link">Back</a>
+  <div class="govuk-grid-column-two-thirds">
+
+     <!-- Check all your answers -->
+    <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Important
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+    <p class="govuk-notification-banner__heading">
+      You can check all your answers again.
+      <a class="govuk-notification-banner__link" href="check-your-answers-5">Check your answers</a>.
+    </p>
+  </div>
+</div>
+
     <h1 class="govuk-heading-l">Before we send the information</h1>
 
     <p class="govuk-body">
@@ -48,168 +65,48 @@ information" %} {% block content %}
 
     <!---------Checkbox-------->
 
-    <div class="govuk-form-group govuk-!-padding-top-6">
+    <div class="govuk-form-group govuk-!-padding-top-2">
       <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
         <div class="govuk-checkboxes" data-module="govuk-checkboxes">
           <div class="govuk-checkboxes__item">
-            <input
-              class="govuk-checkboxes__input"
-              id="agree"
-              name="agree"
-              type="checkbox"
-              value="agree"
-              data-aria-controls="agree"
-            />
+            <input class="govuk-checkboxes__input" id="agree" name="agree" type="checkbox" value="agree" data-aria-controls="agree" />
             <label class="govuk-label govuk-checkboxes__label" for="agree">
               I agree that the information I have provided may be shared with
-              the government and council organisations listed above.
+              the government and council organisations listed above
             </label>
           </div>
         </div>
       </fieldset>
     </div>
 
-    <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <h1 class="govuk-fieldset__heading">Further requirements</h1>
-        </legend>
+    <!-- Welsh communication -->
 
-        <!---------Wales-------->
-
-        <div id="changedName-hint" class="govuk-body">
-          If you are resident in Wales you have the option to have your letter
-          in Welsh.
-        </div>
-<div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
-    <label class="govuk-label">Do you live in Wales?</label>  
-    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" data-aria-controls="conditional-contact">
-        <label class="govuk-label govuk-radios__label" for="contact">
-          Yes
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" data-aria-controls="conditional-contact-2">
-        <label class="govuk-label govuk-radios__label" for="contact-2">
-          No
-        </label>
-      </div>
-      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
-      </div>
-    </div>
-      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+    <h2 class="govuk-heading-m">If you live in Wales</h2>
+    <p class="govuk-body">
+      If any of the organisations or departments you've chosen to notify need to contact you, you can ask them to contact you in Welsh. If they're able to, they will.
+    </p>
     <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
-        <p class="govuk-body">
-          Do you want to have your confirmation letter in Welsh?
-        </p>
-        <div
-          class="govuk-radios govuk-radios--inline"
-          data-module="govuk-radios"
-        >
-          <div class="govuk-radios__item">
-            <input
-              class="govuk-radios__input"
-              id="changedName"
-              name="changedName"
-              type="radio"
-              value="yes"
-            />
-            <label class="govuk-label govuk-radios__label" for="changedName">
-              Yes
-            </label>
-          </div>
-          <div class="govuk-radios__item">
-            <input
-              class="govuk-radios__input"
-              id="changedName-2"
-              name="changedName"
-              type="radio"
-              value="no"
-            />
-            <label class="govuk-label govuk-radios__label" for="changedName-2">
-              No
+      <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="welsh-communication" name="welsh-communication" type="checkbox" value="welsh-communication">
+            <label class="govuk-label govuk-checkboxes__label" for="welsh-communication">
+              I live in Wales, and want further communication in Welsh
             </label>
           </div>
         </div>
       </fieldset>
     </div>
-      </div>    
-  </fieldset>
-</div>
 
-    <!---------Large print-------->
+    <!-- Confirm and send -->
+    <form class="form" action="confirmation" method="post" novalidate>
+      <button class="govuk-button">Confirm and send</button>
+    </form>
 
-    <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
-        <p class="govuk-body">Do you require large print?</p>
-        <div
-          class="govuk-radios govuk-radios--inline"
-          data-module="govuk-radios"
-        >
-          <div class="govuk-radios__item">
-            <input
-              class="govuk-radios__input"
-              id="changedName"
-              name="changedName"
-              type="radio"
-              value="yes"
-            />
-            <label class="govuk-label govuk-radios__label" for="changedName">
-              Yes
-            </label>
-          </div>
-          <div class="govuk-radios__item">
-            <input
-              class="govuk-radios__input"
-              id="changedName-2"
-              name="changedName"
-              type="radio"
-              value="no"
-            />
-            <label class="govuk-label govuk-radios__label" for="changedName-2">
-              No
-            </label>
-          </div>
-        </div>
-      </fieldset>
-    </div>
-    </div>
-
-    <!---------Button-------->
-
-    <a
-      href="confirmation"
-      role="button"
-      draggable="false"
-      class="govuk-button govuk-button"
-      data-module="govuk-button"
-    >
-      Send
-    </a>
-    <details class="govuk-details govuk-!-padding-top-6">
-      <summary class="govuk-details__summary">
-        <span class="govuk-details__summary-text"> Contact us for help </span>
-      </summary>
-      <div class="govuk-details__text">
-        <h3 class="govuk-heading-s">Telephone</h3>
-        <p class="govuk-body">0800 085 7308</p>
-        <p class="govuk-body">
-          Relay UK: 18001 0800 085 7308<br /><a href="#"
-            >Video Relay Service for British Sign Language (BSL) (opens in new
-            tab)</a
-          >
-        </p>
-        <p class="govuk-body">Monday to Friday 8:00am to 6:00pm.</p>
-        <h3 class="govuk-heading-s">Email</h3>
-        <p class="govuk-body">
-          Email us at <a href="#">tellusonce.communications@dwp.gov.uk</a>
-        </p>
-      </div>
-    </details>
   </div>
 </div>
+
+<!-- Contact us -->
+{% include "includes/contact.njk" %}
+
 {% endblock %}

@@ -1,44 +1,7 @@
 {% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
 
-{% from "internal-service-header/macro.njk" import dwpHeader %}
-{% from "internal-service-footer/macro.njk" import dwpFooter %}
-
-{% set containerClasses = "tuo-width-container" %}
-
-{% block header %}
-<div class="govuk-generic-header">
-  <div class="govuk-generic-header__container govuk-width-container tuo-width-container">
-    <div class="govuk-generic-header__logo">
-      <a href="/" class="govuk-generic-header__homepage-link">
-       {{serviceName}} prototype
-      </a>
-    </div>
-  </div>
-</div>
-{% endblock %}
-
-{% block footer %}
-  {{
-    dwpFooter({
-      meta: {
-        visuallyHiddenTitle: "About this website",
-        items: [
-          {
-            href: "",
-            text: "Accessibility statement"
-          },
-          {
-            href: "",
-            text: "Privacy"
-          },
-          {
-            href: "/manage-prototype/clear-data",
-            text: "Clear data"
-          }
-        ]
-      }
-    })
-  }}
+{% block pageTitle %}
+{{serviceName}} prototype
 {% endblock %}
 
 {% block scripts %}

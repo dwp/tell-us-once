@@ -17,7 +17,7 @@
 </div>
   <p class="govuk-body govuk-!-padding-top-9 govuk-!-padding-bottom-7"><a href="#">Print or save this page</a></p>
 
-  <p class="govuk-body">Thank you for reporting Ms Genie's death.</p>
+  <p class="govuk-body">Thank you for reporting {{data['deceased-title']}} {{data['deceased-surname']}}'s death.</p>
   <p class="govuk-body">Please take a note of your reference number in case you need to contact us.</p>
   <p class="govuk-body govuk-!-font-weight-bold">Using this service does not form any part of a claim to benefits.</p>
 
@@ -109,6 +109,21 @@ If the person who died had a public sector pension, contact the pension provider
   </div>
 </details>
   </div>
+</div>
+
+<div class="govuk-grid-row govuk-!-margin-top-6">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- This section is for controlling the prototype - not for prod -->
+            <div class="prototype-options">
+                <div class="prototype-options-header-container">
+                    <h3 class="govuk-heading-s prototype-options-header">Prototype options</h3>
+                </div>
+                <div class="prototype-options-content">
+                    <p class="govuk-body govuk-!-margin-bottom-0"><a href="email-confirmation-preview" target="_blank">Show a preview of the email confirmation (opens in new tab)</a></p>
+                </div>
+            </div>
+            <!-- End -->
+            </div>
 </div>
 
 {% endblock %}

@@ -1,266 +1,336 @@
 {% extends "layouts/main.html" %}
-
-{% set pageName="About the person who was married or in a civil partnership with the person who's died" %}
+{% set pageName="About the partner of the person who died" %}
+{% set backLink = true %}
 
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-    <a href="javascript:history.back()" class="govuk-back-link">Back</a>
-    <h1 class="govuk-heading-l">About the person who was married or in a civil partnership with the person who's died</h1>
-<p class="govuk-body">You have told us that the person who's died was married or in a civil partnership. It can be helpful if we know more information about this person.</p>
+    <h1 class="govuk-heading-l">{{pageName}}</h1>
 
-<!---------Questions-------->
+    <p class="govuk-body">You’ve told us that the person who died was married or in a civil partnership.</p>
 
-<div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
-    <label class="govuk-label">Do you have permission to share this person's details?</label>  
-    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" data-aria-controls="conditional-contact">
-        <label class="govuk-label govuk-radios__label" for="contact">
-          Yes
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" data-aria-controls="conditional-contact-2">
-        <label class="govuk-label govuk-radios__label" for="contact-2">
-          No
-        </label>
-      </div>
-      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
-      </div>
-    </div>
-      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+    <p class="govuk-body">Entering their partner’s details will help the organisations and services you choose to notify to match the records of the person who died.</p>
 
-<!---------Share details routing-------->
+    <!---------Questions-------->
 
-<fieldset class="govuk-fieldset">
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-    <h2 class="govuk-fieldset__heading">
-      Their details
-    </h2>
-  </legend>
-  <div class="govuk-form-group">
-  <label class="govuk-label" for="sort">
-    Title (optional)
+    <form class="form" action="about-the-person-dealing-with-the-estate" method="post" novalidate>
+    <div class="govuk-form-group">
+      <fieldset class="govuk-fieldset" aria-describedby="permisson-to-share-spouse-details-hint">
+        <label class="govuk-label govuk-label--m">Do you have permission to share their details?</label>
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="permisson-to-share-spouse-details" name="permisson-to-share-spouse-details" type="radio" value="yes" data-aria-controls="conditional-permisson-to-share-spouse-details">
+            <label class="govuk-label govuk-radios__label" for="permisson-to-share-spouse-details">
+              Yes
+            </label>
+          </div>
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-permisson-to-share-spouse-details">
+
+            <!---------Share details routing-------->
+
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                <h2 class="govuk-fieldset__heading">
+                  Their details
+                </h2>
+              </legend>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="sort">
+                  Title (optional)
+                </label>
+                <div class="govuk-hint">Please select an option from the list. If the required option is not available please select 'Other' and enter manually</div>
+                <select class="govuk-select" id="spouse-title" name="spouse-title">
+                  <option value="" selected>Please select</option>
+                  <option value="Mr">Mr</option>
+                  <option value="Mrs">Mrs</option>
+                  <option value="Miss">Miss</option>
+                  <option value="Ms">Ms</option>
+                  <option value="Rev">Rev</option>
+                  <option value="Dr">Dr</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="spouse-first-name">
+                  First name
+                </label>
+                <input class="govuk-input govuk-input--width-20" id="spouse-first-name" name="spouse-first-name" type="text" autocomplete="none">
+              </div>
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="spouse-last-name">
+                  Surname
+                </label>
+                <input class="govuk-input govuk-input--width-20" id="spouse-last-name" name="spouse-last-name" type="text">
+              </div>
+
+              <div class="govuk-form-group">
+  <label class="govuk-label" for="spouse-relationship">
+    What is their relationship to the person who’s died?
   </label>
-    <div id="name-hint" class="govuk-hint">
-      Please select an option from the list. If the required option is not available please select 'Other' and enter manually
-    </div>  
-  <select class="govuk-select" id="sort" name="sort">
-    <option value="published">Recently published</option>
-    <option value="updated" selected>Please select</option>
-    <option value="views">Most views</option>
-    <option value="comments">Most comments</option>
+  <select class="govuk-select" id="spouse-relationship" name="spouse-relationship">
+    <option value="" selected>Please select</option>
+    <option value="husband">Husband</option>
+    <option value="wife">Wife</option>
+    <option value="spouse">Spouse</option>
+    <option value="civil partner">Civil partner</option>
   </select>
 </div>
+            </fieldset>
 
-  <div class="govuk-form-group">
-    <label class="govuk-label" for="address-town">
-      First name
-    </label>
-    <input class="govuk-input govuk-input--width-20" id="address-town" name="addressTown" type="text" autocomplete="address-level2">
-  </div>
-  <div class="govuk-form-group">
-    <label class="govuk-label" for="address-county">
-      Surname
-    </label>
-    <input class="govuk-input govuk-input--width-20" id="address-county" name="addressCounty" type="text">
-  </div>
+            <!---------Inset text-------->
 
-  <div class="govuk-form-group">
-  <label class="govuk-label" for="sort">
-    What is their relationship to the person who's died?
-  </label> 
-  <select class="govuk-select" id="sort" name="sort">
-    <option value="published">Recently published</option>
-    <option value="updated" selected>Please select</option>
-    <option value="views">Most views</option>
-    <option value="comments">Most comments</option>
-  </select>
-</div>  
-</fieldset>
+            <div class="govuk-inset-text">
+              You must provide either their National Insurance number or their date of birth
+            </div>
 
-<!---------Inset text-------->
+            <!---------DoB-------->
 
-<div class="govuk-inset-text">
-  You must provide either their National Insurance number or their date of birth
-</div>
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" role="group" aria-describedby="spouse-dob-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                  Date of birth
+                </legend>
+                <div id="spouse-dob-hint" class="govuk-hint">
+                  For example, 19 4 1985.
+                </div>
+                <div class="govuk-date-input" id="spouse-dob">
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="spouse-dob-day">
+                        Day
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="spouse-dob-day" name="spouse-dob-day" type="text" inputmode="numeric">
+                    </div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="spouse-dob-month">
+                        Month
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="spouse-dob-month" name=spouse-dob-month" type="text" inputmode="numeric">
+                    </div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="spouse-dob-year">
+                        Year
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="spouse-dob-year" name="spouse-dob-year" type="text" inputmode="numeric">
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
 
-<!---------DoB-------->
+            <!---------NINO-------->
 
-<div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-      <label class="govuk-body-l">
-        Date of birth
-      </label>
-    </legend>
-    <div id="passport-issued-hint" class="govuk-hint">
-      For example, 19 4 1985
-    </div>
-    <div class="govuk-date-input" id="date-death">
-      <div class="govuk-date-input__item">
-        <div class="govuk-form-group">
-          <label class="govuk-label govuk-date-input__label" for="date-of-death">
-            Day:
-          </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-death" name="date-of-death" type="text" inputmode="numeric">
+            <div class="govuk-form-group">
+              <label class="govuk-body" for="spouse-ni-number">
+                National Insurance number
+              </label>
+              <div id="spouse-ni-number-hint" class="govuk-hint">
+                It’s on a National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+              </div>
+              <input class="govuk-input govuk-input--width-10" id="spouse-ni-number" name="spouse-ni-number" type="spouse-ni-number" spellcheck="false" aria-describedby="spouse-ni-number-hint" autocomplete="none">
+            </div>
+
+            <!---------Their home address-------->
+                
+                  <div class="govuk-form-group">
+                  <fieldset class="govuk-fieldset" aria-describedby="spouse-same-address-hint">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                      <h1 class="govuk-fieldset__heading">Is their address the same as the person who's died?</h1>
+                    </legend>
+                    <div class="govuk-radios" data-module="govuk-radios">
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="contact" name="spouse-same-address" type="radio" value="yes" data-aria-controls="conditional-spouse-same-address">
+                        <label class="govuk-label govuk-radios__label" for="spouse-same-address">
+                          Yes
+                        </label>
+                      </div>
+                      <!-- Is the person's address the same as the person who's died? - conditinal reveal - yes -->
+                      <div class="govuk-radios__conditional govuk-radios__conditional--hidden reveal--no-border" id="conditional-spouse-same-address">
+                        <h2 class="govuk-heading-s">Address of the person who died</h2>
+
+                        <dl class="govuk-summary-list govuk-summary-list--no-border">
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">House or Flat Number</dt>
+                            <dd class="govuk-summary-list__value">13</dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Road</dt>
+                            <dd class="govuk-summary-list__value">HOLLY ROAD</dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Town/City</dt>
+                            <dd class="govuk-summary-list__value">HEREFORD</dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">County</dt>
+                            <dd class="govuk-summary-list__value">HEREFORDSHIRE</dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Postcode</dt>
+                            <dd class="govuk-summary-list__value">HR1 1GL</dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__key">Country</dt>
+                            <dd class="govuk-summary-list__value">United Kingdom</dd>
+                          </div>
+
+                        </dl>
+                      </div>
+                      <!-- End conditional reveal -->
+
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="spouse-same-address-2" name="spouse-same-address" type="radio" value="no" data-aria-controls="conditional-spouse-same-address-2">
+                        <label class="govuk-label govuk-radios__label" for="spouse-same-address-2">
+                          No
+                        </label>
+                      </div>
+
+                      <!-- Is the person's address the same as the person who's died? - conditinal reveal - no -->
+                      <div class="govuk-radios__conditional govuk-radios__conditional--hidden reveal--no-border" id="conditional-spouse-same-address-2">
+                        <!-- Person detaling with estate address -->
+                        <h2 class="govuk-heading-m">Their contact details</h2>
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="spouse-same-address-house-number"> House
+                            number or name </label>
+                          <input class="govuk-input govuk-!-width-one-quarter" id="spouse-address-house-number" name="spouse-address-house-number" type="text">
+                        </div>
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="spouse-address-postcode"> Postcode
+                          </label>
+                          <div class="govuk-hint">For example, AA3 1AB</div>
+                          <input class="govuk-input govuk-!-width-one-quarter" id="spouse-address-postcode" name="spouse-address-postcode" type="text">
+                          <div class="postcode-inline">
+                            <button type="button" id="find-address" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-0 govuk-!-margin-left-7">
+                              Find address </button>
+                            <div class="govuk-checkboxes__item govuk-!-margin-bottom-0 govuk-!-margin-left-3">
+                              <input class="govuk-checkboxes__input" id="manual-address" name="manual-address" type="checkbox">
+                              <label class="govuk-label govuk-checkboxes__label" for="manual-address"> Enter address manually </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="spouse-address-road"> Road </label>
+                          <input class="govuk-input govuk-input--width-20 disabled" id="spouse-address-road" name="spouse-address-road" type="text">
+                        </div>
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="spouse-address-town"> Town/City
+                          </label>
+                          <input class="govuk-input govuk-input--width-20 disabled" id="spouse-address-town" name="spouse-address-town" type="text">
+                        </div>
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="spouse-address-county"> Country
+                            (optional) </label>
+                          <input class="govuk-input govuk-input--width-20 disabled" id="spouse-address-county" name="spouse-address-county" type="text">
+                        </div>
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="spouse-address-country"> Country
+                          </label>
+                          <input class="govuk-input govuk-input--width-20 disabled" id="spouse-address-country" name="spouse-address-country" type="text">
+                        </div>
+                      </div>
+                      <!-- End conditional reveal -->
+                    </div>
+                  </fieldset>
+                </div>
+
+            
+
+
+
+
+            <!---------Email-------->
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="spouse-email">
+                Contact email address (optional)
+              </label>
+              <input class="govuk-input govuk-input--width-20" id="spouse-email" name="spouse-email" type="text">
+            </div>
+
+            <!---------Radios-------->
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" aria-describedby="spouse-deal-with-estate-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                    Will they be dealing with the estate of the person who died?
+                </legend>
+                <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="spouse-deal-with-estate" name="spouse-deal-with-estate" type="radio" value="yes">
+                    <label class="govuk-label govuk-radios__label" for="spouse-deal-with-estate">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="spouse-deal-with-estate-2" name="spouse-deal-with-estate" type="radio" value="no">
+                    <label class="govuk-label govuk-radios__label" for="spouse-deal-with-estate-2">
+                      No
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="permisson-to-share-spouse-details-2" name="permisson-to-share-spouse-details" type="radio" value="no">
+            <label class="govuk-label govuk-radios__label" for="permisson-to-share-spouse-details-2">
+              No
+            </label>
+          </div>
         </div>
-      </div>
-      <div class="govuk-date-input__item">
-        <div class="govuk-form-group">
-          <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
-            Month:
-          </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" inputmode="numeric">
-        </div>
-      </div>
-      <div class="govuk-date-input__item">
-        <div class="govuk-form-group">
-          <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
-            Year:
-          </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" inputmode="numeric">
-        </div>
-      </div>
+      </fieldset>
     </div>
-  </fieldset>
-</div>
+    <!---------Button-------->
 
-<!---------NINO-------->
+     <form class="form" action="/{{data.version}}/about-the-person-dealing-with-the-estate" method="post">
+        <button class="govuk-button">Continue</button>
+      </form>
+    <!-- Contact us -->
+{% include "includes/contact.njk" %}
 
-<div class="govuk-form-group">
-  <label class="govuk-body" for="reference">
-    National Insurance number
-  </label>
-  <div id="reference-hint" class="govuk-hint">
-  </div>
-  <input class="govuk-input govuk-input--width-10" id="reference" name="reference" type="reference" spellcheck="false" aria-describedby="reference-hint" autocomplete="reference">
-</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const checkbox = document.getElementById('manual-address');
+    const addressFields = ['spouse-address-road', 'spouse-address-town',
+      'spouse-address-county', 'spouse-address-country'
+    ];
+    checkbox.addEventListener('change', function () {
+      addressFields.forEach(id => {
+        const field = document.getElementById(id);
+        if (checkbox.checked) {
+          field.classList.remove('disabled');
+        } else {
+          field.classList.add('disabled');
+        }
+      });
+    });
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    const findButton = document.getElementById('find-address');
+    findButton.addEventListener('click', function () {
+      document.getElementById('spouse-address-road').value =
+        '12 Broad Street';
+      document.getElementById('spouse-address-town').value =
+        'Hereford';
+      document.getElementById('spouse-address-county').value =
+        'Herefordshire';
+      document.getElementById('spouse-address-country').value =
+        'United Kingdom';
+    });
+  });
 
-<!---------Their home address-------->
+</script>
 
-<div class="govuk-form-group">
-  <h3 class="govuk-heading-m">Their home address</h3>
-  <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-      <p class="govuk-label">
-        Is their address the same as the person who's died?
-      </p>
-    </legend>
-    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="changedName" name="changedName" type="radio" value="yes">
-        <label class="govuk-label govuk-radios__label" for="changedName">
-          Yes
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="changedName-2" name="changedName" type="radio" value="no">
-        <label class="govuk-label govuk-radios__label" for="changedName-2">
-          No
-        </label>
-      </div>
-    </div>
-  </fieldset>
-</div>
-
-<!---------Addresss of the person who's died-------->
-
-<table class="govuk-table">
-  <caption class="govuk-table__caption govuk-table__caption--m govuk-!-padding-bottom-3">Address of person who's died</caption>
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__nh_header">House number or name</th>
-      <td class="govuk-table__nh_cell">13</td>
-    </tr>    
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__nh_header">Road</th>
-      <td class="govuk-table__nh_cell">Holly Road</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__nh_header">Town/City</th>
-      <td class="govuk-table__nh_cell">Hereford</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__nh_header">County</th>
-      <td class="govuk-table__nh_cell">Herefordshire</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__nh_header">Postcode</th>
-      <td class="govuk-table__nh_cell">HR1 1GL</td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__nh_header">Country</th>
-      <td class="govuk-table__nh_cell">England</td>
-    </tr>        
-  </tbody>
-</table>
-
-<!---------Email-------->
-
-  <div class="govuk-form-group">
-    <label class="govuk-label" for="contact-email">
-      Contact email address (optional)
-    </label>
-    <input class="govuk-input govuk-input--width-20" id="contact-email" name="contactEmail" type="text">
-  </div> 
-
-<!---------Radios-------->
-
-<div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-      <p class="govuk-label">
-        Will they be dealing with the estate of the person who died?
-      </p>
-    </legend>
-    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="changedName" name="changedName" type="radio" value="yes">
-        <label class="govuk-label govuk-radios__label" for="changedName">
-          Yes
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="changedName-2" name="changedName" type="radio" value="no">
-        <label class="govuk-label govuk-radios__label" for="changedName-2">
-          No
-        </label>
-      </div>
-    </div>
-  </fieldset>
-</div>   
-      </div>    
-      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-bluebadge">
-      </div>    
-  </fieldset>
-</div>
-
-<!---------Button-------->
-
-<a href="about-the-person-dealing-with-the-estate" role="button" draggable="false" class="govuk-button govuk-button" data-module="govuk-button">
-  Continue
-</a>
-
-<!---------Contact us for help-------->
-
-<details class="govuk-details govuk-!-padding-top-6">
-  <summary class="govuk-details__summary">
-    <span class="govuk-details__summary-text">
-      Contact us for help
-    </span>
-  </summary>
-  <div class="govuk-details__text">
-    <h3 class="govuk-heading-s">Telephone</h3>
-<p class="govuk-body">0800 085 7308</p>
-<p class="govuk-body">Relay UK: 18001 0800 085 7308<br><a href="#">Video Relay Service for British Sign Language (BSL) (opens in new tab)</a></p>
-<p class="govuk-body">Monday to Friday 8:00am to 6:00pm.</p>
-<h3 class="govuk-heading-s">reference</h3>
-<p class="govuk-body"> reference us at <a href="#">tellusonce.communications@dwp.gov.uk</a></p>
-  </div>
-</details>
-  </div>
-</div>
 {% endblock %}

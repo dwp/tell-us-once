@@ -1,13 +1,6 @@
 {% extends "layouts/main.html" %}
-
 {% set pageName="Check your answers" %}
-
-{% block beforeContent %}
-{{ govukBackLink({
-text: "Back",
-href: "javascript:window.history.back()"
-}) }}
-{% endblock %}
+{% set backLink = true %}
 
 {% block content %}
 
@@ -22,7 +15,7 @@ href: "javascript:window.history.back()"
 
         <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key govuk-!-width-one-half">
+            <dt class="govuk-summary-list__key">
               Title
             </dt>
             <dd class="govuk-summary-list__value">
@@ -137,6 +130,7 @@ href: "javascript:window.history.back()"
               <a class="govuk-link" href="about-you">Change<span class="govuk-visually-hidden"> are you the next of kin</span></a>
             </dd>
           </div>
+          {% if data['informer-next-of-kin'] == 'yes' %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Date of birth
@@ -159,9 +153,23 @@ href: "javascript:window.history.back()"
               <a class="govuk-link" href="about-the-spouse">Change<span class="govuk-visually-hidden"> National Insurance number</span></a>
             </dd>
           </div>
+          {% endif %}
         </dl>
 
-        <p class="govuk-body govuk-!-padding-top-2 govuk-!-padding-bottom-4">You have completed section 1 of 3.</p>
+        <p class="govuk-body govuk-!-padding-top-2 govuk-!-padding-bottom-4">You have completed section 1 of 
+          {% if data['informer-next-of-kin'] == 'no'
+            or data['informer-deal-estate'] == 'no'
+            or (data['informer-relationship'] != 'Husband'
+            and data['informer-relationship'] != 'Wife'
+            and data['informer-relationship'] != 'Spouse'
+            and data['informer-relationship'] != 'Civil Partner'
+            and data['informer-relationship'] != 'Partner'
+            )%}
+            4
+            {% else %}
+            3
+            {% endif %}.
+          </p>
 
         <form class="form" action="what-well-ask-about-the-person-who-died" method="post" novalidate>
           <button class="govuk-button">Continue</button>

@@ -1,0 +1,417 @@
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Security-Policy" content="base-uri * 'self' 'unsafe-inline' 'unsafe-eval' data: blob: olm: hx-core: adaptive-image: cid: ws: wss: custom-font: render: cacheable:; object-src 'none'; script-src olm: render: https://*.office.net https://*.df.onecdn.static.microsoft https://*.public.onecdn.static.microsoft 'sha256-uAohNGdHrONiVf69sRgKMG2oeKVlOa9uUTsDu2HeSw8=' 'sha256-0QyuEPrKme1y6Ts8noziVYCgWS8p4eMJBd46blOT69c=' 'sha256-dZiPJLYmEk86KzEh0w2PEjTI9IW1VJsmev7rnWH6glA=' 'sha256-xG6hp5Vu082fXuoJnTXwb5Cc9Zkvm4NzKzuDgYOoysA='; style-src * 'self' 'unsafe-inline' 'unsafe-eval' data: blob: olm: hx-core: adaptive-image: cid: ws: wss: custom-font: render: cacheable:; default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: blob: olm: hx-core: adaptive-image: cid: ws: wss: custom-font: render: cacheable:; font-src * 'self' 'unsafe-inline' 'unsafe-eval' data: blob: olm: hx-core: adaptive-image: cid: ws: wss: custom-font: render: cacheable:; media-src render: blob: data: *.res.office365.com *.cdn.office.net *.df.onecdn.static.microsoft *.public.onecdn.static.microsoft *.sharepoint-df.com *.sharepoint.com *.1drv.com onedrive.cloud.microsoft *.skype.com *.office.net *.office365.net *.office365-net.us *.office.com *.yammer.com *.engage.cloud.microsoft *.engage.cloud-dev.microsoft attachments.office.net attachment.outlook.live.net">
+    <meta charset="utf-8">
+    <title>Reading Pane</title>
+    <meta name="viewport" content="width=1384, minimum-scale=1, maximum-scale=5, initial-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#000000">
+    <style type="text/css">
+        .FluidStyle_overlap__p5GVP {
+            position: relative
+        }
+
+        .FluidStyle_overlap__p5GVP:after {
+            content: " ";
+            display: block;
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 100
+        }
+
+        .FluidStyle_accessibilityOverlap__vhEes:after {
+            z-index: 99
+        }
+    </style>
+    <style type="text/css">
+        .MentionStyle_mention__DQ5Xl {
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 0 2px;
+            text-decoration: none
+        }
+
+        .MentionStyle_mention__DQ5Xl a {
+            pointer-events: none
+        }
+
+        .meCardStyles_ms-outlook-message-extension-card__Zz6zg {
+            width: 100%
+        }
+
+        .meCardStyles_ms-outlook-message-extension-card__Zz6zg .meCardStyles_card-loader-container__1Sy04 {
+            align-items: center;
+            border: 1px solid #e1e1e1;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center
+        }
+
+        .meCardStyles_ms-outlook-message-extension-card__Zz6zg .meCardStyles_card-loader__70BCt {
+            animation: meCardStyles_spin__S9ISs 1s linear infinite;
+            border: 1px solid #e1e1e1;
+            border-radius: 50%;
+            border-top-color: #ababab;
+            height: 20px;
+            margin: 10px;
+            width: 20px
+        }
+
+        @keyframes meCardStyles_spin__S9ISs {
+            0% {
+                transform: rotate(0deg)
+            }
+
+            to {
+                transform: rotate(1turn)
+            }
+        }
+
+        .ms-outlook-mobile-availability-day-label {
+            color: #0078d7;
+            font-weight: 600;
+            padding: 0 13px;
+            text-align: center;
+            vertical-align: middle;
+            white-space: nowrap
+        }
+
+        .ms-outlook-mobile-availability-time-slot_container {
+            width: 100%
+        }
+
+        .ms-outlook-mobile-availability-time-slot_container table {
+            border-spacing: 0
+        }
+
+        .ms-outlook-mobile-availability-transfer-time-zone-button {
+            border: 1px solid #0078d4;
+            border-radius: 4px;
+            color: #0078d4;
+            font-size: 13px;
+            margin: 16px 0;
+            width: 100%
+        }
+
+        .ms-outlook-mobile-availability-transfer-time-zone-button-flex-container {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0
+        }
+
+        .ms-outlook-mobile-availability-transfer-time-zone-button-wrapper {
+            align-items: center;
+            display: flex;
+            justify-content: center
+        }
+
+        .ms-outlook-mobile-availability-transfer-time-zone-button-icon-flex-container {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            margin-right: 10px
+        }
+    </style>
+    <style>
+        @font-face {
+            font-family: Aptos;
+            src: url(custom-font://load?font-id=F9D3DEE4-D0D0-4F32-AC25-4C315D19444C);
+        }
+
+        @font-face {
+            font-family: Aptos;
+            font-weight: bold;
+            src: url(custom-font://load?font-id=D46E6058-6645-4610-BB8B-6629FEC40EA6);
+        }
+    </style>
+    <style>
+        @font-face {
+            font-family: Aptos;
+            src: url(custom-font://load?font-id=F9D3DEE4-D0D0-4F32-AC25-4C315D19444C);
+        }
+
+        @font-face {
+            font-family: Aptos;
+            font-weight: bold;
+            src: url(custom-font://load?font-id=D46E6058-6645-4610-BB8B-6629FEC40EA6);
+        }
+    </style>
+    <style>
+        @font-face {
+            font-family: Aptos;
+            src: url(custom-font://load?font-id=F9D3DEE4-D0D0-4F32-AC25-4C315D19444C);
+        }
+
+        @font-face {
+            font-family: Aptos;
+            font-weight: bold;
+            src: url(custom-font://load?font-id=D46E6058-6645-4610-BB8B-6629FEC40EA6);
+        }
+    </style>
+</head>
+
+<body style="height: auto !important; max-height: auto !important; min-height: auto !important; width: 1384px !important;">
+    <style>
+        html {
+            background: 0 0 !important;
+            color: #000
+        }
+
+        fieldset,
+        img {
+            border: 0
+        }
+
+        q:after,
+        q:before {
+            content: ""
+        }
+
+        abbr,
+        acronym {
+            border: 0
+        }
+
+        img,
+        input {
+            border: none
+        }
+
+        body {
+            margin: 0
+        }
+    </style> <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">
+        <div id="app" uuid="5BFC2046-95B0-4A17-BAF1-44EE2E35192B">
+            <style>
+                body {
+                    padding: 9px 9px !important;
+                    box-sizing: border-box;
+                    margin: 0;
+                    color: #212121FF !important;
+                    font-family: Aptos;
+                    font-size: 12pt;
+                    word-wrap: break-word;
+                    -webkit-text-size-adjust: 100%;
+                    -webkit-touch-callout: default;
+                    -webkit-user-select: text;
+                }
+
+                .ms-outlook-html-content-root {
+                    color: #212121FF;
+                }
+
+                #root #app pre {
+                    white-space: pre-wrap;
+                }
+
+                .olm-fragment-custom [x-apple-data-detectors=true],
+                .olm-fragment-custom a[href],
+                .olm-fragment-custom a[href]:active {
+                    color: #0078D4;
+                }
+
+                #root #app [x-apple-data-detectors-type="calendar-event"] {
+                    color: #0078D4 !important;
+                    font-size: inherit !important;
+                    -webkit-text-decoration-color: #0078D4 !important;
+                }
+
+                #root #app hr {
+                    width: 100% !important;
+                    border-left: none;
+                    border-right: none;
+                }
+
+                #root #app blockquote {
+                    margin: 0px 10px !important;
+                }
+
+                #root #app ol {
+                    padding-inline-start: 2.5em;
+                }
+            </style>
+            <div>
+                <div class="ms-outlook-html-content-root" style="line-height: 1.2;">
+                    <div class="olm-fragment-custom">
+                        <style>
+                            @media only print {
+                                .olm-fragment-custom .logo__crown {
+                                    display: none !important;
+                                }
+
+                                .olm-fragment-custom .logo__text,
+                                .olm-fragment-custom .logo__dot {
+                                    color: #000000 !important;
+                                }
+
+                                .olm-fragment-custom .brand__banner {
+                                    border-bottom: solid 1pt #000000 !important;
+                                    background-color: unset !important;
+                                }
+                            }
+
+                            .olm-fragment-custom {
+                                margin: 0 !important;
+                            }
+                        </style>
+                        <div id="converted-body" style="font-family: Helvetica, Arial, sans-serif; font-size: 16px; margin: 0px; color: rgb(11, 12, 12);"><span style="display:none; font-size:1px; color:#fff; max-height:0">What happens next Your Tell Us Once reference number is: YJAG H4C6 AXEY If you need to contact Tell Us Once, you’ll need this reference number. You’ve given Tell Us Once permission to notify the government organisations and services you have selected about…</span>
+                            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; width:100%">
+                                <tbody>
+                                    <tr>
+                                        <td width="100%" height="60" bgcolor="rgb(0, 84, 153)" class="brand__banner" style="background-color: rgb(0, 84, 153);">
+                                            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; max-width: 580px; width: 100%; margin-left: auto; margin-right: auto;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td width="70" valign="bottom"><a href="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.gov.uk%2F&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160251920182%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=oXS%2FkLH%2BYxHSsQfaBHr8q54GnU2xpdNtJV07vD%2B6xtY%3D&amp;reserved=0" originalsrc="https://www.gov.uk/" title="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.gov.uk%2F&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160251920182%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=oXS%2FkLH%2BYxHSsQfaBHr8q54GnU2xpdNtJV07vD%2B6xtY%3D&amp;reserved=0" style="text-decoration:none; color:#fff" data-outlook-id="25db26d3-2504-4823-ae49-4eb663656c79">
+                                                                <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td valign="middle" height="60" class="logo__crown" style="font-size:28px; line-height:2; padding-left:10px"><img src="https://static.notifications.service.gov.uk/images/govuk-logotype-tudor-crown.png" alt="" height="32" border="0" aria-hidden="true" style="margin-top:2px; max-height:32px" tabindex="0"> </td>
+                                                                            <td valign="bottom" height="60" class="logo__text" style="font-size:28px; line-height:2.1428571429; padding-left:8px"><span aria-label="GOV.UK" style="font-family:Helvetica,Arial,'Noto Sans',sans-serif; font-weight:700; text-decoration:none; vertical-align:middle; display:inline-block; color: #fff; padding-top: 4px;">GOV<span class="logo__dot" style="font-family:Georgia,Times New Roman,Times,sans-serif; color:#00ffe0; display:inline-block; text-indent:0.04em; font-size:32px; line-height:1.35; vertical-align:top; margin-right:0.05em">.</span>UK</span> </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table role="presentation" class="content" cellpadding="0" cellspacing="0" border="0" style="border-collapse: collapse; max-width: 580px; width: 100%; margin-left: auto; margin-right: auto;">
+                                <tbody>
+                                    <tr>
+                                        <td height="30"><br></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10" valign="middle"><br></td>
+                                        <td style="font-family:Helvetica,Arial,sans-serif; font-size:19px; line-height:1.315789474; max-width:560px">
+                                            <h2 style="margin: 0px 0px 15px; padding: 10px 0px 0px; font-size: 27px; line-height: 35px; font-weight: bold; color: rgb(11, 12, 12);">What happens next</h2>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">Your Tell Us Once reference number is:</p>
+                                            <div style="margin:0 0 20px 0">
+                                                <blockquote style="margin:0; border-left:10px solid #B1B4B6; padding:15px 0 0.1px 15px; font-size:19px; line-height:25px">
+                                                    <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">YJAG H4C6 AXEY</p>
+                                                </blockquote>
+                                            </div>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">If you need to contact Tell Us Once, you’ll need this reference number.</p>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">You’ve given Tell Us Once permission to notify the government organisations and services you have selected about the death. We have told them to update their records. They will not need to see the death certificate.</p>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">You told us you want to notify:</p>
+                                            <table role="presentation" style="padding:0 0 20px 0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="font-family:Helvetica,Arial,sans-serif">
+                                                            <ul style="margin:0 0 0 20px; padding:0; list-style-type:disc">
+                                                                <li style="margin: 5px 0px; padding: 0px 0px 0px 5px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">Department for Work and Pensions (DWP) – Benefits and Entitlements</li>
+                                                                <li style="margin: 5px 0px; padding: 0px 0px 0px 5px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">HM Revenue and Customs (HMRC) – Personal Tax</li>
+                                                                <li style="margin: 5px 0px; padding: 0px 0px 0px 5px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">HM Revenue and Customs (HMRC) – Benefits and Credits</li>
+                                                                <li style="margin: 5px 0px; padding: 0px 0px 0px 5px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">London Borough of Lewisham Council – Council Tax</li>
+                                                                <li style="margin: 5px 0px; padding: 0px 0px 0px 5px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">London Borough of Lewisham Council – Library Services</li>
+                                                                <li style="margin: 5px 0px; padding: 0px 0px 0px 5px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">London Borough of Lewisham Council – Blue Badge</li>
+                                                                <li style="margin: 5px 0px; padding: 0px 0px 0px 5px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">HM Passport Office (HMPO) – Passport</li>
+                                                                <li style="margin: 5px 0px; padding: 0px 0px 0px 5px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">Driver and Vehicle Licensing Agency (DVLA) – Driving Licence</li>
+                                                                <li style="margin: 5px 0px; padding: 0px 0px 0px 5px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">Civil Service Pension</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">If you have a query about a particular organisation or service, you must contact them directly. You can find contact details at: <a href="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.gov.uk%2Fcontact&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160251940338%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=zUSJ9SblRlAY9v2QNqXHj9v2JoAcMQaY54q6X1D7yng%3D&amp;reserved=0" originalsrc="https://www.gov.uk/contact" style="overflow-wrap: break-word; color: rgb(29, 112, 184);" title="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.gov.uk%2Fcontact&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160251940338%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=zUSJ9SblRlAY9v2QNqXHj9v2JoAcMQaY54q6X1D7yng%3D&amp;reserved=0" data-outlook-id="23a54a65-38d7-4919-99e8-0e0c00e836f3">https://www.gov.uk/contact</a></p>
+                                            <h2 style="margin: 0px 0px 15px; padding: 10px 0px 0px; font-size: 27px; line-height: 35px; font-weight: bold; color: rgb(11, 12, 12);">What you can do next</h2>
+                                            <h3 style="margin: 0px 0px 15px; padding: 10px 0px 0px; font-size: 19px; line-height: 25px; font-weight: bold; color: rgb(11, 12, 12);">If the person who died was claiming benefits with, or that were linked to, someone else</h3>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">When you notify a benefit provider (for example, DWP, HMRC or local council), about the death, any payments to the person who died will stop. </p>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">If the person who died was claiming benefits with, or getting benefits that were linked to, someone else (for example as their partner, parent or carer) the surviving person must notify their benefit provider directly. </p>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">This is because the claim may need to change, or they may need to make a new claim to continue getting support.</p>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">Check how benefits are affected if your:</p>
+                                            <table role="presentation" style="padding:0 0 20px 0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="font-family:Helvetica,Arial,sans-serif">
+                                                            <ul style="margin:0 0 0 20px; padding:0; list-style-type:disc">
+                                                                <li style="margin: 5px 0px; padding: 0px 0px 0px 5px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">child has died: <a href="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.gov.uk%2Fafter-a-death%2Fif-a-child-or-baby-dies&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160251958051%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=Ifgyt0K8XgcSRhjlRGe962ZZD%2FUzYyH4jUcuNYdCbEw%3D&amp;reserved=0" originalsrc="https://www.gov.uk/after-a-death/if-a-child-or-baby-dies" style="overflow-wrap: break-word; color: rgb(29, 112, 184);" title="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.gov.uk%2Fafter-a-death%2Fif-a-child-or-baby-dies&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160251958051%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=Ifgyt0K8XgcSRhjlRGe962ZZD%2FUzYyH4jUcuNYdCbEw%3D&amp;reserved=0" data-outlook-id="df602734-8341-4d3e-aa28-50fd31208977">https://www.gov.uk/after-a-death/if-a-child-or-baby-dies</a></li>
+                                                                <li style="margin: 5px 0px; padding: 0px 0px 0px 5px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">partner has died: <a href="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.gov.uk%2Fdeath-spouse-benefits-tax-pension%2Fbenefits&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160251975340%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=5RLbhYIJFoeRqnm1rSuMY0M6PgO3b0xtP2abK5o3Wqk%3D&amp;reserved=0" originalsrc="https://www.gov.uk/death-spouse-benefits-tax-pension/benefits" style="overflow-wrap: break-word; color: rgb(29, 112, 184);" title="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.gov.uk%2Fdeath-spouse-benefits-tax-pension%2Fbenefits&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160251975340%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=5RLbhYIJFoeRqnm1rSuMY0M6PgO3b0xtP2abK5o3Wqk%3D&amp;reserved=0" data-outlook-id="89934c87-975b-4364-b96c-6336661631aa">https://www.gov.uk/death-spouse-benefits-tax-pension/benefits</a></li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <h3 style="margin: 0px 0px 15px; padding: 10px 0px 0px; font-size: 19px; line-height: 25px; font-weight: bold; color: rgb(11, 12, 12);">Cut off the corner of the driving licence</h3>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">You do not need to return the driving licence. Cutting the corner means the driving licence cannot be used. </p>
+                                            <h3 style="margin: 0px 0px 15px; padding: 10px 0px 0px; font-size: 19px; line-height: 25px; font-weight: bold; color: rgb(11, 12, 12);">Tell DVLA if you sell, transfer or keep the vehicle</h3>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">When DVLA (Driver and Vehicle Licensing Agency) remove the person who died as the registered keeper, the vehicle tax will no longer be valid. </p>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">If you sell, transfer or keep the vehicle you must tell the DVLA: <a href="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.gov.uk%2Fsold-bought-vehicle&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160251992638%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=sRdiXKJHxggvK5f%2FNzz4YykNe7leXb639kuIJDrcpAY%3D&amp;reserved=0" originalsrc="https://www.gov.uk/sold-bought-vehicle" style="overflow-wrap: break-word; color: rgb(29, 112, 184);" title="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.gov.uk%2Fsold-bought-vehicle&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160251992638%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=sRdiXKJHxggvK5f%2FNzz4YykNe7leXb639kuIJDrcpAY%3D&amp;reserved=0" data-outlook-id="eebe4156-fc0b-484b-ac2f-74ad7e69850d">https://www.gov.uk/sold-bought-vehicle</a> </p>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">If you keep the vehicle you must tax it in your name. </p>
+                                            <h3 style="margin: 0px 0px 15px; padding: 10px 0px 0px; font-size: 19px; line-height: 25px; font-weight: bold; color: rgb(11, 12, 12);">Cut off the top right corner of the passport</h3>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">You do not need to return the passport. Cutting the corner means the passport cannot be used. </p>
+                                            <h3 style="margin: 0px 0px 15px; padding: 10px 0px 0px; font-size: 19px; line-height: 25px; font-weight: bold; color: rgb(11, 12, 12);">If they had a public sector pension</h3>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">If the person who died had a public sector pension, contact the pension provider directly to close the account and stop any regular payments.</p>
+                                            <h2 style="margin: 0px 0px 15px; padding: 10px 0px 0px; font-size: 27px; line-height: 35px; font-weight: bold; color: rgb(11, 12, 12);">Bereavement benefits and support</h2>
+                                            <h3 style="margin: 0px 0px 15px; padding: 10px 0px 0px; font-size: 19px; line-height: 25px; font-weight: bold; color: rgb(11, 12, 12);">Check if you’re eligible for extra money for living costs</h3>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">If your partner has died, and you were under State Pension age when they died, you can check if you can get Bereavement Support Payment at: <a href="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.gov.uk%2Fbereavement-support-payment&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160252009680%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=euVrT2HS%2FaFCzRX4CTEVjpHAqIOrWlHrvSkasOFf2xM%3D&amp;reserved=0" originalsrc="https://www.gov.uk/bereavement-support-payment" style="overflow-wrap: break-word; color: rgb(29, 112, 184);" title="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.gov.uk%2Fbereavement-support-payment&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160252009680%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=euVrT2HS%2FaFCzRX4CTEVjpHAqIOrWlHrvSkasOFf2xM%3D&amp;reserved=0" data-outlook-id="8457a84a-b332-460b-beab-9e6c4f603784">https://www.gov.uk/bereavement-support-payment</a> </p>
+                                            <h3 style="margin: 0px 0px 15px; padding: 10px 0px 0px; font-size: 19px; line-height: 25px; font-weight: bold; color: rgb(11, 12, 12);">Their partner can check if they’re eligible for extra money for living costs</h3>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">Based on your answers, the partner of the person who died may be able to get extra money to help with their living costs if they’re on a low income. They can check if they can get Pension Credit at: <a href="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.gov.uk%2Fpension-credit&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160252027110%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=97kwXNhZE3pRYUOc4shAnvLThrRCQ9Pr6Y1vcsrcLU4%3D&amp;reserved=0" originalsrc="https://www.gov.uk/pension-credit" style="overflow-wrap: break-word; color: rgb(29, 112, 184);" title="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.gov.uk%2Fpension-credit&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160252027110%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=97kwXNhZE3pRYUOc4shAnvLThrRCQ9Pr6Y1vcsrcLU4%3D&amp;reserved=0" data-outlook-id="e471786d-85f1-4167-958e-5b84bee094c2">https://www.gov.uk/pension-credit</a> </p>
+                                            <h3 style="margin: 0px 0px 15px; padding: 10px 0px 0px; font-size: 19px; line-height: 25px; font-weight: bold; color: rgb(11, 12, 12);">The partner can check if they can get Bereavement Support Payment</h3>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">If the partner of the person who died was under State Pension age when they died, they can check if they can get Bereavement Support Payment at: <a href="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.gov.uk%2Fbereavement-support-payment&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160252043987%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=t4g0QdyrRfb%2FwQoVuX9loD%2Fibw7Xj9Tr1BZ5sdp4LHI%3D&amp;reserved=0" originalsrc="https://www.gov.uk/bereavement-support-payment" style="overflow-wrap: break-word; color: rgb(29, 112, 184);" title="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.gov.uk%2Fbereavement-support-payment&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160252043987%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=t4g0QdyrRfb%2FwQoVuX9loD%2Fibw7Xj9Tr1BZ5sdp4LHI%3D&amp;reserved=0" data-outlook-id="c02cf8c8-bc76-4386-b0db-02664ba99aea">https://www.gov.uk/bereavement-support-payment</a></p>
+                                            <h3 style="margin: 0px 0px 15px; padding: 10px 0px 0px; font-size: 19px; line-height: 25px; font-weight: bold; color: rgb(11, 12, 12);">Other support you may be able to get</h3>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">If you get certain benefits, you can check if you can get help with funeral costs at: <a href="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.gov.uk%2Ffuneral-payments&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160252060933%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=QjAQvpIPNl1HDPVol%2B7F9HrZhK6yrPZPP2Qx7gzJly8%3D&amp;reserved=0" originalsrc="https://www.gov.uk/funeral-payments" style="overflow-wrap: break-word; color: rgb(29, 112, 184);" title="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.gov.uk%2Ffuneral-payments&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160252060933%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=QjAQvpIPNl1HDPVol%2B7F9HrZhK6yrPZPP2Qx7gzJly8%3D&amp;reserved=0" data-outlook-id="7e6881ab-890d-4430-9b2f-83f20a2cbbae">https://www.gov.uk/funeral-payments</a></p>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">You can go to <a href="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.gov.uk%2Fwhen-someone-dies&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160252081812%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=c3s9sPKnbOSi3HCaq5AqBN1DgByCJGOgIWhOcZ6ZaL8%3D&amp;reserved=0" originalsrc="https://www.gov.uk/when-someone-dies" style="overflow-wrap: break-word; color: rgb(29, 112, 184);" title="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.gov.uk%2Fwhen-someone-dies&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160252081812%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=c3s9sPKnbOSi3HCaq5AqBN1DgByCJGOgIWhOcZ6ZaL8%3D&amp;reserved=0" data-outlook-id="cd488d5f-bdb2-485f-bbef-c8ceb7ba28cd">https://www.gov.uk/when-someone-dies</a> to:</p>
+                                            <table role="presentation" style="padding:0 0 20px 0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="font-family:Helvetica,Arial,sans-serif">
+                                                            <ul style="margin:0 0 0 20px; padding:0; list-style-type:disc">
+                                                                <li style="margin: 5px 0px; padding: 0px 0px 0px 5px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">check if you’re eligible for other bereavement benefits</li>
+                                                                <li style="margin: 5px 0px; padding: 0px 0px 0px 5px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">find bereavement support and services</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">You can also use this checklist to understand what else you may need to do when someone dies: <a href="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fadmin-tell-us-once-uat.dwp.gov.uk%2FStatic%2FConfirmationChecklist.html&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160252099452%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=%2Bprol5kdUk9Imw%2B83AsTVic%2FNTGwmog%2BebcogykaYEI%3D&amp;reserved=0" originalsrc="https://admin-tell-us-once-uat.dwp.gov.uk/Static/ConfirmationChecklist.html" style="overflow-wrap: break-word; color: rgb(29, 112, 184);" title="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fadmin-tell-us-once-uat.dwp.gov.uk%2FStatic%2FConfirmationChecklist.html&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160252099452%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=%2Bprol5kdUk9Imw%2B83AsTVic%2FNTGwmog%2BebcogykaYEI%3D&amp;reserved=0" data-outlook-id="767a83e2-c414-47e6-9a09-74611b6dd712">https://admin-tell-us-once-uat.dwp.gov.uk/Static/ConfirmationChecklist.html</a></p>
+                                            <h2 style="margin: 0px 0px 15px; padding: 10px 0px 0px; font-size: 27px; line-height: 35px; font-weight: bold; color: rgb(11, 12, 12);">Help us improve Tell Us Once</h2>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">Your feedback can help us improve the service. You can:</p>
+                                            <table role="presentation" style="padding:0 0 20px 0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="font-family:Helvetica,Arial,sans-serif">
+                                                            <ul style="margin:0 0 0 20px; padding:0; list-style-type:disc">
+                                                                <li style="margin: 5px 0px; padding: 0px 0px 0px 5px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">give feedback on Tell Us Once</li>
+                                                                <li style="margin: 5px 0px; padding: 0px 0px 0px 5px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">volunteer to take part in research about Tell Us Once</li>
+                                                            </ul>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">To give feedback or volunteer go to: <a href="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fforms.cloud.microsoft%2Fe%2FLjXCLPXSwf&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160252132402%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=D987AhPU6jw3y8Jupi6SMGqNWbx%2Bbwd7FBj1J4bgcRQ%3D&amp;reserved=0" originalsrc="https://forms.cloud.microsoft/e/LjXCLPXSwf" style="overflow-wrap: break-word; color: rgb(29, 112, 184);" title="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fforms.cloud.microsoft%2Fe%2FLjXCLPXSwf&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160252132402%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=D987AhPU6jw3y8Jupi6SMGqNWbx%2Bbwd7FBj1J4bgcRQ%3D&amp;reserved=0" data-outlook-id="a46aa6a1-fca7-403b-b38e-ec5c326fe815">https://forms.cloud.microsoft/e/LjXCLPXSwf</a></p>
+                                            <h2 style="margin: 0px 0px 15px; padding: 10px 0px 0px; font-size: 27px; line-height: 35px; font-weight: bold; color: rgb(11, 12, 12);">Email policy</h2>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">Please do not reply to this message.<br>Any email sent in response will be deleted without being read.</p>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">We will never ask you to send any personal information such as usernames, passwords, health and medical or bank account information in an email.</p>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">If you have received this email in error, please permanently delete what you have received. If you are not the intended recipient, any disclosure, copying, distribution or other action taken regarding the information contained in this email is strictly prohibited.</p>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">Yours sincerely,<br>Tell Us Once team </p>
+                                            <h3 style="margin: 0px 0px 15px; padding: 10px 0px 0px; font-size: 19px; line-height: 25px; font-weight: bold; color: rgb(11, 12, 12);">Treating people fairly</h3>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">We are committed to the Equality Act 2010 and treating people fairly. To find out more about this law, search ‘Equality Act’ on <a href="http://www.gov.uk" class="ms-outlook-linkify" style="">www.gov.uk</a></p>
+                                            <h3 style="margin: 0px 0px 15px; padding: 10px 0px 0px; font-size: 19px; line-height: 25px; font-weight: bold; color: rgb(11, 12, 12);">Why we need personal information and how we treat it</h3>
+                                            <p style="margin: 0px 0px 20px; font-size: 19px; line-height: 25px; color: rgb(11, 12, 12);">We treat personal information carefully. We may use it for any of our purposes. To learn more about information rights and how we use information, visit our Tell Us Once Privacy Statement: <a href="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Ftell-us-someone-died.dwp.gov.uk%2Fprivacystatement.html&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160252155455%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=gVzbajLQpPnecQEDTlsmQXfu5YWMTJCiF2Y0HusAbrI%3D&amp;reserved=0" originalsrc="https://tell-us-someone-died.dwp.gov.uk/privacystatement.html" style="overflow-wrap: break-word; color: rgb(29, 112, 184);" title="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Ftell-us-someone-died.dwp.gov.uk%2Fprivacystatement.html&amp;data=05%7C02%7Cashley.wheat%40engineering.digital.dwp.gov.uk%7Cb3d6f8e887e0421a8f7d08dee8cc0c6b%7Cfa4f9c0ee749486bbc348afa10633756%7C0%7C0%7C639204160252155455%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&amp;sdata=gVzbajLQpPnecQEDTlsmQXfu5YWMTJCiF2Y0HusAbrI%3D&amp;reserved=0" data-outlook-id="132f7557-f142-4ff0-9293-619287ec5b47">https://tell-us-someone-died.dwp.gov.uk/privacystatement.html</a></p>
+                                        </td>
+                                        <td width="10" valign="middle"><br></td>
+                                    </tr>
+                                    <tr>
+                                        <td height="30"><br></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>

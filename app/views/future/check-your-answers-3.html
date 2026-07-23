@@ -1,0 +1,395 @@
+{% extends "layouts/main.html" %}
+{% set pageName="Check your answers" %}
+{% set backLink = true %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">{{pageName}}</h1>
+
+        <!---------About you-------->
+        <h2 class="govuk-heading-m">Notify organisations and services about the death</h2>
+
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Department for Work and Pensions (DWP) benefits and entitlements
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['dwp'] | capitalize }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> department for Work and Pensions (DWP) benefits and entitlements</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              HMRC Personal Tax
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['hmrc-personal-tax'] | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> HMRC Personal Tax</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              HMRC Benefits and Credits
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['hmrc-benefits-and-credits'] | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> HMRC Benefits and Credits</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Council Tax
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['council-tax'] | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> Council Tax</span></a>
+            </dd>
+          </div>
+          {% if data['council-tax'] == 'yes' %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              People over age of 18 in the property
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['council-tax-over-18']}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> people over age of 18 in the property</span></a>
+            </dd>
+          </div>
+          {% endif%}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Housing Benefit
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['housing-benefit'] | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> Housing Benefit</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Library Services
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['library-services'] | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> Library Services</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Electoral Services
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['electoral-services'] | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> Electoral Services</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Adult Social Services
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['adult-social-services'] | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> Adult Social Services</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Sundry debts / Miscellaneous Income
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['sundry-debts'] | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> Sundry debts / Miscellaneous Income</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Blue Badge
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['blue-badge'] | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> Blue Badge</span></a>
+            </dd>
+          </div>
+          {% if data['blue-badge'] == 'yes' %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Blue Badge reference number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['blue-badge-number']  | upper}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> Blue Badge reference number</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Concessionary Travel
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['concessionary-travel']  | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> concessionary Travel</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Passport
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['passport']  | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> passport</span></a>
+            </dd>
+          </div>
+          {% if data['passport'] == 'yes' %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Place of birth as it appears on their passport
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['town-of-birth'] | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> passport</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Passport number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['passport-number'] | upper}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> passport</span></a>
+            </dd>
+          </div>
+          {% if data['passport-number-2'] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Second passport number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['passport-number-2'] | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> second passport number</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Driving licence
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['driving-licence']  | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> driving licence</span></a>
+            </dd>
+          </div>
+          {% if data['driving-licence'] == 'yes' %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Driving licence number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['driving-licence-number']   | upper}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> driving licence number</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Registered keeper of a motor vehicle
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['registered-keeper']  | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> registered keeper of a motor vehicle</span></a>
+            </dd>
+          </div>
+          {% if data['registered-keeper'] == 'yes' %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Vehicle registration number 1
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['vehicle-registration-number-1'] | upper}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> vehicle registration number 1</span></a>
+            </dd>
+          </div>
+          {% if data['vehicle-registration-number-2'] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Vehicle registration number 2 (optional)
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['vehicle-registration-number-2'] | upper}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> vehicle registration number 2</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          {% if data['vehicle-registration-number-3'] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Vehicle registration number 3 (optional)
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['vehicle-registration-number-2'] | upper}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> vehicle registration number 3</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          {% if data['vehicle-registration-number-4'] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Vehicle registration number 4 (optional)
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['vehicle-registration-number-4'] | upper}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> vehicle registration number 4</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          {% if data['vehicle-registration-number-5'] %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Vehicle registration number 5 (optional)
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['vehicle-registration-number-5'] | upper}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> vehicle registration number 5</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Armed Forces Pension Schemes
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['armed-forces-pension-scheme'] | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> Armed Forces Pension Schemes</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              War Pensions Scheme
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['war-pensions-scheme'] | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> War Pensions Scheme</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Armed Forces Compensation Scheme
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{data['armed-forces-compensation-scheme'] | capitalize}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="who-do-you-want-to-notify">Change<span class="govuk-visually-hidden"> Armed Forces Compensation Scheme</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              {% if data['ni-number'] != "QQ123456C" and data['ni-number'] != "QQ112233C" %}
+              Public sector pension providers you want to notify about the death
+              {% elif data['ni-number'] == "QQ123456C" %}
+              Public sector pensions
+              {% else %}
+              Notify a public sector pension provider
+              {% endif %}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['ni-number'] == "QQ123456C" %}
+              We’ve found no public sector pensions that match the National Insurance number of the person who’s died.
+              {% elif data['ni-number'] == "QQ112233C" %}
+              Civil Service Pension
+              {% else %}
+              <ul class="govuk-list">
+              {% for pension in data['pensions'] %}
+              <li>{{pension}}</li>
+              {% endfor %}
+              </ul>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="notify-a-public-sector-pension">Change<span class="govuk-visually-hidden"> Public sector pension providers you want to notify about the death</span></a>
+            </dd>
+          </div>
+        </dl>
+
+        <p class="govuk-body govuk-!-padding-top-2 govuk-!-padding-bottom-4">You have completed section 3 of 
+          {% if data['informer-next-of-kin'] == 'no'
+            or data['informer-deal-estate'] == 'no'
+            or (data['informer-relationship'] != 'Husband'
+            and data['informer-relationship'] != 'Wife'
+            and data['informer-relationship'] != 'Spouse'
+            and data['informer-relationship'] != 'Civil Partner'
+            and data['informer-relationship'] != 'Partner'
+            )%}
+            4
+            {% else %}
+            3
+            {% endif %}.
+          </p>
+
+        <form class="form" action="/{{data.version}}/what-well-ask-about-the-next-of-kin" method="post" novalidate>
+          <button class="govuk-button">Continue</button>
+        </form>
+      </div>
+    </div>
+
+<!-- Contact us -->
+{% include "includes/contact.njk" %}
+
+{% endblock %}
