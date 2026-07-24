@@ -1,28 +1,28 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Start page with step by step template – {{ serviceName }} – GOV.UK Prototype Kit
+Start page with step by step template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block header %}
-  {# Blank header with no service name for this page #}
-  <header>{{govukHeader()}}</header>
+{# Blank header with no service name for this page #}
+<header>{{govukHeader()}}</header>
 {% endblock %}
 
 {% block pageScripts %}
-  <script type="text/javascript">
-    var $element = document.querySelector('#step-by-step-navigation')
-    var stepByStepNavigation = new GOVUK.Modules.AppStepNav($element).init()
-  </script>
+<script type="text/javascript">
+  var $element = document.querySelector('#step-by-step-navigation')
+  var stepByStepNavigation = new GOVUK.Modules.AppStepNav($element).init()
+</script>
 {% endblock %}
 
 {% block containerStart %}
-  <div class="app-step-nav-header">
-    <span class="app-step-nav-header__part-of">Part of</span>
-    <a class="app-step-nav-header__title" href="#">
-      What to do when someone dies: step by step
-    </a>
-  </div>
+<div class="app-step-nav-header">
+  <span class="app-step-nav-header__part-of">Part of</span>
+  <a class="app-step-nav-header__title" href="#">
+    What to do when someone dies: step by step
+  </a>
+</div>
 {% endblock %}
 
 {% block content %}
@@ -34,10 +34,10 @@
     </h1>
 
     <nav>
-    <h2 class="govuk-body-s" class="govuk-!-margin-bottom-0">
-      Contents
-</h2>
-    <ol class="govuk-list">
+      <h2 class="govuk-body-s" class="govuk-!-margin-bottom-0">
+        Contents
+      </h2>
+      <ol class="govuk-list">
         <li class="govuk-body-s">
           <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
           — <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles" data-ga4-link="{&quot;event_name&quot;:&quot;navigation&quot;,&quot;section&quot;:&quot;Contents&quot;,&quot;type&quot;:&quot;contents list&quot;,&quot;index_total&quot;:8,&quot;index_link&quot;:1}" href="/after-a-death">Register the death</a>
@@ -69,29 +69,238 @@
           <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
           — <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles" data-ga4-link="{&quot;event_name&quot;:&quot;navigation&quot;,&quot;section&quot;:&quot;Contents&quot;,&quot;type&quot;:&quot;contents list&quot;,&quot;index_total&quot;:8,&quot;index_link&quot;:8}" href="/after-a-death/bereavement-help-and-support">Bereavement help and support</a>
         </li>
-    </ol>
-</nav>
+      </ol>
+    </nav>
+    </div>
+    <div class="govuk-grid-column-two-thirds">
 
-<h2 class="govuk-heading-xl govuk-!-margin-top-8">
+    <h2 class="govuk-heading-xl govuk-!-margin-top-8">
       Tell Us Once
     </h2>
 
-    <p>Use this service to:</p>
+    <p class="govuk-body">Tell Us Once is a service that lets you report a death to most government organisations in one go.</p>
+
+    <div class="govuk-inset-text">This guide is also available in <a href="">Easy Read format</a> and in <a href="">Welsh (Cymraeg)</a>.</div>
+
+    <h2 class="govuk-heading-m">When to use Tell Us Once</h2>
+
+    <p class="govuk-body">You can use Tell Us Once if the person who died was living in England, Scotland or Wales. This includes if the person died while they were abroad temporarily, for example on a holiday or business trip. </p>
+
+    <p class="govuk-body">The death must have been either:</p>
 
     <ul class="govuk-list govuk-list--bullet">
-      <li>do something</li>
-      <li>update your name, address or other details</li>
-      <li>do something else</li>
+      <li>registered</li>
+      <li>reported to a coroner and you have a final or <a href="">interim death certificate</a></li>
     </ul>
 
-    <a href="#" role="button" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8" data-module="govuk-button">
+    <p class="govuk-body">You cannot use Tell Us Once if the person was:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="">living in Northern Ireland when they died</a></li>
+      <li><a href="">living abroad permanently when they died</a></li>
+    </ul>
+
+    <p class="govuk-body">You can use Tell Us Once <a href="">if a child or baby has died</a>, but you must tell DWP separately if you get benefits because you’re their parent or carer.</p>
+
+    <h2 class="govuk-heading-m">How to use Tell Us Once</h2>
+
+    <p class="govuk-body">A registrar will explain the Tell Us Once service when you register the death. They will either:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="">complete the Tell Us Once service with you</a></li>
+      <li><a href="">give you a unique reference number so you can use the service yourself online or by phone</a></li>
+    </ul>
+
+    <p class="govuk-body">The registrar will give you a number to call. This includes <a rel="external" href="https://www.relayuk.bt.com/">Relay UK</a> if you cannot hear or speak on the phone. If you’re a British Sign Language (BSL) user, there’s a <a rel="external" href="https://connect.interpreterslive.co.uk/vrs?ilc=DWP">video relay service</a> if you’re on a computer - find out how to <a rel="external" href="https://www.youtube.com/watch?v=oELNMfAvDxw">use the service on mobile or tablet</a>.</p>
+
+
+    <div class="govuk-inset-text">You must use the service within 28 days of getting your unique reference number.</div>
+
+    <p class="govuk-body">If you cannot register the death because an inquest is underway, you can still <a href="/register-offices">ask a registrar</a> for a unique reference number. You’ll need to get an <a href="/after-a-death/when-a-death-is-reported-to-a-coroner">interim death certificate from the coroner holding the inquest</a> first.</p>
+
+    <h2 class="govuk-heading-m">Before you use Tell Us Once</h2>
+
+    <p class="govuk-body">You’ll need the Tell Us Once reference number that you got from the registrar.</p>
+
+    <p class="govuk-body">You’ll also need the following details of the person who died:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>surname</li>
+      <li>date they died</li>
+      <li>name, address and contact details of the person or company dealing with their estate (property, belongings and money), known as their ‘executor’ or ‘administrator’</li>
+      <li>if there’s a surviving spouse or civil partner, the name, address, telephone number and the National Insurance number or date of birth of the spouse or civil partner</li>
+      <li>if there’s no surviving spouse or civil partner or their spouse or civil partner is not able to deal with their affairs, the name and address of their next of kin</li>
+      <li>if they died in a hospital, nursing home, care home or hospice, the name and address of that institution</li>
+    </ul>
+
+    <p class="govuk-body">You may also need:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>if they had a valid British passport, their passport number and town of birth</li>
+      <li>if they had a driving licence, their driving licence number</li>
+      <li>if they owned any vehicles, the vehicle registration numbers</li>
+      <li>if they were paying Council Tax or getting services from their local council, such as Housing Benefit payments, the name of their local council and which services they were getting</li>
+      <li>if they had a Blue Badge, their Blue Badge number if you know it</li>
+      <li>to know if they were getting any benefits or State Pension</li>
+      <li>to know if they were getting money from an Armed Forces Pension or Compensation Scheme</li>
+    </ul>
+
+    <p class="govuk-body">You’ll also <a href="/find-national-insurance-number">need their National Insurance number</a> if they were getting money from or paying into any of the following pension schemes:</p>
+
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Civil Service Pension Scheme</li>
+      <li>Local Government Pension Schemes (LGPS)</li>
+      <li>NHS Pensions for NHS staff in England and Wales</li>
+      <li>Pension Protection Fund and Financial Assistance Scheme</li>
+      <li>Scottish Public Pension Agency schemes for NHS staff, teachers, police and firefighters in Scotland</li>
+    </ul>
+
+    <p class="govuk-body">If they are not in one of these pension schemes, you can still provide their National Insurance number. It will help some organisations match their records faster.</p>
+
+    <div class="govuk-inset-text">You need permission from any surviving spouse or civil partner, the next of kin, executor, administrator or anyone who was claiming joint benefits or entitlements with the person who died, before you give their details.</div>
+
+    <h2 class="govuk-heading-m">Use Tell Us Once online</h2>
+
+    <a href="before-you-start" role="button" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8" data-module="govuk-button">
       Start now
       <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
         <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
       </svg>
     </a>
 
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-6">Organisations Tell Us Once will contact</h2>
+
+    <p class="govuk-body">Tell Us Once will notify:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>HM Revenue and Customs (HMRC) - to deal with personal tax and to cancel benefits and credits, for example Child Benefit</li>
+      <li>Department for Work and Pensions (DWP) - to cancel benefits and entitlements, for example Universal Credit or State Pension</li>
+      <li>Passport Office - to cancel a British passport</li>
+      <li>Driver and Vehicle Licensing Agency (DVLA) - to cancel a licence, remove the person as the keeper of up to 5 vehicles and end the vehicle tax</li>
+      <li>the local council - to cancel Housing Benefit, Council Tax Reduction (sometimes called Council Tax Support), a Blue Badge, inform council housing services and remove the person from the electoral register</li>
+      <li>Veterans UK - to cancel or update Armed Forces Compensation Scheme payments</li>
+      <li>Social Security Scotland - to cancel benefits and entitlements from the Scottish Government, for example Scottish Child Payment</li>
+    </ul>
+
+    <p class="govuk-body">HMRC and DWP will contact you about the tax, benefits and entitlements of the person who died.</p>
+
+    <div class="govuk-inset-text">
+      <p><abbr title="Department for Work and Pensions">DWP</abbr> can only stop the benefits of the person who has died. <a href="/after-a-death/if-a-child-or-baby-dies">If a child or baby has died</a> you must tell <abbr title="Department for Work and Pensions">DWP</abbr> separately if you get benefits because you’re their parent or carer.</p>
+    </div>
+
+    <p class="govuk-body">Tell Us Once will also contact some public sector pension schemes so that they cancel future pension payments. They’ll notify:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Armed Forces Pension Scheme</li>
+      <li>Civil Service Pension Scheme</li>
+      <li>Local Government Pension Schemes (LGPS)</li>
+      <li>NHS Pensions for NHS staff in England and Wales</li>
+      <li>Pension Protection Fund and Financial Assistance Scheme</li>
+      <li>Scottish Public Pension Agency schemes for NHS staff, teachers, police and firefighters in Scotland</li>
+    </ul>
+
+
+    <h2 class="govuk-heading-m">After you use Tell Us Once</h2>
+
+    <p class="govuk-body">To close or change the details of the person’s financial accounts, you’ll need to contact organisations like:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>banks</li>
+      <li>mortgage providers</li>
+      <li>insurance providers</li>
+      <li>companies that the person had contracts with, like utility companies, landlords or housing associations</li>
+      <li>personal or workplace pension schemes, unless they’re one of the public sector pension schemes that Tell Us Once contacts</li>
+    </ul>
+
+    <div class="govuk-inset-text">
+      <p>If you need help finding contact details for the person’s pension schemes, you can <a href="/find-pension-contact-details">search for pension contact details</a>.</p>
+    </div>
+
+    <p class="govuk-body">You may also need to:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="/update-property-records-someone-dies">update the property records</a>, if the person owned land or property
+      </li>
+      <li>
+        <a href="/tell-dvla-about-bereavement">contact <abbr title="Driver and Vehicle Licensing Agency">DVLA</abbr></a>, if the person owned a vehicle and you sell it or keep it and tax it in your own name
+      </li>
+      <li>
+        <a href="/government/organisations/hm-revenue-customs/contact/bereavement-and-deceased-estate">contact <abbr title="HM Revenue and Customs">HMRC</abbr></a>, if the person owed business taxes like <abbr title="value-added tax">VAT</abbr>
+      </li>
+      <li>
+        <a href="/guidance/student-loan-cancellation-if-a-customer-dies">contact the Student Loans Company (SLC)</a>, if the person had a student loan from them
+      </li>
+      <li>contact <abbr title="Department for Work and Pensions">DWP</abbr> <a href="/after-a-death/if-a-child-or-baby-dies">if a child or baby has died</a> and
+        you get benefits because you’re their parent or carer</li>
+    </ul>
+
+    <p class="govuk-body">If you do not use Tell Us Once</p>
+
+    <p class="govuk-body">You must <a href="https://www.gov.uk/after-a-death/report-without-tell-us-once">let the relevant organisations know about the death yourself</a>.</p>
+
+<nav class="govuk-prototype-kit-common-templates-pagination" role="navigation" aria-label="Pagination">
+
+      <nav class="govuk-pagination govuk-pagination--block" aria-label="Pagination">
+  
+  
+    
+  
+  <div class="govuk-pagination__prev">
+    <a class="govuk-link govuk-pagination__link" href="#" rel="prev">
+          
+      <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+        <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+      </svg>
+      
+      <span class="govuk-pagination__link-title">
+        Previous<span class="govuk-visually-hidden"> page</span>
+      </span>
+      
+      <span class="govuk-visually-hidden">:</span>
+      <span class="govuk-pagination__link-label">What to do if a baby dies</span>
+      
+      
+    </a>
   </div>
+
+    
+  
+  <div class="govuk-pagination__next">
+    <a class="govuk-link govuk-pagination__link" href="#" rel="next">
+          
+      <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+        <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+      </svg>
+      
+      <span class="govuk-pagination__link-title">
+        Next<span class="govuk-visually-hidden"> page</span>
+      </span>
+      
+      <span class="govuk-visually-hidden">:</span>
+      <span class="govuk-pagination__link-label">Report the death without a Tell Us Once reference number</span>
+      
+      
+    </a>
+  </div>
+
+  
+</nav>
+
+
+      <p>
+        <a href="#">
+          View a printable version of the whole guide
+        </a>
+      </p>
+
+    </nav>
+
+
+  </div>
+
 
   <div class="govuk-grid-column-one-third">
 
@@ -104,7 +313,7 @@
       </h2>
     </div>
 
-    <div data-module="appstepnav"id="step-by-step-navigation" class="app-step-nav govuk-!-display-none-print js-hidden" data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all steps" data-hide-all-text="Hide all steps">
+    <div data-module="appstepnav" id="step-by-step-navigation" class="app-step-nav govuk-!-display-none-print js-hidden" data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all steps" data-hide-all-text="Hide all steps">
       <ol class="app-step-nav__steps">
         <li class="app-step-nav__step js-step" aria-current="step" id="check-you-re-allowed-to-drive">
           <div class="app-step-nav__header js-toggle-panel" data-position="1">
@@ -124,25 +333,12 @@
           </div>
 
           <div class="app-step-nav__panel js-panel" id="step-panel-check-you-re-allowed-to-drive-1">
-            <p class="app-step-nav__paragraph">Most people can start learning to drive when they’re 17.</p>
-
-            <ol class="app-step-nav__list " data-length="3">
-              <li class="app-step-nav__list-item js-list-item app-step-nav__list-item--active">
-                <a data-position="1.1" class="app-step-nav__link js-link" href="#">
-                  <span class="app-step-nav__link-active-context govuk-visually-hidden">You are currently viewing: </span>Check what age you can drive </a>
-              </li>
-              <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="1.2" class="app-step-nav__link js-link" href="#">Requirements for driving legally </a>
-              </li>
-              <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="1.3" class="app-step-nav__link js-link" href="#">Driving eyesight rules </a>
-              </li>
-            </ol>
+          
 
           </div>
 
         </li>
-        <li class="app-step-nav__step js-step app-step-nav__step--active" id="get-a-provisional-licence">
+        <li class="app-step-nav__step js-step app-step-nav__step--active step-is-shown" id="get-a-provisional-licence" aria-current="step">
           <div class="app-step-nav__header js-toggle-panel" data-position="2">
             <h3 class="app-step-nav__title">
               <span class="app-step-nav__circle app-step-nav__circle--number">
@@ -162,7 +358,16 @@
           <div class="app-step-nav__panel js-panel" id="step-panel-get-a-provisional-licence-2">
             <ol class="app-step-nav__list app-step-nav__step--active" data-length="1">
               <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="2.1" class="app-step-nav__link js-link" href="#">Apply for your first provisional driving licence <span class="app-step-nav__context">£34 to £43</span></a>
+                The Tell Us Once service allows you to inform all the relevant government departments when someone dies.
+              </li>
+              <li class="app-step-nav__list-item js-list-item ">
+                <a data-position="2.1" class="app-step-nav__link js-link" href="#">Use the Tell Us Once service to tell government</a>
+              </li>
+              <li class="app-step-nav__list-item js-list-item ">
+                <a data-position="2.1" class="app-step-nav__link js-link" href="#">If you cannot use Tell Us Once, tell government yourself</a>
+              </li>
+              <li class="app-step-nav__list-item js-list-item ">
+                You'll also need to tell organisations outside government, like employers and private pension providers, banks, and utility companies.
               </li>
             </ol>
 
@@ -181,28 +386,13 @@
               </span>
 
               <span class="js-step-title">
-                Driving lessons and practice
+                Arrange the funeral
               </span>
             </h3>
           </div>
 
           <div class="app-step-nav__panel js-panel" id="step-panel-driving-lessons-and-practice-3">
-            <p class="app-step-nav__paragraph">You need a provisional driving licence to take lessons or practice.</p>
-
-            <ol class="app-step-nav__list " data-length="4">
-              <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="3.1" class="app-step-nav__link js-link" href="#">The Highway Code </a>
-              </li>
-              <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="3.2" class="app-step-nav__link js-link" href="#">Taking driving lessons </a>
-              </li>
-              <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="3.3" class="app-step-nav__link js-link" href="#">Find driving schools, lessons and instructors </a>
-              </li>
-              <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="3.4" class="app-step-nav__link js-link" href="#">Practise vehicle safety questions </a>
-              </li>
-            </ol>
+            
 
           </div>
 
@@ -219,67 +409,92 @@
               </span>
 
               <span class="js-step-title">
-                Prepare for your theory test
+                Check if you can get bereavement benefits
               </span>
             </h3>
           </div>
 
           <div class="app-step-nav__panel js-panel" id="step-panel-prepare-for-your-theory-test-4">
-            <ol class="app-step-nav__list " data-length="3">
-              <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="4.1" class="app-step-nav__link js-link" href="#">Theory test revision and practice </a>
-              </li>
-              <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="4.2" class="app-step-nav__link js-link" href="#">Take a practice theory test </a>
-              </li>
-              <li class="app-step-nav__list-item js-list-item ">
-                <a rel="external" data-position="4.3" class="app-step-nav__link js-link" href="#">Theory and hazard perception test app </a>
-              </li>
-            </ol>
+            
           </div>
 
         </li>
         <li class="app-step-nav__step js-step" id="book-and-manage-your-theory-test">
           <div class="app-step-nav__header js-toggle-panel" data-position="5">
             <h3 class="app-step-nav__title">
-              <span class="app-step-nav__circle app-step-nav__circle--number">
+              <span class="app-step-nav__circle app-step-nav__circle--logic">
                 <span class="app-step-nav__circle-inner">
                   <span class="app-step-nav__circle-background">
-                    <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 4<span class="govuk-visually-hidden govuk-!-display-none-print" aria-hidden="true">:</span>
+                    and
                   </span>
                 </span>
               </span>
 
               <span class="js-step-title">
-                Book and manage your theory test
+                Deal with your own benefits, pension and taxes
               </span>
             </h3>
           </div>
 
           <div class="app-step-nav__panel js-panel" id="step-panel-book-and-manage-your-theory-test-5">
-            <p class="app-step-nav__paragraph">You need a provisional driving licence to book your theory test.</p>
-
-            <ol class="app-step-nav__list " data-length="5">
-              <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="5.1" class="app-step-nav__link js-link" href="#">Book your theory test <span class="app-step-nav__context">£23</span></a>
-              </li>
-              <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="5.2" class="app-step-nav__link js-link" href="#">What to take to your test </a>
-              </li>
-              <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="5.3" class="app-step-nav__link js-link" href="#">Change your theory test appointment </a>
-              </li>
-              <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="5.4" class="app-step-nav__link js-link" href="#">Check your theory test appointment details </a>
-              </li>
-              <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="5.5" class="app-step-nav__link js-link" href="#">Cancel your theory test </a>
-              </li>
-            </ol>
+            
 
           </div>
 
         </li>
+
+
+<li class="app-step-nav__step js-step" id="book-and-manage-your-theory-test">
+          <div class="app-step-nav__header js-toggle-panel" data-position="5">
+            <h3 class="app-step-nav__title">
+              <span class="app-step-nav__circle app-step-nav__circle--logic">
+                <span class="app-step-nav__circle-inner">
+                  <span class="app-step-nav__circle-background">
+                    and
+                  </span>
+                </span>
+              </span>
+
+              <span class="js-step-title">
+                Find bereavement support and services
+              </span>
+            </h3>
+          </div>
+
+          <div class="app-step-nav__panel js-panel" id="step-panel-book-and-manage-your-theory-test-5">
+            
+
+          </div>
+
+        </li>
+
+
+        <li class="app-step-nav__step js-step" id="book-and-manage-your-theory-test">
+          <div class="app-step-nav__header js-toggle-panel" data-position="5">
+            <h3 class="app-step-nav__title">
+              <span class="app-step-nav__circle app-step-nav__circle--logic">
+                <span class="app-step-nav__circle-inner">
+                  <span class="app-step-nav__circle-background">
+                    and
+                  </span>
+                </span>
+              </span>
+
+              <span class="js-step-title">
+                Check if you need to apply to stay in the UK
+              </span>
+            </h3>
+          </div>
+
+          <div class="app-step-nav__panel js-panel" id="step-panel-book-and-manage-your-theory-test-5">
+            
+
+          </div>
+
+        </li>
+
+
+
         <li class="app-step-nav__step js-step" id="book-and-manage-your-driving-test">
           <div class="app-step-nav__header js-toggle-panel" data-position="6">
             <h3 class="app-step-nav__title">
@@ -292,31 +507,13 @@
               </span>
 
               <span class="js-step-title">
-                Book and manage your driving test
+                Value the estate and check if you need to pay Inheritance Tax
               </span>
             </h3>
           </div>
 
           <div class="app-step-nav__panel js-panel" id="step-panel-book-and-manage-your-driving-test-6">
-            <p class="app-step-nav__paragraph">You must pass your theory test before you can book your driving test.</p>
-
-            <ol class="app-step-nav__list " data-length="5">
-              <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="6.1" class="app-step-nav__link js-link" href="#">Book your driving test <span class="app-step-nav__context">£62 to £75</span></a>
-              </li>
-              <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="6.2" class="app-step-nav__link js-link" href="#">What to take to your test </a>
-              </li>
-              <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="6.3" class="app-step-nav__link js-link" href="#">Change your driving test appointment </a>
-              </li>
-              <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="6.4" class="app-step-nav__link js-link" href="#">Check your driving test appointment details </a>
-              </li>
-              <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="6.5" class="app-step-nav__link js-link" href="#">Cancel your driving test </a>
-              </li>
-            </ol>
+            
 
           </div>
 
@@ -333,21 +530,38 @@
               </span>
 
               <span class="js-step-title">
-                When you pass
+                Apply for probate
               </span>
             </h3>
           </div>
 
           <div class="app-step-nav__panel js-panel" id="step-panel-when-you-pass-7">
-            <p class="app-step-nav__paragraph">You can start driving as soon as you pass your driving test.</p>
 
-            <p class="app-step-nav__paragraph">You must have an insurance policy that allows you to drive without supervision.</p>
 
-            <ol class="app-step-nav__list " data-length="1">
-              <li class="app-step-nav__list-item js-list-item ">
-                <a data-position="7.1" class="app-step-nav__link js-link" href="#">Find out about Pass Plus training courses </a>
-              </li>
-            </ol>
+          </div>
+
+        </li>
+
+
+        <li class="app-step-nav__step js-step" id="when-you-pass">
+          <div class="app-step-nav__header js-toggle-panel" data-position="7">
+            <h3 class="app-step-nav__title">
+              <span class="app-step-nav__circle app-step-nav__circle--number">
+                <span class="app-step-nav__circle-inner">
+                  <span class="app-step-nav__circle-background">
+                    <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 6<span class="govuk-visually-hidden govuk-!-display-none-print" aria-hidden="true">:</span>
+                  </span>
+                </span>
+              </span>
+
+              <span class="js-step-title">
+                Deal with the estate
+              </span>
+            </h3>
+          </div>
+
+          <div class="app-step-nav__panel js-panel" id="step-panel-when-you-pass-7">
+
 
           </div>
 
@@ -363,4 +577,12 @@
 
 </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document
+    .querySelector('[data-position="2"]')
+    .click()
+})
+</script>
 {% endblock %}

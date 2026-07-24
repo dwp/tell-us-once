@@ -8,7 +8,13 @@ const router = govukPrototypeKit.requests.setupRouter()
 // ---------- Start prototype ----------
 router.get('/start', function (req, res) {
   req.session.data.version = req.query.version
+  const startPage = req.query.startPage
+
+  if(startPage == 'step'){
+    res.redirect(`/${req.session.data.version}/step-by-step`)
+  } else {
   res.redirect(`/${req.session.data.version}/before-you-start`)
+  }
 })
 
 // ---------- CURRENT ----------
