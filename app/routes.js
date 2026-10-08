@@ -1,11 +1,8 @@
-//
-// For guidance on how to create routes see:
-// https://prototype-kit.service.gov.uk/docs/create-routes
-//
 const govukPrototypeKit = require("govuk-prototype-kit");
 const router = govukPrototypeKit.requests.setupRouter();
 
-// ---------- Start prototype ----------
+// ########## START PROTOTYPE ##########
+
 router.get("/start", function (req, res) {
   req.session.data.version = req.query.version;
   const startPage = req.query.startPage;
@@ -17,7 +14,9 @@ router.get("/start", function (req, res) {
   }
 });
 
-// ---------- CURRENT ----------
+// ########## END START PROTOTYPE ##########
+
+// ########## ENRICHMENT ##########
 
 // ---------- Get: About you ----------
 router.get("/:version/about-you", function (req, res) {
@@ -31,158 +30,7 @@ router.get("/:version/about-you", function (req, res) {
   return res.render(`/${version}/about-you`);
 });
 
-// ---------- Get: About the spouse ----------
-router.get("/:version/about-the-spouse", function (req, res) {
-  const version = req.params.version;
-
-  const edit = req.query.edit;
-  console.log("Edit: " + edit);
-
-  req.session.data["edit"] = edit;
-
-  return res.render(`/${version}/about-the-spouse`);
-});
-
-// ---------- Post: Relationship to deceased ----------
-router.post("/:version/relationship-to-deceased", function (req, res) {
-  const relationship = req.session.data["informer-relationship"];
-  const edit = req.session.data["edit"];
-
-  console.log("Edit: " + edit);
-
-  if (edit === "true") {
-    req.session.data["edit"] = false;
-    return res.redirect("check-your-answers-1");
-  }
-
-  if (
-    ["Husband", "Wife", "Spouse", "Civil Partner", "Partner"].includes(
-      relationship,
-    )
-  ) {
-    return res.redirect("about-the-spouse");
-  }
-  return res.redirect("check-your-answers-1");
-});
-
-// ---------- Post: Local council services ----------
-router.post("/:version/select-local-council", function (req, res) {
-  const localCouncilSelect = req.session.data["local-council-select"];
-
-  console.log("Local council select: " + localCouncilSelect);
-
-  const localCouncil = "Herefordshire Council";
-
-  if (localCouncilSelect === "yes") {
-    req.session.data["local-council"] = "Herefordshire Council";
-    return res.redirect("check-your-answers-2");
-  } else if (localCouncilSelect === "no") {
-    return res.redirect("select-local-council");
-  }
-});
-
-// ---------- Post: About the spouse ----------
-router.post("/:version/check-your-answers-1", function (req, res) {
-  const edit = req.session.data["edit"];
-
-  console.log("Edit: " + edit);
-
-  if (edit === "true") {
-    req.session.data["edit"] = false;
-  }
-
-  return res.redirect("check-your-answers-1");
-});
-
-// ---------- Next of kin ----------
-router.post("/current/about-the-next-of-kin", function (req, res) {
-  if (req.session.data["informer-next-of-kin"] == "yes") {
-    return res.redirect("about-the-person-whos-died");
-  } else {
-    return res.redirect("about-the-next-of-kin");
-  }
-});
-
-// ---------- Next of kin / person dealing with estate ----------
-router.post(
-  "/:version/what-well-ask-about-the-next-of-kin",
-  function (req, res) {
-    const version = req.params.version;
-
-    const relationship = req.session.data["informer-relationship"];
-    const executor = req.session.data["informer-deal-estate"];
-
-    if (
-      ["Husband", "Wife", "Spouse", "Civil Partner", "Partner"].includes(
-        relationship,
-      ) ||
-      executor == "no"
-    ) {
-      return res.redirect("what-well-ask-about-the-next-of-kin");
-    }
-    return res.redirect("before-you-submit-the-information");
-  },
-);
-
-// ---------- About the person who's died ----------
-router.get("/current/deceased-address", function (req, res) {
-  req.session.data["deceased-address-state"] = "lookup";
-  req.session.data["deceased-has-other-address"] = "yes";
-
-  res.redirect("/current/about-the-person-whos-died#deceased-lookup");
-});
-
-router.post("/current/deceased-address-results", function (req, res) {
-  const postcode = req.session.data["deceased-address-postcode"];
-
-  if (postcode === "ZZ1 1ZZ") {
-    req.session.data["deceased-address-result-type"] = "none";
-  } else {
-    req.session.data["deceased-address-result-type"] = "radio";
-  }
-
-  req.session.data["deceased-address-state"] = "lookup";
-  req.session.data["deceased-has-other-address"] = "yes";
-
-  res.redirect("/current/about-the-person-whos-died#deceased-resultlist-radio");
-});
-
-router.get("/current/deceased-address-manual", function (req, res) {
-  req.session.data["deceased-address-state"] = "manual";
-  req.session.data["deceased-has-other-address"] = "yes";
-
-  res.redirect("/current/about-the-person-whos-died#deceased-manual");
-});
-
-router.get("/current/place-of-death-address", function (req, res) {
-  req.session.data["place-of-death-address-state"] = "lookup";
-  req.session.data["place-of-death-address"] = "yes";
-
-  res.redirect("/current/about-the-person-whos-died#place-lookup");
-});
-
-router.post("/current/place-of-death-address-results", function (req, res) {
-  const postcode = req.session.data["place-of-death-address-postcode"];
-
-  if (postcode === "ZZ1 1ZZ") {
-    req.session.data["place-of-death-address-result-type"] = "none";
-  } else {
-    req.session.data["place-of-death-address-result-type"] = "radio";
-  }
-
-  req.session.data["place-of-death-address-state"] = "lookup";
-  req.session.data["place-of-death-address"] = "yes";
-
-  res.redirect("/current/about-the-person-whos-died#place-resultlist-radio");
-});
-
-router.get("/current/place-of-death-address-manual", function (req, res) {
-  req.session.data["place-of-death-address-state"] = "manual";
-  req.session.data["place-of-death-address"] = "yes";
-
-  res.redirect("/current/about-the-person-whos-died#place-manual");
-});
-
+// ---------- Post: from About the person who died ----------
 router.post("/current/their-national-insurance-number", function (req, res) {
   const selectedAddress = req.session.data["deceased-address"];
 
@@ -205,7 +53,73 @@ router.post("/current/their-national-insurance-number", function (req, res) {
   res.redirect("/:version/their-national-insurance-number");
 });
 
-// ---------- Is there a next of kin? ----------
+// ---------- Post: from Local council services ----------
+router.post("/:version/select-local-council", function (req, res) {
+  const localCouncilSelect = req.session.data["local-council-select"];
+
+  console.log("Local council select: " + localCouncilSelect);
+
+  if (localCouncilSelect === "yes") {
+    req.session.data["local-council"] = "Herefordshire Council";
+    return res.redirect("check-your-answers-2");
+  } else if (localCouncilSelect === "no") {
+    return res.redirect("select-local-council");
+  }
+});
+
+// ---------- Post: from Notify organisations and services about the death ----------
+// Pensions routing
+
+router.post("/:version/ni-number", function (req, res) {
+  const version = req.params.version;
+
+  if (req.session.data["has-ni-number"] === "yes") {
+    const niNum = req.session.data["ni-number"].replace(/\s/g, "");
+    req.session.data["ni-number"] = niNum;
+
+    console.log("NI number: " + niNum);
+
+    if (niNum === "QQ123456C") {
+      req.session.data["public-sector-pensions-found"] = "no";
+      return res.redirect(`/${version}/no-public-sector-pensions-found`);
+    }
+
+    if (niNum === "QQ112233C") {
+      return res.redirect(
+        `/${version}//notify-a-public-sector-pension-provider`,
+      );
+    }
+
+    return res.redirect(`/${version}/notify-a-public-sector-pension`);
+  }
+
+  return res.redirect(`/${version}/check-your-answers-3`);
+});
+
+// ---------- Post: from Check your answers 3 ----------
+// Routing for partner and person dealing with the estate
+
+router.post(
+  "/:version/what-well-ask-about-the-next-of-kin",
+  function (req, res) {
+    const version = req.params.version;
+
+    const relationship = req.session.data["informer-relationship"];
+    const executor = req.session.data["informer-deal-estate"];
+
+    if (
+      ["Husband", "Wife", "Spouse", "Civil Partner", "Partner"].includes(
+        relationship,
+      ) ||
+      executor == "no"
+    ) {
+      return res.redirect("what-well-ask-about-the-next-of-kin");
+    }
+    return res.redirect("before-you-submit-the-information");
+  },
+);
+
+// ---------Post: from What we'll ask about the next of kin ----------
 router.post("/:version/is-there-a-next-of-kin", function (req, res) {
   const nok = req.session.data["informer-next-of-kin"];
   const relationship = req.session.data["informer-relationship"];
@@ -236,6 +150,8 @@ router.post("/:version/is-there-a-next-of-kin", function (req, res) {
   }
 });
 
+// ---------- Post: from About the next of kin ----------
+// Routing for partner and person dealing with the estate
 router.post("/:version/about-the-spouse-not-spouse", function (req, res) {
   const relationship = req.session.data["informer-relationship"];
   const maritalStatus = req.session.data["deceased-marital-status"];
@@ -277,6 +193,7 @@ router.post("/:version/about-the-spouse-not-spouse", function (req, res) {
   }
 });
 
+// ---------- Post: from About the partner of the person who died ----------
 router.post(
   "/:version/about-the-person-dealing-with-the-estate",
   function (req, res) {
@@ -300,121 +217,10 @@ router.post(
   },
 );
 
-// ---------- END CURRENT ----------
+// ########## END ENRICHMENT ##########
 
-// ---------- V0.1 STANDALONE DESIGNS ----------
+// ########## CAPTURE  ##########
 
-// ---------- Address lookup ----------
-router.get(
-  "/v0_1/enrichment/address-lookup/find-address-single-page",
-  function (req, res) {
-    req.session.data["state"] = "lookup";
-    res.render("/enrichment/address-lookup/find-address-single-page");
-  },
-);
-
-router.get(
-  "/v0_1/enrichment/address-lookup/find-address-single-page-lookup",
-  function (req, res) {
-    req.session.data["resultType"] = null;
-    req.session.data["state"] = "lookup";
-    req.session.data["addr"] = "yes";
-    res.redirect("/enrichment/address-lookup/find-address-single-page#lookup");
-  },
-);
-
-router.get(
-  "/v0_1/enrichment/address-lookup/find-address-single-page-manual",
-  function (req, res) {
-    req.session.data["resultType"] = null;
-    req.session.data["state"] = "manual";
-    req.session.data["addr"] = "yes";
-    res.redirect("//enrichment/address-lookup/find-address-single-page#manual");
-  },
-);
-
-router.post(
-  "/enrichment/address-lookup/find-address-single-page-results",
-  function (req, res) {
-    const addressLookupState = req.session.data["resultType"];
-
-    if (addressLookupState) {
-      res.redirect(
-        `/enrichment/address-lookup/find-address-single-page#resultlist-${addressLookupState}`,
-      );
-    } else {
-      res.redirect("/enrichment/address-lookup/find-address-single-page");
-    }
-  },
-);
-
-// ---------- Pensions journey ----------
-router.get("/v0_1/ni-number", function (req, res) {
-  req.session.data["pensions"] = [];
-  req.session.data.returnTo = req.query.returnTo;
-  req.session.data.path = req.query.path;
-  console.log("Path: " + req.session.data.path);
-  res.render("/v0_1/ni-number");
-});
-
-router.post("/:version/ni-number", function (req, res) {
-  const version = req.params.version;
-  console.log("Version: " + version);
-
-  if (req.session.data["has-ni-number"] === "yes") {
-    const niNum = req.session.data["ni-number"].replace(/\s/g, "");
-    req.session.data["ni-number"] = niNum;
-
-    console.log("NI number: " + niNum);
-
-    if (niNum === "QQ123456C") {
-      req.session.data["public-sector-pensions-found"] = "no";
-      return res.redirect(`/${version}/no-public-sector-pensions-found`);
-    }
-
-    if (niNum === "QQ112233C") {
-      return res.redirect(
-        `/${version}//notify-a-public-sector-pension-provider`,
-      );
-    }
-
-    return res.redirect(`/${version}/notify-a-public-sector-pension`);
-  }
-
-  return res.redirect(`/${version}/check-your-answers-3`);
-});
-
-router.get(
-  "/v0_1/enrichment/notify-public-sector-pension-providers/notify-a-public-sector-pension",
-  function (req, res) {
-    req.session.data.returnTo = req.query.returnTo;
-    res.render(
-      "/v0_1/enrichment/notify-public-sector-pension-providers/notify-a-public-sector-pension",
-    );
-  },
-);
-
-router.post("/v0_1/enrichment/check-answers", function (req, res) {
-  const notifyPension = req.session.data["notify-pension"];
-
-  if (notifyPension === "yes") {
-    let pensions = req.session.data["pensions"];
-    if (!Array.isArray(pensions)) {
-      pensions = pensions ? [pensions] : [];
-    }
-    if (!pensions.includes("Civil Service Pension")) {
-      pensions.push("Civil Service Pension");
-    }
-    req.session.data["pensions"] = pensions;
-  } else {
-    delete req.session.data["pensions"];
-  }
-
-  res.redirect("/v0_1/enrichment/check-answers");
-});
-// End Pensions journey
-
-// Capture journey
 router.post("/capture/confirm-address", function (req, res) {
   const referrer = req.get("Referrer");
   console.log(referrer);
@@ -521,9 +327,10 @@ router.post(
     }
   },
 );
-// End Capture journey
 
-// ---------- V1 prototype ----------
+// ########## END CAPTURE ##########
+
+// ########## V1: FUTURE LOOKING PROTOTYPE ##########
 
 router.post("/v1/registration-lookup-result", function (req, res) {
   const dod = normaliseDate(
@@ -698,7 +505,9 @@ router.get(
   },
 );
 
-// ---------- Utilities ----------
+// ########## END V1 (FUTURE LOOKING) PROTOTYPE ##########
+
+// ########## UTILITIES ##########
 
 function normaliseDate(day, month, year) {
   if (!day || !month || !year) {
@@ -769,3 +578,109 @@ router.get("/prototype-admin/clear-data", function (req, res) {
 
   res.redirect(returnUrl);
 });
+
+// ########## END UTILITIES ##########
+
+// ##########  NO LONGER NEEDED ##########
+
+router.get("/current/deceased-address", function (req, res) {
+  req.session.data["deceased-address-state"] = "lookup";
+  req.session.data["deceased-has-other-address"] = "yes";
+
+  res.redirect("/current/about-the-person-whos-died#deceased-lookup");
+});
+
+router.post("/current/deceased-address-results", function (req, res) {
+  const postcode = req.session.data["deceased-address-postcode"];
+
+  if (postcode === "ZZ1 1ZZ") {
+    req.session.data["deceased-address-result-type"] = "none";
+  } else {
+    req.session.data["deceased-address-result-type"] = "radio";
+  }
+
+  req.session.data["deceased-address-state"] = "lookup";
+  req.session.data["deceased-has-other-address"] = "yes";
+
+  res.redirect("/current/about-the-person-whos-died#deceased-resultlist-radio");
+});
+
+router.get("/current/deceased-address-manual", function (req, res) {
+  req.session.data["deceased-address-state"] = "manual";
+  req.session.data["deceased-has-other-address"] = "yes";
+
+  res.redirect("/current/about-the-person-whos-died#deceased-manual");
+});
+
+router.get("/current/place-of-death-address", function (req, res) {
+  req.session.data["place-of-death-address-state"] = "lookup";
+  req.session.data["place-of-death-address"] = "yes";
+
+  res.redirect("/current/about-the-person-whos-died#place-lookup");
+});
+
+router.post("/current/place-of-death-address-results", function (req, res) {
+  const postcode = req.session.data["place-of-death-address-postcode"];
+
+  if (postcode === "ZZ1 1ZZ") {
+    req.session.data["place-of-death-address-result-type"] = "none";
+  } else {
+    req.session.data["place-of-death-address-result-type"] = "radio";
+  }
+
+  req.session.data["place-of-death-address-state"] = "lookup";
+  req.session.data["place-of-death-address"] = "yes";
+
+  res.redirect("/current/about-the-person-whos-died#place-resultlist-radio");
+});
+
+router.get("/current/place-of-death-address-manual", function (req, res) {
+  req.session.data["place-of-death-address-state"] = "manual";
+  req.session.data["place-of-death-address"] = "yes";
+
+  res.redirect("/current/about-the-person-whos-died#place-manual");
+});
+
+// ---------- Address lookup ----------
+router.get(
+  "/v0_1/enrichment/address-lookup/find-address-single-page",
+  function (req, res) {
+    req.session.data["state"] = "lookup";
+    res.render("/enrichment/address-lookup/find-address-single-page");
+  },
+);
+
+router.get(
+  "/v0_1/enrichment/address-lookup/find-address-single-page-lookup",
+  function (req, res) {
+    req.session.data["resultType"] = null;
+    req.session.data["state"] = "lookup";
+    req.session.data["addr"] = "yes";
+    res.redirect("/enrichment/address-lookup/find-address-single-page#lookup");
+  },
+);
+
+router.get(
+  "/v0_1/enrichment/address-lookup/find-address-single-page-manual",
+  function (req, res) {
+    req.session.data["resultType"] = null;
+    req.session.data["state"] = "manual";
+    req.session.data["addr"] = "yes";
+    res.redirect("//enrichment/address-lookup/find-address-single-page#manual");
+  },
+);
+
+router.post(
+  "/enrichment/address-lookup/find-address-single-page-results",
+  function (req, res) {
+    const addressLookupState = req.session.data["resultType"];
+
+    if (addressLookupState) {
+      res.redirect(
+        `/enrichment/address-lookup/find-address-single-page#resultlist-${addressLookupState}`,
+      );
+    } else {
+      res.redirect("/enrichment/address-lookup/find-address-single-page");
+    }
+  },
+);

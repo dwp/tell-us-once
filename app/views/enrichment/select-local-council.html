@@ -1,0 +1,65 @@
+{% extends "layouts/main.html" %}
+{% set pageName="Select the local council that provided most services" %}
+{% set backLink = true %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/enrichment/check-your-answers-2" method="post">
+    <h1 class="govuk-heading-l">{{pageName}}</h1>
+
+    <p class="govuk-body">Select the council that provided the most services to the person who died. For example, council housing, library services, Blue Badge, or paying Council Tax.</p>
+
+    <p class="govuk">If they lived in an area with more than one council, select the borough or district council. We will work out the right one to notify based on which services you choose.</p>
+    
+<div class="govuk-form-group govuk-!-margin-top-4">
+      <label class="govuk-label govuk-label--m" for="local-council">
+        Which council provided most services?
+      </label>
+
+      <div class="govuk-hint">Search by typing the name of the council you're looking for.</div>
+
+      <div class="govuk-!-width-two-thirds">
+        <div id="autocomplete-container"></div>
+
+        <select
+          class="govuk-select govuk-visually-hidden"
+          id="autocomplete"
+          name="local-council"
+          aria-describedby="local-council-hint">
+          {% include "includes/registration-authorities.html" %}
+        </select>
+      </div>
+    </div>
+
+    <!-- If you want to tell more than one council -->
+
+    <details class="govuk-details govuk-!-padding-bottom-6">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          If you want to tell more than one council
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+        <p class="govuk-body">
+          There may have been more than one council providing services to the person who died.
+        </p>
+        <p class="govuk-body">
+          Select the council that was providing most services as that is who we will notify.
+          You will need to contact the other council yourself.
+        </p>
+      </div>
+    </details>
+
+    <!-- Button -->
+
+    <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+
+<!-- Contact us -->
+{% include "includes/contact.njk" %}
+
+{% endblock %}

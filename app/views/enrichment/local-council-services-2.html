@@ -1,0 +1,71 @@
+{% extends "layouts/main.html" %}
+{% set pageName="Local council services" %}
+{% set backLink = true %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/{{data.version}}/select-local-council" method="post">
+    <h1 class="govuk-heading-l">{{pageName}}</h1>
+
+    <p class="govuk-body">We can notify <span class="govuk-!-font-weight-bold">Herefordshire Council</span> about the death.</p>
+
+    <p class="govuk-body">This is the council that provided most services, based on their address:</p>
+
+    <div class="govuk-inset-text">
+      10 Holly Road<br>
+      Hereford<br>
+      HR4 1PP<br>
+    </div>
+
+    <p class="govuk-body">Tell Us Once can only notify one council.  If the person who died used services from more than once council, use Tell Us Once to notify the one that provided the most services. You will need to contact the other council seperately.</p>
+
+<div class="govuk-form-group govuk-!-margin-top-6">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      Do you want to notify Herefordshire Council about the death?
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="local-council-select" name="local-council-select" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="local-council-select">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="local-council-select-2" name="local-council-select" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="local-council-select-2">
+          No, I don't want to notify council services
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+  <details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      If they used council services in more than one place
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    <p class="govuk-body">
+      If they received most of their council services at that address, you can <a href="">add their other address or the address of a care home, hospital, hospice or nursing home</a>.
+    </p>
+</details>
+
+    <!-- If you want to tell more than one council -->
+
+    <!-- Button -->
+
+    <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+
+<!-- Contact us -->
+{% include "includes/contact.njk" %}
+
+{% endblock %}

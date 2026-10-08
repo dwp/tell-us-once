@@ -1,0 +1,63 @@
+{% extends "layouts/main.html" %} {% set pageName="Your language preference" %}
+{% set backLink = true %} {% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="check-your-answers-5" method="post" novalidate>
+      <h1 class="govuk-heading-l">{{pageName}}</h1>
+      <p class="govuk-body">
+        If any of the organisations or services you’ve chosen to notify need to
+        contact you, you can ask them to contact you in Welsh. If they’re able
+        to, they will.
+      </p>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            Which language do you want to be contacted in?
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input
+                class="govuk-radios__input"
+                id="language-preference"
+                name="language-preference"
+                type="radio"
+                value="English"
+              />
+              <label
+                class="govuk-label govuk-radios__label"
+                for="language-preference"
+              >
+                English
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input
+                class="govuk-radios__input"
+                id="language-preference-2"
+                name="language-preference"
+                type="radio"
+                value="Welsh"
+              />
+              <label
+                class="govuk-label govuk-radios__label"
+                for="language-preference-2"
+              >
+                Welsh
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div
+        class="govuk-radios govuk-radios--inline"
+        data-module="govuk-radios"
+      ></div>
+
+      <!---------button-------->
+
+      <button class="govuk-button">Continue</button>
+    </form>
+  </div>
+</div>
+<!-- Contact us -->
+{% include "includes/contact.njk" %} {% endblock %}

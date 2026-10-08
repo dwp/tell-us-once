@@ -1,0 +1,85 @@
+{% extends "layouts/main.html" %}
+{% set pageName="Local council services" %}
+{% set backLink = true %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/{{data.version}}/select-local-council" method="post">
+    <h1 class="govuk-heading-l">{{pageName}}</h1>
+
+    <p class="govuk-body">Tell Us Once can only notify one council about the death. Choose the council that provided the most services to the person who died.</p>
+    <p class="govuk-body">If the person who died used services from more than one council, you will need to contact the other councils separately.</p>
+
+
+<div class="govuk-form-group govuk-!-margin-top-6">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      Which council do you want to notify about the death?
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="local-council-1" name="local-council" type="radio" value="XXX" aria-describedby="local-council-1-hint">
+        <label class="govuk-label govuk-radios__label" for="local-council-select">
+          Herefordshire Council
+        </label>
+        <div id="local-council-1-hint" class="govuk-hint govuk-radios__hint">
+          For their usual address: <br>10 Holly Road, Hereford, HR4 1PP
+        </div>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="local-council-2" name="local-council" type="radio" value="XXX" aria-describedby="local-council-2-hint">
+        <label class="govuk-label govuk-radios__label" for="local-council-select">
+          Worcestershire Council
+        </label>
+        <div id="local-council-2-hint" class="govuk-hint govuk-radios__hint">
+          For their other address: <br>12 Pinnacle Road, Worcestershire, WR1 1AA
+        </div>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="local-council-3" name="local-council" type="radio" value="XXX" aria-describedby="local-council-3-hint">
+        <label class="govuk-label govuk-radios__label" for="local-council-select">
+          Shropshire Council
+        </label>
+        <div id="local-council-3-hint" class="govuk-hint govuk-radios__hint">
+          For the address of the hospital, hospice, nursing home or care home: Meadow View Care Home, Shrewsbury, SY1 1AA
+        </div>
+      </div>
+      <div class="govuk-radios__divider">or</div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="local-council-no" name="local-council" type="radio" value="XXX">
+        <label class="govuk-label govuk-radios__label" for="local-council-select">
+          I don't want to notify a local council about the death
+        </label>
+      </div>
+  </fieldset>
+</div>
+
+<p class="govuk-body"><a href="">Lovely link to change the addresses</a></p>
+
+    <!-- If you think the addresses or councils are wrong -->
+     <details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      If you think an address or council is wrong
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    <p class="govuk-body">If the person who died lived at another address where they received local council services, you can <a href="">add that address</a> and choose to notify that council. </p>
+    <p class="govuk-body">For example, they might have lived in a care home but reveived council services at their home address.</p>
+    <p class="govuk-body">If the person who died had a single address where they received local council services, and the address here is wrong, you need to <a href="">contact the registrar</a> to record their correct address. </p>    
+  </div>
+</details>
+
+    <!-- Button -->
+
+    <button class="govuk-button">Continue</button>
+
+    </form>
+  </div>
+</div>
+
+<!-- Contact us -->
+{% include "includes/contact.njk" %}
+
+{% endblock %}

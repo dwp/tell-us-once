@@ -1,0 +1,108 @@
+{% extends "layouts/main.html" %} {% set pageName="Your confirmation letter" %}
+{% set backLink = true %} {% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="check-your-answers-5" method="post" novalidate>
+      <h1 class="govuk-heading-l">{{pageName}}</h1>
+      <p class="govuk-body">
+        When you finish Tell Us Once, you’ll get a confirmation letter.
+      </p>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            Which print size do you want for your confirmation letter?
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input
+                class="govuk-radios__input"
+                id="print-size-preference"
+                name="print-size-preference"
+                type="radio"
+                value="Standard print"
+                aria-describedby="12-point-hint"
+              />
+              <label
+                class="govuk-label govuk-radios__label"
+                for="print-size-preference"
+              >
+                Standard print
+              </label>
+              <div id="12-point-hint" class="govuk-hint govuk-radios__hint">
+              12-point Arial text.
+            </div>
+            </div>
+            <div class="govuk-radios__item">
+              <input
+                class="govuk-radios__input"
+                id="print-size-preference-2"
+                name="print-size-preference"
+                type="radio"
+                value="large print"
+                aria-describedby="16-point-hint"
+              />
+              <label
+                class="govuk-label govuk-radios__label"
+                for="print-size-preference-2"
+              >
+                Large print
+              </label>
+              <div id="16-point-hint" class="govuk-hint govuk-radios__hint">
+                16-point Arial text.
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            Which language do you want your confirmation letter in?
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input
+                class="govuk-radios__input"
+                id="language-preference"
+                name="language-preference"
+                type="radio"
+                value="English"
+              />
+              <label
+                class="govuk-label govuk-radios__label"
+                for="language-preference"
+              >
+                English
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input
+                class="govuk-radios__input"
+                id="language-preference-2"
+                name="language-preference"
+                type="radio"
+                value="Welsh"
+              />
+              <label
+                class="govuk-label govuk-radios__label"
+                for="language-preference-2"
+              >
+                Welsh
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div
+        class="govuk-radios govuk-radios--inline"
+        data-module="govuk-radios"
+      ></div>
+
+      <!---------button-------->
+
+      <button class="govuk-button">Continue</button>
+    </form>
+  </div>
+</div>
+<!-- Contact us -->
+{% include "includes/contact.njk" %} {% endblock %}
