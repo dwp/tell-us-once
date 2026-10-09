@@ -12,7 +12,7 @@ href: "javascript:window.history.back()"
 {% endblock %}
 
 {% block content %}
-<form class="form" action="/v0_1/enrichment/address-lookup/find-address-single-page" method="post">
+<form class="form" action="/enrichment/future/address-lookup/find-address-single-page" method="post">
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
@@ -64,7 +64,7 @@ href: "javascript:window.history.back()"
 
                                         <div class="govuk-form-group">
                                             <button class="govuk-button" id="findaddressbutton"
-                                                formaction="/v0_1/enrichment/address-lookup/find-address-single-page-results">
+                                                formaction="/enrichment/future/address-lookup/find-address-single-page-results">
                                                 Find address
                                             </button>
                                         </div>
@@ -75,13 +75,13 @@ href: "javascript:window.history.back()"
                                             <div class="govuk-inset-text">
                                                 No address found for SW12 0BL, check the postcode, or <a
                                                     class="govuk-link"
-                                                    href="/v0_1/enrichment/address-lookup/find-address-single-page-manual">enter
+                                                    href="/enrichment/future/address-lookup/find-address-single-page-manual">enter
                                                     the address manually</a>.
                                             </div>
                                         </div>
                                         {% else %}
                                         <p><a class="govuk-link"
-                                                href="/v0_1/enrichment/address-lookup/find-address-single-page-manual?addr=yes">Manually
+                                                href="/enrichment/future/address-lookup/find-address-single-page-manual?addr=yes">Manually
                                                 enter address</a></p>
                                         {% endif %}
                                         <!-- End results None -->
@@ -269,7 +269,7 @@ href: "javascript:window.history.back()"
                                             Enter your address manually
                                         </legend>
                                         <p><a class="govuk-link"
-                                                href="/v0_1/enrichment/address-lookup/find-address-single-page-lookup?addr=yes">Use
+                                                href="/enrichment/future/address-lookup/find-address-single-page-lookup?addr=yes">Use
                                                 postcode lookup</a></p>
                                         <div class="govuk-form-group">
                                             <label class="govuk-label" for="address-line-1">

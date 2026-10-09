@@ -215,6 +215,8 @@ router.post(
   },
 );
 
+// ---------- Address lookup demos ----------
+
 router.post("/enrichment/confirm-address", function (req, res) {
   const address = req.session.data["informer-address"];
 
@@ -229,8 +231,59 @@ router.post("/enrichment/confirm-address", function (req, res) {
   req.session.data["informer-address-town"] = town;
   req.session.data["informer-postcode"] = postcode;
 
-  res.redirect("/enrichment/future/address-lookup/confirm-address");
+  return res.redirect("/enrichment/future/address-lookup/confirm-address");
 });
+
+// Address lookup
+router.get(
+  "/enrichment/future/address-lookup/find-address-single-page",
+  function (req, res) {
+    req.session.data["state"] = "lookup";
+    res.render("/enrichment/future/address-lookup/find-address-single-page");
+  },
+);
+
+router.get(
+  "/enrichment/future/address-lookup/find-address-single-page-lookup",
+  function (req, res) {
+    req.session.data["resultType"] = null;
+    req.session.data["state"] = "lookup";
+    req.session.data["addr"] = "yes";
+    return res.redirect(
+      "/enrichment/future/address-lookup/find-address-single-page#lookup",
+    );
+  },
+);
+
+router.get(
+  "/enrichment/future/address-lookup/find-address-single-page-manual",
+  function (req, res) {
+    req.session.data["resultType"] = null;
+    req.session.data["state"] = "manual";
+    req.session.data["addr"] = "yes";
+    return res.redirect(
+      "/enrichment/future/address-lookup/find-address-single-page#manual",
+    );
+  },
+);
+
+router.post(
+  "/enrichment/future/address-lookup/find-address-single-page-results",
+  function (req, res) {
+    const addressLookupState = req.session.data["resultType"];
+
+    if (addressLookupState) {
+      return res.redirect(
+        `/enrichment/future/address-lookup/find-address-single-page#resultlist-${addressLookupState}`,
+      );
+    } else {
+      res.redirect(
+        "/enrichment/future/address-lookup/find-address-single-page",
+      );
+    }
+  },
+);
+// End Address lookup
 
 // ########## END ENRICHMENT ##########
 
