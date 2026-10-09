@@ -69,7 +69,6 @@ router.post("/:version/select-local-council", function (req, res) {
 
 // ---------- Post: from Notify organisations and services about the death ----------
 // Pensions routing
-
 router.post("/:version/ni-number", function (req, res) {
   const version = req.params.version;
 
@@ -98,7 +97,6 @@ router.post("/:version/ni-number", function (req, res) {
 
 // ---------- Post: from Check your answers 3 ----------
 // Routing for partner and person dealing with the estate
-
 router.post(
   "/:version/what-well-ask-about-the-next-of-kin",
   function (req, res) {
@@ -216,6 +214,23 @@ router.post(
     }
   },
 );
+
+router.post("/enrichment/confirm-address", function (req, res) {
+  const address = req.session.data["informer-address"];
+
+  const parts = address.split(",").map((s) => s.trim());
+  const addressLine1 = parts[0];
+  const addressLine2 = parts[1] || "";
+  const town = parts[2] || "";
+  const postcode = parts[3] || "";
+
+  req.session.data["informer-address-line-1"] = addressLine1;
+  req.session.data["informer-address-line-2"] = addressLine2;
+  req.session.data["informer-address-town"] = town;
+  req.session.data["informer-postcode"] = postcode;
+
+  res.redirect("/enrichment/future/address-lookup/confirm-address");
+});
 
 // ########## END ENRICHMENT ##########
 
@@ -643,44 +658,50 @@ router.get("/current/place-of-death-address-manual", function (req, res) {
 
 // ---------- Address lookup ----------
 router.get(
-  "/v0_1/enrichment/address-lookup/find-address-single-page",
+  "/enrichment/future/address-lookup/find-address-single-page",
   function (req, res) {
     req.session.data["state"] = "lookup";
-    res.render("/enrichment/address-lookup/find-address-single-page");
+    res.render("/enrichment/future/address-lookup/find-address-single-page");
   },
 );
 
 router.get(
-  "/v0_1/enrichment/address-lookup/find-address-single-page-lookup",
+  "/enrichment/future/address-lookup/find-address-single-page-lookup",
   function (req, res) {
     req.session.data["resultType"] = null;
     req.session.data["state"] = "lookup";
     req.session.data["addr"] = "yes";
-    res.redirect("/enrichment/address-lookup/find-address-single-page#lookup");
+    res.redirect(
+      "/enrichment/future/address-lookup/find-address-single-page#lookup",
+    );
   },
 );
 
 router.get(
-  "/v0_1/enrichment/address-lookup/find-address-single-page-manual",
+  "/enrichment/future/address-lookup/find-address-single-page-manual",
   function (req, res) {
     req.session.data["resultType"] = null;
     req.session.data["state"] = "manual";
     req.session.data["addr"] = "yes";
-    res.redirect("//enrichment/address-lookup/find-address-single-page#manual");
+    res.redirect(
+      "/enrichment/future/address-lookup/find-address-single-page#manual",
+    );
   },
 );
 
 router.post(
-  "/enrichment/address-lookup/find-address-single-page-results",
+  "/enrichment/future/address-lookup/find-address-single-page-results",
   function (req, res) {
     const addressLookupState = req.session.data["resultType"];
 
     if (addressLookupState) {
       res.redirect(
-        `/enrichment/address-lookup/find-address-single-page#resultlist-${addressLookupState}`,
+        `/enrichment/future/address-lookup/find-address-single-page#resultlist-${addressLookupState}`,
       );
     } else {
-      res.redirect("/enrichment/address-lookup/find-address-single-page");
+      res.redirect(
+        "/enrichment/future/address-lookup/find-address-single-page",
+      );
     }
   },
 );
